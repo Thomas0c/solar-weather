@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+  	"react/require-default-props": "off",
+    "no-underscore-dangle": ["error", {"allow": ["__PRELOADED_STATE__"]}],
+    "react/jsx-filename-extension": "off",
+  }
+}
