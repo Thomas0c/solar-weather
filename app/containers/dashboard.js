@@ -334,7 +334,7 @@ class Dashboard extends PureComponent {
         type="static"
         content={
           <WeekOverview
-            forecast={Array.from(anyLocation ? activeLocation.daily.data : [])}
+            forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
             unit={unit}
             timezone={timezone}
           />
@@ -377,14 +377,14 @@ class Dashboard extends PureComponent {
           />
           <Background
             day={isDaylight(timezone)}
-            condition={anyLocation ? activeLocation.currently : null}
+            condition={activeLocation ? activeLocation.currently : null}
           />
           <DateDisplay
             time={timeType}
             timestamp={timestamp}
             timezone={timezone}
             day={dayTime}
-            condition={anyLocation ? activeLocation.currently.icon : ''}
+            condition={activeLocation ? activeLocation.currently.icon : ''}
           />
           { !anyLocation &&
             <Empty
@@ -395,22 +395,22 @@ class Dashboard extends PureComponent {
             unit={unit}
             day={dayTime}
             toggleAlert={this.toggleAlert.bind(this)}
-            alerts={Array.from(anyLocation ? activeLocation.alerts : [])}
-            currently={anyLocation ? activeLocation.currently : {}}
+            alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
+            currently={activeLocation ? activeLocation.currently : {}}
           />
           <HourForecast
             timeType={timeType}
-            forecast={Array.from(anyLocation ? activeLocation.hourly.data : [])}
+            forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
             openHours={openHours}
             unit={unit}
             anyLocation={anyLocation}
             timezone={timezone}
-            locationName={anyLocation ? activeLocation.name : ''}
+            locationName={activeLocation ? activeLocation.name : ''}
           />
           <LocationDisplay
             loading={loading}
             onPress={this.toggleHours.bind(this)}
-            location={anyLocation ? activeLocation : null}
+            location={activeLocation ? activeLocation : null}
           />
         </View>
       </Drawer>

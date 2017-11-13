@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     width: '90%',
-    color: '#999',
   },
   button: {
     position: 'relative',

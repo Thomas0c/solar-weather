@@ -40,7 +40,6 @@ export default class Toast extends PureComponent { // eslint-disable-line
 
   render() {
     const { error } = this.props;
-    const errorMessage = error || 'Error';
     return (
       <Animated.View
         style={[
@@ -48,7 +47,7 @@ export default class Toast extends PureComponent { // eslint-disable-line
           { top: this.state.topAnim },
         ]}
       >
-        <Text style={styles.text}>{errorMessage}.</Text>
+        <Text style={styles.text}>{error}.</Text>
       </Animated.View>
     );
   }

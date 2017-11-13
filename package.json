@@ -8,8 +8,6 @@
 	},
 	"dependencies": {
 		"axios": "^0.17.0",
-		"glamor": "^2.20.40",
-		"glamorous": "^4.11.0",
 		"moment": "^2.19.1",
 		"moment-timezone": "^0.5.14",
 		"polished": "^1.8.2",
