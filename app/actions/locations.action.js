@@ -63,8 +63,8 @@ const forecastResponseExtended = (location, res, id) => {
         summary: daily.summary,
         icon: daily.icon,
         data: daily.data.filter((item) => {
-          const fiveDaysFromNow = moment().hour(2).add(6, 'days');
-          const followingDay = moment().hour(2).add(1, 'days');
+          const fiveDaysFromNow = moment().hour(0).add(5, 'days');
+          const followingDay = moment().hour(0).add(0, 'days');
           const isAfter = moment.unix(item.time).isAfter(followingDay);
           const isBefore = moment.unix(item.time).isBefore(fiveDaysFromNow);
           return isAfter && isBefore;
