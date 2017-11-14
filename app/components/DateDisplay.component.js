@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
 
 // Components
@@ -53,6 +54,8 @@ DateDisplay.propTypes = {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
+    height: 50,
+    width: 200,
     top: '2.5%',
     left: '5%',
     alignSelf: 'stretch',
