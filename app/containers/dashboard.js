@@ -58,11 +58,15 @@ class Dashboard extends PureComponent {
     timestamp: moment(),
     openHours: false,
     openAlert: false,
+    latestUpdate: moment(),
   };
 
   componentWillReceiveProps = (nextProps) => {
     if (this.props.settings.locationIndex !== nextProps.settings.locationIndex) {
-      this.props.dispatch(locationActions.updateAllLocations());
+      const now = moment();
+      if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
+        this.props.dispatch(locationActions.updateAllLocations());
+      }
     }
   }
 
@@ -107,15 +111,16 @@ class Dashboard extends PureComponent {
   }
 
   _handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
+    if (this.state.appState.match(/inactive|background/) && nextAppState.currentState === 'active') {
       const latestUpdate = this.props.locations.latestCollectiveUpdate;
       const now = moment();
+      dispatch(locationActions.updateAllStoredLocations());
       this.determineLocationStatus();
       this.setState({
         timestamp: moment(),
         openRight: false,
         openLeft: false,
-        appState: nextAppState
+        appState: nextAppState.currentState
       });
     }
   }
@@ -203,21 +208,20 @@ class Dashboard extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
-    AppState.addEventListener('change', this._handleAppStateChange);
-    AppState.addEventListener('memoryWarning', this._handleMemoryWarning);
+    AppState.addEventListener('change', this._handleAppStateChange.bind(this));
+    AppState.addEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
     dispatch(settingsActions.getSettings());
     dispatch(locationActions.getLocationsFromStore());
-    // this.determineLocationStatus();
-
+    this.setState({
+      appState: AppState.currentState,
+    });
     // Initiate interval to update timestamp every 20 seconds.
     setInterval(() => {
-      if (connected) {
-        this.setState({
-          timestamp: moment(),
-        });
-      }
+      this.setState({
+        timestamp: moment(),
+      });
     }, 20000);
   }
 
@@ -261,6 +265,7 @@ class Dashboard extends PureComponent {
       locationSearch,
       openAlert,
       authorized,
+      appState,
     } = this.state;
 
   const {

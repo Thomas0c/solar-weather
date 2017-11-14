@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="804"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solar_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-fq-oke">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solar_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-fq-oke">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="804"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="804" id="B4l-sO-5Ze"/>
