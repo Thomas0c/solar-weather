@@ -62,16 +62,16 @@ class Dashboard extends PureComponent {
   };
 
   updateLocationsAndSetTimestamp() {
-    this.props.dispatch(locationActions.updateAllLocations());
-    this.setState({ latestUpdate: moment() });
+    const now = moment();
+    if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
+      this.props.dispatch(locationActions.updateAllLocations());
+      this.setState({ latestUpdate: moment() });
+    }
   }
 
   componentWillReceiveProps = (nextProps) => {
     if (this.props.settings.locationIndex !== nextProps.settings.locationIndex) {
-      const now = moment();
-      if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
-        this.updateLocationsAndSetTimestamp();
-      }
+      this.updateLocationsAndSetTimestamp();
     }
   }
 
@@ -118,10 +118,7 @@ class Dashboard extends PureComponent {
   _handleAppStateChange = (nextAppState) => {
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       const latestUpdate = this.props.locations.latestCollectiveUpdate;
-      const now = moment();
-      if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
-        this.updateLocationsAndSetTimestamp();
-      }
+      this.updateLocationsAndSetTimestamp();
       this.determineLocationStatus();
       this.setState({
         timestamp: moment(),
