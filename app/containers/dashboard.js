@@ -214,13 +214,20 @@ class Dashboard extends PureComponent {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, settings } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
     AppState.addEventListener('change', this._handleAppStateChange.bind(this));
     AppState.addEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
+
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
     dispatch(settingsActions.getSettings());
+
+    if (!settings.onboarding) {
+      this.determineLocationStatus();
+      this.setOnboardingTrue();
+    }
+
     dispatch(locationActions.getLocationsFromStore());
     this.setState({
       appState: AppState.currentState,
@@ -246,11 +253,11 @@ class Dashboard extends PureComponent {
   }
 
   setOnboardingTrue() {
-    const { dispatch, locations: { locations } } = this.rpops;
+    const { dispatch, locations: { locations } } = this.props;
     dispatch(settingsActions.setOnboarding(true));
     this.fetchForecastForIndex(0);
     if (locations.length > 0) {
-      dispatch(locationActions.updateAllStoredLocations());
+      this.updateLocationsAndSetTimestamp();
     } else if (locations.length === 0) {
       this.toggleLocationSearch();
     }
