@@ -61,11 +61,16 @@ class Dashboard extends PureComponent {
     latestUpdate: moment(),
   };
 
+  updateLocationsAndSetTimestamp() {
+    this.props.dispatch(locationActions.updateAllLocations());
+    this.setState({ latestUpdate: moment() });
+  }
+
   componentWillReceiveProps = (nextProps) => {
     if (this.props.settings.locationIndex !== nextProps.settings.locationIndex) {
       const now = moment();
       if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
-        this.props.dispatch(locationActions.updateAllLocations());
+        this.updateLocationsAndSetTimestamp();
       }
     }
   }
@@ -95,9 +100,9 @@ class Dashboard extends PureComponent {
   }
 
   componentWillUnmount() {
-    AppState.removeEventListener('change', this._handleAppStateChange.bind(this));
+    AppState.removeEventListener('change', this._handleAppStateChange);
     AppState.removeEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
-    NetInfo.removeEventListener('connectionChange', this.handleNetworkType.bind(this));
+    NetInfo.removeEventListener('connectionChange', this.handleNetworkType);
   }
 
   handleNetworkType(networkType) {
@@ -111,16 +116,22 @@ class Dashboard extends PureComponent {
   }
 
   _handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState.currentState === 'active') {
+    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       const latestUpdate = this.props.locations.latestCollectiveUpdate;
       const now = moment();
-      dispatch(locationActions.updateAllStoredLocations());
+      if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
+        this.updateLocationsAndSetTimestamp();
+      }
       this.determineLocationStatus();
       this.setState({
         timestamp: moment(),
         openRight: false,
         openLeft: false,
-        appState: nextAppState.currentState
+        appState: nextAppState
+      });
+    } else {
+      this.setState({
+        appState: nextAppState,
       });
     }
   }
@@ -135,7 +146,7 @@ class Dashboard extends PureComponent {
       } else if (response !== 'authorized') {
         if (indexLoc.length === 1) {
           dispatch(locationActions.deleteLocationFromStore(0));
-          dispatch(locationActions.updateAllStoredLocations());
+          this.updateLocationsAndSetTimestamp();
         }
       } else if (response === 'authorized') {
         if (indexLoc.length === 1) {
