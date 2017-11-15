@@ -51,17 +51,15 @@ class Location extends PureComponent { // eslint-disable-line
         style={styles.container}
         rightOpenValue={-40}
       >
-        <View style={styles.standaloneRowBack}>
-          <Text />
-          <TouchableOpacity
-            style={styles.hidden}
-            onPress={() => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
+        <TouchableOpacity
+          style={styles.standaloneRowBack}
+          onPress={() => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
           >
+            <Text style={{ display: 'none' }} />
             <View style={styles.hiddenWrapper}>
               <Text style={styles.hiddenText}>X</Text>
             </View>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
         <View style={[styles.main, { backgroundColor: background }]}>
           <Text style={[styles.dayTitle, { color: fontColor }]}>{name}</Text>
           <WeatherIconWrapper>

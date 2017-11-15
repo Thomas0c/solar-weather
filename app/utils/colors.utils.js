@@ -39,7 +39,7 @@ const identifyBackground = (condition, day) => {
   } else if (condition === 'rain') {
     return day ? colors.mattePurple : colors.darkPurple;
   } else if (condition === 'snow') {
-    return day ? colors.white : colors.snowGrey;
+    return colors.snowGrey;
   } else if (condition === 'thunderstorm') {
     return day ? colors.lightSquash : colors.darkSquash;
   } else if (condition === 'fog') {

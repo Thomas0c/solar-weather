@@ -58,19 +58,23 @@ class Dashboard extends PureComponent {
     timestamp: moment(),
     openHours: false,
     openAlert: false,
-    latestUpdate: moment(),
   };
 
   updateLocationsAndSetTimestamp() {
+    const { locations: { locations} } = this.props;
     const now = moment();
-    if (now.diff(this.state.latestUpdate, 'minutes') > 5) {
+    const latestUpdate = locations.length > 0 ?
+      locations[0].last_updated : moment();
+    if (now.diff(latestUpdate, 'minutes') > 10) {
       this.props.dispatch(locationActions.updateAllLocations());
-      this.setState({ latestUpdate: moment() });
     }
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if (this.props.settings.locationIndex !== nextProps.settings.locationIndex) {
+    if (
+      this.props.settings.locationIndex !== nextProps.settings.locationIndex ||
+      this.props.locations.locations.length !== nextProps.locations.locations.length
+    ) {
       this.updateLocationsAndSetTimestamp();
     }
   }
