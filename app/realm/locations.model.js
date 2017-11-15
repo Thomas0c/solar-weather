@@ -1,5 +1,4 @@
 import Realm from 'realm';
-import Alert from './alert.model';
 
 class Locations extends Realm.Object {}
 Locations.schema = {

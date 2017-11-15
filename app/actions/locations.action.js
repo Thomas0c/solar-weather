@@ -243,9 +243,15 @@ const removeLocation = id =>
 const deleteLocation = (id) => {
   const locations = realm.objects('Location');
   const location = locations.filtered(`id = ${id}`);
-  realm.write(() => {
-    realm.delete(location);
-  });
+  try {
+    realm.write(() => {
+      realm.delete(location);
+    });
+  } catch (e) {
+    return (dispatch) => {
+      dispatch(updateError());
+    };
+  }
   return (dispatch) => {
     dispatch(removeLocation(id));
     dispatch(setLocationSettings(locations.length - 1));

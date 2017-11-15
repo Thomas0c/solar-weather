@@ -22,6 +22,12 @@ export default function settings(state = initialState, action = {}) {
         locationIndex: action.index,
       };
     }
+    case types.UPDATE_LATEST_TIMESTAMP: {
+      return {
+        ...state,
+        latestUpdate: action.timestamp,
+      };
+    }
     case types.SET_TIME_TYPE:
       return {
         ...state,

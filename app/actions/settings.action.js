@@ -1,3 +1,4 @@
+import moment from 'moment';
 import * as types from './actionTypes';
 import realm from '../realm';
 import { triggerAction } from './locations.action';
@@ -47,6 +48,7 @@ export function getSettings() {
   const timeIndex = settings ? settings.timeIndex : 0;
   const locationIndex = settings ? settings.locationIndex : 0;
   const onboarding = settings ? settings.onboarding : false;
+  const latestUpdate = settings ? settings.latestUpdate : moment().unix().toString();
   if (!settings) {
     realm.write(() => {
       realm.create('Options', {
@@ -55,6 +57,7 @@ export function getSettings() {
         timeType: '24',
         timeIndex: 0,
         key: 1,
+        latestUpdate: moment().unix().toString(),
       });
     });
   }
@@ -67,6 +70,7 @@ export function getSettings() {
       timeIndex,
       locationIndex,
       onboarding,
+      latestUpdate,
     });
   };
 }
