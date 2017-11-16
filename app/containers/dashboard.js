@@ -121,20 +121,17 @@ class Dashboard extends PureComponent {
 
   _handleAppStateChange = (nextAppState) => {
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-      const latestUpdate = this.props.locations.latestCollectiveUpdate;
       this.updateLocationsAndSetTimestamp();
       this.determineLocationStatus();
       this.setState({
         timestamp: moment(),
         openRight: false,
         openLeft: false,
-        appState: nextAppState
-      });
-    } else {
-      this.setState({
-        appState: nextAppState,
       });
     }
+    this.setState({
+      appState: nextAppState,
+    });
   }
 
   determineLocationStatus() {
@@ -225,18 +222,15 @@ class Dashboard extends PureComponent {
 
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
+
     dispatch(settingsActions.getSettings());
+    dispatch(locationActions.getLocationsFromStore());
 
     if (!settings.onboarding) {
       this.determineLocationStatus();
       this.setOnboardingTrue();
     }
 
-    dispatch(locationActions.getLocationsFromStore());
-    this.setState({
-      appState: AppState.currentState,
-    });
-    // Initiate interval to update timestamp every 20 seconds.
     setInterval(() => {
       this.setState({
         timestamp: moment(),
