@@ -43,6 +43,7 @@ class Location extends PureComponent { // eslint-disable-line
       <SwipeRow
         disableLeftSwipe={!action}
         ref={ref => item = ref}
+        key={icon}
         onRowPress={() => {
           this.props.dispatch(locationActions.setActiveLocation(index, lat, lng));
           item.closeRow();
