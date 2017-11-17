@@ -1,6 +1,7 @@
 // Modules
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import {
   StyleSheet,
@@ -15,7 +16,7 @@ import HourItem from './HourItem.component';
 export default class HourForecast extends PureComponent { // eslint-disable-line
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1.time !== r2.time });
     this.state = {
       dataSource: ds.cloneWithRows([]),
       bottomAnim: new Animated.Value(-Dimensions.get('window').height / 10),
@@ -77,6 +78,7 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
               timeType={timeType}
               timezone={timezone}
               rowId={rowId}
+              key={moment(rowData.time).unix()}
             />
           )}
         />

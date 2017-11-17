@@ -61,11 +61,16 @@ class Dashboard extends PureComponent {
   };
 
   updateLocationsAndSetTimestamp() {
+    console.log('UPDATE LOCATIONS AND SET TIMESTAMP');
     const { locations: { locations} } = this.props;
     const now = moment();
-    const latestUpdate = locations.length > 0 ?
-      locations[0].last_updated : moment();
+    const latestUpdate = locations.length > 0 &&
+      locations[0].last_updated ?
+        locations[0].last_updated :
+          moment().subtract(1, 'days');
+
     if (now.diff(latestUpdate, 'minutes') > 10) {
+      console.log('PERFORM UPDATE');
       this.props.dispatch(locationActions.updateAllLocations());
     }
   }
@@ -120,6 +125,7 @@ class Dashboard extends PureComponent {
   }
 
   _handleAppStateChange = (nextAppState) => {
+    console.log('HANDLE APP STATE CHANGE');
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       this.updateLocationsAndSetTimestamp();
       this.determineLocationStatus();
@@ -215,6 +221,7 @@ class Dashboard extends PureComponent {
   }
 
   componentDidMount() {
+    console.log('DID MOUNT');
     const { dispatch, settings } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
     AppState.addEventListener('change', this._handleAppStateChange.bind(this));
