@@ -48,7 +48,12 @@ import {
 class Dashboard extends PureComponent {
   state = {
     authorized: false,
-    lastPosition: 'unknown',
+    lastPosition: {
+      coords: {
+        latitude: 0,
+        longitude: 0,
+      },
+    },
     isConnected: 'none',
     appState: 'unknown',
     menu: false,
@@ -61,7 +66,6 @@ class Dashboard extends PureComponent {
   };
 
   updateLocationsAndSetTimestamp() {
-    console.log('UPDATE LOCATIONS AND SET TIMESTAMP');
     const { locations: { locations} } = this.props;
     const now = moment();
     const latestUpdate = locations.length > 0 &&
@@ -70,7 +74,6 @@ class Dashboard extends PureComponent {
           moment().subtract(1, 'days');
 
     if (now.diff(latestUpdate, 'minutes') > 10) {
-      console.log('PERFORM UPDATE');
       this.props.dispatch(locationActions.updateAllLocations());
     }
   }
@@ -125,7 +128,6 @@ class Dashboard extends PureComponent {
   }
 
   _handleAppStateChange = (nextAppState) => {
-    console.log('HANDLE APP STATE CHANGE');
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       this.updateLocationsAndSetTimestamp();
       this.determineLocationStatus();
@@ -182,7 +184,7 @@ class Dashboard extends PureComponent {
 
   checkIfLocationHasChanged(newLocation) {
     navigator.geolocation.getCurrentPosition((position) => {
-      let lastPosition = position;
+      const { lastPosition } = this.state;
       if (
         lastPosition.coords.latitude !== position.coords.latitude &&
         lastPosition.coords.longitude !== position.coords.longitude
@@ -221,7 +223,6 @@ class Dashboard extends PureComponent {
   }
 
   componentDidMount() {
-    console.log('DID MOUNT');
     const { dispatch, settings } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
     AppState.addEventListener('change', this._handleAppStateChange.bind(this));
@@ -303,7 +304,10 @@ class Dashboard extends PureComponent {
     }
   } = this.props;
 
-  const filteredLocations = authorized ? locations : locations.filter(item => item.id !== 0);
+  const filteredLocations = authorized ?
+    locations.sort((a, b) => a.id - b.id) :
+    locations.filter(item => item.id !== 0)
+    .sort((a, b) => a.id - b.id);
   const connected = isConnected === 'wifi' || isConnected === 'cell';
   const anyLocation = filteredLocations.length > 0;
   const baseLocation = anyLocation ? filteredLocations[0] : null;
