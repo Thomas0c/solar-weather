@@ -227,7 +227,7 @@ export function addNewLocation(loc, index) {
           writeLocationToStore(extendedLocation, index !== 0 ? null : index);
           dispatch(addLocation(extendedLocation));
           dispatch(setLocationSettings(index !== 0 ? locs.length : index));
-        } else if (locs.length < 10 && checkLocationExists(locs, loc.name)) {
+        } else if (locs.length < 10 && checkLocationExists(locs, loc.name) && index !== 0) {
           dispatch(locationError('Location already added', types.ADD_LOCATION_ERROR));
         } else if (locs.length === 10) {
           dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
