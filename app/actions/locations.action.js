@@ -14,12 +14,12 @@ const forecastRequest = (lat, lng) =>
     },
   });
 
-export const triggerAction = (type, obj) => (
-  Object.assign(
+export const triggerAction = (type, obj) => {
+  return Object.assign(
     { type },
     obj,
-  )
-);
+  );
+};
 
 const getStoredLocations = () => {
   const locations = realm.objects('Location').sorted('id');
@@ -182,6 +182,9 @@ const addLocation = location =>
 const locationLoading = () =>
   triggerAction(types.LOCATION_LOADING);
 
+const locationLoadingDone = () =>
+  triggerAction(types.LOCATION_LOADING_OFF);
+
 const locationError = (err, type) =>
   triggerAction(type, { err });
 
@@ -191,12 +194,16 @@ export const updateError = err =>
 export function updateCurrentLocation(location) {
   return (dispatch) => {
     dispatch(locationLoading());
-    forecastRequest(location.lat, location.lng).then((res) => {
-      const loc = forecastResponseExtended(location, res, 0);
-      writeLocationToStore(loc, 0);
-      dispatch(addIndex(loc));
-      dispatch(getLocationsFromStore());
-    });
+    forecastRequest(location.lat, location.lng)
+      .then((res) => {
+        const loc = forecastResponseExtended(location, res, 0);
+        writeLocationToStore(loc, 0);
+        dispatch(addIndex(loc));
+        dispatch(getLocationsFromStore());
+      }).catch((err) => {
+        console.log(err);
+        dispatch(locationError('Error updating', types.UPDATE_ERROR));
+      });
   };
 }
 
@@ -204,13 +211,16 @@ export function updateLocationWithIndex(index) {
   const locs = getStoredLocations();
   const location = locs[index];
   return (dispatch) => {
-    dispatch(locationLoading());
     if (checkLocationExists(locs, location.name)) {
+      dispatch(locationLoading());
       forecastRequest(location.lat, location.lng)
         .then((res) => {
           const extendedLocation = forecastResponseExtended(location, res, index);
           writeLocationToStore(extendedLocation, index);
           dispatch(setLocation(index, extendedLocation));
+        }).catch((err) => {
+          console.log(err);
+          dispatch(locationError('Error updating', types.UPDATE_ERROR));
         });
     }
   };
@@ -220,19 +230,25 @@ export function addNewLocation(loc, index) {
   const locs = getStoredLocations();
   return (dispatch) => {
     dispatch(locationLoading());
-    forecastRequest(loc.lat, loc.lng)
-      .then((res) => {
-        if (locs.length < 10 && !checkLocationExists(locs, loc.name)) {
+
+    if (locs.length === 10) {
+      dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
+    } else if (locs.length < 10 && checkLocationExists(locs, loc.name) && index !== 0) {
+      dispatch(locationError('Location already added', types.ADD_LOCATION_ERROR));
+    } else if (locs.length < 10 && !checkLocationExists(locs, loc.name)) {
+      forecastRequest(loc.lat, loc.lng)
+        .then((res) => {
           const extendedLocation = forecastResponseExtended(loc, res, index !== 0 ? null : index);
           writeLocationToStore(extendedLocation, index !== 0 ? null : index);
           dispatch(addLocation(extendedLocation));
           dispatch(setLocationSettings(index !== 0 ? locs.length : index));
-        } else if (locs.length < 10 && checkLocationExists(locs, loc.name) && index !== 0) {
-          dispatch(locationError('Location already added', types.ADD_LOCATION_ERROR));
-        } else if (locs.length === 10) {
-          dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
-        }
-      });
+        }).catch((err) => {
+          console.log(err);
+          dispatch(locationError('Error updating', types.UPDATE_ERROR));
+        });
+    } else {
+      dispatch(locationLoadingDone());
+    }
   };
 }
 
