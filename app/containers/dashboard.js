@@ -8,6 +8,7 @@ import axios from 'axios';
 import tz from 'moment-timezone';
 import PropTypes from 'prop-types';
 import Permissions from 'react-native-permissions';
+import R from 'ramda';
 
 // Redux Actions
 import * as settingsActions from '../actions/settings.action';
@@ -308,11 +309,13 @@ class Dashboard extends PureComponent {
     locations.sort((a, b) => a.id - b.id) :
     locations.filter(item => item.id !== 0)
     .sort((a, b) => a.id - b.id);
+
   const connected = isConnected === 'wifi' || isConnected === 'cell';
   const anyLocation = filteredLocations.length > 0;
   const baseLocation = anyLocation ? filteredLocations[0] : null;
   const activeLocation = filteredLocations.length -1 < locationIndex ?
-    baseLocation : filteredLocations[locationIndex];
+    filteredLocations[0] : filteredLocations[locationIndex];
+
   const rightOpen = locationError ? false : null;
   const timezone = activeLocation && activeLocation.timezone ?
     activeLocation.timezone : 'America/New_York';

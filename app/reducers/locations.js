@@ -69,6 +69,7 @@ export default function locations(state = initialState, action = {}) {
         ...state,
         locations: [...state.locations.slice(0, index), ...state.locations.slice(index + 1)],
         locationError: null,
+        loading: false,
       };
     case types.FETCH_LOCATIONS_FAILURE:
     case types.ADD_INDEX_LOCATION_ERROR:

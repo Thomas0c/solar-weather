@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import R from 'ramda';
 
 import {
   StyleSheet,
@@ -24,16 +25,35 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
   }
 
   componentWillReceiveProps(nextProps) {
-    const { openHours, anyLocation } = this.props;
+    const {
+      openHours,
+      anyLocation,
+      locationName,
+      forecast,
+    } = this.props;
+
     if (nextProps.openHours !== openHours && anyLocation) {
       this.animateBottom();
     }
-    if (nextProps.locationName !== this.props.locationName) {
+    if (nextProps.locationName !== locationName) {
       _scrollView.scrollTo({ x: 0, y: 0, animated: true });
     }
-    if (nextProps.forecast !== this.props.forecast) {
+
+    const getTime = R.prop('time');
+    if (
+      !R.equals(
+        getTime(forecast[0]),
+        getTime(nextProps.forecast[0]).time,
+      ) || // eslint-disable-line
+      R.isEmpty(forecast) && // eslint-disable-line
+      !R.isEmpty(nextProps.forecast)
+    ) {
+      const filteredForecast =
+        nextProps.forecast
+          .filter(x => moment.unix(x.time).isAfter(moment()));
+
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.forecast),
+        dataSource: this.state.dataSource.cloneWithRows(filteredForecast),
       });
     }
   }
@@ -91,6 +111,7 @@ HourForecast.propTypes = {
   forecast: PropTypes.arrayOf(PropTypes.shape({})),
   openHours: PropTypes.bool,
   timeType: PropTypes.string,
+  locationName: PropTypes.string,
   unit: PropTypes.string,
   timezone: PropTypes.string,
   anyLocation: PropTypes.bool,
