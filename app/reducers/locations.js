@@ -25,6 +25,11 @@ const initialState = {
 
 export default function locations(state = initialState, action = {}) {
   switch (action.type) {
+    case types.LOCATION_LOADING_OFF:
+      return {
+        ...state,
+        loading: false,
+      };
     case types.FETCH_LOCATIONS:
     case types.LOCATION_LOADING:
       return {
