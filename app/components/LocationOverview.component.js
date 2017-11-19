@@ -23,7 +23,7 @@ export default class LocationOverview extends PureComponent { // eslint-disable-
       activeLocation,
     } = this.props;
     const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1.currently.icon !== r2.currently.icon,
+      rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
     return (
@@ -42,7 +42,7 @@ export default class LocationOverview extends PureComponent { // eslint-disable-
                 lat={loc.lat}
                 lng={loc.lng}
                 day={day}
-                key={loc.currently.icon}
+                key={loc.id}
                 index={parseInt(rowId, 10)}
                 activeLocation={activeLocation}
                 name={loc.name}
