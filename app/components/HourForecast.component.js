@@ -68,7 +68,7 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
   }
 
   render() {
-    const { timeType, unit, timezone } = this.props;
+    const { timeType, unit, timezone, forecast } = this.props;
     return (
       <Animated.View
         style={{
@@ -85,19 +85,18 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
           horizontal
           pagingEnabled
           style={{ flex: 1 }}
-          contentContainerStyle={styles.container}
+          contentContainerStyle={[styles.container, { minWidth: `${forecast.length * 12}%` }]}
           enableEmptySections
           showsHorizontalScrollIndicator={false}
           bounces={false}
           directionalLockEnabled
           dataSource={this.state.dataSource}
-          renderRow={(rowData, secId, rowId) => (
+          renderRow={rowData => (
             <HourItem
               {...rowData}
               unit={unit}
               timeType={timeType}
               timezone={timezone}
-              rowId={rowId}
               key={moment(rowData.time).unix()}
             />
           )}
@@ -119,7 +118,6 @@ HourForecast.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    minWidth: '250%',
     flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
