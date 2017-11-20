@@ -226,7 +226,7 @@ class Dashboard extends PureComponent {
   componentDidMount() {
     const { dispatch, settings } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
-    AppState.addEventListener('change', this._handleAppStateChange.bind(this));
+    AppState.addEventListener('change', this._handleAppStateChange);
     AppState.addEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
 
     const { isConnected } = this.state;

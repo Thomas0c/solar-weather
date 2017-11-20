@@ -39,7 +39,7 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
       _scrollView.scrollTo({ x: 0, y: 0, animated: true });
     }
 
-    const getTime = R.prop('time');
+    const getTime = R.propOr('time', null);
     if (
       !R.equals(
         getTime(forecast[0]),
