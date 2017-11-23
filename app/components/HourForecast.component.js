@@ -2,7 +2,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import R from 'ramda';
 
 import {
   StyleSheet,
@@ -29,7 +28,6 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
       openHours,
       anyLocation,
       locationName,
-      forecast,
     } = this.props;
 
     if (nextProps.openHours !== openHours && anyLocation) {
@@ -39,18 +37,12 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
       _scrollView.scrollTo({ x: 0, y: 0, animated: true });
     }
 
-    const getTime = R.propOr('time', null);
-    if (
-      !R.equals(
-        getTime(forecast[0]),
-        getTime(nextProps.forecast[0]).time,
-      ) || // eslint-disable-line
-      R.isEmpty(forecast) && // eslint-disable-line
-      !R.isEmpty(nextProps.forecast)
+    if (this.props.forecast !== nextProps.forecast
     ) {
       const filteredForecast =
         nextProps.forecast
           .filter(x => moment.unix(x.time).isAfter(moment()));
+
 
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(filteredForecast),
@@ -68,7 +60,13 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
   }
 
   render() {
-    const { timeType, unit, timezone, forecast } = this.props;
+    const {
+      timeType,
+      unit,
+      timezone,
+      forecast,
+    } = this.props;
+
     return (
       <Animated.View
         style={{
@@ -97,6 +95,7 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
               unit={unit}
               timeType={timeType}
               timezone={timezone}
+              rowId={moment(rowData.time).unix()}
               key={moment(rowData.time).unix()}
             />
           )}

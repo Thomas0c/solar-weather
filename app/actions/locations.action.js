@@ -192,6 +192,7 @@ export const updateError = err =>
   triggerAction(types.UPDATE_ERROR, { err });
 
 export function updateCurrentLocation(location) {
+  console.log(location);
   return (dispatch) => {
     dispatch(locationLoading());
     forecastRequest(location.lat, location.lng)
