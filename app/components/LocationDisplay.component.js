@@ -14,7 +14,6 @@ export default class LocationDisplay extends PureComponent { // eslint-disable-l
   render() {
     const {
       location,
-      onPress,
       loading,
     } = this.props;
 
@@ -24,7 +23,7 @@ export default class LocationDisplay extends PureComponent { // eslint-disable-l
     return (
       <View style={styles.container}>
         <View style={styles.shadow} />
-        <TouchableHighlight style={styles.touch} onPress={onPress} underlayColor="transparent">
+        <TouchableHighlight style={styles.touch} underlayColor="transparent">
           <Text style={{ fontSize: 18, fontFamily: 'Baskerville' }}>
             {currentLocation}
           </Text>
@@ -36,7 +35,6 @@ export default class LocationDisplay extends PureComponent { // eslint-disable-l
 
 LocationDisplay.propTypes = {
   location: PropTypes.shape({}),
-  onPress: PropTypes.func,
   loading: PropTypes.bool,
 };
 

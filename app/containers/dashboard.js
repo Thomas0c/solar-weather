@@ -8,6 +8,7 @@ import axios from 'axios';
 import tz from 'moment-timezone';
 import PropTypes from 'prop-types';
 import Permissions from 'react-native-permissions';
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import R from 'ramda';
 
 // Redux Actions
@@ -62,9 +63,18 @@ class Dashboard extends PureComponent {
     openRight: false,
     openLeft: false,
     timestamp: moment(),
-    openHours: false,
+    showDetails: true,
     openAlert: false,
   };
+
+  onSwipeDown(gestureState) {
+    const { settings, locations } = this.props;
+    if (
+      settings.locationIndex !== null
+    ) {
+      this.fetchForecastForIndex(settings.locationIndex);
+    }
+  }
 
   updateLocationsAndSetTimestamp() {
     const { locations: { locations} } = this.props;
@@ -247,9 +257,9 @@ class Dashboard extends PureComponent {
     }, 20000);
   }
 
-  toggleHours() {
+  toggleDetails() {
     this.setState({
-      openHours: !this.state.openHours,
+      showDetails: !this.state.showDetails,
     });
   }
 
@@ -280,7 +290,7 @@ class Dashboard extends PureComponent {
       lastPosition,
       isConnected,
       timestamp,
-      openHours,
+      showDetails,
       menu,
       openRight,
       openLeft,
@@ -378,7 +388,10 @@ class Dashboard extends PureComponent {
         panOpenMask={0.2}
         tweenHandler={Drawer.tweenPresets.parallax}
       >
-        <View style={styles.container}>
+        <GestureRecognizer
+          style={styles.container}
+          onSwipeDown={(direction, state) => this.onSwipeDown(direction, state)}
+        >
           <Modal
             visible={openAlert && showAlert}
             toggleView={this.toggleAlert.bind(this)}
@@ -426,6 +439,8 @@ class Dashboard extends PureComponent {
           <WeatherCondition
             unit={unit}
             day={dayTime}
+            showDetails={showDetails}
+            toggleDetails={this.toggleDetails.bind(this)}
             toggleAlert={this.toggleAlert.bind(this)}
             alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
             currently={activeLocation ? activeLocation.currently : {}}
@@ -433,7 +448,7 @@ class Dashboard extends PureComponent {
           <HourForecast
             timeType={timeType}
             forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
-            openHours={openHours}
+            showDetails={showDetails}
             unit={unit}
             anyLocation={anyLocation}
             timezone={timezone}
@@ -441,10 +456,9 @@ class Dashboard extends PureComponent {
           />
           <LocationDisplay
             loading={loading}
-            onPress={this.toggleHours.bind(this)}
             location={activeLocation ? activeLocation : null}
           />
-        </View>
+        </GestureRecognizer>
       </Drawer>
     </Drawer>);
   }

@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   View,
   Image,
+  Animated,
 } from 'react-native';
 
 import Colors from '../utils/colors.utils';
@@ -17,6 +18,27 @@ const formatText = (temp, humidity, precip) => `Feels like ${parseFloat(temp).to
 Humidity ${parseFloat(humidity * 100).toFixed(0)}% ${precip}`;
 
 export default class WeatherCondition extends PureComponent { // eslint-disable-line
+  constructor(props) {
+    super(props);
+    this.state = {
+      fadeAnim: new Animated.Value(1),
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.showDetails !== this.props.showDetails) {
+      this.triggerAnimation();
+    }
+  }
+
+  triggerAnimation() {
+    const opacityValue = this.props.showDetails ? 0 : 1;
+    Animated.timing(
+      this.state.fadeAnim,
+      { toValue: opacityValue },
+    ).start();
+  }
+
   render() {
     const {
       day,
@@ -72,9 +94,15 @@ Chance of ${precipType}: ${precipNumber}%` : '';
             </Text>
           }
           { !isNaN(temperature) &&
-            <DateText space style={{ color: fontColor, marginBottom: 10 }} day={day}>
-              {formatText(fixedFeelsLike, currently.humidity, precipitation)}
-            </DateText>
+            <Animated.View
+              style={{
+                opacity: this.state.fadeAnim,
+              }}
+            >
+              <DateText space style={{ color: fontColor, marginBottom: 10 }} day={day}>
+                {formatText(fixedFeelsLike, currently.humidity, precipitation)}
+              </DateText>
+            </Animated.View>
           }
         </View>
       </TouchableHighlight>
@@ -86,6 +114,7 @@ WeatherCondition.propTypes = {
   currently: PropTypes.shape({}),
   unit: PropTypes.string,
   day: PropTypes.bool,
+  showDetails: PropTypes.bool,
   toggleAlert: PropTypes.func,
   toggleDetails: PropTypes.func,
   alerts: PropTypes.arrayOf(PropTypes.shape({})),
