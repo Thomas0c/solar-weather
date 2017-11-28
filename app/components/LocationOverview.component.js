@@ -13,6 +13,7 @@ import {
 
 // Components
 import Location from './Location.component';
+import { appColors } from '../config/general.config';
 
 export default class LocationOverview extends Component { // eslint-disable-line
 
@@ -84,12 +85,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     justifyContent: 'flex-start',
-    backgroundColor: '#EFEFEF',
+    backgroundColor: appColors.medGrey,
     position: 'relative',
   },
   shadow: {
     width: 2,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: appColors.opaqueBlack,
     position: 'absolute',
     left: 0,
     top: 0,

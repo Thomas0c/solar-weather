@@ -10,6 +10,7 @@ import {
 
 // Components
 import ColorBackground from '../styled/colorBackground';
+import { appColors } from '../config/general.config';
 
 export default class Background extends Component { // eslint-disable-line
   shouldComponentUpdate(nextProps) {
@@ -44,6 +45,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     alignSelf: 'stretch',
-    backgroundColor: '#C0C0C0',
+    backgroundColor: appColors.medGreyAlt,
   },
 });

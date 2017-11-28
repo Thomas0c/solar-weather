@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import Colors from '../utils/colors.utils';
+import { appColors } from '../config/general.config';
 import DateText from '../styled/DateText';
 import Temperature from '../utils/temperature.utils';
 
@@ -138,13 +139,13 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontFamily: 'HelveticaNeue',
     fontWeight: '600',
-    color: '#F9F9F9',
+    color: appColors.whiteGrey,
   },
   condition: {
     fontSize: 24,
     fontFamily: 'HelveticaNeue',
     fontWeight: '600',
-    color: '#F9F9F9',
+    color: appColors.whiteGrey,
     marginBottom: 20,
   },
 });

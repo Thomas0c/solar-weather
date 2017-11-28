@@ -2,6 +2,8 @@ import React from 'react';
 import { View, StyleSheet, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { appColors } from '../../config/general.config';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -9,15 +11,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: appColors.medGrey,
     borderBottomWidth: 2,
     height: 45,
     marginBottom: 10,
-    borderBottomColor: '#343434',
+    borderBottomColor: appColors.darkGrey,
   },
   input: {
     height: 50,
-    color: '#343434',
+    color: appColors.darkGrey,
     flex: 1,
     fontSize: 15,
   },
@@ -29,8 +31,8 @@ const Header = props => (
       style={styles.input}
       keyboardAppearance="dark"
       placeholder="Enter City Name"
-      placeholderTextColor="#999"
-      selectionColor="#343434"
+      placeholderTextColor={appColors.grey}
+      selectionColor={appColors.darkGrey}
       spellCheck={false}
       autoFocus
       autoCorrect={false}

@@ -9,6 +9,8 @@ import {
   Text,
 } from 'react-native';
 
+import { appColors } from '../config/general.config';
+
 export default class CloseButton extends PureComponent { // eslint-disable-line
   render() {
     const { toggle, absolute } = this.props;
@@ -20,7 +22,7 @@ export default class CloseButton extends PureComponent { // eslint-disable-line
           overflow: 'hidden',
           width: 40,
           height: 40,
-          backgroundColor: '#E17C7C',
+          backgroundColor: appColors.red,
           borderWidth: 0,
           alignItems: 'center',
           justifyContent: 'center'
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 16,
     fontWeight: '700',
-    color: '#FFF',
+    color: appColors.white,
   },
   image: {
     width: 120,

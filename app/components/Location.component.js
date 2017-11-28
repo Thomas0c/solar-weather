@@ -16,6 +16,7 @@ import * as locationActions from '../actions/locations.action';
 import Icons from '../utils/icons.utils';
 import Colors from '../utils/colors.utils';
 import WeatherIconWrapper from '../styled/WeatherIconWrapper';
+import { appColors } from '../config/general.config';
 
 class Location extends Component { // eslint-disable-line
 
@@ -41,9 +42,9 @@ class Location extends Component { // eslint-disable-line
     let item = null;
     const selected = index === activeLocation;
     const background = selected ?
-      darken(0.1, Colors.identifyBackground(icon, day)) : '#EFEFEF';
+      darken(0.1, Colors.identifyBackground(icon, day)) : appColors.lightGrey;
     const iconName = selected ? `${icon}_white` : icon;
-    const fontColor = selected ? 'white' : '#343434';
+    const fontColor = selected ? appColors.white : appColors.darkGrey;
 
     return (
       <SwipeRow
@@ -112,10 +113,10 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     justifyContent: 'center',
-    backgroundColor: '#CB4C4C',
+    backgroundColor: appColors.red,
   },
   hiddenText: {
-    color: '#EFEFEF',
+    color: appColors.lightGrey,
     marginRight: 0,
     fontWeight: 'bold',
     fontFamily: 'Avenir',
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   },
   standaloneRowBack: {
     alignItems: 'center',
-    backgroundColor: '#CB4C4C',
+    backgroundColor: appColors.red,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
