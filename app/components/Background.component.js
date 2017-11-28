@@ -14,7 +14,8 @@ import { appColors } from '../config/general.config';
 
 export default class Background extends Component { // eslint-disable-line
   shouldComponentUpdate(nextProps) {
-    return nextProps.condition.icon !== this.props.condition.icon;
+    return nextProps.condition &&
+      nextProps.condition.icon !== this.props.condition.icon;
   }
 
   render() {
