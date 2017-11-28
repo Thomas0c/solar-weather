@@ -91,12 +91,6 @@ class Dashboard extends PureComponent {
     }
   }
 
-  handleMenu() {
-    this.setState({
-      menu: !this.state.menu,
-    });
-  }
-
   updateSegmentIndex(event) {
     const index = event.nativeEvent.selectedSegmentIndex;
     this.props.dispatch(settingsActions.setUnit(units[index], index));
@@ -244,21 +238,9 @@ class Dashboard extends PureComponent {
     }, 20000);
   }
 
-  toggleDetails() {
+  toggleState(key) {
     this.setState({
-      showDetails: !this.state.showDetails,
-    });
-  }
-
-  toggleHours() {
-    this.setState({
-      openHours: !this.state.openHours,
-    });
-  }
-
-  toggleAlert() {
-    this.setState({
-      openAlert: !this.state.openAlert,
+      [key]: !this.state[key],
     });
   }
 
@@ -272,7 +254,7 @@ class Dashboard extends PureComponent {
   }
 
   resetOnboarding() {
-    this.handleMenu();
+    this.toggleState('menu');
     this.props.dispatch(settingsActions.setOnboarding(false));
   }
 
@@ -385,7 +367,7 @@ class Dashboard extends PureComponent {
         >
           <Modal
             visible={openAlert && showAlert}
-            toggleView={this.toggleAlert.bind(this)}
+            toggleView={this.toggleState.bind(this, 'openAlert')}
             content={<AlertContent title={activeAlertTitle} description={activeAlertDescription} />}
           />
           <LocationSearch
@@ -398,11 +380,11 @@ class Dashboard extends PureComponent {
             resetOnboarding={this.resetOnboarding.bind(this)}
             unitIndex={unitIndex}
             timeIndex={timeIndex}
-            handleMenu={this.handleMenu.bind(this)}
+            handleMenu={this.toggleState.bind(this, 'menu')}
             updateIndex={this.updateSegmentIndex.bind(this)}
             updateTimeIndex={this.updateSegmentTimeIndex.bind(this)}
           />
-          <InfoIcon onPress={this.handleMenu.bind(this)} />
+          <InfoIcon onPress={this.toggleState.bind(this, 'menu')} />
           <Toast
             connected={connected}
             error={locationError}
@@ -431,8 +413,8 @@ class Dashboard extends PureComponent {
             unit={unit}
             day={dayTime}
             showDetails={showDetails}
-            toggleDetails={this.toggleDetails.bind(this)}
-            toggleAlert={this.toggleAlert.bind(this)}
+            toggleDetails={this.toggleState.bind(this, 'showDetails')}
+            toggleAlert={this.toggleState.bind(this, 'openAlert')}
             alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
             currently={activeLocation ? activeLocation.currently : {}}
           />
@@ -447,7 +429,7 @@ class Dashboard extends PureComponent {
             locationName={activeLocation ? activeLocation.name : ''}
           />
           <LocationDisplay
-            onPress={this.toggleHours.bind(this)}
+            onPress={this.toggleState.bind(this, 'openHours')}
             loading={loading}
             location={activeLocation ? activeLocation : null}
           />
