@@ -23,8 +23,8 @@ export default class DateDisplay extends PureComponent { // eslint-disable-line
     } = this.props;
 
     const formatString = time === '24' ? 'HH:mm' : 'h:mma';
-    const zone = timezone || 'America/New_York';
-    const adjustedTime = moment(timestamp).tz(zone);
+    const adjustedTime = timezone ?
+      moment(timestamp).tz(timezone) : moment();
     const formattedTimestamp = adjustedTime.format(formatString);
     const dateStamp = adjustedTime.format('MMMM DD');
     const fontColor = Colors.identifyFontColor(condition);

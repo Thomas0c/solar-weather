@@ -15,20 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="804"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solar_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-fq-oke">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solar_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZGe-fq-oke">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="804"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="804" id="B4l-sO-5Ze"/>
-                        <constraint firstAttribute="width" constant="480" id="umz-Gx-iro"/>
-                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ZGe-fq-oke" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DQS-L8-Bqh"/>
-                <constraint firstItem="ZGe-fq-oke" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PYe-Hc-D4o"/>
                 <constraint firstAttribute="bottom" secondItem="ZGe-fq-oke" secondAttribute="bottom" id="TOi-hk-yaf"/>
+                <constraint firstItem="ZGe-fq-oke" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ckq-67-nj2"/>
+                <constraint firstItem="ZGe-fq-oke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fvh-Bu-cIA"/>
                 <constraint firstItem="ZGe-fq-oke" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mH3-pW-LMK"/>
+                <constraint firstAttribute="trailing" secondItem="ZGe-fq-oke" secondAttribute="trailing" id="o0G-RF-On2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

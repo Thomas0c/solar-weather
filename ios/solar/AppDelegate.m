@@ -24,12 +24,20 @@
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
+  // 1. Load the LaunchScreen from the xib file
+  UIView *backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil] firstObject];
+  
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"solar"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  
 
+  
+  // 2. Set the backgroundColor of the react view to be transparent
+  rootView.backgroundColor = [UIColor clearColor];
+  backgroundView.frame = UIScreen.mainScreen.bounds;
+  
   NSString *placesAPI = [ReactNativeConfig envFor:@"PLACES_API"];
   NSString *servicesAPI = [ReactNativeConfig envFor:@"SERVICES_API"];
   
@@ -38,7 +46,16 @@
   
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
+  // 3. Set the backgroundView as main view for the rootViewController (instead of the rootView)
+  rootViewController.view = backgroundView;
+  [self.window makeKeyAndVisible];
+
+  // 4. After the window is visible, add the rootView as a subview to your backgroundView
+  [backgroundView addSubview:rootView];
+  
+  // 5. Then make the rootViews frame the same as the backgroundView
+  rootView.frame = backgroundView.frame;
+
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
