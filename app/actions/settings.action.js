@@ -17,8 +17,13 @@ export function setTimeType(timeType, index) {
 
 export function setUnit(unit, index) {
   realm.write(() => {
-    realm.create('Options', { key: 1, unit, unitIndex: index }, true);
+    realm.create('Options', {
+      key: 1,
+      unit,
+      unitIndex: index,
+    }, true);
   });
+
   return (dispatch) => {
     dispatch({
       type: types.SET_UNIT,
@@ -30,8 +35,12 @@ export function setUnit(unit, index) {
 
 export function setOnboarding(value) {
   realm.write(() => {
-    realm.create('Options', { key: 1, onboarding: value }, true);
+    realm.create('Options', {
+      key: 1,
+      onboarding: value,
+    }, true);
   });
+
   return (dispatch) => {
     dispatch({
       type: types.SET_ONBOARDING,
