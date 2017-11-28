@@ -67,14 +67,17 @@ class Dashboard extends PureComponent {
   };
 
   updateLocationsAndSetTimestamp() {
-    const { locations: { locations} } = this.props;
+    const { locations } = this.props;
     const now = moment();
-    const latestUpdate = locations.length > 0 &&
-      locations[0].last_updated ?
-        locations[0].last_updated :
+    const latestUpdate = locations.locations.length > 0 &&
+      locations.locations[0].last_updated ?
+        locations.locations[0].last_updated :
           moment().subtract(1, 'days');
 
-    if (now.diff(latestUpdate, 'minutes') > 10) {
+    if (
+      now.diff(latestUpdate, 'minutes') > 10 &&
+      !locations.loading
+    ) {
       this.props.dispatch(locationActions.updateAllLocations());
     }
   }
@@ -143,24 +146,22 @@ class Dashboard extends PureComponent {
     });
   }
 
-  determineLocationStatus() {
+  async determineLocationStatus() {
     const { locations: { locations }, dispatch } = this.props;
     const indexLoc = locations.filter(item => item.id === 0);
-    Permissions.check('location', 'whenInUse')
-    .then(response => {
-      if (response === 'undetermined') {
-        Permissions.request('location', 'whenInUse');
-      } else if (response !== 'authorized') {
-        if (indexLoc.length === 1) {
-          dispatch(locationActions.deleteLocationFromStore(0));
-          this.updateLocationsAndSetTimestamp();
-        }
-      } else if (response === 'authorized') {
-        this.checkIfLocationHasChanged(indexLoc.length === 0);
+    const res = await Permissions.check('location', 'whenInUse');
+    if (res === 'undetermined') {
+      Permissions.request('location', 'whenInUse');
+    } else if (res !== 'authorized') {
+      if (indexLoc.length === 1) {
+        dispatch(locationActions.deleteLocationFromStore(0));
+        this.updateLocationsAndSetTimestamp();
       }
-      this.setState({
-        authorized: response === 'authorized',
-      });
+    } else if (res === 'authorized') {
+      this.checkIfLocationHasChanged(indexLoc.length === 0);
+    }
+    this.setState({
+      authorized: res === 'authorized',
     });
   }
 
@@ -200,9 +201,9 @@ class Dashboard extends PureComponent {
     );
   }
 
-  geocodePositionAndGetForecast(newLocation, pos) {
-    Geocoder.geocodePosition(pos)
-    .then((res) => {
+  async geocodePositionAndGetForecast(newLocation, pos) {
+    try {
+      const res = await Geocoder.geocodePosition(pos);
       const { locality, adminArea } = res[0];
       const { lat, lng } = pos;
       const loc = {
@@ -214,7 +215,9 @@ class Dashboard extends PureComponent {
         newLocation ? locationActions.addNewLocation(loc, 0) :
         locationActions.updateCurrentLocation(loc)
       );
-    }).catch(err => console.log(err));
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   componentDidMount() {
@@ -263,9 +266,7 @@ class Dashboard extends PureComponent {
     const { dispatch, locations: { locations } } = this.props;
     dispatch(settingsActions.setOnboarding(true));
     this.fetchForecastForIndex(0);
-    if (locations.length > 0) {
-      this.updateLocationsAndSetTimestamp();
-    } else if (locations.length === 0) {
+    if (locations.length === 0) {
       this.toggleLocationSearch();
     }
   }
