@@ -31,6 +31,8 @@ import LocationSearch from '../components/LocationSearch/LocationSearch.componen
 import Modal from '../components/Modal.component';
 import AlertContent from '../components/AlertContent.component';
 import Empty from '../components/Empty.component';
+import LeftSidebar from '../components/LeftSidebar';
+import RightSidebar from '../components/RightSidebar';
 
 import {
   AppRegistry,
@@ -301,49 +303,27 @@ class Dashboard extends PureComponent {
     activeLocation.alerts[0].description : '';
 
   return (
-    <Drawer
-      disabled={menu || locationSearch || !anyLocation}
-      type="static"
-      open={openRight && anyLocation}
-      onOpenStart={() => { this.setState({ openRight: true })}}
-      onCloseStart={() => { this.setState({ openRight: false })}}
-      negotiatePan={true}
-      tweenHandler={Drawer.tweenPresets.parallax}
-      panOpenMask={0.2}
-      initializeOpen = {false}
-      closedDrawerOffset={0}
-      openDrawerOffset={0.5}
-      panThreshold={0.1}
-      side="right"
-      content={
-        <LocationOverview
-          day={dayTime}
-          activeLocation={locationIndex}
-          openModal={this.toggleLocationSearch.bind(this)}
-          locations={filteredLocations}
-          unit={unit}
-        />
-      }
+    <RightSidebar
+      menu={menu}
+      locationSearch={locationSearch}
+      anyLocation={anyLocation}
+      openRight={openRight}
+      setMenuState={this.toggleState.bind(this, 'openRight')}
+      unit={unit}
+      dayTime={dayTime}
+      locationIndex={locationIndex}
+      toggleLocationSearch={this.toggleLocationSearch.bind(this)}
+      filteredLocations={filteredLocations}
     >
-      <Drawer
-        disabled={menu || locationSearch || !anyLocation }
-        onOpenStart={() => { this.setState({ openLeft: true })}}
-        onCloseStart={() => { this.setState({ openLeft: false })}}
-        open={openLeft}
-        type="static"
-        content={
-          <WeekOverview
-            forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
-            unit={unit}
-            timezone={timezone}
-          />
-        }
-        negotiatePan={true}
-        panThreshold={0.1}
-        openDrawerOffset={0.5}
-        closedDrawerOffset={0}
-        panOpenMask={0.2}
-        tweenHandler={Drawer.tweenPresets.parallax}
+      <LeftSidebar
+        menu={menu}
+        locationSearch={locationSearch}
+        anyLocation={anyLocation}
+        openLeft={openLeft}
+        activeLocation={activeLocation}
+        unit={unit}
+        timezone={timezone}
+        setMenuState={this.toggleState.bind(this, 'openLeft')}
       >
         <View
           style={styles.container}
@@ -417,8 +397,8 @@ class Dashboard extends PureComponent {
             location={activeLocation ? activeLocation : null}
           />
         </View>
-      </Drawer>
-    </Drawer>);
+      </LeftSidebar>
+    </RightSidebar>);
   }
 }
 
