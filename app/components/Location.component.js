@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SwipeRow } from 'react-native-swipe-list-view';
@@ -17,7 +17,14 @@ import Icons from '../utils/icons.utils';
 import Colors from '../utils/colors.utils';
 import WeatherIconWrapper from '../styled/WeatherIconWrapper';
 
-class Location extends PureComponent { // eslint-disable-line
+class Location extends Component { // eslint-disable-line
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.activeLocation !== this.props.activeLocation ||
+      nextProps.icon !== this.props.icon ||
+      nextProps.day !== this.props.day;
+  }
+
   render() {
     const {
       name,
@@ -32,7 +39,6 @@ class Location extends PureComponent { // eslint-disable-line
     } = this.props;
 
     let item = null;
-
     const selected = index === activeLocation;
     const background = selected ?
       darken(0.1, Colors.identifyBackground(icon, day)) : '#EFEFEF';
@@ -55,11 +61,11 @@ class Location extends PureComponent { // eslint-disable-line
         <TouchableOpacity
           style={styles.standaloneRowBack}
           onPress={() => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
-          >
-            <Text style={{ display: 'none' }} />
-            <View style={styles.hiddenWrapper}>
-              <Text style={styles.hiddenText}>X</Text>
-            </View>
+        >
+          <Text style={{ display: 'none' }} />
+          <View style={styles.hiddenWrapper}>
+            <Text style={styles.hiddenText}>X</Text>
+          </View>
         </TouchableOpacity>
         <View style={[styles.main, { backgroundColor: background }]}>
           <Text style={[styles.dayTitle, { color: fontColor }]}>{name}</Text>

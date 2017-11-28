@@ -79,6 +79,11 @@ const checkLocationExists = (locs, name) => {
   return filtered.length > 0;
 };
 
+const checkIndexExists = (locs, id) => {
+  const filtered = locs.filter(item => item.id === id);
+  return filtered.length > 0;
+};
+
 const writeLocationToStore = (location, id) => {
   const identity = typeof id === 'number' ? id : new Date().getTime();
   realm.write(() => {
@@ -192,7 +197,6 @@ export const updateError = err =>
   triggerAction(types.UPDATE_ERROR, { err });
 
 export function updateCurrentLocation(location) {
-  console.log(location);
   return (dispatch) => {
     dispatch(locationLoading());
     forecastRequest(location.lat, location.lng)
@@ -236,6 +240,8 @@ export function addNewLocation(loc, index) {
       dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
     } else if (locs.length < 10 && checkLocationExists(locs, loc.name) && index !== 0) {
       dispatch(locationError('Location already added', types.ADD_LOCATION_ERROR));
+    } else if (index === 0 && checkIndexExists(locs, index)) {
+      dispatch(updateCurrentLocation(loc));
     } else if (locs.length < 10 && !checkLocationExists(locs, loc.name)) {
       forecastRequest(loc.lat, loc.lng)
         .then((res) => {
@@ -265,8 +271,9 @@ const deleteLocation = (id) => {
       realm.delete(location);
     });
   } catch (e) {
+    console.log(e);
     return (dispatch) => {
-      dispatch(updateError());
+      dispatch(updateError('Not able to delete location'));
     };
   }
   return (dispatch) => {

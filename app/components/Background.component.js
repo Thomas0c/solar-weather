@@ -1,5 +1,5 @@
 // Modules
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -11,7 +11,11 @@ import {
 // Components
 import ColorBackground from '../styled/colorBackground';
 
-export default class Background extends PureComponent { // eslint-disable-line
+export default class Background extends Component { // eslint-disable-line
+  shouldComponentUpdate(nextProps) {
+    return nextProps.condition.icon !== this.props.condition.icon;
+  }
+
   render() {
     const { condition, day } = this.props;
     return (
@@ -26,7 +30,9 @@ export default class Background extends PureComponent { // eslint-disable-line
 }
 
 Background.propTypes = {
-  condition: PropTypes.shape({}),
+  condition: PropTypes.shape({
+    icon: PropTypes.string,
+  }),
   day: PropTypes.bool,
 };
 
