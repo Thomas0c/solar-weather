@@ -308,7 +308,8 @@ class Dashboard extends PureComponent {
       locationSearch={locationSearch}
       anyLocation={anyLocation}
       openRight={openRight}
-      setMenuState={this.toggleState.bind(this, 'openRight')}
+      openLeftSide={() => this.setState({ openRight: true })}
+      closeLeftSide={() => this.setState({ openRight: false })}
       unit={unit}
       dayTime={dayTime}
       locationIndex={locationIndex}
@@ -323,7 +324,8 @@ class Dashboard extends PureComponent {
         activeLocation={activeLocation}
         unit={unit}
         timezone={timezone}
-        setMenuState={this.toggleState.bind(this, 'openLeft')}
+        openLeftSide={() => this.setState({ openLeft: true })}
+        closeLeftSide={() => this.setState({ openLeft: false })}
       >
         <View
           style={styles.container}
