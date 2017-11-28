@@ -159,19 +159,6 @@ class Dashboard extends PureComponent {
     });
   }
 
-  fetchForecastForIndex(index) {
-    const { locations, dispatch } = this.props;
-    const location = locations.locations[index];
-    const latestUpdate = location.last_updated;
-    const now = moment();
-
-    if (now.diff(latestUpdate, 'minutes') > 10 && index !== 0) {
-      dispatch(
-        locationActions.updateLocationWithIndex(index)
-      );
-    }
-  }
-
   checkIfLocationHasChanged(newLocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const { lastPosition } = this.state;
@@ -179,9 +166,6 @@ class Dashboard extends PureComponent {
         lastPosition.coords.latitude !== position.coords.latitude &&
         lastPosition.coords.longitude !== position.coords.longitude
       ) {
-        this.setState({
-          lastPosition: position,
-        });
         // Geocode position and fetch forecast
         this.geocodePositionAndGetForecast(newLocation, {
           lat: position.coords.latitude,
@@ -198,17 +182,16 @@ class Dashboard extends PureComponent {
   async geocodePositionAndGetForecast(newLocation, pos) {
     try {
       const res = await Geocoder.geocodePosition(pos);
-      const { locality, adminArea } = res[0];
-      const { lat, lng } = pos;
       const loc = {
-        name: locality,
-        lat,
-        lng,
+        name: res[0].locality,
+        lat: pos.lat,
+        lng: post.lng,
       };
       this.props.dispatch(
         newLocation ? locationActions.addNewLocation(loc, 0) :
         locationActions.updateCurrentLocation(loc)
       );
+      this.setState({ lastPosition: position });
     } catch (e) {
       console.log(e);
     }
@@ -247,7 +230,7 @@ class Dashboard extends PureComponent {
   setOnboardingTrue() {
     const { dispatch, locations: { locations } } = this.props;
     dispatch(settingsActions.setOnboarding(true));
-    this.fetchForecastForIndex(0);
+    this.props.dispatch(locationActions.updateLocationWithIndex(0));
     if (locations.length === 0) {
       this.toggleLocationSearch();
     }
