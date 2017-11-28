@@ -32,8 +32,6 @@
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   
-
-  
   // 2. Set the backgroundColor of the react view to be transparent
   rootView.backgroundColor = [UIColor clearColor];
   backgroundView.frame = UIScreen.mainScreen.bounds;

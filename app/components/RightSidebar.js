@@ -1,7 +1,7 @@
 // Modules
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Drawer from 'react-native-drawer'
+import Drawer from 'react-native-drawer';
 
 import LocationOverview from './LocationOverview.component';
 
@@ -14,7 +14,8 @@ export default class RightSidebar extends PureComponent { // eslint-disable-line
       anyLocation,
       openRight,
       unit,
-      setMenuState,
+      openRightSide,
+      closeRightSide,
       dayTime,
       locationIndex,
       toggleLocationSearch,
@@ -26,8 +27,8 @@ export default class RightSidebar extends PureComponent { // eslint-disable-line
         disabled={menu || locationSearch || !anyLocation}
         type="static"
         open={openRight && anyLocation}
-        onOpenStart={setMenuState}
-        onCloseStart={setMenuState}
+        onOpenStart={openRightSide}
+        onCloseStart={closeRightSide}
         negotiatePan
         tweenHandler={Drawer.tweenPresets.parallax}
         panOpenMask={0.2}
@@ -60,7 +61,8 @@ RightSidebar.propTypes = {
   anyLocation: PropTypes.bool,
   openRight: PropTypes.bool,
   unit: PropTypes.string,
-  setMenuState: PropTypes.func,
+  closeRightSide: PropTypes.func,
+  openRightSide: PropTypes.func,
   locationIndex: PropTypes.number,
   toggleLocationSearch: PropTypes.func,
   filteredLocations: PropTypes.arrayOf(PropTypes.shape({})),

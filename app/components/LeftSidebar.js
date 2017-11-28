@@ -1,9 +1,10 @@
 // Modules
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Drawer from 'react-native-drawer'
+import Drawer from 'react-native-drawer';
 
 import WeekOverview from './WeekOverview.component';
+
 export default class LeftSidebar extends PureComponent { // eslint-disable-line
   render() {
     const {
@@ -15,14 +16,15 @@ export default class LeftSidebar extends PureComponent { // eslint-disable-line
       activeLocation,
       unit,
       timezone,
-      setMenuState,
+      openLeft,
+      closeLeft
     } = this.props;
 
     return (
       <Drawer
         disabled={menu || locationSearch || !anyLocation}
-        onOpenStart={setMenuState}
-        onCloseStart={setMenuState}
+        onOpenStart={openLeft}
+        onCloseStart={closeLeft}
         open={openLeft}
         type="static"
         content={
@@ -54,5 +56,6 @@ LeftSidebar.propTypes = {
   activeLocation: PropTypes.shape({}),
   unit: PropTypes.string,
   timezone: PropTypes.string,
-  setMenuState: PropTypes.func,
+  openLeftSide: PropTypes.func,
+  closeLeftSide: PropTypes.func,
 };
