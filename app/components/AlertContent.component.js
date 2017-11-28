@@ -9,6 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 
+import { appColors } from '../config/general.config';
+
 export default class AlertContent extends PureComponent { // eslint-disable-line
   render() {
     const { title, description } = this.props;
@@ -17,7 +19,7 @@ export default class AlertContent extends PureComponent { // eslint-disable-line
         <Text style={styles.headline}>{title}</Text>
         <ScrollView contentContainerStyle={styles.description}>
           { description.split('\n').map((item, key) => {
-            return (<Text style={styles.text} key={key}>{item}</Text>);
+            return <Text style={styles.text}>{item}</Text>;
           }) }
         </ScrollView>
       </View>
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'HelveticaNeue',
     fontWeight: '700',
-    color: '#343434',
+    color: appColors.darkGrey,
     textAlign: 'center',
     marginBottom: 20,
   },
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue',
     textAlign: 'left',
     fontSize: 13,
-    color: '#343434',
+    color: appColors.darkGrey,
   },
 });
 

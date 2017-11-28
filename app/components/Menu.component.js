@@ -13,8 +13,8 @@ import {
   SegmentedControlIOS,
 } from 'react-native';
 
-import CloseButton from './CloseButton.component';
 import Modal from './Modal.component';
+import { appColors } from '../config/general.config';
 
 export default class Menu extends PureComponent { // eslint-disable-line
   handleClick = url => {
@@ -103,6 +103,7 @@ Menu.propTypes = {
   updateIndex: PropTypes.func,
   updateTimeIndex: PropTypes.func,
   resetOnboarding: PropTypes.func,
+  menu: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue',
     marginTop: 20,
     marginBottom: 20,
-    color: '#343434',
+    color: appColors.darkGrey,
     fontWeight: 'bold',
   },
   image: {

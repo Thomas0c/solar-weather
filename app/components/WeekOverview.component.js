@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import tz from 'moment-timezone';
 import { darken } from 'polished';
+import { appColors } from '../config/general.config';
 
 import {
   StyleSheet,
@@ -82,17 +83,17 @@ const forecastDay = StyleSheet.create({
   },
   dayTitle: {
     fontSize: 14,
-    color: '#FFF',
+    color: appColors.white,
     fontFamily: 'Baskerville',
   },
   dayHighTemp: {
     fontWeight: 'bold',
-    color: '#FFF',
+    color: appColors.white,
     fontSize: 14,
   },
   dayLowTemp: {
     fontSize: 10,
-    color: '#FFF',
+    color: appColors.white,
     fontWeight: '400',
   },
 });
@@ -103,11 +104,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     justifyContent: 'center',
-    backgroundColor: '#EFEFEF',
+    backgroundColor: appColors.lightGrey,
   },
   shadow: {
     width: 2,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: appColors.opaqueBlack,
     position: 'absolute',
     right: 0,
     top: 0,

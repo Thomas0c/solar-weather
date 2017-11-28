@@ -14,7 +14,7 @@ import * as settingsActions from '../actions/settings.action';
 import * as locationActions from '../actions/locations.action';
 
 import { isDaylight } from '../utils/time.utils';
-import { units, timeTypes } from '../config/general.config';
+import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
 import Background from '../components/Background.component';
@@ -431,7 +431,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#EFEFEF',
+    backgroundColor: appColors.lightGrey,
   },
 });
 const mapStateToProps = ({

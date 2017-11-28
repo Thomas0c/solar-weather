@@ -10,13 +10,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { appColors } from '../config/general.config';
 
 export default class Empty extends PureComponent { // eslint-disable-line
   render() {
     const { onPress } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={{ color: '#FFF', backgroundColor: 'transparent' }}>
+        <Text style={{ color: appColors.white, backgroundColor: 'transparent' }}>
           Add a location or enable location services
         </Text>
         <TouchableOpacity

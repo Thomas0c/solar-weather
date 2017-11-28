@@ -6,6 +6,8 @@ import {
   Modal,
   TouchableHighlight,
 } from 'react-native';
+
+import { appColors } from '../config/general.config';
 import CloseButton from './CloseButton.component';
 
 export default class ModalWrapper extends PureComponent { // eslint-disable-line
@@ -42,17 +44,17 @@ const viewWrapper = {
   left: 0,
   width: '100%',
   height: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  backgroundColor: appColors.opaqueBlack70,
 };
 
 const viewBoxStyle = {
   position: 'relative',
   marginTop: '15%',
-  backgroundColor: '#F0F0F0',
+  backgroundColor: appColors.medGrey,
   height: '55%',
   width: '85%',
   alignSelf: 'center',
-  shadowColor: '#000000',
+  shadowColor: appColors.black,
   shadowOffset: {
     width: 0,
     height: 0,

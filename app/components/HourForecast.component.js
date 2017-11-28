@@ -13,6 +13,7 @@ import {
 
 // Components
 import HourItem from './HourItem.component';
+import { appColors } from '../config/general.config';
 
 export default class HourForecast extends Component { // eslint-disable-line
   constructor(props) {
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: appColors.opaqueBlack,
     position: 'relative',
   },
 });

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { appColors } from '../config/general.config';
 
 export default class Toast extends PureComponent { // eslint-disable-line
   constructor(props) {
@@ -64,13 +65,13 @@ const styles = StyleSheet.create({
     zIndex: 3,
     left: 0,
     padding: 15,
-    backgroundColor: '#E77F6D',
+    backgroundColor: appColors.red,
     width: Dimensions.get('window').width,
     height: 50,
   },
   text: {
     textAlign: 'center',
-    color: '#FFF',
+    color: appColors.white,
     fontWeight: '700',
     fontFamily: 'HelveticaNeue',
   },

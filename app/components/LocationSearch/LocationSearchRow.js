@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import { appColors } from '../../config/general.config';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: '#343434',
+    color: appColors.darkGrey,
     fontFamily: 'Baskerville',
     marginLeft: 12,
     fontSize: 20,

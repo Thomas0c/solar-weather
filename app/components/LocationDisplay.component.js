@@ -9,6 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { appColors } from '../config/general.config';
 
 export default class LocationDisplay extends PureComponent { // eslint-disable-line
   render() {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height / 10,
     alignSelf: 'stretch',
-    backgroundColor: '#FFF',
+    backgroundColor: appColors.white,
     zIndex: 1,
   },
   touch: {
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   shadow: {
     width: '100%',
     height: 2,
-    shadowColor: '#000000',
+    shadowColor: appColors.black,
     shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     },
     position: 'absolute',
     top: 0,
-    backgroundColor: 'white',
+    backgroundColor: appColors.white,
     zIndex: -1,
   },
 });

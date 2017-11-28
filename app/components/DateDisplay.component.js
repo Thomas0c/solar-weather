@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
-  Text,
 } from 'react-native';
 
 // Components
