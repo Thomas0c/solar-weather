@@ -8,8 +8,6 @@ import axios from 'axios';
 import tz from 'moment-timezone';
 import PropTypes from 'prop-types';
 import Permissions from 'react-native-permissions';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
-import R from 'ramda';
 
 // Redux Actions
 import * as settingsActions from '../actions/settings.action';
@@ -65,16 +63,8 @@ class Dashboard extends PureComponent {
     timestamp: moment(),
     showDetails: true,
     openAlert: false,
+    openHours: false,
   };
-
-  onSwipeDown(gestureState) {
-    const { settings, locations } = this.props;
-    if (
-      settings.locationIndex !== null
-    ) {
-      this.fetchForecastForIndex(settings.locationIndex);
-    }
-  }
 
   updateLocationsAndSetTimestamp() {
     const { locations: { locations} } = this.props;
@@ -166,13 +156,7 @@ class Dashboard extends PureComponent {
           this.updateLocationsAndSetTimestamp();
         }
       } else if (response === 'authorized') {
-        if (indexLoc.length === 1) {
-          // Check if location has chena
-          this.checkIfLocationHasChanged();
-        } else if (indexLoc.length === 0) {
-          // Create index location based on location
-          this.checkIfLocationHasChanged(true);
-        }
+        this.checkIfLocationHasChanged(indexLoc.length === 0);
       }
       this.setState({
         authorized: response === 'authorized',
@@ -263,6 +247,12 @@ class Dashboard extends PureComponent {
     });
   }
 
+  toggleHours() {
+    this.setState({
+      openHours: !this.state.openHours,
+    });
+  }
+
   toggleAlert() {
     this.setState({
       openAlert: !this.state.openAlert,
@@ -298,6 +288,7 @@ class Dashboard extends PureComponent {
       openAlert,
       authorized,
       appState,
+      openHours,
     } = this.state;
 
   const {
@@ -388,9 +379,8 @@ class Dashboard extends PureComponent {
         panOpenMask={0.2}
         tweenHandler={Drawer.tweenPresets.parallax}
       >
-        <GestureRecognizer
+        <View
           style={styles.container}
-          onSwipeDown={(direction, state) => this.onSwipeDown(direction, state)}
         >
           <Modal
             visible={openAlert && showAlert}
@@ -447,18 +437,20 @@ class Dashboard extends PureComponent {
           />
           <HourForecast
             timeType={timeType}
+            toggle
             forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
-            showDetails={showDetails}
+            openHours={openHours}
             unit={unit}
             anyLocation={anyLocation}
             timezone={timezone}
             locationName={activeLocation ? activeLocation.name : ''}
           />
           <LocationDisplay
+            onPress={this.toggleHours.bind(this)}
             loading={loading}
             location={activeLocation ? activeLocation : null}
           />
-        </GestureRecognizer>
+        </View>
       </Drawer>
     </Drawer>);
   }

@@ -1,5 +1,5 @@
 // Modules
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
@@ -14,7 +14,14 @@ import {
 // Components
 import Location from './Location.component';
 
-export default class LocationOverview extends PureComponent { // eslint-disable-line
+export default class LocationOverview extends Component { // eslint-disable-line
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.locations !== this.props.locations ||
+      nextProps.activeLocation !== this.props.activeLocation ||
+      nextProps.day !== this.props.day;
+  }
+
   render() {
     const {
       locations,
@@ -22,9 +29,11 @@ export default class LocationOverview extends PureComponent { // eslint-disable-
       day,
       activeLocation,
     } = this.props;
+
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
+    const locs = ds.cloneWithRows(locations);
 
     return (
       <View style={styles.main}>
@@ -34,7 +43,7 @@ export default class LocationOverview extends PureComponent { // eslint-disable-
             disableLeftSwipe
             previewFirstRow
             style={styles.listView}
-            dataSource={ds.cloneWithRows(locations)}
+            dataSource={locs}
             renderRow={(loc, sectionId, rowId) => (
               <Location
                 action={loc.id !== 0}

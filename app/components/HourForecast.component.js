@@ -1,7 +1,8 @@
 // Modules
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import R from 'ramda';
 
 import {
   StyleSheet,
@@ -13,7 +14,7 @@ import {
 // Components
 import HourItem from './HourItem.component';
 
-export default class HourForecast extends PureComponent { // eslint-disable-line
+export default class HourForecast extends Component { // eslint-disable-line
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1.time !== r2.time });
@@ -43,11 +44,28 @@ export default class HourForecast extends PureComponent { // eslint-disable-line
         nextProps.forecast
           .filter(x => moment.unix(x.time).isAfter(moment()));
 
-
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(filteredForecast),
       });
     }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const {
+      openHours,
+      locationName,
+      unit,
+      forecast,
+    } = this.props;
+
+    const forecastWithDefault =
+      R.propOr(true, [0]);
+
+    return nextProps.openHours !== openHours ||
+      nextProps.locationName !== locationName ||
+      nextProps.unit !== unit ||
+      forecastWithDefault(nextProps.forecast) !==
+        forecastWithDefault(forecast);
   }
 
   animateBottom() {
