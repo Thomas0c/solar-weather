@@ -19,13 +19,6 @@ import WeatherIconWrapper from '../styled/WeatherIconWrapper';
 import { appColors } from '../config/general.config';
 
 class Location extends Component { // eslint-disable-line
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.activeLocation !== this.props.activeLocation ||
-      nextProps.icon !== this.props.icon ||
-      nextProps.day !== this.props.day;
-  }
-
   render() {
     const {
       name,

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SwipeListView } from 'react-native-swipe-list-view';
+import R from 'ramda';
 
 import {
   StyleSheet,
@@ -18,7 +19,7 @@ import { appColors } from '../config/general.config';
 export default class LocationOverview extends Component { // eslint-disable-line
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.locations !== this.props.locations ||
+    return !R.equals(nextProps.locations, this.props.locations) ||
       nextProps.activeLocation !== this.props.activeLocation ||
       nextProps.day !== this.props.day;
   }
