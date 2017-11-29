@@ -308,8 +308,8 @@ class Dashboard extends PureComponent {
       locationSearch={locationSearch}
       anyLocation={anyLocation}
       openRight={openRight}
-      openLeftSide={() => this.setState({ openRight: true })}
-      closeLeftSide={() => this.setState({ openRight: false })}
+      openRightSide={() => this.setState({ openRight: true })}
+      closeRightSide={() => this.setState({ openRight: false })}
       unit={unit}
       dayTime={dayTime}
       locationIndex={locationIndex}
