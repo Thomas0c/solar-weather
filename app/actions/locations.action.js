@@ -40,8 +40,8 @@ const forecastResponseExtended = (location, res, id) => {
     },
   } = res;
 
-  const fiveDaysFromNow = moment().hour(0).add(5, 'days');
-  const followingDay = moment().hour(0).add(0, 'days');
+  const fiveDaysFromNow = moment().tz(timezone).hour(0).add(5, 'days');
+  const followingDay = moment().tz(timezone).hour(0).add(0, 'days');
 
   return Object.assign(
     { id: adjustedId },
