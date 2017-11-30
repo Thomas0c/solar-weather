@@ -242,7 +242,6 @@ export function addNewLocation(loc, index) {
 
   return async (dispatch) => {
     dispatch(locationLoading());
-
     if (locs.length === 10) {
       dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
     } else if (

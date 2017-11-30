@@ -173,6 +173,7 @@ class Dashboard extends PureComponent {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
+        this.setState({ lastPosition });
       }
     }, (error) => {
       locationActions.updateError('Not able to find location.');
@@ -187,13 +188,12 @@ class Dashboard extends PureComponent {
       const loc = {
         name: res[0].locality,
         lat: pos.lat,
-        lng: post.lng,
+        lng: pos.lng,
       };
       this.props.dispatch(
         newLocation ? locationActions.addNewLocation(loc, 0) :
         locationActions.updateCurrentLocation(loc)
       );
-      this.setState({ lastPosition: position });
     } catch (e) {
       console.log(e);
     }
@@ -232,7 +232,7 @@ class Dashboard extends PureComponent {
   setOnboardingTrue() {
     const { dispatch, locations: { locations } } = this.props;
     dispatch(settingsActions.setOnboarding(true));
-    this.props.dispatch(locationActions.updateLocationWithIndex(0));
+    // Default is at least a single location
     if (locations.length === 0) {
       this.toggleLocationSearch();
     }
@@ -241,6 +241,22 @@ class Dashboard extends PureComponent {
   resetOnboarding() {
     this.toggleState('menu');
     this.props.dispatch(settingsActions.setOnboarding(false));
+  }
+
+  handleOpenSidebar(side) {
+    if (this.state[side] === false) {
+      this.setState({
+        [side]: true,
+      });
+    }
+  }
+
+  handleCloseSidebar(side) {
+    if (this.state[side] === true) {
+      this.setState({
+        [side]: false,
+      });
+    }
   }
 
   render() {
@@ -308,8 +324,8 @@ class Dashboard extends PureComponent {
       locationSearch={locationSearch}
       anyLocation={anyLocation}
       openRight={openRight}
-      openRightSide={() => this.setState({ openRight: true })}
-      closeRightSide={() => this.setState({ openRight: false })}
+      onOpenRightSide={this.handleOpenSidebar.bind(this, 'openRight')}
+      onCloseRightSide={this.handleCloseSidebar.bind(this, 'openRight')}
       unit={unit}
       dayTime={dayTime}
       locationIndex={locationIndex}
@@ -324,8 +340,8 @@ class Dashboard extends PureComponent {
         activeLocation={activeLocation}
         unit={unit}
         timezone={timezone}
-        openLeftSide={() => this.setState({ openLeft: true })}
-        closeLeftSide={() => this.setState({ openLeft: false })}
+        onOpenLeftSide={this.handleOpenSidebar.bind(this, 'openLeft')}
+        onCloseLeftSide={this.handleCloseSidebar.bind(this, 'openLeft')}
       >
         <View
           style={styles.container}
