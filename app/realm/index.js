@@ -10,6 +10,7 @@ import Currently from './currentWeather.model';
 const realm = new Realm({
   schema: [Locations, Alert, Options, Daily, DailyData, Hourly, HourlyData, Currently],
   schemaVersion: 77,
+  deleteRealmIfMigrationNeeded: true,
 });
 
 export default realm;
