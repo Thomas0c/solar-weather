@@ -18,7 +18,7 @@ import { appColors } from '../config/general.config';
 export default class HourForecast extends Component { // eslint-disable-line
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1.time !== r2.time });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       dataSource: ds.cloneWithRows([]),
       bottomAnim: new Animated.Value(-Dimensions.get('window').height / 10),
