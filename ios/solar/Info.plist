@@ -44,7 +44,7 @@
 	<key>NSLocationUsageDescription</key>
 	<string>Location is used to get your local weather.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Location is used to get the forecast of your current location when using Solar.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech Recognition is not used</string>
 	<key>UIBackgroundModes</key>
