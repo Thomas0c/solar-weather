@@ -34,7 +34,7 @@ let styles =
     )
   );
 
-let make = (~toggle, ~absolute, _children) => {
+let make = (~toggle, ~absolute, ~appColors, _children) => {
   ...component,
   render: (_self) => {
     <TouchableHighlight
@@ -47,7 +47,7 @@ let make = (~toggle, ~absolute, _children) => {
         overflow(`hidden),
         width(40.),
         height(40.),
-        backgroundColor("#E20000"),
+        backgroundColor(appColors##red),
         borderWidth(0.),
         alignItems(`center),
         justifyContent(`center),
@@ -62,5 +62,10 @@ let make = (~toggle, ~absolute, _children) => {
 let default =
   ReasonReact.wrapReasonForJs(
     ~component,
-    (jsProps) => make(~toggle=jsProps##toggle, ~absolute=jsProps##absolute, [||])
+    (jsProps) => make(
+      ~toggle=jsProps##toggle,
+      ~appColors=jsProps##appColors,
+      ~absolute=jsProps##absolute,
+      [||]
+    )
   );
