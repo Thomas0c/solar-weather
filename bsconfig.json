@@ -1,0 +1,13 @@
+{
+  "name": "Solar",
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": ["bs-react-native", "reason-react"],
+  "sources": [{
+    "dir": "app",
+    "subdirs": true
+  }],
+  "refmt": 3
+}

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { appColors } from '../config/general.config';
-import CloseButton from './CloseButton.component';
+import CloseButton from '../../lib/js/app/components/closeButton';
 
 export default class ModalWrapper extends PureComponent { // eslint-disable-line
   render() {
