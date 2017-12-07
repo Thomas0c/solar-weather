@@ -30,6 +30,7 @@ export default class ModalWrapper extends PureComponent { // eslint-disable-line
           { content}
           <CloseButton
             absolute
+            appColors={appColors}
             toggle={toggleView}
           />
         </View>
