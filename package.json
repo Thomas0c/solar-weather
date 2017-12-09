@@ -44,7 +44,7 @@
 		"eslint-plugin-react": "^7.4.0",
 		"jest": "21.2.1",
 		"react-test-renderer": "16.0.0",
-		"reason-react": "^0.2.4"
+		"reason-react": "^0.3.0"
 	},
 	"jest": {
 		"preset": "react-native"
