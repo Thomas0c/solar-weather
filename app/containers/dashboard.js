@@ -30,7 +30,7 @@ import LocationOverview from '../components/LocationOverview.component';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Modal from '../components/Modal.component';
 import AlertContent from '../components/AlertContent.component';
-import Empty from '../components/Empty.component';
+import Empty from '../../lib/js/app/components/empty';
 import LeftSidebar from '../components/LeftSidebar';
 import RightSidebar from '../components/RightSidebar';
 
