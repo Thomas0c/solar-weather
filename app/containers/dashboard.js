@@ -376,7 +376,7 @@ class Dashboard extends PureComponent {
           />
           <Background
             day={isDaylight(timezone)}
-            condition={activeLocation ? activeLocation.currently : null}
+            condition={activeLocation ? activeLocation.currently.icon : ''}
           />
           <DateDisplay
             time={timeType}
