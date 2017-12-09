@@ -17,7 +17,7 @@ import { isDaylight } from '../utils/time.utils';
 import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
-import Background from '../components/Background.component';
+import Background from '../../lib/js/app/components/background';
 import DateDisplay from '../components/DateDisplay.component';
 import WeatherCondition from '../components/WeatherCondition.component';
 import WeekOverview from '../components/WeekOverview.component';
