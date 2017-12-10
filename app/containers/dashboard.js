@@ -23,7 +23,7 @@ import WeatherCondition from '../components/WeatherCondition.component';
 import WeekOverview from '../components/WeekOverview.component';
 import LocationDisplay from '../components/LocationDisplay.component';
 import Toast from '../components/Toast.component';
-import InfoIcon from '../components/InfoIcon.component';
+import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecast from '../components/HourForecast.component';
 import Menu from '../components/Menu.component';
 import LocationOverview from '../components/LocationOverview.component';
