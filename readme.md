@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Solar logo" width="180" src="https://raw.githubusercontent.com/Thomas0c/solar-weather/feature/v2/ios/solar/Images.xcassets/AppIcon.appiconset/Solar_60%403x.png" />
+  <img alt="Solar logo" width="180" src="https://raw.githubusercontent.com/Thomas0c/solar-weather/master/ios/solar/Images.xcassets/AppIcon.appiconset/Solar_60%403x.png" />
   <h1>
     Solar
   </h1>
@@ -35,7 +35,7 @@ The project is a side-project built and maintained at night. It started as an ex
 - [x] [React Native Drawer](https://github.com/root-two/react-native-drawer)
 
 ## Screenshots
-![Example 1](https://raw.githubusercontent.com/Thomas0c/solar-weather/feature/v2/screenshots/screen_1.png)
-![Example 2](https://raw.githubusercontent.com/Thomas0c/solar-weather/feature/v2/screenshots/screen_2.png)
-![Example 3](https://raw.githubusercontent.com/Thomas0c/solar-weather/feature/v2/screenshots/screen_3.png)
-![Example 4](https://raw.githubusercontent.com/Thomas0c/solar-weather/feature/v2/screenshots/screen_4.png)
+![Example 1](https://raw.githubusercontent.com/Thomas0c/solar-weather/master/screenshots/screen_1.png)
+![Example 2](https://raw.githubusercontent.com/Thomas0c/solar-weather/master/screenshots/screen_2.png)
+![Example 3](https://raw.githubusercontent.com/Thomas0c/solar-weather/master/screenshots/screen_3.png)
+![Example 4](https://raw.githubusercontent.com/Thomas0c/solar-weather/master/screenshots/screen_4.png)
