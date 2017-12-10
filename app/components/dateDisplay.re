@@ -26,7 +26,7 @@ let styles =
     )
   );
 
-let make = (~condition, ~day, ~timestamp, ~time, ~timezone: string, _children) => {
+let make = (~condition, ~day, ~timestamp, ~time, ~timezone, _children) => {
   ...component,
   render: (_self) => {
     let formatString = time === "24" ? "HH:mm" : "h:mma";
