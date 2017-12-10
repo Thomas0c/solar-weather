@@ -17,22 +17,22 @@ import { isDaylight } from '../utils/time.utils';
 import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
+import AlertContent from '../../lib/js/app/components/alertContent';
 import Background from '../../lib/js/app/components/background';
 import DateDisplay from '../components/DateDisplay.component';
-import WeatherCondition from '../components/WeatherCondition.component';
-import WeekOverview from '../components/WeekOverview.component';
-import LocationDisplay from '../components/LocationDisplay.component';
-import Toast from '../components/Toast.component';
+import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecast from '../components/HourForecast.component';
-import Menu from '../components/Menu.component';
+import LeftSidebar from '../components/LeftSidebar';
+import LocationDisplay from '../components/LocationDisplay.component';
 import LocationOverview from '../components/LocationOverview.component';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
+import Menu from '../components/Menu.component';
 import Modal from '../components/Modal.component';
-import AlertContent from '../../lib/js/app/components/alertContent';
-import Empty from '../../lib/js/app/components/empty';
-import LeftSidebar from '../components/LeftSidebar';
 import RightSidebar from '../components/RightSidebar';
+import Toast from '../components/Toast.component';
+import WeatherCondition from '../components/WeatherCondition.component';
+import WeekOverview from '../components/WeekOverview.component';
 
 import {
   AppRegistry,
