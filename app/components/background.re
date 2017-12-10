@@ -29,3 +29,9 @@ let make = (~condition, ~day, _children) => {
   render: (_self) =>
     <View style=styles##container> <ColorBackground condition day /> </View>
 };
+
+let default =
+  ReasonReact.wrapReasonForJs(
+    ~component,
+    (jsProps) => make(~condition=jsProps##condition, ~day=jsProps##day, [||])
+  );
