@@ -21,3 +21,6 @@ module Colors = {
   let snowGrey = "#C1C7C9";
   let snowWhite = "#DEE3E5";
 };
+
+let identifyFontColor = (condition: string) =>
+  condition === "snow" ? Colors.darkGrey : Colors.subtleGrey;
