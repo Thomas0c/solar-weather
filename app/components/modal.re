@@ -24,7 +24,7 @@ let styles =
             width(85.),
             alignSelf(`center),
             shadowColor(Config.AppColors.black),
-            shadowOffset(0., 0.),
+            shadowOffset(~height=0., ~width=0.),
             shadowRadius(5.),
             shadowOpacity(0.8)
           ])

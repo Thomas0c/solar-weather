@@ -12,7 +12,7 @@ import {
 
 import Colors from '../utils/colors.utils';
 import { appColors } from '../config/general.config';
-import DateText from '../styled/DateText';
+import DateText from '../../lib/js/app/styled/dateText';
 import Temperature from '../utils/temperature.utils';
 
 const formatText = (temp, humidity, precip) => `Feels like ${parseFloat(temp).toFixed(0)}°
