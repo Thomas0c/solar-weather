@@ -28,7 +28,7 @@ import LocationDisplay from '../components/LocationDisplay.component';
 import LocationOverview from '../components/LocationOverview.component';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Menu from '../components/Menu.component';
-import Modal from '../components/Modal.component';
+import Modal from '../../lib/js/app/components/modal';
 import RightSidebar from '../components/RightSidebar';
 import Toast from '../components/Toast.component';
 import WeatherCondition from '../components/WeatherCondition.component';
