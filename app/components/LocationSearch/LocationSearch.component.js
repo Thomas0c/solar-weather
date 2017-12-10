@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-import Modal from '../Modal.component';
+import Modal from '../../../lib/js/app/components/modal';
 import * as locationActions from '../../actions/locations.action';
 import Row from './LocationSearchRow';
 import Header from './LocationSearchHeader';
