@@ -19,7 +19,7 @@ import { units, timeTypes, appColors } from '../config/general.config';
 // Components
 import AlertContent from '../../lib/js/app/components/alertContent';
 import Background from '../../lib/js/app/components/background';
-import DateDisplay from '../components/DateDisplay.component';
+import DateDisplay from '../../lib/js/app/components/dateDisplay';
 import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecast from '../components/HourForecast.component';
