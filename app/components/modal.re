@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("Modal");
 
@@ -8,21 +8,21 @@ let styles =
       {
         "viewWrapper":
           style([
-            position(`absolute),
-            top(0.),
-            left(0.),
-            width(100.),
-            height(100.),
+            position(Absolute),
+            top(Pt(0.)),
+            left(Pt(0.)),
+            width(Pct(100.)),
+            height(Pct(100.)),
             backgroundColor(Config.AppColors.opaqueBlack70)
           ]),
         "viewBoxStyle":
           style([
-            position(`relative),
-            marginTop(15.),
+            position(Relative),
+            marginTop(Pct(15.)),
             backgroundColor(Config.AppColors.medGrey),
-            height(55.),
-            width(85.),
-            alignSelf(`center),
+            height(Pct(55.)),
+            width(Pct(85.)),
+            alignSelf(Center),
             shadowColor(Config.AppColors.black),
             shadowOffset(~height=0., ~width=0.),
             shadowRadius(5.),

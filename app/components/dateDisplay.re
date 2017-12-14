@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 open MomentRe;
 
@@ -14,12 +14,12 @@ let styles =
       {
         "container":
           style([
-            position(`absolute),
-            height(50.),
-            width(200.),
-            top(2.5),
-            left(5.),
-            alignSelf(`center),
+            position(Absolute),
+            height(Pt(50.)),
+            width(Pt(200.)),
+            top(Pct(2.5)),
+            left(Pct(5.)),
+            alignSelf(Center),
             backgroundColor("transparent")
           ])
       }

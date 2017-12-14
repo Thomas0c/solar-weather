@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("CloseButton");
 
@@ -7,9 +7,9 @@ let styles =
     Style.(
       {
         "button":
-          style([position(`absolute), bottom((-20.)), alignSelf(`center)]),
+          style([position(Absolute), bottom(Pt((-20.))), alignSelf(Center)]),
         "buttonRelative":
-          style([position(`relative), alignSelf(`center), marginTop(30.)]),
+          style([position(Relative), alignSelf(Center), marginTop(Pt(30.))]),
         "text":
           style([
             fontFamily("avenir"),
@@ -17,7 +17,7 @@ let styles =
             fontWeight(`_700),
             color(Config.AppColors.white)
           ]),
-        "image": style([width(120.), height(80.), resizeMode(`contain)])
+        "image": style([width(Pt(120.)), height(Pt(80.)), resizeMode(Contain)])
       }
     )
   );
@@ -33,13 +33,13 @@ let make = (~toggle, ~absolute, _children) => {
         style=Style.(
                 style([
                   borderRadius(20.),
-                  overflow(`hidden),
-                  width(40.),
-                  height(40.),
+                  overflow(Hidden),
+                  width(Pt(40.)),
+                  height(Pt(40.)),
                   backgroundColor(Config.AppColors.red),
                   borderWidth(0.),
-                  alignItems(`center),
-                  justifyContent(`center)
+                  alignItems(Center),
+                  justifyContent(Center)
                 ])
               )>
         <Text style=styles##text> (ReasonReact.stringToElement("X")) </Text>

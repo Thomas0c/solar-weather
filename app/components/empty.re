@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("Empty");
 
@@ -8,18 +8,19 @@ let styles =
       {
         "container":
           style([
-            justifyContent(`center),
-            alignItems(`center),
-            alignSelf(`center),
-            width(90.)
+            justifyContent(Center),
+            alignItems(Center),
+            alignSelf(Center),
+            width(Pct(90.))
           ]),
-        "button": style([position(`relative), width(40.), marginTop(30.)]),
+        "button":
+          style([position(Relative), width(Pt(40.)), marginTop(Pt(30.))]),
         "image":
           style([
-            alignSelf(`center),
-            width(100.),
-            height(30.),
-            resizeMode(`contain)
+            alignSelf(Center),
+            width(Pct(100.)),
+            height(Pt(30.)),
+            resizeMode(Contain)
           ])
       }
     )
