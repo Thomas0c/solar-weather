@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("InfoIcon");
 
@@ -8,14 +8,14 @@ let styles =
       {
         "container":
           style([
-            position(`absolute),
+            position(Absolute),
             zIndex(3),
-            right(15.),
-            height(20.),
-            width(20.),
-            top(15.)
+            right(Pt(15.)),
+            height(Pt(20.)),
+            width(Pt(20.)),
+            top(Pt(15.))
           ]),
-        "image": style([width(20.), height(20.)])
+        "image": style([width(Pt(20.)), height(Pt(20.))])
       }
     )
   );

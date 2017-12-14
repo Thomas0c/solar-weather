@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("AlertContent");
 
@@ -6,21 +6,21 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "view": style([padding(20.), height(96.)]),
+        "view": style([padding(Pt(20.)), height(Pct(96.))]),
         "headline":
           style([
             fontSize(16.),
             fontFamily("HelveticaNeue"),
             fontWeight(`_700),
             color(Config.AppColors.darkGrey),
-            textAlign(`center),
-            marginBottom(20.)
+            textAlign(Center),
+            marginBottom(Pt(20.))
           ]),
-        "description": style([flexDirection(`column)]),
+        "description": style([flexDirection(Column)]),
         "text":
           style([
             fontFamily("HelveticaNeue"),
-            textAlign(`left),
+            textAlign(Left),
             fontSize(15.),
             color(Config.AppColors.darkGrey)
           ])

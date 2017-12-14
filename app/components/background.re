@@ -1,4 +1,4 @@
-open ReactNative;
+open BsReactNative;
 
 let component = ReasonReact.statelessComponent("Background");
 
@@ -12,12 +12,12 @@ let styles =
       {
         "container":
           style([
-            position(`absolute),
-            top(0.),
-            left(0.),
-            width(windowWidth),
-            height(windowHeight),
-            alignSelf(`stretch),
+            position(Absolute),
+            top(Pt(0.)),
+            left(Pt(0.)),
+            width(Pt(windowWidth)),
+            height(Pt(windowHeight)),
+            alignSelf(Stretch),
             backgroundColor(Config.AppColors.medGreyAlt)
           ])
       }
