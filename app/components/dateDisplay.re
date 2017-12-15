@@ -26,21 +26,15 @@ let styles =
     )
   );
 
-let make = (~condition, ~day, ~timestamp, ~time, ~timezone, _children) => {
+let make = (~condition, ~timestamp, ~time, ~timezone, _children) => {
   ...component,
   render: (_self) => {
     let formatString = time === "24" ? "HH:mm" : "h:mma";
-    let adjustedTime =
-      tz(moment(timestamp), timezone) |> Moment.format(formatString);
-    let dateStamp = Moment.format("MMM DD", tz(moment(timestamp), timezone));
-    let fontColor = Colors.identifyFontColor(condition);
+    let adjustedTime = tz(timestamp, timezone) |> Moment.format(formatString);
+    let dateStamp = Moment.format("MMM DD", tz(timestamp, timezone));
     <View style=styles##container>
-      <DateText day space=false style=Style.(style([color(fontColor)]))>
-        (ReasonReact.stringToElement(adjustedTime))
-      </DateText>
-      <DateText day space=false style=Style.(style([color(fontColor)]))>
-        (ReasonReact.stringToElement(dateStamp))
-      </DateText>
+      <DateText space=false condition text=adjustedTime />
+      <DateText space=false condition text=dateStamp />
     </View>
   }
 };
@@ -51,7 +45,6 @@ let default =
     (jsProps) =>
       make(
         ~condition=jsProps##condition,
-        ~day=jsProps##day,
         ~timestamp=jsProps##timestamp,
         ~time=jsProps##time,
         ~timezone=jsProps##timezone,

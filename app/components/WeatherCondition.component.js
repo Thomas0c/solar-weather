@@ -42,7 +42,7 @@ export default class WeatherCondition extends PureComponent { // eslint-disable-
 
   render() {
     const {
-      day,
+      condition,
       toggleDetails,
       unit,
       alerts,
@@ -77,34 +77,32 @@ Chance of ${precipType}: ${precipNumber}%` : '';
       >
         <View style={styles.container}>
           <Text style={[styles.temp, { color: fontColor }]}>{fixedTemp}°</Text>
-          { !isNaN(temperature) &&
-            <Text style={[styles.condition, { color: fontColor }]}>
-              {currently.summary}
-              { showAlert &&
-                <TouchableHighlight
-                  style={{ width: 25, height: 25 }}
-                  onPress={toggleAlert}
-                  underlayColor="transparent"
-                >
-                  <Image
-                    style={styles.image}
-                    source={require('../../assets/alert_icon.png')}
-                  />
-                </TouchableHighlight>
-              }
-            </Text>
-          }
-          { !isNaN(temperature) &&
-            <Animated.View
-              style={{
-                opacity: this.state.fadeAnim,
-              }}
-            >
-              <DateText space style={{ color: fontColor, marginBottom: 10 }} day={day}>
-                {formatText(fixedFeelsLike, currently.humidity, precipitation)}
-              </DateText>
-            </Animated.View>
-          }
+          <Text style={[styles.condition, { color: fontColor }]}>
+            {currently.summary}
+            { showAlert &&
+              <TouchableHighlight
+                style={{ width: 25, height: 25 }}
+                onPress={toggleAlert}
+                underlayColor="transparent"
+              >
+                <Image
+                  style={styles.image}
+                  source={require('../../assets/alert_icon.png')}
+                />
+              </TouchableHighlight>
+            }
+          </Text>
+          <Animated.View
+            style={{
+              opacity: this.state.fadeAnim,
+            }}
+          >
+            <DateText
+              space
+              text={formatText(fixedFeelsLike, currently.humidity, precipitation)}
+              condition={condition}
+            />
+          </Animated.View>
         </View>
       </TouchableHighlight>
     );
@@ -114,7 +112,7 @@ Chance of ${precipType}: ${precipNumber}%` : '';
 WeatherCondition.propTypes = {
   currently: PropTypes.shape({}),
   unit: PropTypes.string,
-  day: PropTypes.bool,
+  condition: PropTypes.string,
   showDetails: PropTypes.bool,
   toggleAlert: PropTypes.func,
   toggleDetails: PropTypes.func,
