@@ -18,7 +18,7 @@ import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
 import AlertContent from '../../lib/js/app/components/alertContent';
-import Background from '../../lib/js/app/components/background';
+import Background from '../../lib/js/app/components/Background';
 import DateDisplay from '../../lib/js/app/components/dateDisplay';
 import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
@@ -305,7 +305,6 @@ class Dashboard extends PureComponent {
   const timezone = activeLocation && activeLocation.timezone ?
     activeLocation.timezone : 'America/New_York';
   const day = timestamp.clone().tz(timezone);
-
   const eveningTime = day.hour(18).minute(0).second(0);
   const morningTime = day.hour(6).minute(0).second(0);
   const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);
@@ -392,7 +391,7 @@ class Dashboard extends PureComponent {
           }
           <WeatherCondition
             unit={unit}
-            day={dayTime}
+            condition={activeLocation ? activeLocation.currently.icon : ''}
             showDetails={showDetails}
             toggleDetails={this.toggleState.bind(this, 'showDetails')}
             toggleAlert={this.toggleState.bind(this, 'openAlert')}

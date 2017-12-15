@@ -27,9 +27,9 @@ let make = (~onPress, _children) => {
       underlayColor="transparent" onPress style=styles##container>
       <Image
         style=styles##image
-        source=(
-          URI(Image.(imageURISource(~uri="../../../assets/infoIcon.png", ())))
-        )
+        source=Image.(
+                 Required(Packager.require("../../../../assets/infoIcon.png"))
+               )
       />
     </TouchableHighlight>
 };
