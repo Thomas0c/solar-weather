@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import tz from 'moment-timezone';
 import { darken } from 'polished';
-import { appColors } from '../config/general.config';
 
 import {
   StyleSheet,
@@ -13,6 +12,7 @@ import {
   Image,
 } from 'react-native';
 
+import { appColors } from '../config/general.config';
 import Colors from '../utils/colors.utils';
 
 // Components
@@ -31,8 +31,7 @@ export default class WeekOverview extends PureComponent { // eslint-disable-line
     return (
       <View style={styles.container}>
         <View style={styles.shadow} />
-        {forecast.map((day, idx) => {
-          if (idx > 4) return null;
+        {forecast.map((day) => {
           const zone = timezone || 'America/New_York';
           const dayDate = moment.unix(day.time).tz(zone).startOf('day');
 
@@ -42,12 +41,11 @@ export default class WeekOverview extends PureComponent { // eslint-disable-line
           const temperatureMin = unit === 'c' ?
             day.temperatureMin : Temperature.convertToFahrenheit(day.temperatureMin);
           const fixedLowTemp = parseFloat(temperatureMin).toFixed(0);
-          const time = dayDate.tz(zone);
           const background = darken(0.1, Colors.identifyBackground(day.icon, day));
 
           return (
-            <View style={[forecastDay.container, { backgroundColor: background }]} key={idx}>
-              <Text style={forecastDay.dayTitle}>{time.format('dddd')}</Text>
+            <View style={[forecastDay.container, { backgroundColor: background }]} key={day.time}>
+              <Text style={forecastDay.dayTitle}>{dayDate.format('dddd')}</Text>
               <WeatherIconWrapper>
                 <Image style={forecastDay.image} source={Icons.identifyIcon(`${day.icon}_white`)} />
               </WeatherIconWrapper>

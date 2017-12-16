@@ -30,22 +30,18 @@ export default class HourItem extends PureComponent { // eslint-disable-line
     const adjustedTemp = parseFloat(temperature).toFixed(0);
     const itemTime = moment.unix(time).tz(timezone);
     const timeFormat = timeType === '24' ? 'HH:00' : 'ha';
-    const now = moment().tz(timezone);
 
-    if (itemTime.isAfter(now)) {
-      return (
-        <View style={styles.hour} key={itemTime}>
-          <Text style={styles.hourText}>{itemTime.minutes(0).format(timeFormat)}</Text>
-          <WeatherIconWrapper>
-            <Image style={styles.image} source={Icons.identifyIcon(`${this.props.icon}_white`)} />
-          </WeatherIconWrapper>
-          <Text style={styles.temperature}>
-            {adjustedTemp}°
-          </Text>
-        </View>
-      );
-    }
-    return null;
+    return (
+      <View style={styles.hour} key={itemTime}>
+        <Text style={styles.hourText}>{itemTime.minutes(0).format(timeFormat)}</Text>
+        <WeatherIconWrapper>
+          <Image style={styles.image} source={Icons.identifyIcon(`${this.props.icon}_white`)} />
+        </WeatherIconWrapper>
+        <Text style={styles.temperature}>
+          {adjustedTemp}°
+        </Text>
+      </View>
+    );
   }
 }
 

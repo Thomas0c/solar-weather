@@ -88,24 +88,13 @@ const writeLocationToStore = (location, id) => {
   const identity = typeof id === 'number' ? id : new Date().getTime();
 
   realm.write(() => {
-    const loc = realm.create('Location', {
+    realm.create('Location', {
       key: identity,
       ...location,
       id: identity,
       last_updated: new Date(),
       created_at: new Date(),
     }, true);
-
-    location.daily.data.forEach((item, idx) => {
-      if (idx < 7) {
-        loc.daily.data.push(item);
-      }
-    });
-    location.hourly.data.forEach((item, idx) => {
-      if (idx < 8) {
-        loc.hourly.data.push(item);
-      }
-    });
   });
 };
 
