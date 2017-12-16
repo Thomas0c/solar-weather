@@ -31,7 +31,8 @@ export default class WeekOverview extends PureComponent { // eslint-disable-line
     return (
       <View style={styles.container}>
         <View style={styles.shadow} />
-        {forecast.map((day) => {
+        {forecast.map((day, idx) => {
+          if (idx > 4) return null;
           const zone = timezone || 'America/New_York';
           const dayDate = moment.unix(day.time).tz(zone).startOf('day');
 
