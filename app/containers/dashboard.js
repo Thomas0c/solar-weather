@@ -304,8 +304,8 @@ class Dashboard extends PureComponent {
   const rightOpen = locationError ? false : null;
   const timezone = activeLocation && activeLocation.timezone ?
     activeLocation.timezone : 'America/New_York';
+  const day = timestamp.clone().tz(timezone);
 
-  const day = timestamp.tz(timezone);
   const eveningTime = day.hour(18).minute(0).second(0);
   const morningTime = day.hour(6).minute(0).second(0);
   const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);

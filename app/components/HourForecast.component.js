@@ -102,7 +102,7 @@ export default class HourForecast extends Component { // eslint-disable-line
           horizontal
           pagingEnabled
           style={{ flex: 1 }}
-          contentContainerStyle={[styles.container, { minWidth: `${forecast.length * 10}%` }]}
+          contentContainerStyle={[styles.container, { minWidth: `${forecast.length * 15}%` }]}
           enableEmptySections
           showsHorizontalScrollIndicator={false}
           bounces={false}
