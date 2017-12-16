@@ -15,7 +15,7 @@ import {
 import * as locationActions from '../actions/locations.action';
 import Icons from '../utils/icons.utils';
 import Colors from '../utils/colors.utils';
-import WeatherIconWrapper from '../styled/WeatherIconWrapper';
+import WeatherIconWrapper from '../../lib/js/app/styled/weatherIconWrapper';
 import { appColors } from '../config/general.config';
 
 class Location extends Component { // eslint-disable-line

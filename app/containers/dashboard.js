@@ -18,13 +18,13 @@ import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
 import AlertContent from '../../lib/js/app/components/alertContent';
-import Background from '../../lib/js/app/components/Background';
+import Background from '../../lib/js/app/components/background';
 import DateDisplay from '../../lib/js/app/components/dateDisplay';
 import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecast from '../components/HourForecast.component';
 import LeftSidebar from '../components/LeftSidebar';
-import LocationDisplay from '../components/LocationDisplay.component';
+import LocationDisplay from '../../lib/js/app/components/locationDisplay';
 import LocationOverview from '../components/LocationOverview.component';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Menu from '../components/Menu.component';
@@ -32,7 +32,6 @@ import Modal from '../../lib/js/app/components/modal';
 import RightSidebar from '../components/RightSidebar';
 import Toast from '../components/Toast.component';
 import WeatherCondition from '../components/WeatherCondition.component';
-import WeekOverview from '../components/WeekOverview.component';
 
 import {
   AppRegistry,
@@ -411,7 +410,7 @@ class Dashboard extends PureComponent {
           <LocationDisplay
             onPress={this.toggleState.bind(this, 'openHours')}
             loading={loading}
-            location={activeLocation ? activeLocation : null}
+            locationName={activeLocation ? activeLocation.name : ''}
           />
         </View>
       </LeftSidebar>

@@ -68,7 +68,7 @@ const forecastResponseExtended = (location, res, id) => {
           const isAfter = moment.unix(item.time).isAfter(followingDay);
           const isBefore = moment.unix(item.time).isBefore(fiveDaysFromNow);
           return isAfter && isBefore;
-        }),
+        }).slice(0, 5),
       },
     },
   );
