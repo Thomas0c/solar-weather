@@ -2,7 +2,7 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("DateText");
 
-let make = (~space, ~condition, ~text, children) => {
+let make = (~space, ~condition, ~text, _children) => {
   ...component,
   render: (_self) => {
     let fontColor = Colors.identifyFontColor(condition);

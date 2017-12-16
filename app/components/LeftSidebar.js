@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'react-native-drawer';
 
-import WeekOverview from './WeekOverview.component';
+import WeekOverview from '../../lib/js/app/components/weekOverview';
 
 export default class LeftSidebar extends Component { // eslint-disable-line
   render() {

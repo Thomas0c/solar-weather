@@ -14,7 +14,7 @@ import {
 // Components
 import Icons from '../utils/icons.utils';
 import Temperature from '../utils/temperature.utils';
-import WeatherIconWrapper from '../styled/WeatherIconWrapper';
+import WeatherIconWrapper from '../../lib/js/app/styled/weatherIconWrapper';
 
 export default class HourItem extends PureComponent { // eslint-disable-line
   render() {
