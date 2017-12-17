@@ -2,12 +2,6 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("HourItem");
 
-open MomentRe;
-
-[@bs.raw "require('moment-timezone)"];
-
-[@bs.send] external tz : (Moment.t, string) => Moment.t = "tz";
-
 let styles =
   StyleSheet.create(
     Style.(
@@ -50,9 +44,9 @@ let make =
         Temperature.convertToFahrenheitAndFix(temperature);
     let formatString = timeType === "24" ? "HH:mm" : "h:mma";
     let date =
-      tz(momentWithUnix(time), timezone)
-      |> Moment.startOf(`minute)
-      |> Moment.format(formatString);
+      Time.convertToTimeZone(time, timezone)
+      |> Time.setToStartOf(`minute)
+      |> Time.convertToString(formatString);
     let icon = Icons.identifyIcon(icon ++ "_white");
     let iconSource: Image.imageSource =
       switch icon {
