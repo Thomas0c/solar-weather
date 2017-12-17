@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 // Components
-import HourItem from './HourItem.component';
+import HourItem from '../../lib/js/app/components/hourItem';
 import { appColors } from '../config/general.config';
 
 export default class HourForecast extends Component { // eslint-disable-line
@@ -110,10 +110,12 @@ export default class HourForecast extends Component { // eslint-disable-line
           dataSource={this.state.dataSource}
           renderRow={rowData => (
             <HourItem
-              {...rowData}
               unit={unit}
               timeType={timeType}
               timezone={timezone}
+              temperature={rowData.temperature}
+              icon={rowData.icon}
+              time={rowData.time}
               rowId={moment(rowData.time).unix()}
               key={moment(rowData.time).unix()}
             />
