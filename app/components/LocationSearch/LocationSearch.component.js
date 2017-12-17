@@ -11,8 +11,8 @@ import {
 
 import Modal from '../../../lib/js/app/components/modal';
 import * as locationActions from '../../actions/locations.action';
-import Row from './LocationSearchRow';
-import Header from './LocationSearchHeader';
+import LocationSearchRow from '../../../lib/js/app/components/LocationSearch/locationSearchRow';
+import LocationSearchHeader from '../../../lib/js/app/components/LocationSearch/locationSearchHeader';
 
 class LocationSearch extends PureComponent { // eslint-disable-line
   constructor() {
@@ -44,9 +44,10 @@ class LocationSearch extends PureComponent { // eslint-disable-line
   }
 
   LookUpPlace(loc) {
-    const id = loc.placeID;
-    RNGooglePlaces.lookUpPlaceByID(id)
+    console.log(this.props);
+    RNGooglePlaces.lookUpPlaceByID(loc)
       .then((place) => {
+        console.log(place);
         this.props.toggleView();
         this.state.predictions = this.state.ds.cloneWithRows([]);
         this.props.dispatch(locationActions.addNewLocation({
@@ -71,13 +72,15 @@ class LocationSearch extends PureComponent { // eslint-disable-line
             dataSource={this.state.predictions}
             renderRow={
               rowData =>
-                (<Row
-                  {...rowData}
+                (<LocationSearchRow
+                  primaryText={rowData.primaryText}
+                  secondaryText={rowData.secondaryText}
                   handleTap={e => this.LookUpPlace(e)}
+                  id={rowData.placeID}
                 />)
               }
             renderHeader={() =>
-              <Header onChange={text => this.getLocations(text)} />}
+              <LocationSearchHeader onChange={text => this.getLocations(text)} />}
             renderFooter={() => (
               <Image
                 style={imageStyle}
