@@ -30,7 +30,8 @@
 		"realm": "^2.0.4",
 		"redux": "^3.7.2",
 		"redux-thunk": "^2.2.0",
-		"styled-components": "^2.2.3"
+		"styled-components": "^2.2.3",
+		"tinycolor2": "^1.4.1"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

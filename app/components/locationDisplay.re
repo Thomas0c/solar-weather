@@ -24,10 +24,22 @@ let styles =
           style([
             width(Pct(100.)),
             position(Relative),
-            marginTop(Pt(windowHeight /. 2. -. 12.)),
             alignItems(Center),
             alignSelf(Center),
+            height(Pt(windowHeight)),
             justifyContent(FlexStart)
+          ]),
+        "text":
+          style([
+            width(Pct(100.)),
+            height(Pct(100.)),
+            fontSize(18.),
+            paddingTop(Pt(windowHeight /. 2. -. 12.)),
+            alignItems(Center),
+            justifyContent(Center),
+            textAlign(Center),
+            fontFamily("Baskerville"),
+            alignSelf(Center)
           ]),
         "shadow":
           style([
@@ -55,8 +67,7 @@ let make = (~locationName, ~onPress, ~loading, _children) => {
       <View style=styles##shadow>
         <TouchableHighlight
           style=styles##touch onPress underlayColor="transparent">
-          <Text
-            style=Style.(style([fontSize(18.), fontFamily("Baskerville")]))>
+          <Text style=styles##text>
             (ReasonReact.stringToElement(currentLocation))
           </Text>
         </TouchableHighlight>

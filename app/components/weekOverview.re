@@ -8,13 +8,6 @@ open MomentRe;
 
 let component = ReasonReact.statelessComponent("WeekOverview");
 
-type item = {
-  time: int,
-  temperatureMax: float,
-  temperatureMin: float,
-  icon: string
-};
-
 let styles =
   StyleSheet.create(
     Style.(
@@ -71,7 +64,6 @@ let styles =
 let make = (~forecast, ~unit, ~timezone, _children) => {
   ...component,
   render: (_self) => {
-    Js.log(Array.length(forecast));
     let days =
       List.map(
         (item) => {
@@ -85,8 +77,26 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
             unit === "c" ?
               Temperature.fixTemperature(item##temperatureMin) :
               Temperature.convertToFahrenheitAndFix(item##temperatureMin);
-          let background = Colors.identifyBackground(item##icon, true);
+          let background =
+            Colors.shadeColor(
+              Colors.identifyBackground(item##icon, true),
+              (-10)
+            );
+          let icon = Icons.identifyIcon(item##icon ++ "_white");
+          let iconSource: Image.imageSource =
+            switch icon {
+            | None =>
+              Image.(
+                Required(
+                  Packager.require(
+                    "../../../../assets/weather_icons/sunny.png"
+                  )
+                )
+              )
+            | Some(image) => image
+            };
           <View
+            key=date
             style=Style.(
                     concat([
                       styles##container,
@@ -97,14 +107,7 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
               (ReasonReact.stringToElement(date))
             </Text>
             <WeatherIconWrapper>
-              <Image
-                style=styles##image
-                source=Image.(
-                         Required(
-                           Packager.require("../../../../assets/infoIcon.png")
-                         )
-                       )
-              />
+              <Image style=styles##image source=iconSource />
             </WeatherIconWrapper>
             <Text style=styles##dayHighTemp>
               (ReasonReact.stringToElement(tempMax ++ "\176"))
