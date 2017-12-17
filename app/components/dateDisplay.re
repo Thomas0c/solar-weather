@@ -1,11 +1,5 @@
 open BsReactNative;
 
-open MomentRe;
-
-[@bs.raw "require('moment-timezone)"];
-
-[@bs.send] external tz : (Moment.t, string) => Moment.t = "tz";
-
 let component = ReasonReact.statelessComponent("DateDisplay");
 
 let styles =
@@ -30,8 +24,9 @@ let make = (~condition, ~timestamp, ~time, ~timezone, _children) => {
   ...component,
   render: (_self) => {
     let formatString = time === "24" ? "HH:mm" : "h:mma";
-    let adjustedTime = tz(timestamp, timezone) |> Moment.format(formatString);
-    let dateStamp = Moment.format("MMM DD", tz(timestamp, timezone));
+    let time = Time.convertToTimeZone(timestamp, timezone);
+    let adjustedTime = time |> Time.convertToString(formatString);
+    let dateStamp = time |> Time.convertToString("MMM DD");
     <View style=styles##container>
       <DateText space=false condition text=adjustedTime />
       <DateText space=false condition text=dateStamp />

@@ -1,11 +1,5 @@
 open BsReactNative;
 
-open MomentRe;
-
-[@bs.raw "require('moment-timezone)"];
-
-[@bs.send] external tz : (Moment.t, string) => Moment.t = "tz";
-
 let component = ReasonReact.statelessComponent("WeekOverview");
 
 let styles =
@@ -68,7 +62,7 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
       List.map(
         (item) => {
           let date =
-            tz(momentWithUnix(item##time), timezone) |> Moment.format("dddd");
+            Time.convertToTimeZoneAndString(item##time, timezone, "dddd");
           let tempMax =
             unit === "c" ?
               Temperature.fixTemperature(item##temperatureMax) :
