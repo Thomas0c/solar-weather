@@ -44,10 +44,8 @@ class LocationSearch extends PureComponent { // eslint-disable-line
   }
 
   LookUpPlace(loc) {
-    console.log(this.props);
     RNGooglePlaces.lookUpPlaceByID(loc)
       .then((place) => {
-        console.log(place);
         this.props.toggleView();
         this.state.predictions = this.state.ds.cloneWithRows([]);
         this.props.dispatch(locationActions.addNewLocation({

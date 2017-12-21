@@ -43,6 +43,8 @@ export default class LocationOverview extends Component { // eslint-disable-line
         <View style={styles.listContainer}>
           <SwipeListView
             disableLeftSwipe
+            closeOnScroll
+            closeOnRowBeginSwipe
             previewFirstRow
             style={styles.listView}
             dataSource={locs}
