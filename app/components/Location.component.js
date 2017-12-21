@@ -13,9 +13,8 @@ import {
 } from 'react-native';
 
 import * as locationActions from '../actions/locations.action';
-import Icons from '../utils/icons.utils';
 import Colors from '../utils/colors.utils';
-import WeatherIconWrapper from '../../lib/js/app/styled/weatherIconWrapper';
+import LocationIcon from '../../lib/js/app/components/locationIcon';
 import { appColors } from '../config/general.config';
 
 class Location extends Component { // eslint-disable-line
@@ -40,10 +39,6 @@ class Location extends Component { // eslint-disable-line
 
     let item = null;
     const selected = index === activeLocation;
-    const background = selected ?
-      darken(0.1, Colors.identifyBackground(icon, day)) : appColors.lightGrey;
-    const iconName = selected ? `${icon}_white` : icon;
-    const fontColor = selected ? appColors.white : appColors.darkGrey;
 
     return (
       <SwipeRow
@@ -67,12 +62,12 @@ class Location extends Component { // eslint-disable-line
             <Text style={styles.hiddenText}>X</Text>
           </View>
         </TouchableOpacity>
-        <View style={[styles.main, { backgroundColor: background }]}>
-          <Text style={[styles.dayTitle, { color: fontColor }]}>{name}</Text>
-          <WeatherIconWrapper>
-            <Image style={styles.image} source={Icons.identifyIcon(iconName)} />
-          </WeatherIconWrapper>
-        </View>
+        <LocationIcon
+          icon={icon}
+          day={day}
+          name={name}
+          selected={selected}
+        />
       </SwipeRow>
     );
   }
@@ -97,13 +92,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
-  main: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
   hidden: {
     width: '100%',
     height: '100%',
@@ -120,16 +108,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Avenir',
     textAlign: 'right',
-  },
-  image: {
-    alignSelf: 'center',
-    marginTop: '2%',
-    width: '55%',
-    resizeMode: 'contain',
-  },
-  dayTitle: {
-    fontSize: 16,
-    fontFamily: 'Baskerville',
   },
   dayHighTemp: {
     fontSize: 14,
