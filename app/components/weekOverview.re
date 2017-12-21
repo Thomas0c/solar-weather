@@ -17,7 +17,7 @@ let styles =
           style([alignSelf(Center), width(Pct(54.)), resizeMode(Contain)]),
         "dayTitle":
           style([
-            fontSize(14.),
+            fontSize(Float(14.)),
             color(Config.AppColors.white),
             fontFamily("Baskerville")
           ]),
@@ -25,11 +25,11 @@ let styles =
           style([
             fontWeight(`Bold),
             color(Config.AppColors.white),
-            fontSize(14.)
+            fontSize(Float(14.))
           ]),
         "dayLowTemp":
           style([
-            fontSize(10.),
+            fontSize(Float(10.)),
             color(Config.AppColors.white),
             fontWeight(`_400)
           ]),

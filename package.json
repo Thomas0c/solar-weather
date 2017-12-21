@@ -36,7 +36,7 @@
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
 		"bs-platform": "^2.1.0",
-		"bs-react-native": "^0.4.0-beta.2",
+		"bs-react-native": "^0.5.0",
 		"eslint": "^4.10.0",
 		"eslint-config-airbnb": "^16.1.0",
 		"eslint-plugin-import": "^2.8.0",

@@ -21,7 +21,7 @@ let styles =
             marginTop(Pt((-5.))),
             resizeMode(Contain)
           ]),
-        "temperature": style([color("#EFEFEF"), fontSize(14.)])
+        "temperature": style([color("#EFEFEF"), fontSize(Float(14.))])
       }
     )
   );
