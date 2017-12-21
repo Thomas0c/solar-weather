@@ -9,11 +9,9 @@ import {
   TouchableOpacity,
   Text,
   View,
-  Image,
 } from 'react-native';
 
 import * as locationActions from '../actions/locations.action';
-import Colors from '../utils/colors.utils';
 import LocationIcon from '../../lib/js/app/components/locationIcon';
 import { appColors } from '../config/general.config';
 

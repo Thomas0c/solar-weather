@@ -6,13 +6,13 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Image,
   Animated,
 } from 'react-native';
 
 import Colors from '../utils/colors.utils';
 import { appColors } from '../config/general.config';
 import DateText from '../../lib/js/app/styled/dateText';
+import WeatherConditionAlert from '../../lib/js/app/components/weatherConditionAlert';
 import Temperature from '../utils/temperature.utils';
 
 const formatText = (temp, humidity, precip) => `Feels like ${parseFloat(temp).toFixed(0)}°
@@ -77,21 +77,12 @@ Chance of ${precipType}: ${precipNumber}%` : '';
       >
         <View style={styles.container}>
           <Text style={[styles.temp, { color: fontColor }]}>{fixedTemp}°</Text>
-          <Text style={[styles.condition, { color: fontColor }]}>
-            {currently.summary}
-            { showAlert &&
-              <TouchableHighlight
-                style={{ width: 25, height: 25 }}
-                onPress={toggleAlert}
-                underlayColor="transparent"
-              >
-                <Image
-                  style={styles.image}
-                  source={require('../../assets/alert_icon.png')}
-                />
-              </TouchableHighlight>
-            }
-          </Text>
+          <WeatherConditionAlert
+            summary={currently ? currently.summary : ''}
+            showAlert={showAlert}
+            icon={currently ? currently.icon : ''}
+            onPress={toggleAlert}
+          />
           <Animated.View
             style={{
               opacity: this.state.fadeAnim,
@@ -125,13 +116,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '5%',
     backgroundColor: 'transparent',
-  },
-  image: {
-    width: 20,
-    height: 20,
-    marginTop: 5,
-    marginLeft: 10,
-    resizeMode: 'contain',
   },
   temp: {
     fontSize: 50,
