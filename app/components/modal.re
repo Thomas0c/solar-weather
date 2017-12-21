@@ -37,7 +37,7 @@ let make = (~toggleView, ~visible, ~content, _children) => {
   render: (_self) =>
     <Modal animationType=`slide visible transparent=true>
       <TouchableHighlight
-        onPress=toggleView
+        onPress=(() => toggleView())
         underlayColor="transparent"
         style=styles##viewWrapper>
         <View />

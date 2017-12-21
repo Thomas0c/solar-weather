@@ -24,7 +24,7 @@ let styles =
             height(Pt(50.)),
             color(Config.AppColors.darkGrey),
             flex(1.),
-            fontSize(15.)
+            fontSize(Float(15.))
           ])
       }
     )

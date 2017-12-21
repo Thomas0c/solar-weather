@@ -9,7 +9,7 @@ let styles =
         "view": style([padding(Pt(20.)), height(Pct(96.))]),
         "headline":
           style([
-            fontSize(16.),
+            fontSize(Float(16.)),
             fontFamily("HelveticaNeue"),
             fontWeight(`_700),
             color(Config.AppColors.darkGrey),
@@ -21,7 +21,7 @@ let styles =
           style([
             fontFamily("HelveticaNeue"),
             textAlign(Left),
-            fontSize(15.),
+            fontSize(Float(15.)),
             color(Config.AppColors.darkGrey)
           ])
       }

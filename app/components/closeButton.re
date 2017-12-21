@@ -13,7 +13,7 @@ let styles =
         "text":
           style([
             fontFamily("avenir"),
-            fontSize(16.),
+            fontSize(Float(16.)),
             fontWeight(`_700),
             color(Config.AppColors.white)
           ]),
