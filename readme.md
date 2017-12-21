@@ -4,7 +4,10 @@
     Solar
   </h1>
   <p>
-   A personal project exploring React Native, Realm, Redux & Styled Components. (iOS only).
+   A personal project exploring React Native, Realm, Redux & Styled Components (iOS only).
+  </p>
+  <p>
+    Currently working on converting the project to ReasonML / Reason React - follow the progress in the <br /><a href="https://github.com/Thomas0c/solar-weather/tree/feature/reason-react">feature/reason-react</a>.
   </p>
 </div>
 
