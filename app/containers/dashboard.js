@@ -25,7 +25,6 @@ import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecast from '../components/HourForecast.component';
 import LeftSidebar from '../components/LeftSidebar';
 import LocationDisplay from '../../lib/js/app/components/locationDisplay';
-import LocationOverview from '../components/LocationOverview.component';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Menu from '../components/Menu.component';
 import Modal from '../../lib/js/app/components/modal';
