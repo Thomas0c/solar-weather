@@ -1,6 +1,6 @@
 open BsReactNative;
 
-let component = ReasonReact.statelessComponent("Modal");
+let component = ReasonReact.statelessComponent("ContentModal");
 
 let styles =
   StyleSheet.create(
@@ -32,7 +32,8 @@ let styles =
     )
   );
 
-let make = (~toggleView, ~visible, ~content, _children) => {
+let make =
+    (~toggleView, ~visible, ~content: ReasonReact.reactElement, _children) => {
   ...component,
   render: (_self) =>
     <Modal animationType=`slide visible transparent=true>
@@ -43,7 +44,7 @@ let make = (~toggleView, ~visible, ~content, _children) => {
         <View />
       </TouchableHighlight>
       <View style=styles##viewBoxStyle>
-        (ReasonReact.stringToElement(content))
+        content
         <CloseButton absolute=true toggle=toggleView />
       </View>
     </Modal>
