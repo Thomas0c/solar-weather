@@ -26,17 +26,18 @@ let styles =
     )
   );
 
-let make = (~selected: bool, ~icon, ~day, ~name, _children) => {
+let make = (~selected: Js.boolean, ~icon, ~day, ~name, _children) => {
   ...component,
   render: (_self) => {
+    let reSelected = Js.to_bool(selected);
     let background =
-      selected ?
+      reSelected ?
         Colors.shadeColor(Colors.identifyBackground(icon, day), (-10)) :
         Config.AppColors.lightGrey;
     let fontColor =
-      selected ? Config.AppColors.white : Config.AppColors.darkGrey;
-    let iconName = selected ? icon ++ "_white" : icon;
-    let icon = Icons.identifyIcon(iconName ++ "_white");
+      reSelected ? Config.AppColors.white : Config.AppColors.darkGrey;
+    let iconName = reSelected ? icon ++ "_white" : icon;
+    let icon = Icons.identifyIcon(iconName);
     let iconSource: Image.imageSource =
       switch icon {
       | None =>
