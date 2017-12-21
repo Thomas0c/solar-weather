@@ -9,7 +9,7 @@ import {
   Animated,
 } from 'react-native';
 
-import Colors from '../utils/colors.utils';
+import Colors from '../../lib/js/app/utils/colors';
 import { appColors } from '../config/general.config';
 import DateText from '../../lib/js/app/styled/dateText';
 import WeatherConditionAlert from '../../lib/js/app/components/weatherConditionAlert';
