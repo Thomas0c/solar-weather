@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-import Modal from '../../../lib/js/app/components/modal';
+import ContentModal from '../../../lib/js/app/components/contentModal';
 import * as locationActions from '../../actions/locations.action';
 import LocationSearchRow from '../../../lib/js/app/components/LocationSearch/locationSearchRow';
 import LocationSearchHeader from '../../../lib/js/app/components/LocationSearch/locationSearchHeader';
@@ -59,7 +59,7 @@ class LocationSearch extends PureComponent { // eslint-disable-line
   render() {
     const { visible, toggleView } = this.props;
     return (
-      <Modal
+      <ContentModal
         visible={visible}
         toggleView={toggleView}
         content={
