@@ -1,27 +1,46 @@
 open BsReactNative;
 
+let easeIn = (x) => x *. x *. x;
+
+type state = {fadeAnim: Animated.Value.t};
+
 type retainedProps = {
+  showDetails: Js.boolean,
   text: string,
-  condition: string,
-  showDetails: Js.boolean
+  condition: string
 };
 
 let component =
-  ReasonReact.statelessComponentWithRetainedProps("WeatherConditionText");
+  ReasonReact.reducerComponentWithRetainedProps("WeatherConditionText");
 
 let make =
     (~text: string, ~condition: string, ~showDetails: Js.boolean, _children) => {
   ...component,
+  initialState: () => {fadeAnim: Animated.Value.create(0.)},
   retainedProps: {text, condition, showDetails},
-  render: (_self) => {
-    let detectToValue = (value) =>
-      Js.to_bool(value) ?
-        Animated.Value.create(0.) : Animated.Value.create(1.);
-    let opacityValue = detectToValue(showDetails);
-    <Animated.View style=Style.(style([opacity(Animated(opacityValue))]))>
+  reducer: ((), _) => ReasonReact.NoUpdate,
+  willReceiveProps: (self) =>
+    if (self.retainedProps.showDetails !== showDetails) {
+      let nextValue = Js.to_bool(self.retainedProps.showDetails) ? 1. : 0.;
+      Animated.CompositeAnimation.start(
+        Animated.sequence([|
+          Animated.Timing.animate(
+            ~value=self.state.fadeAnim,
+            ~toValue=`raw(nextValue),
+            ~easing=easeIn,
+            ()
+          )
+        |]),
+        ()
+      );
+      self.state
+    } else {
+      self.state
+    },
+  render: ({state}) =>
+    <Animated.View style=Style.(style([opacity(Animated(state.fadeAnim))]))>
       <DateText space=true text condition />
     </Animated.View>
-  }
 };
 
 let default =
