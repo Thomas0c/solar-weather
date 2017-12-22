@@ -29,7 +29,7 @@ import LocationSearch from '../components/LocationSearch/LocationSearch.componen
 import Menu from '../../lib/js/app/components/menu';
 import Modal from '../../lib/js/app/components/contentModal';
 import RightSidebar from '../components/RightSidebar';
-import Toast from '../components/Toast.component';
+import Toast from '../../lib/js/app/components/toast';
 import WeatherCondition from '../components/WeatherCondition.component';
 
 import {
@@ -366,6 +366,7 @@ class Dashboard extends PureComponent {
           <Toast
             connected={connected}
             error={locationError}
+            displayError={locationError !== null}
           />
           <StatusBar
             hidden

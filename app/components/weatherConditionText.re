@@ -21,7 +21,7 @@ let make =
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.showDetails !== showDetails) {
-      let nextValue = Js.to_bool(showDetails) ? 1. : 0.;
+      let nextValue = Js.to_bool(retainedProps.showDetails) ? 1. : 0.;
       Animated.CompositeAnimation.start(
         Animated.sequence([|
           Animated.Timing.animate(
