@@ -6,7 +6,6 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Animated,
 } from 'react-native';
 
 import Colors from '../../lib/js/app/utils/colors';

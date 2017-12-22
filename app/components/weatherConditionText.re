@@ -19,13 +19,13 @@ let make =
   initialState: () => {fadeAnim: Animated.Value.create(0.)},
   retainedProps: {text, condition, showDetails},
   reducer: ((), _) => ReasonReact.NoUpdate,
-  willReceiveProps: (self) =>
-    if (self.retainedProps.showDetails !== showDetails) {
-      let nextValue = Js.to_bool(self.retainedProps.showDetails) ? 1. : 0.;
+  willReceiveProps: ({retainedProps, state}) =>
+    if (retainedProps.showDetails !== showDetails) {
+      let nextValue = Js.to_bool(showDetails) ? 1. : 0.;
       Animated.CompositeAnimation.start(
         Animated.sequence([|
           Animated.Timing.animate(
-            ~value=self.state.fadeAnim,
+            ~value=state.fadeAnim,
             ~toValue=`raw(nextValue),
             ~easing=easeIn,
             ()
@@ -33,9 +33,9 @@ let make =
         |]),
         ()
       );
-      self.state
+      state
     } else {
-      self.state
+      state
     },
   render: ({state}) =>
     <Animated.View style=Style.(style([opacity(Animated(state.fadeAnim))]))>
