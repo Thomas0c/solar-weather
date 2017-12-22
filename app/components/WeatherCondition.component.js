@@ -11,8 +11,8 @@ import {
 
 import Colors from '../../lib/js/app/utils/colors';
 import { appColors } from '../config/general.config';
-import DateText from '../../lib/js/app/styled/dateText';
 import WeatherConditionAlert from '../../lib/js/app/components/weatherConditionAlert';
+import WeatherConditionText from '../../lib/js/app/components/weatherConditionText';
 import Temperature from '../utils/temperature.utils';
 
 const formatText = (temp, humidity, precip) => `Feels like ${parseFloat(temp).toFixed(0)}°
@@ -46,6 +46,7 @@ export default class WeatherCondition extends PureComponent { // eslint-disable-
       toggleDetails,
       unit,
       alerts,
+      showDetails,
       toggleAlert,
       currently,
     } = this.props;
@@ -81,19 +82,13 @@ Chance of ${precipType}: ${precipNumber}%` : '';
             summary={currently ? currently.summary : ''}
             showAlert={showAlert}
             icon={currently ? currently.icon : ''}
-            onPress={toggleAlert}
+            toggleAlert={toggleAlert}
           />
-          <Animated.View
-            style={{
-              opacity: this.state.fadeAnim,
-            }}
-          >
-            <DateText
-              space
-              text={formatText(fixedFeelsLike, currently.humidity, precipitation)}
-              condition={condition}
-            />
-          </Animated.View>
+          <WeatherConditionText
+            text={formatText(fixedFeelsLike, currently.humidity, precipitation)}
+            condition={condition}
+            showDetails={showDetails}
+          />
         </View>
       </TouchableHighlight>
     );

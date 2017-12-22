@@ -26,17 +26,17 @@ let styles =
     )
   );
 
-let make = (~summary, ~showAlert, ~icon, ~onPress, _children) => {
+let make = (~summary, ~showAlert: Js.boolean, ~icon, ~toggleAlert, _children) => {
   ...component,
   render: (_self) => {
     let fontColor = Colors.identifyFontColor(icon);
     <Text style=Style.(concat([styles##condition, style([color(fontColor)])]))>
       (ReasonReact.stringToElement(summary))
       (
-        showAlert ?
+        Js.to_bool(showAlert) ?
           <TouchableHighlight
             style=Style.(style([width(Pt(25.)), height(Pt(25.))]))
-            onPress
+            onPress=toggleAlert
             underlayColor="transparent">
             <Image
               style=styles##image
@@ -61,7 +61,7 @@ let default =
         ~summary=jsProps##summary,
         ~showAlert=jsProps##showAlert,
         ~icon=jsProps##icon,
-        ~onPress=jsProps##onPress,
+        ~toggleAlert=jsProps##toggleAlert,
         [||]
       )
   );
