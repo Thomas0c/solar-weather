@@ -64,13 +64,7 @@ let make =
   willReceiveProps: ({state}) =>
     if (Js.to_bool(displayError)) {
       animateToast(state.topAnim, 0.);
-      Js.Global.setTimeout(
-        () => {
-          animateToast(state.topAnim, (-100.));
-          ()
-        },
-        5000
-      );
+      Js.Global.setTimeout(() => animateToast(state.topAnim, (-100.)), 5000);
       state
     } else {
       state
