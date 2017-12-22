@@ -1,7 +1,5 @@
 open BsReactNative;
 
-let easeIn = (x) => x *. x *. x;
-
 type state = {topAnim: Animated.Value.t};
 
 type retainedProps = {
@@ -63,8 +61,11 @@ let make =
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({state}) =>
     if (Js.to_bool(displayError)) {
-      animateToast(state.topAnim, 0.);
-      Js.Global.setTimeout(() => animateToast(state.topAnim, (-100.)), 5000);
+      Animation.animate(state.topAnim, 0.);
+      Js.Global.setTimeout(
+        () => Animation.animate(state.topAnim, (-100.)),
+        5000
+      );
       state
     } else {
       state
