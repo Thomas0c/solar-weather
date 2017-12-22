@@ -37,17 +37,6 @@ let styles =
     )
   );
 
-let animateToast = (topAnim, toValue) =>
-  Animated.CompositeAnimation.start(
-    Animated.Timing.animate(
-      ~value=topAnim,
-      ~toValue=`raw(toValue),
-      ~easing=easeIn,
-      ()
-    ),
-    ()
-  );
-
 let make =
     (
       ~error: string,
