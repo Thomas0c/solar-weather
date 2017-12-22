@@ -22,17 +22,7 @@ let make =
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.showDetails !== showDetails) {
       let nextValue = Js.to_bool(retainedProps.showDetails) ? 1. : 0.;
-      Animated.CompositeAnimation.start(
-        Animated.sequence([|
-          Animated.Timing.animate(
-            ~value=state.fadeAnim,
-            ~toValue=`raw(nextValue),
-            ~easing=easeIn,
-            ()
-          )
-        |]),
-        ()
-      );
+      Animation.animate(state.fadeAnim, nextValue);
       state
     } else {
       state
