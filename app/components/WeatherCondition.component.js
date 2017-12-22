@@ -19,27 +19,6 @@ const formatText = (temp, humidity, precip) => `Feels like ${parseFloat(temp).to
 Humidity ${parseFloat(humidity * 100).toFixed(0)}% ${precip}`;
 
 export default class WeatherCondition extends PureComponent { // eslint-disable-line
-  constructor(props) {
-    super(props);
-    this.state = {
-      fadeAnim: new Animated.Value(1),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.showDetails !== this.props.showDetails) {
-      this.triggerAnimation();
-    }
-  }
-
-  triggerAnimation() {
-    const opacityValue = this.props.showDetails ? 0 : 1;
-    Animated.timing(
-      this.state.fadeAnim,
-      { toValue: opacityValue },
-    ).start();
-  }
-
   render() {
     const {
       condition,
