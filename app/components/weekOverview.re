@@ -106,7 +106,7 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
             <Text style=styles##dayHighTemp>
               (ReasonReact.stringToElement(tempMax ++ "\176"))
               <Text style=styles##dayLowTemp>
-                (ReasonReact.stringToElement("/" ++ tempMin ++ "\176"))
+                (ReasonReact.stringToElement(" / " ++ tempMin ++ "\176"))
               </Text>
             </Text>
           </View>
@@ -133,32 +133,3 @@ let default =
         [||]
       )
   );
-/* // Modules
-   export default class WeekOverview extends PureComponent { // eslint-disable-line
-       return (
-         <View style={styles.container}>
-           <View style={styles.shadow} />
-           {forecast.map((day, idx) => {
-             if (idx > 4) return null;
-
-             const time = dayDate.tz(zone);
-             const background = darken(0.1, Colors.identifyBackground(day.icon, day));
-
-             return (
-                 <Text style={forecastDay.dayTitle}>{time.format('dddd')}</Text>
-                 <WeatherIconWrapper>
-                   <Image style={forecastDay.image} source={Icons.identifyIcon(`${day.icon}_white`)} />
-                 </WeatherIconWrapper>
-                 <Text style={forecastDay.dayHighTemp}>
-                   {fixedHighTemp}°
-                   <Text style={forecastDay.dayLowTemp}> / {fixedLowTemp}°</Text>
-                 </Text>
-               </View>
-             );
-           })}
-         </View>
-       );
-     }
-   }
-
-   */

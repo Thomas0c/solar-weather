@@ -34,7 +34,7 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             fontSize(Float(18.)),
-            paddingTop(Pt(windowHeight /. 2. -. 12.)),
+            paddingTop(Pt(windowHeight /. 2. -. 10.)),
             alignItems(Center),
             justifyContent(Center),
             textAlign(Center),
