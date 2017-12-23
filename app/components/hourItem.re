@@ -44,7 +44,7 @@ let make =
         Temperature.convertToFahrenheitAndFix(temperature);
     let formatString = timeType === "24" ? "HH:mm" : "h:mma";
     let date =
-      Time.convertToTimeZone(time, timezone)
+      Time.convertUnixToTimezone(time, timezone)
       |> Time.setToStartOf(`minute)
       |> Time.convertToString(formatString);
     let icon = Icons.identifyIcon(icon ++ "_white");
