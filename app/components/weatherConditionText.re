@@ -16,7 +16,7 @@ let component =
 let make =
     (~text: string, ~condition: string, ~showDetails: Js.boolean, _children) => {
   ...component,
-  initialState: () => {fadeAnim: Animated.Value.create(0.)},
+  initialState: () => {fadeAnim: Animated.Value.create(1.)},
   retainedProps: {text, condition, showDetails},
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
