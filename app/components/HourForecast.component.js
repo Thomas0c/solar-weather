@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import R from 'ramda';
 
 import {
   StyleSheet,
@@ -49,24 +48,6 @@ export default class HourForecast extends Component { // eslint-disable-line
         dataSource: this.state.dataSource.cloneWithRows(filteredForecast),
       });
     }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    const {
-      openHours,
-      locationName,
-      unit,
-      forecast,
-    } = this.props;
-
-    const forecastWithDefault =
-      R.propOr(true, [0]);
-
-    return nextProps.openHours !== openHours ||
-      nextProps.locationName !== locationName ||
-      nextProps.unit !== unit ||
-      forecastWithDefault(nextProps.forecast) !==
-        forecastWithDefault(forecast);
   }
 
   animateBottom() {
