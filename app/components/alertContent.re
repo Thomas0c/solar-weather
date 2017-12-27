@@ -33,7 +33,7 @@ let make = (~title: string, ~description: string, _children) => {
   render: (_self) => {
     let desc =
       description
-      |> Js.String.split("\n")
+      |> Js.String.split("\\n")
       |> Array.map(
            (item) =>
              <Text key=item style=styles##text>
