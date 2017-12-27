@@ -35,7 +35,7 @@ export default class LocationOverview extends Component { // eslint-disable-line
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
-    const locs = ds.cloneWithRows(locations);
+    const locs = ds.cloneWithRows(locations.sort((a, b) => a.id - b.id));
 
     return (
       <View style={styles.main}>
