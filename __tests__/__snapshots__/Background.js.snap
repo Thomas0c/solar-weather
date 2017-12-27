@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "alignSelf": "stretch",
+      "backgroundColor": "#C0C0C0",
+      "height": 1334,
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": 750,
+    }
+  }
+  testID={undefined}
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityLiveRegion={undefined}
+    accessibilityTraits={undefined}
+    accessibilityViewIsModal={undefined}
+    accessible={undefined}
+    collapsable={undefined}
+    hitSlop={undefined}
+    importantForAccessibility={undefined}
+    needsOffscreenAlphaCompositing={undefined}
+    onAccessibilityTap={undefined}
+    onLayout={undefined}
+    onMagicTap={undefined}
+    pointerEvents={undefined}
+    removeClippedSubviews={undefined}
+    renderToHardwareTextureAndroid={undefined}
+    shouldRasterizeIOS={undefined}
+    style={
+      Object {
+        "backgroundColor": "#C1C7C9",
+        "height": "100.00%",
+        "width": "100.00%",
+      }
+    }
+    testID={undefined}
+  />
+</View>
+`;
