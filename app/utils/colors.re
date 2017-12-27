@@ -68,5 +68,5 @@ let identifyBackground = (condition: string, day: bool) : string =>
   | "snow" => colors##snowGrey
   | "thunderstorm" => day ? colors##lightSquash : colors##darkSquash
   | "fog" => day ? colors##lightBlue : colors##darkBlue
-  | _ => colors##lightBlueGrey
+  | _ => colors##snowGrey
   };

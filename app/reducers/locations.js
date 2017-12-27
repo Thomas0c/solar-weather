@@ -5,9 +5,12 @@ const initialState = {
   locations: [{
     currently: {
       icon: '',
+      precipProbability: 0.00,
+      precipType: '',
       temperature: 0.00,
       apparentTemperature: 0.00,
       humidity: 0,
+      summary: '',
     },
     daily: {
       data: [],
