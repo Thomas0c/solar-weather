@@ -3,6 +3,12 @@
 logs
 *.log
 
+*.realm
+default.realm.lock
+default.realm.management/access_control.balance.mx
+default.realm.management/access_control.control.mx
+default.realm.management/access_control.write.mx
+
 # Runtime data
 pids
 *.pid
