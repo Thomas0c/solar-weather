@@ -288,12 +288,10 @@ class Dashboard extends PureComponent {
     }
   } = this.props;
 
-  const filteredLocations = locations.sort((a, b) => a.id - b.id);
-
   const connected = isConnected === 'wifi' || isConnected === 'cell';
-  const anyLocation = filteredLocations.length > 0;
-  const activeLocation = filteredLocations.length -1 < locationIndex ?
-    filteredLocations[0] : filteredLocations[locationIndex];
+  const anyLocation = locations.length > 0;
+  const activeLocation = locations.length -1 < locationIndex ?
+    locations[0] : locations[locationIndex];
 
   const rightOpen = locationError ? false : null;
   const timezone = activeLocation && activeLocation.timezone ?
@@ -323,7 +321,7 @@ class Dashboard extends PureComponent {
       dayTime={dayTime}
       locationIndex={locationIndex}
       toggleLocationSearch={this.toggleLocationSearch.bind(this)}
-      filteredLocations={filteredLocations}
+      filteredLocations={locations}
     >
       <LeftSidebar
         menu={menu}
