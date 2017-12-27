@@ -48,8 +48,9 @@ let make =
   initialState: () => {topAnim: Animated.Value.create((-100.))},
   retainedProps: {error, displayError, connected},
   reducer: ((), _) => ReasonReact.NoUpdate,
-  willReceiveProps: ({state}) =>
-    if (Js.to_bool(displayError)) {
+  willReceiveProps: ({state, retainedProps}) =>
+    if (Js.to_bool(displayError)
+        && Js.to_bool(retainedProps.displayError) !== true) {
       Animation.animate(state.topAnim, 0.);
       Js.Global.setTimeout(
         () => Animation.animate(state.topAnim, (-100.)),

@@ -30,7 +30,7 @@ import Menu from '../../lib/js/app/components/menu';
 import Modal from '../../lib/js/app/components/contentModal';
 import RightSidebar from '../components/RightSidebar';
 import Toast from '../../lib/js/app/components/toast';
-import WeatherCondition from '../components/WeatherCondition.component';
+import WeatherCondition from '../../lib/js/app/components/weatherCondition';
 
 import {
   AppRegistry,
@@ -288,20 +288,16 @@ class Dashboard extends PureComponent {
     }
   } = this.props;
 
-  const filteredLocations = authorized ?
-    locations.sort((a, b) => a.id - b.id) :
-    locations.filter(item => item.id !== 0)
-    .sort((a, b) => a.id - b.id);
+  const filteredLocations = locations.sort((a, b) => a.id - b.id);
 
   const connected = isConnected === 'wifi' || isConnected === 'cell';
   const anyLocation = filteredLocations.length > 0;
-  const baseLocation = anyLocation ? filteredLocations[0] : null;
   const activeLocation = filteredLocations.length -1 < locationIndex ?
     filteredLocations[0] : filteredLocations[locationIndex];
 
   const rightOpen = locationError ? false : null;
   const timezone = activeLocation && activeLocation.timezone ?
-    activeLocation.timezone : 'America/New_York';
+    activeLocation.timezone : moment.tz.guess();
   const day = timestamp.clone().tz(timezone);
   const eveningTime = day.hour(18).minute(0).second(0);
   const morningTime = day.hour(6).minute(0).second(0);
@@ -395,7 +391,7 @@ class Dashboard extends PureComponent {
             toggleDetails={this.toggleState.bind(this, 'showDetails')}
             toggleAlert={this.toggleState.bind(this, 'openAlert')}
             alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
-            currently={activeLocation ? activeLocation.currently : {}}
+            currently={activeLocation && activeLocation.currently ? activeLocation.currently : null}
           />
           <HourForecast
             timeType={timeType}

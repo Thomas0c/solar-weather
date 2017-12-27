@@ -36,7 +36,7 @@ let make = (~title: string, ~description: string, _children) => {
       |> Js.String.split("\n")
       |> Array.map(
            (item) =>
-             <Text style=styles##text>
+             <Text key=item style=styles##text>
                (ReasonReact.stringToElement(item))
              </Text>
          );

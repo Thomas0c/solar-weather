@@ -46,9 +46,9 @@ let make = (~onPress, _children) => {
       <TouchableOpacity style=styles##button onPress>
         <Image
           style=styles##image
-          source=(
-            URI(Image.(imageURISource(~uri="../../../assets/addIcon.png", ())))
-          )
+          source=Image.(
+                   Required(Packager.require("../../../../assets/addIcon.png"))
+                 )
         />
       </TouchableOpacity>
     </View>
