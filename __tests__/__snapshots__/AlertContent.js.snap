@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "height": "96.00%",
+      "padding": 20,
+    }
+  }
+  testID={undefined}
+>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Object {
+        "color": "#343434",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "marginBottom": 20,
+        "textAlign": "center",
+      }
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    Alert Title
+  </Text>
+  <RCTScrollView
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityLiveRegion={undefined}
+    accessibilityTraits={undefined}
+    accessibilityViewIsModal={undefined}
+    accessible={undefined}
+    alwaysBounceHorizontal={undefined}
+    alwaysBounceVertical={undefined}
+    automaticallyAdjustContentInsets={undefined}
+    bounces={undefined}
+    canCancelContentTouches={undefined}
+    centerContent={undefined}
+    collapsable={undefined}
+    contentContainerStyle={
+      Object {
+        "flexDirection": "column",
+      }
+    }
+    contentInset={undefined}
+    contentOffset={undefined}
+    decelerationRate={undefined}
+    directionalLockEnabled={undefined}
+    hitSlop={undefined}
+    horizontal={undefined}
+    importantForAccessibility={undefined}
+    indicatorStyle={undefined}
+    keyboardDismissMode={undefined}
+    keyboardShouldPersistTaps={undefined}
+    maximumZoomScale={undefined}
+    mimimumZoomScale={undefined}
+    needsOffscreenAlphaCompositing={undefined}
+    onAccessibilityTap={undefined}
+    onContentSizeChange={undefined}
+    onLayout={undefined}
+    onMagicTap={undefined}
+    onScroll={undefined}
+    onScrollAnimationEnd={undefined}
+    overScrollMode={undefined}
+    pagingEnabled={undefined}
+    pointerEvents={undefined}
+    refreshControl={undefined}
+    removeClippedSubviews={undefined}
+    renderToHardwareTextureAndroid={undefined}
+    scrollEnabled={undefined}
+    scrollEventThrottle={undefined}
+    scrollIndicatorInsets={undefined}
+    scrollPerfTag={undefined}
+    scrollsToTop={undefined}
+    shouldRasterizeIOS={undefined}
+    showsHorizontalScrollIndicator={undefined}
+    showsVerticalScrollIndicator={undefined}
+    snapToAlignment={undefined}
+    stickyHeaderIndices={undefined}
+    style={undefined}
+    testID={undefined}
+    zoomScale={undefined}
+  >
+    <View>
+      <Text
+        accessible={true}
+        adjustsFontSizeToFit={undefined}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        minimumFontScale={undefined}
+        numberOfLines={undefined}
+        onLayout={undefined}
+        onLongPress={undefined}
+        onPress={undefined}
+        pressRetentionOffset={undefined}
+        selectable={undefined}
+        selectionColor={undefined}
+        style={
+          Object {
+            "color": "#343434",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 15,
+            "textAlign": "left",
+          }
+        }
+        suppressHighlighting={undefined}
+        testID={undefined}
+        textBreakStrategy={undefined}
+      >
+        Alert Description \\n Second Line \\n
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
