@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "justifyContent": "center",
+      "width": "90.00%",
+    }
+  }
+  testID={undefined}
+>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "color": "#FFF",
+      }
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    Add a location or enable location services
+  </Text>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "marginTop": 30,
+        "opacity": 1,
+        "position": "relative",
+        "width": 40,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Image
+      accessibilityLabel={undefined}
+      accessible={undefined}
+      blurRadius={undefined}
+      capInsets={undefined}
+      defaultSource={undefined}
+      onError={undefined}
+      onLayout={undefined}
+      onLoad={undefined}
+      onLoadEnd={undefined}
+      onLoadStart={undefined}
+      onPartialLoad={undefined}
+      onProgress={undefined}
+      resizeMethod={undefined}
+      resizeMode={undefined}
+      source={
+        Object {
+          "testUri": "../../../assets/addIcon.png",
+        }
+      }
+      style={
+        Object {
+          "alignSelf": "center",
+          "height": 30,
+          "resizeMode": "contain",
+          "width": "100.00%",
+        }
+      }
+      testID={undefined}
+    />
+  </View>
+</View>
+`;
