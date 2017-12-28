@@ -29,23 +29,26 @@ class Location extends Component { // eslint-disable-line
       lng,
       icon,
       day,
-      action,
       id,
-      index,
       activeLocation,
     } = this.props;
 
     let item = null;
-    const selected = index === activeLocation;
+    const selected = id === activeLocation;
 
     return (
       <SwipeRow
-        disableLeftSwipe={!action}
+        disableLeftSwipe={id !== 0}
         ref={ref => item = ref}
-        key={icon}
+        key={id}
         onRowPress={() => {
-          this.props.dispatch(locationActions.setActiveLocation(index, lat, lng));
+          this.props.dispatch(locationActions.setActiveLocation(id, lat, lng));
           item.closeRow();
+        }}
+        onRowOpen={() => {
+          setTimeout(() => {
+            item.closeRow();
+          }, 2000);
         }}
         stopRightSwipe={-40}
         style={styles.container}
@@ -73,14 +76,12 @@ class Location extends Component { // eslint-disable-line
 
 Location.propTypes = {
   id: PropTypes.number,
-  action: PropTypes.bool,
   name: PropTypes.string,
   icon: PropTypes.string,
   lat: PropTypes.number,
   lng: PropTypes.number,
   day: PropTypes.bool,
   dispatch: PropTypes.func,
-  index: PropTypes.number,
   activeLocation: PropTypes.number,
 };
 

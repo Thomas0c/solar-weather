@@ -24,6 +24,8 @@ export default class LocationOverview extends Component { // eslint-disable-line
       nextProps.day !== this.props.day;
   }
 
+  _keyExtractor = (item, index) => { console.log(item); return item.id };
+
   render() {
     const {
       locations,
@@ -32,34 +34,32 @@ export default class LocationOverview extends Component { // eslint-disable-line
       activeLocation,
     } = this.props;
 
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
-    const locs = ds.cloneWithRows(locations.sort((a, b) => a.id - b.id));
+    const locs = locations.sort((a, b) => a.id - b.id);
+    console.log(locs);
+    console.log(Array.from(locs));
 
     return (
       <View style={styles.main}>
         <View style={styles.shadow} />
         <View style={styles.listContainer}>
           <SwipeListView
+            useFlatList
+            keyExtractor={this._keyExtractor.bind(this)}
+            previewRowKey={locs[0].key}
             disableLeftSwipe
             closeOnScroll
-            closeOnRowBeginSwipe
-            previewFirstRow
             style={styles.listView}
-            dataSource={locs}
-            renderRow={(loc, sectionId, rowId) => (
+            data={locs}
+            renderItem={loc => (
               <Location
-                action={loc.id !== 0}
-                id={loc.id}
-                lat={loc.lat}
-                lng={loc.lng}
+                id={loc.item.id}
+                lat={loc.item.lat}
+                lng={loc.item.lng}
                 day={day}
-                key={loc.id}
-                index={parseInt(rowId, 10)}
+                key={loc.item.id}
                 activeLocation={activeLocation}
-                name={loc.name}
-                icon={loc.currently.icon}
+                name={loc.item.name}
+                icon={loc.item.currently.icon}
               />
             )}
           />
