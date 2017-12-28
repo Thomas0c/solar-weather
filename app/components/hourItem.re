@@ -6,7 +6,13 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "hour": style([width(Pct(7.65)), alignItems(Center), height(Pct(100.))]),
+        "hour":
+          style([
+            height(Pct(100.)),
+            paddingLeft(Pt(15.)),
+            paddingRight(Pt(15.)),
+            alignItems(Center)
+          ]),
         "hourText":
           style([
             textAlign(Center),
@@ -17,7 +23,7 @@ let styles =
         "image":
           style([
             alignSelf(Center),
-            width(Pct(90.)),
+            width(Pct(170.)),
             marginTop(Pt((-5.))),
             resizeMode(Contain)
           ]),
