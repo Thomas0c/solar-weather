@@ -6,7 +6,7 @@ import moment from 'moment';
 import {
   StyleSheet,
   Animated,
-  ListView,
+  FlatList,
   Dimensions,
 } from 'react-native';
 
@@ -15,11 +15,10 @@ import HourItem from '../../lib/js/app/components/hourItem';
 import { appColors } from '../config/general.config';
 
 export default class HourForecast extends Component { // eslint-disable-line
-  constructor(props) {
-    super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+  constructor() {
+    super();
     this.state = {
-      dataSource: ds.cloneWithRows([]),
+      forecast: [],
       bottomAnim: new Animated.Value(-Dimensions.get('window').height / 10),
     };
   }
@@ -35,7 +34,7 @@ export default class HourForecast extends Component { // eslint-disable-line
       this.animateBottom();
     }
     if (nextProps.locationName !== locationName) {
-      _scrollView.scrollTo({ x: 0, y: 0, animated: true });
+      _scrollView.scrollToOffset({ x: 0, y: 0, animated: true });
     }
 
     if (this.props.forecast !== nextProps.forecast
@@ -45,7 +44,7 @@ export default class HourForecast extends Component { // eslint-disable-line
           .filter(x => moment.unix(x.time).isAfter(moment()));
 
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(filteredForecast),
+        forecast: filteredForecast,
       });
     }
   }
@@ -78,27 +77,26 @@ export default class HourForecast extends Component { // eslint-disable-line
           bottom: this.state.bottomAnim,
         }}
       >
-        <ListView
+        <FlatList
           ref={(scrollView) => { _scrollView = scrollView; }}
           horizontal
           pagingEnabled
-          style={{ flex: 1 }}
-          contentContainerStyle={[styles.container, { minWidth: `${forecast.length * 15}%` }]}
+          contentContainerStyle={[styles.container, { width: `${forecast.length * 15}%` }]}
           enableEmptySections
           showsHorizontalScrollIndicator={false}
           bounces={false}
           directionalLockEnabled
-          dataSource={this.state.dataSource}
-          renderRow={rowData => (
+          data={this.state.forecast}
+          renderItem={rowData => (
             <HourItem
               unit={unit}
               timeType={timeType}
               timezone={timezone}
-              temperature={rowData.temperature}
-              icon={rowData.icon}
-              time={rowData.time}
-              rowId={moment(rowData.time).unix()}
-              key={moment(rowData.time).unix()}
+              temperature={rowData.item.temperature}
+              icon={rowData.item.icon}
+              time={rowData.item.time}
+              rowId={moment(rowData.item.time).unix()}
+              key={moment(rowData.item.time).unix()}
             />
           )}
         />
@@ -119,11 +117,7 @@ HourForecast.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
     height: '100%',
     backgroundColor: appColors.opaqueBlack,
-    position: 'relative',
   },
 });
