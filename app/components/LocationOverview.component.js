@@ -24,7 +24,7 @@ export default class LocationOverview extends Component { // eslint-disable-line
       nextProps.day !== this.props.day;
   }
 
-  _keyExtractor = (item, index) => { console.log(item); return item.id };
+  _keyExtractor = (item, index) => { return index };
 
   render() {
     const {
@@ -35,8 +35,6 @@ export default class LocationOverview extends Component { // eslint-disable-line
     } = this.props;
 
     const locs = locations.sort((a, b) => a.id - b.id);
-    console.log(locs);
-    console.log(Array.from(locs));
 
     return (
       <View style={styles.main}>
@@ -44,22 +42,22 @@ export default class LocationOverview extends Component { // eslint-disable-line
         <View style={styles.listContainer}>
           <SwipeListView
             useFlatList
-            keyExtractor={this._keyExtractor.bind(this)}
-            previewRowKey={locs[0].key}
+            keyExtractor={this._keyExtractor}
             disableLeftSwipe
             closeOnScroll
             style={styles.listView}
             data={locs}
-            renderItem={loc => (
+            renderItem={({item, index}) => (
               <Location
-                id={loc.item.id}
-                lat={loc.item.lat}
-                lng={loc.item.lng}
+                id={item.id}
+                lat={item.lat}
+                lng={item.lng}
+                index={index}
                 day={day}
-                key={loc.item.id}
+                key={item.id}
                 activeLocation={activeLocation}
-                name={loc.item.name}
-                icon={loc.item.currently.icon}
+                name={item.name}
+                icon={item.currently.icon}
               />
             )}
           />
