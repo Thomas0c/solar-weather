@@ -27,6 +27,7 @@ class Location extends Component { // eslint-disable-line
       name,
       lat,
       lng,
+      index,
       icon,
       day,
       id,
@@ -34,7 +35,7 @@ class Location extends Component { // eslint-disable-line
     } = this.props;
 
     let item = null;
-    const selected = id === activeLocation;
+    const selected = index === activeLocation;
 
     return (
       <SwipeRow
@@ -79,6 +80,7 @@ Location.propTypes = {
   name: PropTypes.string,
   icon: PropTypes.string,
   lat: PropTypes.number,
+  index: PropTypes.number,
   lng: PropTypes.number,
   day: PropTypes.bool,
   dispatch: PropTypes.func,
