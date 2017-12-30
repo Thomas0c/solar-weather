@@ -24,7 +24,8 @@ let styles =
             height(Pt(50.)),
             color(Config.AppColors.darkGrey),
             flex(1.),
-            fontSize(Float(15.))
+            fontSize(Float(16.)),
+            fontFamily("HelveticaNeue")
           ])
       }
     )
@@ -42,6 +43,7 @@ let make = (~onChange, _children) => {
         selectionColor=Config.AppColors.darkGrey
         spellCheck=false
         autoFocus=true
+        maxLength=40
         autoCorrect=false
         onChangeText=onChange
       />

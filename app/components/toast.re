@@ -55,7 +55,8 @@ let make =
       Js.Global.setTimeout(
         () => Animation.animate(state.topAnim, (-100.)),
         5000
-      );
+      )
+      |> ignore;
       state
     } else {
       state
