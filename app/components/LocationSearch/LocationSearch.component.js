@@ -5,7 +5,7 @@ import RNGooglePlaces from 'react-native-google-places';
 import { connect } from 'react-redux';
 
 import {
-  ListView,
+  FlatList,
   Image,
 } from 'react-native';
 
@@ -17,27 +17,33 @@ import LocationSearchHeader from '../../../lib/js/app/components/LocationSearch/
 class LocationSearch extends PureComponent { // eslint-disable-line
   constructor() {
     super();
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       search: '',
-      ds,
-      predictions: ds.cloneWithRows([]),
+      predictions: [],
     };
   }
 
+  componentWillReceiveProps() {
+    const { search, predictions } = this.state;
+    if (!this.props.visible && search.length > 0) {
+      this.setState({
+        search: '',
+        predictions: [],
+      });
+    }
+  }
+
   getLocations(search) {
+    const { predictions } = this.state;
     this.setState({
       search,
+      predictions: this.state.search.length < 2 && predictions.length > 0 ? [] : predictions,
     }, () => {
-      if (this.state.search.length < 2) {
-        this.setState({
-          predictions: this.state.predictions.cloneWithRows([]),
-        });
-      } else if (this.state.search.length > 1) {
+      if (this.state.search.length > 1) {
         RNGooglePlaces.getAutocompletePredictions(this.state.search, {
           type: 'cities',
         }).then(results => this.setState({
-          predictions: this.state.predictions.cloneWithRows(results),
+          predictions: results,
         })).catch(error => console.log(error.message));
       }
     });
@@ -47,7 +53,6 @@ class LocationSearch extends PureComponent { // eslint-disable-line
     RNGooglePlaces.lookUpPlaceByID(loc)
       .then((place) => {
         this.props.toggleView();
-        this.state.predictions = this.state.ds.cloneWithRows([]);
         this.props.dispatch(locationActions.addNewLocation({
           lat: place.latitude,
           lng: place.longitude,
@@ -56,6 +61,14 @@ class LocationSearch extends PureComponent { // eslint-disable-line
       }).catch(error => console.log(error.message));
   }
 
+  _keyExtractor = (item, index) => { return index };
+
+  renderHeader = () => {
+    return (<LocationSearchHeader
+      onChange={text => this.getLocations(text)}
+    />);
+  };
+
   render() {
     const { visible, toggleView } = this.props;
     return (
@@ -63,23 +76,22 @@ class LocationSearch extends PureComponent { // eslint-disable-line
         visible={visible}
         toggleView={toggleView}
         content={
-          <ListView
+          <FlatList
             keyboardShouldPersistTaps="always"
             scrollEnabled={false}
             enableEmptySections
-            dataSource={this.state.predictions}
-            renderRow={
-              rowData =>
+            data={this.state.predictions}
+            keyExtractor={this._keyExtractor}
+            renderItem={({ item }) =>
                 (<LocationSearchRow
-                  primaryText={rowData.primaryText}
-                  secondaryText={rowData.secondaryText}
+                  primaryText={item.primaryText}
+                  secondaryText={item.secondaryText}
                   handleTap={e => this.LookUpPlace(e)}
-                  id={rowData.placeID}
+                  id={item.placeID}
                 />)
               }
-            renderHeader={() =>
-              <LocationSearchHeader onChange={text => this.getLocations(text)} />}
-            renderFooter={() => (
+            ListHeaderComponent={this.renderHeader}
+            ListFooterComponent={() => (
               <Image
                 style={imageStyle}
                 source={require('../../../assets/pwdgoogle.png')}
