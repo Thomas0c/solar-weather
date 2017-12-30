@@ -14,6 +14,9 @@ let convertToTimeZoneAndString = (time, timezone, format) : string =>
 
 let convertToString = (format: string) => Moment.format(format);
 
+let isAfterCurrent = (time: int) =>
+  Moment.isAfter(momentWithUnix(time), momentNow());
+
 let setToStartOf =
     (
       start: [

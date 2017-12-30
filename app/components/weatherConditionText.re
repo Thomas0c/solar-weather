@@ -1,7 +1,5 @@
 open BsReactNative;
 
-let easeIn = (x) => x *. x *. x;
-
 type state = {fadeAnim: Animated.Value.t};
 
 type retainedProps = {

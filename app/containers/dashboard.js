@@ -22,7 +22,7 @@ import Background from '../../lib/js/app/components/background';
 import DateDisplay from '../../lib/js/app/components/dateDisplay';
 import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
-import HourForecast from '../components/HourForecast.component';
+import HourForecastList from '../../lib/js/app/components/hourForecastList';
 import LeftSidebar from '../components/LeftSidebar';
 import LocationDisplay from '../../lib/js/app/components/locationDisplay';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
@@ -391,13 +391,11 @@ class Dashboard extends PureComponent {
             alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
             currently={activeLocation && activeLocation.currently ? activeLocation.currently : null}
           />
-          <HourForecast
+          <HourForecastList
             timeType={timeType}
-            toggle
             forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
             openHours={openHours}
             unit={unit}
-            anyLocation={anyLocation}
             timezone={timezone}
             locationName={activeLocation ? activeLocation.name : ''}
           />

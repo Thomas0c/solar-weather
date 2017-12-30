@@ -43,7 +43,7 @@ class Location extends Component { // eslint-disable-line
         ref={ref => item = ref}
         key={id}
         onRowPress={() => {
-          this.props.dispatch(locationActions.setActiveLocation(id, lat, lng));
+          this.props.dispatch(locationActions.setActiveLocation(index, lat, lng));
           item.closeRow();
         }}
         onRowOpen={() => {
