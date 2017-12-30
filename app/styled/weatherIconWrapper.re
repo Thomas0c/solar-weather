@@ -18,4 +18,4 @@ let make = (children) => {
     </View>
 };
 
-let default = ReasonReact.wrapReasonForJs(~component, (jsProps) => make([||]));
+let default = ReasonReact.wrapReasonForJs(~component, (_) => make([||]));

@@ -117,7 +117,7 @@ let make =
       ~resetOnboarding,
       _children
     ) => {
-  let handleClick = (url: string) => {
+  let handleClick = (url: string) =>
     Linking.canOpenURL(url)
     |> Js.Promise.then_(
          (a) =>
@@ -125,9 +125,8 @@ let make =
            | true => Linking.openURL(url)
            | _ => Js.Promise.resolve()
            }
-       );
-    ()
-  };
+       )
+    |> ignore;
   {
     ...component,
     render: (_self) =>
