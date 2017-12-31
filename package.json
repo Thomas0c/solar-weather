@@ -14,7 +14,6 @@
 		"immutable": "^3.8.2",
 		"moment": "^2.19.1",
 		"moment-timezone": "^0.5.14",
-		"polished": "^1.8.2",
 		"prop-types": "^15.6.0",
 		"ramda": "^0.25.0",
 		"react": "16.0.0",
@@ -28,8 +27,7 @@
 		"react-redux": "^5.0.6",
 		"realm": "^2.0.4",
 		"redux": "^3.7.2",
-		"redux-thunk": "^2.2.0",
-		"styled-components": "^2.2.3"
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

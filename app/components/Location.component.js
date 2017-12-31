@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SwipeRow } from 'react-native-swipe-list-view';
-import { darken } from 'polished';
 
 import {
   StyleSheet,
@@ -39,7 +38,7 @@ class Location extends Component { // eslint-disable-line
 
     return (
       <SwipeRow
-        disableLeftSwipe={id !== 0}
+        disableLeftSwipe={id === 0}
         ref={ref => item = ref}
         key={id}
         onRowPress={() => {
