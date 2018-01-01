@@ -41,7 +41,7 @@ exports[`renders correctly when showDetails is false 1`] = `
     selectionColor={undefined}
     style={
       Object {
-        "color": "#EFEFEF",
+        "color": "#FFF",
         "lineHeight": 25,
       }
     }
@@ -95,7 +95,7 @@ exports[`renders correctly when showDetails is true 1`] = `
     selectionColor={undefined}
     style={
       Object {
-        "color": "#EFEFEF",
+        "color": "#FFF",
         "lineHeight": 25,
       }
     }

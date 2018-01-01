@@ -24,7 +24,7 @@ exports[`renders correctly when showAlert is false 1`] = `
         "marginBottom": 20,
       },
       Object {
-        "color": "#EFEFEF",
+        "color": "#FFF",
       },
     ]
   }
@@ -60,7 +60,7 @@ exports[`renders correctly when showAlert is true 1`] = `
         "marginBottom": 20,
       },
       Object {
-        "color": "#EFEFEF",
+        "color": "#FFF",
       },
     ]
   }

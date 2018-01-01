@@ -161,7 +161,7 @@ exports[`renders correctly when selected 1`] = `
         "width": "100.00%",
       },
       Object {
-        "backgroundColor": "#adb3b4",
+        "backgroundColor": "#9a9fa0",
       },
     ]
   }
