@@ -9,17 +9,23 @@ let styles =
         "container":
           style([
             alignItems(Center),
-            height(Pt(134.)),
+            height(Pt(121.)),
             justifyContent(FlexStart),
             position(Relative),
-            width(Pct(100.))
+            width(Pct(90.)),
+            shadowColor(Config.AppColors.black),
+            shadowOffset(~height=1., ~width=1.),
+            shadowRadius(2.),
+            shadowOpacity(0.1),
+            marginTop(Pt(10.)),
+            elevation(1.1)
           ]),
         "image":
           style([
             alignSelf(Center),
             width(Pct(50.)),
             resizeMode(Contain),
-            marginTop(Pt(12.))
+            marginTop(Pt(5.))
           ]),
         "dayTitle":
           style([
@@ -34,17 +40,19 @@ let styles =
             color(Config.AppColors.darkGrey),
             fontFamily("Baskerville"),
             height(Pt(35.)),
-            backgroundColor(Config.AppColors.lightGrey)
+            backgroundColor(Config.AppColors.white)
           ]),
         "dayHighTemp":
           style([
             fontWeight(`Bold),
+            marginTop(Pt((-5.))),
             color(Config.AppColors.white),
             fontSize(Float(14.))
           ]),
         "dayLowTemp":
           style([
             fontSize(Float(10.)),
+            marginTop(Pt((-5.))),
             color(Config.AppColors.white),
             fontWeight(`_400)
           ]),
@@ -53,7 +61,7 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             alignItems(Center),
-            justifyContent(Center),
+            justifyContent(FlexStart),
             backgroundColor(Config.AppColors.lightGrey)
           ]),
         "shadow":
@@ -73,8 +81,8 @@ let styles =
 let make = (~forecast, ~unit, ~timezone, _children) => {
   ...component,
   render: (_self) => {
-    let days =
-      List.map(
+    let arrDays =
+      Array.map(
         (item) => {
           let date =
             Time.convertToTimeZoneAndString(item##time, timezone, "dddd");
@@ -116,9 +124,9 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
               <Image style=styles##image source=iconSource />
             </WeatherIconWrapper>
             <Text style=styles##dayHighTemp>
-              (ReasonReact.stringToElement(tempMax ++ "\176"))
+              (ReasonReact.stringToElement({j|$tempMax°|j}))
               <Text style=styles##dayLowTemp>
-                (ReasonReact.stringToElement(" / " ++ tempMin ++ "\176"))
+                (ReasonReact.stringToElement({j| / $tempMin°|j}))
               </Text>
             </Text>
             <Text style=styles##dayTitle>
@@ -126,13 +134,12 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
             </Text>
           </View>
         },
-        Array.to_list(forecast)
+        forecast
       )
-      |> Array.of_list
       |> ReasonReact.arrayToElement;
     <View style=styles##generalContainer>
       <View style=styles##shadow />
-      days
+      arrDays
     </View>
   }
 };

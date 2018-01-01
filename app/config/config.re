@@ -1,6 +1,7 @@
 [@bs.val] external requireAssetURI : string => string = "require";
 
 let units = ["c", "f"];
+
 let timeTypes = ["24", "12"];
 
 module AppColors = {
