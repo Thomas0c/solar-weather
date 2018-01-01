@@ -36,7 +36,7 @@ let make = (~selected: Js.boolean, ~icon, ~day, ~name, _children) => {
     let reSelected = Js.to_bool(selected);
     let background =
       reSelected ?
-        Colors.shadeColor(Colors.identifyBackground(icon, day), (-10)) :
+        Colors.shadeColor(Colors.identifyBackground(icon, day), (-20)) :
         Config.AppColors.lightGrey;
     let fontColor =
       reSelected ? Config.AppColors.lightGrey : Config.AppColors.darkGrey;

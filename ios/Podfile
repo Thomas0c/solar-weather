@@ -10,6 +10,8 @@ target 'solar' do
   pod 'GoogleMaps'
   pod 'GooglePlacePicker'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'solarTests' do
     inherit! :search_paths
     # Pods for testing

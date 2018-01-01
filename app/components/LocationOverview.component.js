@@ -17,7 +17,6 @@ import Location from './Location.component';
 import { appColors } from '../config/general.config';
 
 export default class LocationOverview extends Component { // eslint-disable-line
-
   shouldComponentUpdate(nextProps) {
     return !R.equals(nextProps.locations[0], this.props.locations[0]) ||
       nextProps.activeLocation !== this.props.activeLocation ||

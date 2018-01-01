@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'react-native-drawer';
-
 import WeekOverview from '../../lib/js/app/components/weekOverview';
+
+const Config = require('../config/general.config');
 
 export default class LeftSidebar extends Component { // eslint-disable-line
   render() {
@@ -27,6 +28,9 @@ export default class LeftSidebar extends Component { // eslint-disable-line
         onCloseStart={onCloseLeftSide}
         open={openLeft}
         type="static"
+        tweenHandler={ratio => Config.drawerTweenHandler(ratio)}
+        styles={Config.drawerStyles}
+        elevation={1.1}
         content={
           <WeekOverview
             forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
@@ -39,7 +43,6 @@ export default class LeftSidebar extends Component { // eslint-disable-line
         openDrawerOffset={0.5}
         closedDrawerOffset={0}
         panOpenMask={0.2}
-        tweenHandler={Drawer.tweenPresets.parallax}
       >
         {children}
       </Drawer>

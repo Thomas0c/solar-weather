@@ -62,12 +62,12 @@ let styles =
             height(Pct(100.)),
             alignItems(Center),
             justifyContent(FlexEnd),
-            backgroundColor(Config.AppColors.lightGrey)
+            backgroundColor(Config.AppColors.medGrey)
           ]),
         "shadow":
           style([
-            width(Pt(2.)),
-            backgroundColor(Config.AppColors.opaqueBlack10),
+            width(Pt(1.)),
+            backgroundColor(Config.AppColors.opaqueBlack),
             position(Absolute),
             right(Pt(0.)),
             top(Pt(0.)),

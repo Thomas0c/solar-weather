@@ -5,6 +5,8 @@ import Drawer from 'react-native-drawer';
 
 import LocationOverview from './LocationOverview.component';
 
+const Config = require('../config/general.config');
+
 export default class RightSidebar extends Component { // eslint-disable-line
   render() {
     const {
@@ -30,13 +32,15 @@ export default class RightSidebar extends Component { // eslint-disable-line
         onOpen={onOpenRightSide}
         onClose={onCloseRightSide}
         negotiatePan
-        tweenHandler={Drawer.tweenPresets.parallax}
+        tweenHandler={ratio => Config.drawerTweenHandler(ratio)}
+        styles={Config.drawerStyles}
         panOpenMask={0.2}
         initializeOpen={false}
         closedDrawerOffset={0}
         openDrawerOffset={0.5}
         panThreshold={0.1}
         side="right"
+        elevation={1.1}
         content={
           <LocationOverview
             day={dayTime}
