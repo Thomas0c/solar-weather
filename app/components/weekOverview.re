@@ -17,7 +17,7 @@ let styles =
             shadowOffset(~height=1., ~width=1.),
             shadowRadius(2.),
             shadowOpacity(0.1),
-            marginTop(Pt(10.)),
+            marginBottom(Pt(10.)),
             elevation(1.1)
           ]),
         "image":
@@ -61,7 +61,7 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             alignItems(Center),
-            justifyContent(FlexStart),
+            justifyContent(FlexEnd),
             backgroundColor(Config.AppColors.lightGrey)
           ]),
         "shadow":

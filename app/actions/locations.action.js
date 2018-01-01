@@ -4,6 +4,8 @@ import moment from 'moment';
 import * as types from './actionTypes';
 import realm from '../realm';
 
+const R = require('ramda');
+
 // Utilities
 const forecastRequest = async (lat, lng) =>
   axios(`https://api.darksky.net/forecast/${Config.FORECAST_API}/${lat},${lng}`, {
@@ -64,11 +66,11 @@ const forecastResponseExtended = (location, res, id) => {
       daily: {
         summary: daily.summary,
         icon: daily.icon,
-        data: daily.data.filter((item) => {
+        data: R.uniq(daily.data.filter((item) => {
           const isAfter = moment.unix(item.time).isAfter(followingDay);
           const isBefore = moment.unix(item.time).isBefore(fiveDaysFromNow);
           return isAfter && isBefore;
-        }).slice(0, 5),
+        }).slice(0, 5)),
       },
     },
   );
