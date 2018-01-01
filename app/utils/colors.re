@@ -29,7 +29,7 @@ let colors = {
 };
 
 let identifyFontColor = (condition: string) =>
-  condition === "snow" ? colors##darkGrey : colors##subtleGrey;
+  condition === "snow" ? colors##darkGrey : colors##white;
 
 let shadeColor = (color: string, amount: int) => {
   let r = int_of_string("0x" ++ Js.String.substring(~from=1, ~to_=3, color));
