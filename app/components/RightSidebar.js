@@ -32,6 +32,7 @@ export default class RightSidebar extends Component { // eslint-disable-line
         onOpen={onOpenRightSide}
         onClose={onCloseRightSide}
         negotiatePan
+        tweenEasing="easeInOutSine"
         tweenHandler={ratio => Config.drawerTweenHandler(ratio)}
         styles={Config.drawerStyles}
         panOpenMask={0.2}

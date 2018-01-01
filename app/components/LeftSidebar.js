@@ -28,6 +28,7 @@ export default class LeftSidebar extends Component { // eslint-disable-line
         onCloseStart={onCloseLeftSide}
         open={openLeft}
         type="static"
+        tweenEasing="easeInOutSine"
         tweenHandler={ratio => Config.drawerTweenHandler(ratio)}
         styles={Config.drawerStyles}
         elevation={1.1}
