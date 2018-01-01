@@ -36,7 +36,7 @@ let styles =
             position(Absolute),
             textAlign(Center),
             bottom(Pt(0.)),
-            paddingTop(Pt(9.)),
+            paddingTop(Pt(10.)),
             color(Config.AppColors.darkGrey),
             fontFamily("Baskerville"),
             height(Pt(35.)),
@@ -67,7 +67,7 @@ let styles =
         "shadow":
           style([
             width(Pt(2.)),
-            backgroundColor(Config.AppColors.opaqueBlack),
+            backgroundColor(Config.AppColors.opaqueBlack10),
             position(Absolute),
             right(Pt(0.)),
             top(Pt(0.)),

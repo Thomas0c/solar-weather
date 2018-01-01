@@ -6,6 +6,7 @@ let timeTypes = ["24", "12"];
 
 module AppColors = {
   let red = "#E77F6D";
+  let opaqueBlack15 = "rgba(0, 0, 0, 0.15)";
   let opaqueBlack = "rgba(0, 0, 0, 0.2)";
   let opaqueBlack70 = "rgba(0, 0, 0, 0.7)";
   let lightGrey = "#EFEFEF";
