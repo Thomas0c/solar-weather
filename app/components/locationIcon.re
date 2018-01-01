@@ -11,17 +11,21 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             alignItems(Center),
+            position(Relative),
             justifyContent(Center),
             alignSelf(Center)
           ]),
-        "dayTitle": style([fontSize(Float(16.)), fontFamily("Baskerville")]),
-        "image":
+        "dayTitle":
           style([
-            alignSelf(Center),
-            marginTop(Pct(2.)),
-            width(Pct(55.)),
-            resizeMode(Contain)
-          ])
+            width(Pct(100.)),
+            height(Pt(30.)),
+            textAlign(Center),
+            color(Config.AppColors.darkGrey),
+            fontSize(Float(16.)),
+            fontFamily("Baskerville")
+          ]),
+        "image":
+          style([alignSelf(Center), width(Pct(55.)), resizeMode(Contain)])
       }
     )
   );
@@ -35,7 +39,7 @@ let make = (~selected: Js.boolean, ~icon, ~day, ~name, _children) => {
         Colors.shadeColor(Colors.identifyBackground(icon, day), (-10)) :
         Config.AppColors.lightGrey;
     let fontColor =
-      reSelected ? Config.AppColors.white : Config.AppColors.darkGrey;
+      reSelected ? Config.AppColors.lightGrey : Config.AppColors.darkGrey;
     let iconName = reSelected ? icon ++ "_white" : icon;
     let icon = Icons.identifyIcon(iconName);
     let iconSource: Image.imageSource =
@@ -52,13 +56,13 @@ let make = (~selected: Js.boolean, ~icon, ~day, ~name, _children) => {
       style=Style.(
               concat([styles##main, style([backgroundColor(background)])])
             )>
+      <WeatherIconWrapper>
+        <Image style=styles##image source=iconSource />
+      </WeatherIconWrapper>
       <Text
         style=Style.(concat([styles##dayTitle, style([color(fontColor)])]))>
         (ReasonReact.stringToElement(name))
       </Text>
-      <WeatherIconWrapper>
-        <Image style=styles##image source=iconSource />
-      </WeatherIconWrapper>
     </View>
   }
 };
