@@ -26,7 +26,7 @@ let styles =
     )
   );
 
-let make = (~summary, ~showAlert, ~icon, ~toggleAlert, _children) => {
+let make = (~summary, ~showAlert: bool, ~icon, ~toggleAlert, _children) => {
   ...component,
   render: (_self) => {
     let fontColor = Colors.identifyFontColor(icon);

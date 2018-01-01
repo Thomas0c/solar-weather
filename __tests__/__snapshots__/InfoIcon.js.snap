@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      Object {
+        "height": 20,
+        "position": "absolute",
+        "right": 15,
+        "top": 15,
+        "width": 20,
+        "zIndex": 3,
+      },
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <Image
+    accessibilityLabel={undefined}
+    accessible={undefined}
+    blurRadius={undefined}
+    capInsets={undefined}
+    defaultSource={undefined}
+    onError={undefined}
+    onLayout={undefined}
+    onLoad={undefined}
+    onLoadEnd={undefined}
+    onLoadStart={undefined}
+    onPartialLoad={undefined}
+    onProgress={undefined}
+    resizeMethod={undefined}
+    resizeMode={undefined}
+    source={
+      Object {
+        "testUri": "../../../assets/infoIcon.png",
+      }
+    }
+    style={
+      Object {
+        "height": 20,
+        "width": 20,
+      }
+    }
+    testID={undefined}
+  />
+</View>
+`;

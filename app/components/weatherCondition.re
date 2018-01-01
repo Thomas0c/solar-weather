@@ -77,7 +77,7 @@ let make =
         Temperature.fixTemperature(precipProbability *. 100.) : "0";
     let precip =
       precipProbability > 0.3 ?
-        "Chance of " ++ precipType ++ ": " ++ precipNumberText ++ "%" : "";
+        {j|Chance of $precipType: $precipNumberText%|j} : "";
     let tempFloat =
       switch (unit, currently) {
       | ("c", Some(t)) => t##temperature
