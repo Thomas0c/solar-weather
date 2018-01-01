@@ -4,38 +4,44 @@
     Solar
   </h1>
   <p>
-   A personal project exploring React Native, Realm, Redux & Styled Components (iOS only).
-  </p>
-  <p>
-    Currently working on converting the project to ReasonML / Reason React - follow the progress in the <br /><a href="https://github.com/Thomas0c/solar-weather/tree/feature/reason-react">feature/reason-react</a>.
+   A personal project exploring React Native, Realm, Redux & ReasonReact. (iOS only - for now).
   </p>
 </div>
+
+[![CircleCI](https://circleci.com/gh/Thomas0c/solar-weather/tree/feature%2Freason-react.svg?style=svg)](https://circleci.com/gh/Thomas0c/solar-weather/tree/feature%2Freason-react)
 
 ## Get Started
 - Make sure you have React Native installed [React Native Docs](https://facebook.github.io/react-native/docs/getting-started.html)
 - Make sure you have CocoaPods installed [CocoaPods](https://cocoapods.org/)
 - Clone repo
 - cd `solar`
-- `npm install` alternatively `yarn install`
+- Setup and install ReasonML and BuckleScript [Guide](https://reasonml.github.io/guide/editor-tools/global-installation/)
+- Run `npm install` alternatively `yarn install`
 - Create a `.env` file in the project root
 - Get a forecast.io API key and set `FORECAST_API=[key]` in `.env`
 - Get a Google Places for iOS API key and set `PLACES_API=[key]` in `.env`
 - Get a Google Servies for iOS API key and set `SERVICES_API=[key]` in `.env`
 - Navigate to ios folder, `cd ios` and run `pod install`
+- Compile ReasonReact components to js. Run `npm run build` or `yarn run build`
 - Run project using `react-native run-ios`
 
 ## About the project
-The project is a side-project built and maintained at night. It started as an exploration of React Native, Realm and Redux and has now found it's place on my home screen. I designed the application in Fall 2016, then built a prototype, and recently decided to try to build an actual working version that could not only benefit myself, but also others.
+Solar is a side-project created to challenge myself, explore new technologies/frameworks/languages while sharing the result. It started as an exploration of React Native, Realm and Redux. I then decided to convert the project file-by-file to [ReasonML](https://reasonml.github.io/reason-react/). I designed the application in Fall 2016, then built a prototype and then decided to try to build an actual working version that could not only benefit myself, but also others. Besides being on GitHub the actual application is also available in the iOS app store as `Solar Weather Collection`.
+
+#### Why ReasonReact?
+I wanted to explore a static and safe type system with a fairly familiar syntax. ReasonReact offers the ability to convert component-by-component, which is very convenient to slowly get familiar with syntax and mindset by taking on smaller parts of the codebase while converting to ReasonML. ReasonML is then compiled to JavaScript (using [BuckleScript](https://bucklescript.github.io/) backed by [OCaml](http://ocaml.org/)), which enables great interoperability.
 
 ## Features
 - [x] [RealmJS](https://github.com/realm/realm-js)
 - [x] [Redux](https://github.com/reactjs/redux)
 - [x] [Google Places Autocomplete](https://developers.google.com/places/web-service/autocomplete)
 - [x] [Forecast.io](http://expressjs.com/)
+- [x] [Jest Testing](https://facebook.github.io/jest/)
 - [x] [Styled Components](https://github.com/styled-components/styled-components)
 - [x] [React Native](https://facebook.github.io/react-native/)
 - [x] [React Native Config](https://github.com/luggit/react-native-config)
 - [x] [React Native Drawer](https://github.com/root-two/react-native-drawer)
+- [ ] WIP - [ReasonML Codebase](https://reasonml.github.io/reason-react/)
 
 ## Screenshots
 ![Example 1](https://raw.githubusercontent.com/Thomas0c/solar-weather/master/screenshots/screen_1.png)
