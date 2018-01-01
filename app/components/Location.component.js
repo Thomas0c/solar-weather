@@ -45,11 +45,6 @@ class Location extends Component { // eslint-disable-line
           this.props.dispatch(locationActions.setActiveLocation(index, lat, lng));
           item.closeRow();
         }}
-        onRowOpen={() => {
-          setTimeout(() => {
-            item.closeRow();
-          }, 2000);
-        }}
         stopRightSwipe={-40}
         style={styles.container}
         rightOpenValue={-40}

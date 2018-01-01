@@ -10,16 +10,31 @@ let styles =
           style([
             alignItems(Center),
             height(Pt(134.)),
-            justifyContent(Center),
+            justifyContent(FlexStart),
+            position(Relative),
             width(Pct(100.))
           ]),
         "image":
-          style([alignSelf(Center), width(Pct(54.)), resizeMode(Contain)]),
+          style([
+            alignSelf(Center),
+            width(Pct(50.)),
+            resizeMode(Contain),
+            marginTop(Pt(12.))
+          ]),
         "dayTitle":
           style([
+            borderRadius(2.),
             fontSize(Float(14.)),
-            color(Config.AppColors.white),
-            fontFamily("Baskerville")
+            width(Pct(100.)),
+            borderRadius(5.),
+            position(Absolute),
+            textAlign(Center),
+            bottom(Pt(0.)),
+            paddingTop(Pt(9.)),
+            color(Config.AppColors.darkGrey),
+            fontFamily("Baskerville"),
+            height(Pt(35.)),
+            backgroundColor(Config.AppColors.lightGrey)
           ]),
         "dayHighTemp":
           style([
@@ -97,9 +112,6 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
                       style([backgroundColor(background)])
                     ])
                   )>
-            <Text style=styles##dayTitle>
-              (ReasonReact.stringToElement(date))
-            </Text>
             <WeatherIconWrapper>
               <Image style=styles##image source=iconSource />
             </WeatherIconWrapper>
@@ -108,6 +120,9 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
               <Text style=styles##dayLowTemp>
                 (ReasonReact.stringToElement(" / " ++ tempMin ++ "\176"))
               </Text>
+            </Text>
+            <Text style=styles##dayTitle>
+              (ReasonReact.stringToElement(date))
             </Text>
           </View>
         },
