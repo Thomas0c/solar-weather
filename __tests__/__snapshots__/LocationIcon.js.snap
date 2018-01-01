@@ -26,6 +26,7 @@ exports[`renders correctly when not selected 1`] = `
         "alignSelf": "center",
         "height": "100.00%",
         "justifyContent": "center",
+        "position": "relative",
         "width": "100.00%",
       },
       Object {
@@ -35,36 +36,6 @@ exports[`renders correctly when not selected 1`] = `
   }
   testID={undefined}
 >
-  <Text
-    accessible={true}
-    adjustsFontSizeToFit={undefined}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    minimumFontScale={undefined}
-    numberOfLines={undefined}
-    onLayout={undefined}
-    onLongPress={undefined}
-    onPress={undefined}
-    pressRetentionOffset={undefined}
-    selectable={undefined}
-    selectionColor={undefined}
-    style={
-      Array [
-        Object {
-          "fontFamily": "Baskerville",
-          "fontSize": 16,
-        },
-        Object {
-          "color": "#343434",
-        },
-      ]
-    }
-    suppressHighlighting={undefined}
-    testID={undefined}
-    textBreakStrategy={undefined}
-  >
-    Tokyo
-  </Text>
   <View
     accessibilityComponentType={undefined}
     accessibilityLabel={undefined}
@@ -116,7 +87,6 @@ exports[`renders correctly when not selected 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "marginTop": "2.00%",
           "resizeMode": "contain",
           "width": "55.00%",
         }
@@ -124,6 +94,40 @@ exports[`renders correctly when not selected 1`] = `
       testID={undefined}
     />
   </View>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Array [
+        Object {
+          "color": "#343434",
+          "fontFamily": "Baskerville",
+          "fontSize": 16,
+          "height": 30,
+          "textAlign": "center",
+          "width": "100.00%",
+        },
+        Object {
+          "color": "#343434",
+        },
+      ]
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    Tokyo
+  </Text>
 </View>
 `;
 
@@ -153,6 +157,7 @@ exports[`renders correctly when selected 1`] = `
         "alignSelf": "center",
         "height": "100.00%",
         "justifyContent": "center",
+        "position": "relative",
         "width": "100.00%",
       },
       Object {
@@ -162,36 +167,6 @@ exports[`renders correctly when selected 1`] = `
   }
   testID={undefined}
 >
-  <Text
-    accessible={true}
-    adjustsFontSizeToFit={undefined}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    minimumFontScale={undefined}
-    numberOfLines={undefined}
-    onLayout={undefined}
-    onLongPress={undefined}
-    onPress={undefined}
-    pressRetentionOffset={undefined}
-    selectable={undefined}
-    selectionColor={undefined}
-    style={
-      Array [
-        Object {
-          "fontFamily": "Baskerville",
-          "fontSize": 16,
-        },
-        Object {
-          "color": "#FFF",
-        },
-      ]
-    }
-    suppressHighlighting={undefined}
-    testID={undefined}
-    textBreakStrategy={undefined}
-  >
-    Tokyo
-  </Text>
   <View
     accessibilityComponentType={undefined}
     accessibilityLabel={undefined}
@@ -243,7 +218,6 @@ exports[`renders correctly when selected 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "marginTop": "2.00%",
           "resizeMode": "contain",
           "width": "55.00%",
         }
@@ -251,5 +225,39 @@ exports[`renders correctly when selected 1`] = `
       testID={undefined}
     />
   </View>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Array [
+        Object {
+          "color": "#343434",
+          "fontFamily": "Baskerville",
+          "fontSize": 16,
+          "height": 30,
+          "textAlign": "center",
+          "width": "100.00%",
+        },
+        Object {
+          "color": "#EFEFEF",
+        },
+      ]
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    Tokyo
+  </Text>
 </View>
 `;
