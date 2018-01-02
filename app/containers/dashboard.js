@@ -393,6 +393,7 @@ class Dashboard extends PureComponent {
           />
           <HourForecastList
             timeType={timeType}
+            updateLocations={this.updateLocationsAndSetTimestamp.bind(this)}
             forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
             openHours={openHours}
             unit={unit}
