@@ -18,12 +18,15 @@ import { appColors } from '../config/general.config';
 
 export default class LocationOverview extends Component { // eslint-disable-line
   shouldComponentUpdate(nextProps) {
-    return !R.equals(nextProps.locations[0], this.props.locations[0]) ||
+    return !R.equals(
+      nextProps.locations[0].last_updated,
+      this.props.locations[0].last_updated
+    ) ||
       nextProps.activeLocation !== this.props.activeLocation ||
       nextProps.day !== this.props.day;
   }
 
-  _keyExtractor = (item, index) => { return index };
+  _keyExtractor = item => { return item.id };
 
   render() {
     const {

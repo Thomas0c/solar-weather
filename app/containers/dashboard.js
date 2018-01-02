@@ -69,10 +69,9 @@ class Dashboard extends PureComponent {
   updateLocationsAndSetTimestamp() {
     const { locations } = this.props;
     const now = moment();
-    const latestUpdate = locations.locations.length > 0 &&
-      locations.locations[0].last_updated ?
-        locations.locations[0].last_updated :
-          moment().subtract(1, 'days');
+    const latestUpdate = locations.locations.length > 0 ?
+      locations.latestCollectiveUpdate :
+        moment().subtract(1, 'days');
 
     if (
       now.diff(latestUpdate, 'minutes') > 10 &&

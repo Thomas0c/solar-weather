@@ -3,6 +3,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   locations: [{
+    id: 1,
     currently: {
       icon: '',
       precipProbability: 0.00,
