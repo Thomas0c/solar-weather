@@ -47,7 +47,7 @@ let styles =
 let setSectionRef = (theRef, {ReasonReact.state}) =>
   state.scrollRef := Js.Nullable.to_opt(theRef);
 
-let keyExtractor = (_, index) => string_of_int(index);
+let keyExtractor = (item, _) => string_of_int(item##time);
 
 let renderItem = (unit, timeType, timezone) =>
   FlatList.renderItem(
