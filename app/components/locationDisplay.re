@@ -68,7 +68,11 @@ let make = (~locationName, ~onPress, ~loading, _children) => {
         <TouchableHighlight
           style=styles##touch onPress underlayColor="transparent">
           <Text style=styles##text>
-            (ReasonReact.stringToElement(currentLocation))
+            (
+              locationName === "" && ! loading ?
+                ReasonReact.stringToElement("") :
+                ReasonReact.stringToElement(currentLocation)
+            )
           </Text>
         </TouchableHighlight>
       </View>

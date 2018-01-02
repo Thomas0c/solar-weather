@@ -30,7 +30,6 @@ const getStoredLocations = () => {
 
 const forecastResponseExtended = (location, res, id) => {
   const newDate = new Date().getTime();
-  const adjustedId = typeof id !== 'number' ? newDate : id;
   const {
     data: {
       daily,
@@ -46,7 +45,7 @@ const forecastResponseExtended = (location, res, id) => {
   const followingDay = moment().tz(timezone).hour(0).add(0, 'days');
 
   return Object.assign(
-    { id: adjustedId },
+    { id },
     location,
     {
       last_updated: newDate,
@@ -87,13 +86,11 @@ const checkIndexExists = (locs, id) => {
 };
 
 const writeLocationToStore = (location, id) => {
-  const identity = typeof id === 'number' ? id : new Date().getTime();
-
   realm.write(() => {
     realm.create('Location', {
-      key: identity,
+      key: id,
       ...location,
-      id: identity,
+      id,
       last_updated: new Date(),
       created_at: new Date(),
     }, true);
@@ -240,7 +237,7 @@ export function addNewLocation(loc, index) {
       checkLocationExists(locs, loc.name) &&
       index !== 0
     ) {
-      dispatch(locationError('Location already added', types.ADD_LOCATION_ERROR));
+      dispatch(locationError('Location already exists', types.ADD_LOCATION_ERROR));
     } else if (
       index === 0 &&
       checkIndexExists(locs, index)
@@ -251,13 +248,14 @@ export function addNewLocation(loc, index) {
       !checkLocationExists(locs, loc.name)
     ) {
       try {
+        const uniqueID = index !== 0 ? new Date().getTime() : index;
         const forecast = await forecastRequest(loc.lat, loc.lng);
         const extendedLocation = forecastResponseExtended(
           loc,
           forecast,
-          index !== 0 ? null : index,
+          uniqueID,
         );
-        writeLocationToStore(extendedLocation, index !== 0 ? null : index);
+        writeLocationToStore(extendedLocation, uniqueID);
         dispatch(addLocation(extendedLocation));
         dispatch(setLocationSettings(index !== 0 ? locs.length : index));
       } catch (e) {

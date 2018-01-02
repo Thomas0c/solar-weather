@@ -73,10 +73,9 @@ export default function locations(state = initialState, action = {}) {
         loading: false,
       };
     case types.DELETE_LOCATION: // eslint-disable-line
-      const index = state.locations.map(e => e.id).indexOf(action.id);
       return {
         ...state,
-        locations: [...state.locations.slice(0, index), ...state.locations.slice(index + 1)],
+        locations: [...state.locations.filter(x => x.id !== action.id)],
         locationError: null,
         loading: false,
       };

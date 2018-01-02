@@ -58,6 +58,9 @@ let make =
       )
       |> ignore;
       state
+    } else if (! Js.to_bool(displayError)) {
+      Animation.animate(state.topAnim, (-100.));
+      state
     } else {
       state
     },
