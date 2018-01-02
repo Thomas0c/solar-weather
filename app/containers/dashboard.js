@@ -1,10 +1,7 @@
-import Drawer from 'react-native-drawer'
 import Geocoder from 'react-native-geocoder';
-import { bindActionCreators } from 'redux';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import axios from 'axios';
 import tz from 'moment-timezone';
 import PropTypes from 'prop-types';
 import Permissions from 'react-native-permissions';
@@ -33,16 +30,11 @@ import Toast from '../../lib/js/app/components/toast';
 import WeatherCondition from '../../lib/js/app/components/weatherCondition';
 
 import {
-  AppRegistry,
   AppState,
-  TouchableOpacity,
   NetInfo,
-  TouchableHighlight,
   StatusBar,
   StyleSheet,
-  Text,
   View,
-  Image,
 } from 'react-native';
 
 class Dashboard extends PureComponent {
