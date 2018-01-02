@@ -23,7 +23,8 @@ export default class LocationOverview extends Component { // eslint-disable-line
       this.props.locations[0].last_updated
     ) ||
       nextProps.activeLocation !== this.props.activeLocation ||
-      nextProps.day !== this.props.day;
+      nextProps.day !== this.props.day ||
+      nextProps.locations.length !== this.props.locations.length;
   }
 
   _keyExtractor = item => { return item.id };
@@ -36,7 +37,7 @@ export default class LocationOverview extends Component { // eslint-disable-line
       activeLocation,
     } = this.props;
 
-    const locs = locations.sort((a, b) => a.id - b.id);
+    const locs = R.sortBy(R.prop('id'), locations);
 
     return (
       <View style={styles.main}>
