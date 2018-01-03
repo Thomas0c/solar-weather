@@ -8,7 +8,7 @@
   </p>
 </div>
 
-[![CircleCI](https://circleci.com/gh/Thomas0c/solar-weather/tree/feature%2Freason-react.svg?style=svg)](https://circleci.com/gh/Thomas0c/solar-weather/tree/feature%2Freason-react)
+[![CircleCI](https://circleci.com/gh/Thomas0c/solar-weather/tree/master.svg?style=svg)](https://circleci.com/gh/Thomas0c/solar-weather/tree/master)
 
 ## Get Started
 - Make sure you have React Native installed [React Native Docs](https://facebook.github.io/react-native/docs/getting-started.html)
