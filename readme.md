@@ -26,7 +26,7 @@
 - Run project using `react-native run-ios`
 
 ## About the project
-Solar is a side-project created to challenge myself, explore new technologies/frameworks/languages while sharing the result. It started as an exploration of React Native, Realm and Redux. I then decided to convert the project file-by-file to [ReasonML](https://reasonml.github.io/reason-react/). I designed the application in Fall 2016, then built a prototype and then decided to try to build an actual working version that could not only benefit myself, but also others. Besides being on GitHub the actual application is also available in the iOS app store as `Solar Weather Collection`.
+Solar is a side-project created for the learning experience while sharing the result as the project develops. It started as an exploration of React Native, Realm and Redux. I then decided to convert the project file-by-file to [ReasonML](https://reasonml.github.io/reason-react/). I designed the application in Fall 2016, then built a prototype and then decided to try to build an actual working version that could not only benefit myself, but also others. Besides being on GitHub the actual application is also available in the iOS app store as `Solar Weather Collection`.
 
 #### Why ReasonReact?
 I wanted to explore a static and safe type system with a fairly familiar syntax. ReasonReact offers the ability to convert component-by-component, which is very convenient to slowly get familiar with syntax and mindset by taking on smaller parts of the codebase while converting to ReasonML. ReasonML is then compiled to JavaScript (using [BuckleScript](https://bucklescript.github.io/) backed by [OCaml](http://ocaml.org/)), which enables great interoperability.

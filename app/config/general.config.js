@@ -15,20 +15,8 @@ const appColors = {
   medGreyAlt: '#C0C0C0',
 };
 
-const drawerTweenHandler = ratio => ({
-  drawerOverlay: { opacity: (1 - ratio) / 2 },
-  mainOverlay: { opacity: ratio * 0.1 },
-});
-
-const drawerStyles = {
-  drawerOverlay: { backgroundColor: '#000', opacity: 1 },
-  mainOverlay: { backgroundColor: '#000', opacity: 0 },
-};
-
 module.exports = {
   units,
   timeTypes,
   appColors,
-  drawerTweenHandler,
-  drawerStyles,
 };
