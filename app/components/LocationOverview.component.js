@@ -1,8 +1,10 @@
 // Modules
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import R from 'ramda';
+import * as locationActions from '../actions/locations.action';
 
 import {
   StyleSheet,
@@ -13,10 +15,10 @@ import {
 } from 'react-native';
 
 // Components
-import Location from './Location.component';
+import Location from '../../lib/js/app/components/location';
 import { appColors } from '../config/general.config';
 
-export default class LocationOverview extends Component { // eslint-disable-line
+class LocationOverview extends Component { // eslint-disable-line
   shouldComponentUpdate(nextProps) {
     return !R.equals(
       nextProps.locations[0],
@@ -35,6 +37,7 @@ export default class LocationOverview extends Component { // eslint-disable-line
       openModal,
       day,
       activeLocation,
+      dispatch,
     } = this.props;
 
     const locs = R.sortBy(R.prop('id'), locations);
@@ -53,6 +56,8 @@ export default class LocationOverview extends Component { // eslint-disable-line
             renderItem={({item, index}) => (
               <Location
                 id={item.id}
+                onSelect={(id, lat, lng) => this.props.dispatch(locationActions.setActiveLocation(id, lat, lng))}
+                onDelete={(id) => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
                 lat={item.lat}
                 lng={item.lng}
                 index={index}
@@ -80,6 +85,7 @@ LocationOverview.propTypes = {
   locations: PropTypes.arrayOf(PropTypes.shape({})),
   day: PropTypes.bool,
   openModal: PropTypes.func,
+  dispatch: PropTypes.func,
   activeLocation: PropTypes.number,
 };
 
@@ -121,3 +127,5 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+
+export default connect()(LocationOverview);
