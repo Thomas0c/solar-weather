@@ -97,7 +97,7 @@ let make =
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.openHours !== openHours) {
-      if (Array.length(forecast) === 0) {
+      if (Array.length(forecast) < 14) {
         updateLocations()
       };
       let value =
