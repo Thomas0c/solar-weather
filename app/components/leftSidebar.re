@@ -1,5 +1,3 @@
-open BsReactNative;
-
 let component = ReasonReact.statelessComponent("LeftSidebar");
 
 let weekOverviewContent = (forecast, unit, timezone) =>
@@ -10,7 +8,7 @@ let make =
       ~menu,
       ~locationSearch,
       ~anyLocation,
-      ~openLeft,
+      ~openLeft: Js.boolean,
       ~forecast,
       ~onOpenLeftSide,
       ~onCloseLeftSide,

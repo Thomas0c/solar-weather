@@ -22,11 +22,11 @@ import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecastList from '../../lib/js/app/components/hourForecastList';
 import LeftSidebar from '../../lib/js/app/components/leftSidebar';
+import RightSidebar from '../../lib/js/app/components/rightSidebar';
 import LocationDisplay from '../../lib/js/app/components/locationDisplay';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Menu from '../../lib/js/app/components/menu';
 import Modal from '../../lib/js/app/components/contentModal';
-import RightSidebar from '../components/RightSidebar';
 import Toast from '../../lib/js/app/components/toast';
 import WeatherCondition from '../../lib/js/app/components/weatherCondition';
 

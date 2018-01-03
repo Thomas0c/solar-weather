@@ -25,7 +25,7 @@ module Component = {
         ~disabled: option(Js.boolean)=?,
         ~elevation: option(float)=?,
         ~initializeOpen: option(Js.boolean)=?,
-        ~open_: option(bool)=?,
+        ~open_: option(Js.boolean)=?,
         ~negotiatePan: option(Js.boolean)=?,
         ~onClose: option((unit => unit))=?,
         ~onCloseStart: option((unit => unit))=?,
