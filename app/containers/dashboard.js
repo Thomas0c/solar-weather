@@ -21,7 +21,7 @@ import DateDisplay from '../../lib/js/app/components/dateDisplay';
 import Empty from '../../lib/js/app/components/empty';
 import InfoIcon from '../../lib/js/app/components/infoIcon';
 import HourForecastList from '../../lib/js/app/components/hourForecastList';
-import LeftSidebar from '../components/LeftSidebar';
+import LeftSidebar from '../../lib/js/app/components/leftSidebar';
 import LocationDisplay from '../../lib/js/app/components/locationDisplay';
 import LocationSearch from '../components/LocationSearch/LocationSearch.component';
 import Menu from '../../lib/js/app/components/menu';
@@ -319,7 +319,7 @@ class Dashboard extends PureComponent {
         locationSearch={locationSearch}
         anyLocation={anyLocation}
         openLeft={openLeft}
-        activeLocation={activeLocation}
+        forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
         unit={unit}
         timezone={timezone}
         onOpenLeftSide={this.handleOpenSidebar.bind(this, 'openLeft')}

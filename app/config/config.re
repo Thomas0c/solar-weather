@@ -1,5 +1,3 @@
-[@bs.val] external requireAssetURI : string => string = "require";
-
 let units = ["c", "f"];
 
 let timeTypes = ["24", "12"];
@@ -16,4 +14,14 @@ module AppColors = {
   let darkGrey = "#343434";
   let grey = "#999";
   let medGreyAlt = "#C0C0C0";
+};
+
+let drawerTweenHandler = (ratio: float) => {
+  "drawerOverlay": {opacity: (1. -. ratio) /. 2.},
+  "mainOverlay": {opacity: ratio *. 0.1}
+};
+
+let drawerStyles = {
+  "drawerOverlay": {backgroundColor: "#000", opacity: 1.},
+  "mainOverlay": {backgroundColor: "#000", opacity: 0.}
 };
