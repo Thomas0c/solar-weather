@@ -306,6 +306,8 @@ class Dashboard extends PureComponent {
       locationSearch={locationSearch}
       anyLocation={anyLocation}
       openRight={openRight}
+      onRowSelect={(id, lat, lng) => this.props.dispatch(locationActions.setActiveLocation(id, lat, lng))}
+      onRowDelete={(id) => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
       onOpenRightSide={this.handleOpenSidebar.bind(this, 'openRight')}
       onCloseRightSide={this.handleCloseSidebar.bind(this, 'openRight')}
       unit={unit}

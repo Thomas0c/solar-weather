@@ -4,6 +4,8 @@ import * as types from '../actions/types.action';
 const initialState = {
   locations: [{
     id: 1,
+    lat: 0.0,
+    lng: 0.0,
     currently: {
       icon: '',
       precipProbability: 0.00,

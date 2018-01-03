@@ -95,22 +95,3 @@ let make =
     </SwipeRow.Row>
   }
 };
-
-let default =
-  ReasonReact.wrapReasonForJs(
-    ~component,
-    (jsProps) =>
-      make(
-        ~name=jsProps##name,
-        ~lat=jsProps##lat,
-        ~lng=jsProps##lng,
-        ~index=jsProps##index,
-        ~icon=jsProps##icon,
-        ~onDelete=jsProps##onDelete,
-        ~onSelect=jsProps##onSelect,
-        ~day=jsProps##day,
-        ~id=jsProps##id,
-        ~activeLocation=jsProps##activeLocation,
-        [||]
-      )
-  );

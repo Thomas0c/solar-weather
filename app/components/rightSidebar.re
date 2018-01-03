@@ -1,9 +1,18 @@
 let component = ReasonReact.statelessComponent("RightSidebar");
 
 let locationOverviewContent =
-    (dayTime, locationIndex, toggleLocationSearch, filteredLocations) =>
-  <LocationOverview.Component
+    (
+      dayTime,
+      locationIndex,
+      toggleLocationSearch,
+      filteredLocations,
+      onRowDelete,
+      onRowSelect
+    ) =>
+  <LocationOverviewList
     day=dayTime
+    onDelete=onRowDelete
+    onSelect=onRowSelect
     activeLocation=locationIndex
     openModal=toggleLocationSearch
     locations=filteredLocations
@@ -21,6 +30,8 @@ let make =
       ~dayTime,
       ~locationIndex,
       ~toggleLocationSearch,
+      ~onRowSelect,
+      ~onRowDelete,
       ~children
     ) => {
   ...component,
@@ -55,7 +66,9 @@ let make =
           dayTime,
           locationIndex,
           toggleLocationSearch,
-          filteredLocations
+          filteredLocations,
+          onRowDelete,
+          onRowSelect
         )
       )>
       children
@@ -77,6 +90,8 @@ let default =
         ~onCloseRightSide=jsProps##onCloseRightSide,
         ~locationIndex=jsProps##locationIndex,
         ~dayTime=jsProps##dayTime,
+        ~onRowSelect=jsProps##onRowSelect,
+        ~onRowDelete=jsProps##onRowDelete,
         ~toggleLocationSearch=jsProps##toggleLocationSearch,
         ~children=jsProps##children
       )
