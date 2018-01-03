@@ -65,3 +65,16 @@ let make = (~selected: bool, ~icon, ~day, ~name, _children) => {
     </View>
   }
 };
+
+let default =
+  ReasonReact.wrapReasonForJs(
+    ~component,
+    (jsProps) =>
+      make(
+        ~selected=jsProps##selected,
+        ~icon=jsProps##icon,
+        ~day=jsProps##day,
+        ~name=jsProps##name,
+        [||]
+      )
+  );

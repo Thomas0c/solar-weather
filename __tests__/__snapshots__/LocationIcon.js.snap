@@ -30,7 +30,7 @@ exports[`renders correctly when not selected 1`] = `
         "width": "100.00%",
       },
       Object {
-        "backgroundColor": "#EFEFEF",
+        "backgroundColor": "#9a9fa0",
       },
     ]
   }
@@ -118,7 +118,7 @@ exports[`renders correctly when not selected 1`] = `
           "width": "100.00%",
         },
         Object {
-          "color": "#343434",
+          "color": "#EFEFEF",
         },
       ]
     }
