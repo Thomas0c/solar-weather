@@ -4,7 +4,6 @@ type item = {. "temperature": float, "icon": string, "time": int};
 
 type retainedProps = {
   openHours: Js.boolean,
-  updateLocations: unit => unit,
   locationName: string,
   forecast: array(item),
   timeType: string,
@@ -71,7 +70,6 @@ let handleClick = (state) =>
 let make =
     (
       ~openHours: Js.boolean,
-      ~updateLocations: unit => unit,
       ~timeType: string,
       ~unit: string,
       ~timezone: string,
@@ -85,21 +83,10 @@ let make =
     bottomAnim: Animated.Value.create(-. windowHeight /. 10.),
     scrollRef: ref(None)
   },
-  retainedProps: {
-    openHours,
-    updateLocations,
-    locationName,
-    forecast,
-    timeType,
-    unit,
-    timezone
-  },
+  retainedProps: {openHours, locationName, forecast, timeType, unit, timezone},
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.openHours !== openHours) {
-      if (Array.length(forecast) < 14) {
-        updateLocations()
-      };
       let value =
         Js.to_bool(openHours) ? windowHeight /. 10. : -. windowHeight /. 10.;
       Animation.animate(state.bottomAnim, value);
@@ -142,7 +129,6 @@ let default =
     (jsProps) =>
       make(
         ~openHours=jsProps##openHours,
-        ~updateLocations=jsProps##updateLocations,
         ~locationName=jsProps##locationName,
         ~forecast=jsProps##forecast,
         ~timeType=jsProps##timeType,

@@ -69,7 +69,7 @@ export default function locations(state = initialState, action = {}) {
         ...state,
         locations: action.locations,
         locationError: null,
-        latestCollectiveUpdate: new Date(),
+        latestCollectiveUpdate: moment(),
         loading: false,
       };
     case types.DELETE_LOCATION: // eslint-disable-line

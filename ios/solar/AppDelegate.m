@@ -26,12 +26,10 @@
 
   // 1. Load the LaunchScreen from the xib file
   UIView *backgroundView = [[[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil] firstObject];
-  
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"solar"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  
   // 2. Set the backgroundColor of the react view to be transparent
   rootView.backgroundColor = [UIColor clearColor];
   backgroundView.frame = UIScreen.mainScreen.bounds;

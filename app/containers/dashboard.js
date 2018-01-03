@@ -47,7 +47,7 @@ class Dashboard extends PureComponent {
       },
     },
     isConnected: 'none',
-    appState: 'unknown',
+    appState: 'inactive',
     menu: false,
     locationSearch: false,
     openRight: false,
@@ -61,9 +61,7 @@ class Dashboard extends PureComponent {
   updateLocationsAndSetTimestamp() {
     const { locations } = this.props;
     const now = moment();
-    const latestUpdate = locations.locations.length > 0 ?
-      locations.latestCollectiveUpdate :
-        moment().subtract(1, 'days');
+    const latestUpdate = locations.latestCollectiveUpdate;
 
     if (
       now.diff(latestUpdate, 'minutes') > 10 &&
@@ -75,7 +73,6 @@ class Dashboard extends PureComponent {
 
   componentWillReceiveProps = (nextProps) => {
     if (
-      this.props.settings.locationIndex !== nextProps.settings.locationIndex ||
       this.props.locations.locations.length !== nextProps.locations.locations.length
     ) {
       this.updateLocationsAndSetTimestamp();
@@ -162,7 +159,7 @@ class Dashboard extends PureComponent {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        this.setState({ lastPosition });
+        this.setState({ lastPosition: position });
       }
     }, (error) => {
       locationActions.updateError('Not able to find location.');
@@ -189,7 +186,7 @@ class Dashboard extends PureComponent {
   }
 
   componentDidMount() {
-    const { dispatch, settings } = this.props;
+    const { dispatch, settings, locations } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
     AppState.addEventListener('change', this._handleAppStateChange);
     AppState.addEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
@@ -197,8 +194,10 @@ class Dashboard extends PureComponent {
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
 
+    if (!locations.loading) {
+      dispatch(locationActions.getLocationsFromStore());
+    }
     dispatch(settingsActions.getSettings());
-    dispatch(locationActions.getLocationsFromStore());
 
     if (!settings.onboarding) {
       this.determineLocationStatus();
@@ -384,7 +383,7 @@ class Dashboard extends PureComponent {
           />
           <HourForecastList
             timeType={timeType}
-            updateLocations={this.updateLocationsAndSetTimestamp.bind(this)}
+            locationIndex={locationIndex}
             forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
             openHours={openHours}
             unit={unit}

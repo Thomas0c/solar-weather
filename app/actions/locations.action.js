@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Config from 'react-native-config';
 import moment from 'moment';
+
 import * as types from './actionTypes';
 import realm from '../realm';
 
@@ -29,7 +30,7 @@ const getStoredLocations = () => {
 };
 
 const forecastResponseExtended = (location, res, id) => {
-  const newDate = new Date().getTime();
+  const newDate = new Date();
   const {
     data: {
       daily,
@@ -86,16 +87,26 @@ const checkIndexExists = (locs, id) => {
 };
 
 const writeLocationToStore = (location, id) => {
+  const date = new Date();
   realm.write(() => {
     realm.create('Location', {
       key: id,
       ...location,
       id,
-      last_updated: new Date(),
-      created_at: new Date(),
+      last_updated: date,
+      created_at: date,
     }, true);
   });
 };
+
+const locationLoading = () =>
+  triggerAction(types.LOCATION_LOADING);
+
+const locationLoadingDone = () =>
+  triggerAction(types.LOCATION_LOADING_OFF);
+
+const locationError = (err, type) =>
+  triggerAction(type, { err });
 
 const setLocation = (index, location) =>
   triggerAction(types.SET_LOCATION, { index, location });
@@ -103,11 +114,37 @@ const setLocation = (index, location) =>
 const setLocationSettings = index =>
   triggerAction(types.SET_ACTIVE_LOCATION, { index });
 
+export function updateLocationWithIndex(index) {
+  const locs = getStoredLocations();
+  const location = locs[index];
+  const now = moment();
+  const locationUpdatedRecently =
+    now.diff(moment(location.last_updated), 'minutes') < 10;
+
+  return async (dispatch) => {
+    if (
+      checkLocationExists(locs, location.name) &&
+      !locationUpdatedRecently
+    ) {
+      dispatch(locationLoading());
+      try {
+        const forecast = await forecastRequest(location.lat, location.lng);
+        const extendedLocation = forecastResponseExtended(location, forecast, location.id);
+        writeLocationToStore(extendedLocation, location.id);
+        dispatch(setLocation(index, extendedLocation));
+      } catch (e) {
+        dispatch(locationError('Error updating', types.UPDATE_ERROR));
+      }
+    }
+    dispatch(setLocationSettings(index));
+  };
+}
+
 export function setActiveLocation(index) {
   realm.write(() => {
     realm.create('Options', { key: 1, locationIndex: index }, true);
   });
-  return dispatch => dispatch(setLocationSettings(index));
+  return updateLocationWithIndex(index);
 }
 
 // Fetch All Locations
@@ -153,6 +190,7 @@ export const updateAllLocations = () => {
           dispatch(fetchAllLocationsSuccess(locations));
         }
       } catch (e) {
+        console.log(e);
         dispatch(fetchAllLocationsFailure('An error occurred while updating'));
       }
     });
@@ -178,15 +216,6 @@ const addIndex = location =>
 const addLocation = location =>
   triggerAction(types.ADD_LOCATION, { location });
 
-const locationLoading = () =>
-  triggerAction(types.LOCATION_LOADING);
-
-const locationLoadingDone = () =>
-  triggerAction(types.LOCATION_LOADING_OFF);
-
-const locationError = (err, type) =>
-  triggerAction(type, { err });
-
 export const updateError = err =>
   triggerAction(types.UPDATE_ERROR, { err });
 
@@ -202,25 +231,6 @@ export function updateCurrentLocation(location) {
       dispatch(getLocationsFromStore());
     } catch (e) {
       dispatch(locationError('Error updating', types.UPDATE_ERROR));
-    }
-  };
-}
-
-export function updateLocationWithIndex(index) {
-  const locs = getStoredLocations();
-  const location = locs[index];
-
-  return async (dispatch) => {
-    if (checkLocationExists(locs, location.name)) {
-      dispatch(locationLoading());
-      try {
-        const forecast = await forecastRequest(location.lat, location.lng);
-        const extendedLocation = forecastResponseExtended(location, forecast, index);
-        writeLocationToStore(extendedLocation, index);
-        dispatch(setLocation(index, extendedLocation));
-      } catch (e) {
-        dispatch(locationError('Error updating', types.UPDATE_ERROR));
-      }
     }
   };
 }
