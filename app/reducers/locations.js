@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as types from '../actions/actionTypes';
+import * as types from '../actions/types.action';
 
 const initialState = {
   locations: [{

@@ -1,121 +1,11 @@
-import axios from 'axios';
-import Config from 'react-native-config';
 import moment from 'moment';
 
-import * as types from './actionTypes';
+import * as creators from './creators.action';
+import * as utils from './utils.action';
 import realm from '../realm';
 
-const R = require('ramda');
-
-// Utilities
-const forecastRequest = async (lat, lng) =>
-  axios(`https://api.darksky.net/forecast/${Config.FORECAST_API}/${lat},${lng}`, {
-    params: {
-      exclude: 'minutely',
-      units: 'si',
-      lang: 'en',
-    },
-  });
-
-export const triggerAction = (type, obj) =>
-  Object.assign(
-    { type },
-    obj,
-  );
-
-const getStoredLocations = () => {
-  const locations = realm.objects('Location').sorted('id');
-  const locArray = locations.map(x => Object.assign({}, x));
-  return locArray.length > 0 ? locArray : [];
-};
-
-const forecastResponseExtended = (location, res, id) => {
-  const newDate = new Date();
-  const {
-    data: {
-      daily,
-      alerts,
-      currently,
-      hourly,
-      timezone,
-      offset,
-    },
-  } = res;
-
-  const fiveDaysFromNow = moment().tz(timezone).hour(0).add(5, 'days');
-  const followingDay = moment().tz(timezone).hour(0).add(0, 'days');
-
-  return Object.assign(
-    { id },
-    location,
-    {
-      last_updated: newDate,
-      timezone,
-      offset,
-    },
-    {
-      hourly: {
-        summary: hourly.summary,
-        icon: hourly.icon,
-        data: hourly.data.filter((item, idx) => idx < 15),
-      },
-    },
-    { alerts: alerts || [] },
-    { currently },
-    {
-      daily: {
-        summary: daily.summary,
-        icon: daily.icon,
-        data: R.uniq(daily.data.filter((item) => {
-          const isAfter = moment.unix(item.time).isAfter(followingDay);
-          const isBefore = moment.unix(item.time).isBefore(fiveDaysFromNow);
-          return isAfter && isBefore;
-        }).slice(0, 5)),
-      },
-    },
-  );
-};
-
-const checkLocationExists = (locs, name) => {
-  const filtered = locs.filter(item => item.name === name);
-  return filtered.length > 0;
-};
-
-const checkIndexExists = (locs, id) => {
-  const filtered = locs.filter(item => item.id === id);
-  return filtered.length > 0;
-};
-
-const writeLocationToStore = (location, id) => {
-  const date = new Date();
-  realm.write(() => {
-    realm.create('Location', {
-      key: id,
-      ...location,
-      id,
-      last_updated: date,
-      created_at: date,
-    }, true);
-  });
-};
-
-const locationLoading = () =>
-  triggerAction(types.LOCATION_LOADING);
-
-const locationLoadingDone = () =>
-  triggerAction(types.LOCATION_LOADING_OFF);
-
-const locationError = (err, type) =>
-  triggerAction(type, { err });
-
-const setLocation = (index, location) =>
-  triggerAction(types.SET_LOCATION, { index, location });
-
-const setLocationSettings = index =>
-  triggerAction(types.SET_ACTIVE_LOCATION, { index });
-
 export function updateLocationWithIndex(index) {
-  const locs = getStoredLocations();
+  const locs = utils.getStoredLocations();
   const location = locs[index];
   const now = moment();
   const locationUpdatedRecently =
@@ -123,20 +13,20 @@ export function updateLocationWithIndex(index) {
 
   return async (dispatch) => {
     if (
-      checkLocationExists(locs, location.name) &&
+      utils.checkLocationExists(locs, location.name) &&
       !locationUpdatedRecently
     ) {
-      dispatch(locationLoading());
+      dispatch(creators.locationLoading());
       try {
-        const forecast = await forecastRequest(location.lat, location.lng);
-        const extendedLocation = forecastResponseExtended(location, forecast, location.id);
-        writeLocationToStore(extendedLocation, location.id);
-        dispatch(setLocation(index, extendedLocation));
+        const forecast = await utils.forecastRequest(location.lat, location.lng);
+        const extendedLocation = utils.forecastResponseExtended(location, forecast, location.id);
+        utils.writeLocationToStore(extendedLocation, location.id);
+        dispatch(creators.setLocation(index, extendedLocation));
       } catch (e) {
-        dispatch(locationError('Error updating', types.UPDATE_ERROR));
+        dispatch(creators.updateError('Error updating'));
       }
     }
-    dispatch(setLocationSettings(index));
+    dispatch(creators.setLocationSettings(index));
   };
 }
 
@@ -147,139 +37,106 @@ export function setActiveLocation(index) {
   return updateLocationWithIndex(index);
 }
 
-// Fetch All Locations
-const fetchAllLocations = () =>
-  triggerAction(types.FETCH_LOCATIONS);
-
-const fetchAllLocationsSuccess = locations =>
-  triggerAction(types.FETCH_LOCATIONS_SUCCESS, { locations });
-
-const fetchAllLocationsFailure = err =>
-  triggerAction(types.FETCH_LOCATIONS_FAILURE, { err });
-
-const convertToLocation = (loc) => {
-  return {
-    name: loc.name,
-    lng: loc.lng,
-    lat: loc.lat,
-  };
-};
-
 export const updateAllLocations = () => {
-  const locations = getStoredLocations();
+  const locations = utils.getStoredLocations();
 
   return async (dispatch) => {
     if (locations.length === 0) {
-      dispatch(fetchAllLocationsFailure('No locations to update'));
+      dispatch(creators.fetchAllLocationsFailure('No locations to update'));
     }
 
-    dispatch(fetchAllLocations());
+    dispatch(creators.fetchAllLocations());
     locations.forEach(async (location, idx) => {
       try {
-        const forecast = await forecastRequest(location.lat, location.lng);
-        const loc = convertToLocation(location);
-        const extendedForecast = forecastResponseExtended(
+        const forecast = await utils.forecastRequest(location.lat, location.lng);
+        const loc = utils.convertToLocation(location);
+        const extendedForecast = utils.forecastResponseExtended(
           loc,
           forecast,
           location.id,
         );
         // Write location to Realm store
-        writeLocationToStore(extendedForecast, location.id);
+        utils.writeLocationToStore(extendedForecast, location.id);
         if (idx === locations.length - 1) {
           // If index is lastIndex, return success
-          dispatch(fetchAllLocationsSuccess(locations));
+          dispatch(creators.fetchAllLocationsSuccess(locations));
         }
       } catch (e) {
         console.log(e);
-        dispatch(fetchAllLocationsFailure('An error occurred while updating'));
+        dispatch(creators.fetchAllLocationsFailure('An error occurred while updating'));
       }
     });
   };
 };
 
-// Get Locations (stored)
-const getLocation = locations =>
-  triggerAction(types.GET_LOCATIONS, { locations });
-
 export function getLocationsFromStore() {
-  const locs = getStoredLocations();
+  const locs = utils.getStoredLocations();
   return (dispatch) => {
-    dispatch(getLocation(locs));
+    dispatch(creators.getLocation(locs));
   };
 }
 
-// Add Index Location (current lat/lng)
-const addIndex = location =>
-  triggerAction(types.ADD_INDEX_LOCATION, { location });
-
-// Add Location
-const addLocation = location =>
-  triggerAction(types.ADD_LOCATION, { location });
-
-export const updateError = err =>
-  triggerAction(types.UPDATE_ERROR, { err });
-
 export function updateCurrentLocation(location) {
   return async (dispatch) => {
-    dispatch(locationLoading());
+    dispatch(creators.locationLoading());
 
     try {
-      const forecast = await forecastRequest(location.lat, location.lng);
-      const loc = forecastResponseExtended(location, forecast, 0);
-      writeLocationToStore(loc, 0);
-      dispatch(addIndex(loc));
+      const forecast = await utils.forecastRequest(location.lat, location.lng);
+      const loc = utils.forecastResponseExtended(location, forecast, 0);
+      utils.writeLocationToStore(loc, 0);
+      dispatch(creators.addIndex(loc));
       dispatch(getLocationsFromStore());
     } catch (e) {
-      dispatch(locationError('Error updating', types.UPDATE_ERROR));
+      dispatch(creators.updateError('Error updating'));
     }
   };
 }
 
+const createNewLocation = async (locs, index, loc, dispatch) => {
+  try {
+    const uniqueID = index !== 0 ? new Date().getTime() : index;
+    const forecast = await utils.forecastRequest(loc.lat, loc.lng);
+    const extendedLocation = utils.forecastResponseExtended(
+      loc,
+      forecast,
+      uniqueID,
+    );
+    utils.writeLocationToStore(extendedLocation, uniqueID);
+    dispatch(creators.addLocation(extendedLocation));
+    dispatch(creators.setLocationSettings(index !== 0 ? locs.length : index));
+  } catch (e) {
+    dispatch(creators.updateError('Error updating'));
+  }
+};
+
 export function addNewLocation(loc, index) {
-  const locs = getStoredLocations();
+  const locs = utils.getStoredLocations();
 
   return async (dispatch) => {
-    dispatch(locationLoading());
+    dispatch(creators.locationLoading());
     if (locs.length === 10) {
-      dispatch(locationError('Maximum number of locations reached', types.ADD_LOCATION_ERROR));
+      dispatch(creators.locationError('Max. number of locations reached'));
     } else if (
       locs.length < 10 &&
-      checkLocationExists(locs, loc.name) &&
+      utils.checkLocationExists(locs, loc.name) &&
       index !== 0
     ) {
-      dispatch(locationError('Location already exists', types.ADD_LOCATION_ERROR));
+      dispatch(creators.locationError('Location already exists'));
     } else if (
       index === 0 &&
-      checkIndexExists(locs, index)
+      utils.checkIndexExists(locs, index)
     ) {
       dispatch(updateCurrentLocation(loc));
     } else if (
       locs.length < 10 &&
-      !checkLocationExists(locs, loc.name)
+      !utils.checkLocationExists(locs, loc.name)
     ) {
-      try {
-        const uniqueID = index !== 0 ? new Date().getTime() : index;
-        const forecast = await forecastRequest(loc.lat, loc.lng);
-        const extendedLocation = forecastResponseExtended(
-          loc,
-          forecast,
-          uniqueID,
-        );
-        writeLocationToStore(extendedLocation, uniqueID);
-        dispatch(addLocation(extendedLocation));
-        dispatch(setLocationSettings(index !== 0 ? locs.length : index));
-      } catch (e) {
-        dispatch(locationError('Error updating', types.UPDATE_ERROR));
-      }
+      await createNewLocation(locs, index, loc, dispatch);
     } else {
-      dispatch(locationLoadingDone());
+      dispatch(creators.locationLoadingDone());
     }
   };
 }
-
-// Remove location
-const removeLocation = id =>
-  triggerAction(types.DELETE_LOCATION, { id });
 
 const deleteLocation = (id) => {
   const locations = realm.objects('Location');
@@ -291,12 +148,12 @@ const deleteLocation = (id) => {
   } catch (e) {
     console.log(e);
     return (dispatch) => {
-      dispatch(updateError('Not able to delete location'));
+      dispatch(creators.updateError('Not able to delete location'));
     };
   }
   return (dispatch) => {
-    dispatch(removeLocation(id));
-    dispatch(setLocationSettings(locations.length - 1));
+    dispatch(creators.removeLocation(id));
+    dispatch(creators.setLocationSettings(locations.length - 1));
   };
 };
 

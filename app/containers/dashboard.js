@@ -9,6 +9,7 @@ import Permissions from 'react-native-permissions';
 // Redux Actions
 import * as settingsActions from '../actions/settings.action';
 import * as locationActions from '../actions/locations.action';
+import * as creators from '../actions/creators.action';
 
 import { isDaylight } from '../utils/time.utils';
 import { units, timeTypes, appColors } from '../config/general.config';
@@ -162,7 +163,7 @@ class Dashboard extends PureComponent {
         this.setState({ lastPosition: position });
       }
     }, (error) => {
-      locationActions.updateError('Not able to find location.');
+      creators.updateError('Not able to find location.');
     },
     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as types from './actionTypes';
+import * as types from './types.action';
 import realm from '../realm';
 import { triggerAction } from './locations.action';
 
