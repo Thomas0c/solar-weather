@@ -3,12 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import HourForecastList from '../lib/js/app/components/hourForecastList';
 
-const moment = require('moment');
-
 const mockForecast = [{
   temperature: 0.0,
   icon: 'sunny',
-  time: moment().add(1, 'days').unix(),
+  time: 1515069527,
 }];
 
 test('renders correctly if empty forecast is passed', () => {
@@ -24,7 +22,7 @@ test('renders correctly if empty forecast is passed', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test('renders correctly if populated forecast is passed', () => {
+test('renders correctly if populated forecast with past time is passed', () => {
   const tree = renderer.create(
     <HourForecastList
       openHours
