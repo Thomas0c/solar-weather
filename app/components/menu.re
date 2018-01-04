@@ -54,21 +54,6 @@ let modalContent =
       selectedIndex=timeIndex
       onChange=updateTimeIndex
     />
-    <TouchableHighlight
-      underlayColor="transparent"
-      onPress=resetOnboarding
-      style=Style.(
-              style([
-                borderColor("#000"),
-                borderWidth(1.),
-                borderRadius(50.),
-                marginTop(Pt(30.))
-              ])
-            )>
-      <Text style=Style.(style([color("#343434"), padding(Pt(10.))]))>
-        (ReasonReact.stringToElement("Reset Onboarding"))
-      </Text>
-    </TouchableHighlight>
     <Text
       style=Style.(
               style([
