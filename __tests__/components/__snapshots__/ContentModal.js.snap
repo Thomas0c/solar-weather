@@ -190,16 +190,16 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "color": "#FFF",
-              "fontFamily": "avenir",
-              "fontSize": 16,
-              "fontWeight": "700",
+              "fontFamily": "Avenir",
+              "fontSize": 25,
+              "fontWeight": "bold",
             }
           }
           suppressHighlighting={undefined}
           testID={undefined}
           textBreakStrategy={undefined}
         >
-          X
+          ×
         </Text>
       </View>
     </View>
