@@ -12,12 +12,11 @@ let styles =
           style([position(Relative), alignSelf(Center), marginTop(Pt(30.))]),
         "text":
           style([
-            fontFamily("avenir"),
-            fontSize(Float(16.)),
-            fontWeight(`_700),
+            fontFamily("Avenir"),
+            fontSize(Float(25.)),
+            fontWeight(`Bold),
             color(Config.AppColors.white)
-          ]),
-        "image": style([width(Pt(120.)), height(Pt(80.)), resizeMode(Contain)])
+          ])
       }
     )
   );
@@ -42,7 +41,9 @@ let make = (~toggle, ~absolute, _children) => {
                   justifyContent(Center)
                 ])
               )>
-        <Text style=styles##text> (ReasonReact.stringToElement("X")) </Text>
+        <Text style=styles##text>
+          (ReasonReact.stringToElement({j|×|j}))
+        </Text>
       </View>
     </TouchableHighlight>
 };
