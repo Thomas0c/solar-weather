@@ -1,6 +1,6 @@
 open MomentRe;
 
-[@bs.raw "require('moment-timezone)"];
+[%%bs.raw {| require("moment-timezone") |}];
 
 [@bs.send] external tz : (Moment.t, string) => Moment.t = "tz";
 

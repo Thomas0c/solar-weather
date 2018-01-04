@@ -1,11 +1,8 @@
 open BsReactNative;
 
-type item = {. "temperature": float, "icon": string, "time": int};
-
 type retainedProps = {
   openHours: Js.boolean,
   locationName: string,
-  forecast: array(item),
   timeType: string,
   timezone: string,
   unit: string
@@ -13,7 +10,6 @@ type retainedProps = {
 
 type state = {
   bottomAnim: Animated.Value.t,
-  forecast: array(item),
   scrollRef: ref(option(ReasonReact.reactRef))
 };
 
@@ -79,11 +75,10 @@ let make =
     ) => {
   ...component,
   initialState: () => {
-    forecast: [||],
     bottomAnim: Animated.Value.create(-. windowHeight /. 10.),
     scrollRef: ref(None)
   },
-  retainedProps: {openHours, locationName, forecast, timeType, unit, timezone},
+  retainedProps: {openHours, locationName, timeType, unit, timezone},
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.openHours !== openHours) {
@@ -94,14 +89,12 @@ let make =
     } else if (retainedProps.locationName !== locationName) {
       handleClick(state);
       state
-    } else if (retainedProps.forecast !== forecast) {
-      let filteredForecast =
-        forecast |> Js.Array.filter((item) => Time.isAfterCurrent(item##time));
-      {...state, forecast: filteredForecast}
     } else {
       state
     },
-  render: ({state, handle}) =>
+  render: ({state, handle}) => {
+    let filteredForecast =
+      forecast |> Js.Array.filter((item) => Time.isAfterCurrent(item##time));
     <Animated.View
       style=Style.(
               concat([
@@ -117,10 +110,11 @@ let make =
         style=Style.(concat([styles##container, style([width(Pct(100.))])]))
         showsHorizontalScrollIndicator=false
         bounces=false
-        data=state.forecast
+        data=filteredForecast
         renderItem=(renderItem(unit, timeType, timezone))
       />
     </Animated.View>
+  }
 };
 
 let default =

@@ -114,7 +114,7 @@ exports[`renders correctly for cloudy day 1`] = `
     shouldRasterizeIOS={undefined}
     style={
       Object {
-        "backgroundColor": "#A6B6BC",
+        "backgroundColor": "#ACB7BB",
         "height": "100.00%",
         "width": "100.00%",
       }

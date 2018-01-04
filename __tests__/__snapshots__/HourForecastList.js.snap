@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly if empty forecast is passed 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "bottom": -133.4,
+      "flex": 1,
+      "height": "20.00%",
+      "left": 0,
+      "position": "absolute",
+      "width": "100.00%",
+    }
+  }
+  testID={undefined}
+>
+  <RCTScrollView
+    ItemSeparatorComponent={undefined}
+    ListFooterComponent={undefined}
+    ListHeaderComponent={undefined}
+    bounces={false}
+    columnWrapperStyle={undefined}
+    data={Array []}
+    disableVirtualization={false}
+    extraData={undefined}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    getItemLayout={undefined}
+    horizontal={true}
+    initialNumToRender={10}
+    initialScrollIndex={undefined}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onContentSizeChange={[Function]}
+    onEndReached={undefined}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onRefresh={undefined}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    onViewableItemsChanged={undefined}
+    overScrollMode={undefined}
+    pagingEnabled={true}
+    refreshing={undefined}
+    removeClippedSubviews={undefined}
+    renderItem={[Function]}
+    scrollEnabled={undefined}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    showsVerticalScrollIndicator={undefined}
+    stickyHeaderIndices={Array []}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "height": "100.00%",
+        },
+        Object {
+          "width": "100.00%",
+        },
+      ]
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfig={undefined}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;
+
+exports[`renders correctly if populated forecast is passed 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "bottom": -133.4,
+      "flex": 1,
+      "height": "20.00%",
+      "left": 0,
+      "position": "absolute",
+      "width": "100.00%",
+    }
+  }
+  testID={undefined}
+>
+  <RCTScrollView
+    ItemSeparatorComponent={undefined}
+    ListFooterComponent={undefined}
+    ListHeaderComponent={undefined}
+    bounces={false}
+    columnWrapperStyle={undefined}
+    data={
+      Array [
+        Object {
+          "icon": "sunny",
+          "temperature": 0,
+          "time": 1515155584,
+        },
+      ]
+    }
+    disableVirtualization={false}
+    extraData={undefined}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    getItemLayout={undefined}
+    horizontal={true}
+    initialNumToRender={10}
+    initialScrollIndex={undefined}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onContentSizeChange={[Function]}
+    onEndReached={undefined}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onRefresh={undefined}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    onViewableItemsChanged={undefined}
+    overScrollMode={undefined}
+    pagingEnabled={true}
+    refreshing={undefined}
+    removeClippedSubviews={undefined}
+    renderItem={[Function]}
+    scrollEnabled={undefined}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    showsVerticalScrollIndicator={undefined}
+    stickyHeaderIndices={Array []}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.2)",
+          "height": "100.00%",
+        },
+        Object {
+          "width": "100.00%",
+        },
+      ]
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfig={undefined}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityLiveRegion={undefined}
+          accessibilityTraits={undefined}
+          accessibilityViewIsModal={undefined}
+          accessible={undefined}
+          collapsable={undefined}
+          hitSlop={undefined}
+          importantForAccessibility={undefined}
+          needsOffscreenAlphaCompositing={undefined}
+          onAccessibilityTap={undefined}
+          onLayout={undefined}
+          onMagicTap={undefined}
+          pointerEvents={undefined}
+          removeClippedSubviews={undefined}
+          renderToHardwareTextureAndroid={undefined}
+          shouldRasterizeIOS={undefined}
+          style={
+            Object {
+              "alignItems": "center",
+              "height": "100.00%",
+              "paddingLeft": 15,
+              "paddingRight": 15,
+            }
+          }
+          testID={undefined}
+        >
+          <Text
+            accessible={true}
+            adjustsFontSizeToFit={undefined}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            minimumFontScale={undefined}
+            numberOfLines={undefined}
+            onLayout={undefined}
+            onLongPress={undefined}
+            onPress={undefined}
+            pressRetentionOffset={undefined}
+            selectable={undefined}
+            selectionColor={undefined}
+            style={
+              Object {
+                "color": "#EFEFEF",
+                "fontWeight": "600",
+                "marginTop": 15,
+                "textAlign": "center",
+              }
+            }
+            suppressHighlighting={undefined}
+            testID={undefined}
+            textBreakStrategy={undefined}
+          >
+            07:33
+          </Text>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityLiveRegion={undefined}
+            accessibilityTraits={undefined}
+            accessibilityViewIsModal={undefined}
+            accessible={undefined}
+            collapsable={undefined}
+            hitSlop={undefined}
+            importantForAccessibility={undefined}
+            needsOffscreenAlphaCompositing={undefined}
+            onAccessibilityTap={undefined}
+            onLayout={undefined}
+            onMagicTap={undefined}
+            pointerEvents={undefined}
+            removeClippedSubviews={undefined}
+            renderToHardwareTextureAndroid={undefined}
+            shouldRasterizeIOS={undefined}
+            style={
+              Object {
+                "alignItems": "center",
+                "height": "50.00%",
+                "justifyContent": "center",
+                "width": "50.00%",
+              }
+            }
+            testID={undefined}
+          >
+            <Image
+              accessibilityLabel={undefined}
+              accessible={undefined}
+              blurRadius={undefined}
+              capInsets={undefined}
+              defaultSource={undefined}
+              onError={undefined}
+              onLayout={undefined}
+              onLoad={undefined}
+              onLoadEnd={undefined}
+              onLoadStart={undefined}
+              onPartialLoad={undefined}
+              onProgress={undefined}
+              resizeMethod={undefined}
+              resizeMode={undefined}
+              source={
+                Object {
+                  "testUri": "../../../assets/weather_icons/sunny.png",
+                }
+              }
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "marginTop": -5,
+                  "resizeMode": "contain",
+                  "width": "170.00%",
+                }
+              }
+              testID={undefined}
+            />
+          </View>
+          <Text
+            accessible={true}
+            adjustsFontSizeToFit={undefined}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            minimumFontScale={undefined}
+            numberOfLines={undefined}
+            onLayout={undefined}
+            onLongPress={undefined}
+            onPress={undefined}
+            pressRetentionOffset={undefined}
+            selectable={undefined}
+            selectionColor={undefined}
+            style={
+              Object {
+                "color": "#EFEFEF",
+                "fontSize": 14,
+              }
+            }
+            suppressHighlighting={undefined}
+            testID={undefined}
+            textBreakStrategy={undefined}
+          >
+            0°
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
