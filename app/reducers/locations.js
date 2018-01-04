@@ -1,7 +1,7 @@
 import moment from 'moment';
 import * as types from '../actions/types.action';
 
-const initialState = {
+export const initialState = {
   locations: [{
     id: 1,
     lat: 0.0,
@@ -62,7 +62,7 @@ export default function locations(state = initialState, action = {}) {
     case types.ADD_LOCATION:
       return {
         ...state,
-        locations: [...state.locations, action.location],
+        locations: [...state.locations.filter(x => x.id !== 1), action.location],
         locationError: null,
         loading: false,
       };

@@ -1,10 +1,9 @@
 import * as utils from '../../app/actions/utils.action';
 
-jest.mock('Realm', () => {
-  return require('../../__mocks__/realmMock').default;
-});
-
 describe('utils', () => {
+  beforeAll(() => {
+    jest.genMockFromModule('realm');
+  });
   it('should create an action to trigger loading', () => {
     const locs = utils.getStoredLocations();
     expect(locs).toEqual([]);
