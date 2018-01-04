@@ -71,8 +71,8 @@ export const updateAllLocations = () => {
 
 export function getLocationsFromStore() {
   const locs = utils.getStoredLocations();
-  return (dispatch) => {
-    dispatch(creators.getLocation(locs));
+  return async (dispatch) => {
+    await dispatch(creators.getLocation(locs));
   };
 }
 

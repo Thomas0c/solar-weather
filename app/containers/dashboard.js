@@ -186,7 +186,7 @@ class Dashboard extends PureComponent {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dispatch, settings, locations } = this.props;
     NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
     AppState.addEventListener('change', this._handleAppStateChange);
@@ -196,7 +196,8 @@ class Dashboard extends PureComponent {
     const connected = isConnected === 'wifi' || isConnected === 'cell';
 
     if (!locations.loading) {
-      dispatch(locationActions.getLocationsFromStore());
+      await dispatch(locationActions.getLocationsFromStore());
+      this.updateLocationsAndSetTimestamp();
     }
     dispatch(settingsActions.getSettings());
 

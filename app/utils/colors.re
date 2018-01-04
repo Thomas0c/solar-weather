@@ -12,8 +12,10 @@ let colors = {
   "darkOrange": "#FEC272",
   "lightBlueGrey": "#A5C9D6",
   "darkBlueGrey": "#8093B6",
-  "lightMatteBlue": "#A6B6BC",
-  "darkMatteBlue": "#7C8FA0",
+  "lightMatteBlue": "#ACB7BB",
+  "lightPaleBlue": "#A5C9D6",
+  "darkPaleBlue": "#6D7B8C",
+  "darkMatteBlue": "#627A8F",
   "lightBlue": "#94B4BD",
   "darkBlue": "#5B828D",
   "lightBeige": "#CEBA9F",
@@ -61,7 +63,7 @@ let identifyBackground = (condition: string, day: bool) : string =>
   | "clear-night" => colors##darkBlueGrey
   | "clear-day" => colors##darkOrange
   | "cloudy" => day ? colors##lightMatteBlue : colors##darkMatteBlue
-  | "partly-cloudy-day" => day ? colors##lightMatteBlue : colors##darkMatteBlue
+  | "partly-cloudy-day" => day ? colors##lightPaleBlue : colors##darkPaleBlue
   | "partly-cloudy-night" =>
     day ? colors##lightMatteBlue : colors##darkMatteBlue
   | "rain" => day ? colors##mattePurple : colors##darkPurple

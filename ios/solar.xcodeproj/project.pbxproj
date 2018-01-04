@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -39,9 +40,9 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		71FEB6D9DE5C4246A2C870C8 /* libRNGooglePlaces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B94983A9084CA687A9F8A5 /* libRNGooglePlaces.a */; };
 		7A1735D4003D4359BA210337 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8E93EF30E483BAB03965F /* libz.tbd */; };
+		7A81FFB71FFD89D2001C7A93 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A81FFB61FFD89B8001C7A93 /* libReactNativePermissions.a */; };
 		7AD5D6561FB265EB003A11B2 /* libRNGeocoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD5D6551FB265D9003A11B2 /* libRNGeocoder.a */; };
 		7AD698EA1FB8DB5300188702 /* solar_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD698C11FB8DB5300188702 /* solar_launch.png */; };
-		7AFC85FD1FB73DF200DA6B44 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFC85F91FB73DE200DA6B44 /* libReactNativePermissions.a */; };
 		81E63A07D6F249B6B2C678E5 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FA7B83CA2046359043B141 /* libReactNativeConfig.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		933939F36B86F19D2ADACE75 /* libPods-solar-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E10CBA2D40075D378A811BC /* libPods-solar-tvOS.a */; };
@@ -233,6 +234,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		7A81FFB51FFD89B8001C7A93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A81FFB11FFD89B8001C7A93 /* ReactNativePermissions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D23B34F1C767B80008B4819;
+			remoteInfo = ReactNativePermissions;
+		};
 		7AD5D5F21FB264BF003A11B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -324,13 +332,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNGooglePlaces;
 		};
-		7AFC85F81FB73DE200DA6B44 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7AFC85D01FB73DE200DA6B44 /* ReactNativePermissions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9D23B34F1C767B80008B4819;
-			remoteInfo = ReactNativePermissions;
-		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -380,9 +381,9 @@
 		706EDF9CCF12C36B42C93F52 /* Pods-solarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-solarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-solarTests/Pods-solarTests.release.xcconfig"; sourceTree = "<group>"; };
 		77B94983A9084CA687A9F8A5 /* libRNGooglePlaces.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGooglePlaces.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7A81FFB11FFD89B8001C7A93 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		7AD5D6501FB265D8003A11B2 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
 		7AD698C11FB8DB5300188702 /* solar_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solar_launch.png; sourceTree = "<group>"; };
-		7AFC85D01FB73DE200DA6B44 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		7E10CBA2D40075D378A811BC /* libPods-solar-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-solar-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8167B1A6F2D093CDD3D932 /* Pods-solar-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-solar-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-solar-tvOS/Pods-solar-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -412,7 +413,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AFC85FD1FB73DF200DA6B44 /* libReactNativePermissions.a in Frameworks */,
+				7A81FFB71FFD89D2001C7A93 /* libReactNativePermissions.a in Frameworks */,
 				7AD5D6561FB265EB003A11B2 /* libRNGeocoder.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -609,6 +610,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7A81FFB21FFD89B8001C7A93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A81FFB61FFD89B8001C7A93 /* libReactNativePermissions.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7AD5D5EB1FB264BA003A11B2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,18 +660,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7AFC85D11FB73DE200DA6B44 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7AFC85F91FB73DE200DA6B44 /* libReactNativePermissions.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7AFC85D01FB73DE200DA6B44 /* ReactNativePermissions.xcodeproj */,
+				7A81FFB11FFD89B8001C7A93 /* ReactNativePermissions.xcodeproj */,
 				7AD5D6501FB265D8003A11B2 /* RNGeocoder.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -741,14 +742,6 @@
 				7AD5D5F31FB264BF003A11B2 /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		868BD58240C3477C9A28CF76 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -935,8 +928,8 @@
 					ProjectRef = E8A35ECF0DA54C1BB7B1AD28 /* ReactNativeConfig.xcodeproj */;
 				},
 				{
-					ProductGroup = 7AFC85D11FB73DE200DA6B44 /* Products */;
-					ProjectRef = 7AFC85D01FB73DE200DA6B44 /* ReactNativePermissions.xcodeproj */;
+					ProductGroup = 7A81FFB21FFD89B8001C7A93 /* Products */;
+					ProjectRef = 7A81FFB11FFD89B8001C7A93 /* ReactNativePermissions.xcodeproj */;
 				},
 				{
 					ProductGroup = 7AD5D6081FB264BF003A11B2 /* Products */;
@@ -1130,6 +1123,13 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		7A81FFB61FFD89B8001C7A93 /* libReactNativePermissions.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativePermissions.a;
+			remoteRef = 7A81FFB51FFD89B8001C7A93 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7AD5D5F31FB264BF003A11B2 /* libRCTBlob-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1219,13 +1219,6 @@
 			fileType = archive.ar;
 			path = libRNGooglePlaces.a;
 			remoteRef = 7AD5D6901FB2661E003A11B2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7AFC85F91FB73DE200DA6B44 /* libReactNativePermissions.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativePermissions.a;
-			remoteRef = 7AFC85F81FB73DE200DA6B44 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
