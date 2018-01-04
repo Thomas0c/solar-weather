@@ -1,35 +1,37 @@
 import moment from 'moment';
 import * as types from '../actions/types.action';
 
-export const initialState = {
-  locations: [{
-    id: 1,
-    lat: 0.0,
-    lng: 0.0,
-    currently: {
-      icon: '',
-      precipProbability: 0.00,
-      precipType: '',
-      temperature: 0.00,
-      apparentTemperature: 0.00,
-      humidity: 0,
-      summary: '',
-    },
-    daily: {
-      data: [],
-    },
-    hourly: {
-      data: [],
-    },
-    alerts: [],
-  }],
-  timezone: 'America/New_York',
-  locationError: null,
-  loading: false,
-  latestCollectiveUpdate: moment().subtract(1, 'day'),
+export const initialState = (date) => {
+  return {
+    locations: [{
+      id: 1,
+      lat: 0.0,
+      lng: 0.0,
+      currently: {
+        icon: '',
+        precipProbability: 0.00,
+        precipType: '',
+        temperature: 0.00,
+        apparentTemperature: 0.00,
+        humidity: 0,
+        summary: '',
+      },
+      daily: {
+        data: [],
+      },
+      hourly: {
+        data: [],
+      },
+      alerts: [],
+    }],
+    timezone: 'America/New_York',
+    locationError: null,
+    loading: false,
+    latestCollectiveUpdate: date || moment().subtract(1, 'day'),
+  };
 };
 
-export default function locations(state = initialState, action = {}) {
+export default function locations(state = initialState(), action = {}) {
   switch (action.type) {
     case types.LOCATION_LOADING_OFF:
       return {

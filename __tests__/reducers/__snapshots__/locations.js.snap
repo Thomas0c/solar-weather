@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`locations reducer should handle ADD_LOCATION and add a location to state 1`] = `
+Object {
+  "latestCollectiveUpdate": 2018-01-04T16:39:37.000Z,
+  "loading": false,
+  "locationError": null,
+  "locations": Array [
+    Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "",
+        "precipProbability": 0,
+        "precipType": "",
+        "summary": "",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+      },
+      "hourly": Object {
+        "data": Array [],
+      },
+      "id": 1,
+      "lat": 0,
+      "lng": 0,
+    },
+  ],
+  "timezone": "America/New_York",
+}
+`;
+
+exports[`locations reducer should handle GET_LOCATIONS and add them to state 1`] = `
+Object {
+  "latestCollectiveUpdate": 2018-01-04T16:39:37.000Z,
+  "loading": false,
+  "locationError": null,
+  "locations": Array [
+    Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "",
+        "precipProbability": 0,
+        "precipType": "",
+        "summary": "",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+      },
+      "hourly": Object {
+        "data": Array [],
+      },
+      "id": 1,
+      "lat": 0,
+      "lng": 0,
+    },
+  ],
+  "timezone": "America/New_York",
+}
+`;
+
+exports[`locations reducer should handle LOCATION_LOADING 1`] = `
+Object {
+  "latestCollectiveUpdate": 2018-01-04T16:39:37.000Z,
+  "loading": true,
+  "locationError": null,
+  "locations": Array [
+    Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "",
+        "precipProbability": 0,
+        "precipType": "",
+        "summary": "",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+      },
+      "hourly": Object {
+        "data": Array [],
+      },
+      "id": 1,
+      "lat": 0,
+      "lng": 0,
+    },
+  ],
+  "timezone": "America/New_York",
+}
+`;
+
+exports[`locations reducer should handle UPDATE_ERROR 1`] = `
+Object {
+  "latestCollectiveUpdate": 2018-01-04T16:39:37.000Z,
+  "loading": false,
+  "locationError": "Test Error",
+  "locations": Array [
+    Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "",
+        "precipProbability": 0,
+        "precipType": "",
+        "summary": "",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+      },
+      "hourly": Object {
+        "data": Array [],
+      },
+      "id": 1,
+      "lat": 0,
+      "lng": 0,
+    },
+  ],
+  "timezone": "America/New_York",
+}
+`;
+
+exports[`locations reducer should return the initial state 1`] = `
+Object {
+  "latestCollectiveUpdate": 2018-01-04T16:39:37.000Z,
+  "loading": false,
+  "locationError": null,
+  "locations": Array [
+    Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "",
+        "precipProbability": 0,
+        "precipType": "",
+        "summary": "",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+      },
+      "hourly": Object {
+        "data": Array [],
+      },
+      "id": 1,
+      "lat": 0,
+      "lng": 0,
+    },
+  ],
+  "timezone": "America/New_York",
+}
+`;

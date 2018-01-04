@@ -23,53 +23,46 @@ const loc = {
   alerts: [],
 };
 
-const expectedState = customObject => Object.assign({}, initialState, customObject);
-const loadingState = expectedState({ loading: true });
-const errorState = expectedState({ locationError: 'Test Error', loading: false });
-const addLocationState = expectedState({
-  locationError: null, loading: false, locations: [loc],
-});
-const getLocationsState = expectedState({
-  locations: [loc],
-});
+const date = new Date(1515083977 * 1000);
+const state = initialState(date);
 
 describe('locations reducer', () => {
   it('should return the initial state', () => {
-    expect(locations(undefined, {})).toEqual(initialState);
+    expect(locations(state, {})).toMatchSnapshot();
   });
 
   it('should handle LOCATION_LOADING', () => {
     expect(
-      locations(initialState, {
+      locations(state, {
         type: types.LOCATION_LOADING,
       })
-    ).toEqual(loadingState);
+    ).toMatchSnapshot();
   });
 
   it('should handle ADD_LOCATION and add a location to state', () => {
     expect(
-      locations(initialState, {
+      locations(state, {
         type: types.ADD_LOCATION,
         location: loc,
       })
-    ).toEqual(addLocationState);
+    ).toMatchSnapshot();
   });
 
   it('should handle GET_LOCATIONS and add them to state', () => {
     expect(
-      locations(initialState, {
+      locations(state, {
         type: types.GET_LOCATIONS,
         locations: [loc],
       })
-    ).toEqual(getLocationsState);
+    ).toMatchSnapshot();
   });
 
   it('should handle UPDATE_ERROR', () => {
     expect(
-      locations(initialState, {
+      locations(state, {
         type: types.UPDATE_ERROR,
         err: 'Test Error',
       })
-    ).toEqual(errorState);
+    ).toMatchSnapshot();
   });
 });
