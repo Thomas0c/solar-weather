@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HourForecastList from '../lib/js/app/components/hourForecastList';
+import HourForecastList from '../../lib/js/app/components/hourForecastList';
 
 const mockForecast = [{
   temperature: 0.0,

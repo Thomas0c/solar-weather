@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import WeatherCondition from '../lib/js/app/components/weatherCondition';
+import WeatherCondition from '../../lib/js/app/components/weatherCondition';
 
 const currentlyMock = {
   icon: '',

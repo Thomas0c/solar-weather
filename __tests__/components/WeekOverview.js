@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import WeekOverview from '../lib/js/app/components/weekOverview';
+import WeekOverview from '../../lib/js/app/components/weekOverview';
 
 const mockForecast = [{
   temperature: 0.0,

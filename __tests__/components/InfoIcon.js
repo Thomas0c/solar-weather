@@ -1,9 +1,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CloseButton from '../lib/js/app/components/closeButton';
+import InfoIcon from '../../lib/js/app/components/infoIcon';
 
 test('renders correctly', () => {
-  const tree = renderer.create(<CloseButton />).toJSON();
+  const tree = renderer.create(<InfoIcon />).toJSON();
   expect(tree).toMatchSnapshot();
 });

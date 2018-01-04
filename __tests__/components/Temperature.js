@@ -1,5 +1,5 @@
 import 'react-native';
-import Temperature from '../lib/js/app/utils/temperature';
+import Temperature from '../../lib/js/app/utils/temperature';
 
 test('Converts Celcius to Fahrenheit Correctly', () => {
   const temp = Temperature.convertToFahrenheit(6.0);

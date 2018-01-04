@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import WeatherConditionText from '../lib/js/app/components/weatherConditionText';
+import WeatherConditionText from '../../lib/js/app/components/weatherConditionText';
 
 test('renders correctly when showDetails is true', () => {
   const tree = renderer.create(<WeatherConditionText text="Test Text" showDetails />).toJSON();

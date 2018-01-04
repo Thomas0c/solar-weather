@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import LocationIcon from '../lib/js/app/components/locationIcon';
+import LocationIcon from '../../lib/js/app/components/locationIcon';
 
 test('renders correctly when selected', () => {
   const tree = renderer.create(<LocationIcon selected name="Tokyo" />).toJSON();

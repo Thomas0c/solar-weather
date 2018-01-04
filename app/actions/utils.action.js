@@ -30,7 +30,6 @@ export const forecastResponseExtended = (location, res, id) => {
       currently,
       hourly,
       timezone,
-      offset,
     },
   } = res;
 
@@ -43,7 +42,6 @@ export const forecastResponseExtended = (location, res, id) => {
     {
       last_updated: newDate,
       timezone,
-      offset,
     },
     {
       hourly: {

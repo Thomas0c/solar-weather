@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import LocationDisplay from '../lib/js/app/components/locationDisplay';
+import LocationDisplay from '../../lib/js/app/components/locationDisplay';
 
 test('renders correctly when not loading', () => {
   const tree = renderer.create(<LocationDisplay locationName="Tokyo" loading={false} />).toJSON();

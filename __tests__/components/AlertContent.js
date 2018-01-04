@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import AlertContent from '../lib/js/app/components/alertContent';
+import AlertContent from '../../lib/js/app/components/alertContent';
 
 test('renders correctly', () => {
   const tree = renderer.create(

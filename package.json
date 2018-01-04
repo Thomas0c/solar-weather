@@ -6,7 +6,7 @@
 		"build": "bsb -make-world -clean-world",
 		"watch": "bsb -make-world -clean-world -w",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+		"test": "jest --forceExit"
 	},
 	"dependencies": {
 		"axios": "^0.17.0",

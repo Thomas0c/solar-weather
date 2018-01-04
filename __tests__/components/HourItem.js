@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HourItem from '../lib/js/app/components/hourItem';
+import HourItem from '../../lib/js/app/components/hourItem';
 
 test('renders correctly', () => {
   const tree = renderer.create(<HourItem

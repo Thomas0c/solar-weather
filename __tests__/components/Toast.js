@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Toast from '../lib/js/app/components/toast';
+import Toast from '../../lib/js/app/components/toast';
 
 test('renders correctly if no error is passed', () => {
   const tree = renderer.create(<Toast
