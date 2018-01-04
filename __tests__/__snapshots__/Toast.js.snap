@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly if an error is passed 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "backgroundColor": "#E77F6D",
+      "height": 50,
+      "left": 0,
+      "padding": 15,
+      "position": "absolute",
+      "top": -100,
+      "width": 750,
+      "zIndex": 3,
+    }
+  }
+  testID={undefined}
+>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Object {
+        "color": "#FFF",
+        "fontFamily": "HelveticaNeue",
+        "fontWeight": "700",
+        "textAlign": "center",
+      }
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    This is an error
+  </Text>
+</View>
+`;
+
+exports[`renders correctly if no error is passed 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "backgroundColor": "#E77F6D",
+      "height": 50,
+      "left": 0,
+      "padding": 15,
+      "position": "absolute",
+      "top": -100,
+      "width": 750,
+      "zIndex": 3,
+    }
+  }
+  testID={undefined}
+/>
+`;
+
+exports[`renders correctly if not connected 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityLiveRegion={undefined}
+  accessibilityTraits={undefined}
+  accessibilityViewIsModal={undefined}
+  accessible={undefined}
+  collapsable={undefined}
+  hitSlop={undefined}
+  importantForAccessibility={undefined}
+  needsOffscreenAlphaCompositing={undefined}
+  onAccessibilityTap={undefined}
+  onLayout={undefined}
+  onMagicTap={undefined}
+  pointerEvents={undefined}
+  removeClippedSubviews={undefined}
+  renderToHardwareTextureAndroid={undefined}
+  shouldRasterizeIOS={undefined}
+  style={
+    Object {
+      "backgroundColor": "#E77F6D",
+      "height": 50,
+      "left": 0,
+      "padding": 15,
+      "position": "absolute",
+      "top": -100,
+      "width": 750,
+      "zIndex": 3,
+    }
+  }
+  testID={undefined}
+>
+  <Text
+    accessible={true}
+    adjustsFontSizeToFit={undefined}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    minimumFontScale={undefined}
+    numberOfLines={undefined}
+    onLayout={undefined}
+    onLongPress={undefined}
+    onPress={undefined}
+    pressRetentionOffset={undefined}
+    selectable={undefined}
+    selectionColor={undefined}
+    style={
+      Object {
+        "color": "#FFF",
+        "fontFamily": "HelveticaNeue",
+        "fontWeight": "700",
+        "textAlign": "center",
+      }
+    }
+    suppressHighlighting={undefined}
+    testID={undefined}
+    textBreakStrategy={undefined}
+  >
+    No Connection
+  </Text>
+</View>
+`;

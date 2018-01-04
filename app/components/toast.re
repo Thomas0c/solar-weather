@@ -37,6 +37,14 @@ let styles =
     )
   );
 
+let wrapperComponent = (state, children) =>
+  <Animated.View
+    style=Style.(
+            concat([styles##container, style([top(Animated(state.topAnim))])])
+          )>
+    children
+  </Animated.View>;
+
 let make =
     (
       ~error: string,
@@ -64,16 +72,28 @@ let make =
     } else {
       state
     },
-  render: ({state}) =>
-    <Animated.View
-      style=Style.(
-              concat([
-                styles##container,
-                style([top(Animated(state.topAnim))])
-              ])
-            )>
-      <Text style=styles##text> (ReasonReact.stringToElement(error)) </Text>
-    </Animated.View>
+  render: ({state}) => {
+    let errorComponent: ReasonReact.reactElement =
+      switch (Js.to_bool(connected), Js.to_bool(displayError)) {
+      | (true, false) => ReasonReact.nullElement
+      | (false, false) =>
+        wrapperComponent(
+          state,
+          <Text style=styles##text>
+            (ReasonReact.stringToElement("No Connection"))
+          </Text>
+        )
+      | (true, true) =>
+        wrapperComponent(
+          state,
+          <Text style=styles##text>
+            (ReasonReact.stringToElement(error))
+          </Text>
+        )
+      | _ => ReasonReact.nullElement
+      };
+    errorComponent
+  }
 };
 
 let default =
