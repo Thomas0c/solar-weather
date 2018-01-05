@@ -4,8 +4,14 @@
     "browser": true
   },
   "rules": {
+    "function-paren-newline": [1, "multiline"],
+    "arrow-parens": [2, "as-needed"],
+    "indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+    "no-tabs": 0,
   	"react/require-default-props": "off",
     "no-underscore-dangle": ["error", {"allow": ["__PRELOADED_STATE__"]}],
     "react/jsx-filename-extension": "off",
+    "react/jsx-indent": [2, "tab"],
+    "react/jsx-indent-props": [2, "tab"],
   }
 }

@@ -11,12 +11,12 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
-export default class App extends PureComponent { // eslint-disable-line
-  render() {
-    return (
-      <Provider store={store}>
-        <Dashboard />
-      </Provider>
-    );
-  }
+export default class App extends PureComponent {
+	render() {
+		return (
+			<Provider store={store}>
+				<Dashboard />
+			</Provider>
+		);
+	}
 }

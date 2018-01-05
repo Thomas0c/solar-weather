@@ -12,7 +12,7 @@ import * as locationActions from '../actions/locations.action';
 import * as creators from '../actions/creators.action';
 
 import { isDaylight } from '../utils/time.utils';
-import { units, timeTypes, appColors } from '../config/general.config';
+import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
 import AlertContent from '../../lib/js/app/components/alertContent';
@@ -30,399 +30,410 @@ import Modal from '../../lib/js/app/components/contentModal';
 import Toast from '../../lib/js/app/components/toast';
 import WeatherCondition from '../../lib/js/app/components/weatherCondition';
 
-import {
-  AppState,
-  NetInfo,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { AppState, NetInfo, StatusBar, StyleSheet, View } from 'react-native';
 
 class Dashboard extends PureComponent {
-  state = {
-    authorized: false,
-    lastPosition: {
-      coords: {
-        latitude: 0,
-        longitude: 0,
-      },
-    },
-    isConnected: 'none',
-    appState: 'inactive',
-    menu: false,
-    locationSearch: false,
-    openRight: false,
-    openLeft: false,
-    timestamp: moment(),
-    showDetails: true,
-    openAlert: false,
-    openHours: false,
-  };
+	state = {
+		authorized: false,
+		lastPosition: {
+			coords: {
+				latitude: 0,
+				longitude: 0,
+			},
+		},
+		isConnected: 'none',
+		appState: 'inactive',
+		menu: false,
+		locationSearch: false,
+		openRight: false,
+		openLeft: false,
+		timestamp: moment(),
+		showDetails: true,
+		openAlert: false,
+		openHours: false,
+	};
 
-  updateLocationsAndSetTimestamp() {
-    const { locations, settings } = this.props;
-    const now = moment();
-    const latestUpdate = moment().unix(settings.latestUpdate);
-    console.log(latestUpdate);
-    console.log(now.diff(latestUpdate, 'minutes'));
-    console.log(now.diff(latestUpdate, 'minutes') > 10);
+	updateLocationsAndSetTimestamp() {
+		const { locations, settings } = this.props;
+		const now = moment();
+		const latestUpdate = moment().unix(settings.latestUpdate);
 
-    if (
-      now.diff(latestUpdate, 'minutes') > 10 &&
-      !locations.loading
-    ) {
-      this.props.dispatch(locationActions.updateAllLocations());
-    }
-  }
+		if (now.diff(latestUpdate, 'minutes') > 10 && !locations.loading) {
+			this.props.dispatch(locationActions.updateAllLocations());
+		}
+	}
 
-  componentWillReceiveProps = (nextProps) => {
-    if (
-      this.props.locations.locations.length !== nextProps.locations.locations.length
-    ) {
-      this.updateLocationsAndSetTimestamp();
-    }
-  }
+	componentWillReceiveProps = nextProps => {
+		if (
+			this.props.locations.locations.length !==
+			nextProps.locations.locations.length
+		) {
+			this.updateLocationsAndSetTimestamp();
+		}
+	};
 
-  updateSegmentIndex(event) {
-    const index = event.nativeEvent.selectedSegmentIndex;
-    this.props.dispatch(settingsActions.setUnit(units[index], index));
-  }
+	updateSegmentIndex(event) {
+		const index = event.nativeEvent.selectedSegmentIndex;
+		this.props.dispatch(settingsActions.setUnit(units[index], index));
+	}
 
-  updateSegmentTimeIndex(event) {
-    const index = event.nativeEvent.selectedSegmentIndex;
-    this.props.dispatch(settingsActions.setTimeType(timeTypes[index], index));
-  }
+	updateSegmentTimeIndex(event) {
+		const index = event.nativeEvent.selectedSegmentIndex;
+		this.props.dispatch(settingsActions.setTimeType(timeTypes[index], index));
+	}
 
-  toggleLocationSearch() {
-    this.setState({
-      locationSearch: !this.state.locationSearch,
-      openRight: false,
-      openLeft: false,
-    });
-  }
+	toggleLocationSearch() {
+		this.setState({
+			locationSearch: !this.state.locationSearch,
+			openRight: false,
+			openLeft: false,
+		});
+	}
 
-  componentWillUnmount() {
-    AppState.removeEventListener('change', this._handleAppStateChange);
-    AppState.removeEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
-    NetInfo.removeEventListener('connectionChange', this.handleNetworkType);
-  }
+	componentWillUnmount() {
+		AppState.removeEventListener('change', this._handleAppStateChange);
+		AppState.removeEventListener(
+			'memoryWarning',
+			this._handleMemoryWarning.bind(this),
+		);
+		NetInfo.removeEventListener('connectionChange', this.handleNetworkType);
+	}
 
-  handleNetworkType(networkType) {
-    this.setState({ isConnected: networkType });
-  }
+	handleNetworkType(networkType) {
+		this.setState({ isConnected: networkType });
+	}
 
-  _handleMemoryWarning = () => {
-    this.setState({
-      memoryWarnings: this.state.memoryWarnings +1
-    });
-  }
+	_handleMemoryWarning = () => {
+		this.setState({
+			memoryWarnings: this.state.memoryWarnings + 1,
+		});
+	};
 
-  _handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-      this.updateLocationsAndSetTimestamp();
-      this.determineLocationStatus();
-      this.setState({
-        timestamp: moment(),
-        openRight: false,
-        openLeft: false,
-      });
-    }
-    this.setState({
-      appState: nextAppState,
-    });
-  }
+	_handleAppStateChange = nextAppState => {
+		if (
+			this.state.appState.match(/inactive|background/) &&
+			nextAppState === 'active'
+		) {
+			this.updateLocationsAndSetTimestamp();
+			this.determineLocationStatus();
+			this.setState({
+				timestamp: moment(),
+				openRight: false,
+				openLeft: false,
+			});
+		}
+		this.setState({
+			appState: nextAppState,
+		});
+	};
 
-  async determineLocationStatus() {
-    const { locations: { locations }, dispatch } = this.props;
-    const indexLoc = locations.filter(item => item.id === 0);
-    const res = await Permissions.check('location', 'whenInUse');
-    if (res === 'undetermined') {
-      Permissions.request('location', 'whenInUse');
-    } else if (res !== 'authorized') {
-      if (indexLoc.length === 1) {
-        dispatch(locationActions.deleteLocationFromStore(0));
-        this.updateLocationsAndSetTimestamp();
-      }
-    } else if (res === 'authorized') {
-      this.checkIfLocationHasChanged(indexLoc.length === 0);
-    }
-    this.setState({
-      authorized: res === 'authorized',
-    });
-  }
+	async determineLocationStatus() {
+		const { locations: { locations }, dispatch } = this.props;
+		const indexLoc = locations.filter(item => item.id === 0);
+		const res = await Permissions.check('location', 'whenInUse');
+		if (res === 'undetermined') {
+			Permissions.request('location', 'whenInUse');
+		} else if (res !== 'authorized') {
+			if (indexLoc.length === 1) {
+				dispatch(locationActions.deleteLocationFromStore(0));
+				this.updateLocationsAndSetTimestamp();
+			}
+		} else if (res === 'authorized') {
+			this.checkIfLocationHasChanged(indexLoc.length === 0);
+		}
+		this.setState({
+			authorized: res === 'authorized',
+		});
+	}
 
-  checkIfLocationHasChanged(newLocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { lastPosition } = this.state;
-      if (
-        lastPosition.coords.latitude !== position.coords.latitude &&
-        lastPosition.coords.longitude !== position.coords.longitude
-      ) {
-        // Geocode position and fetch forecast
-        this.geocodePositionAndGetForecast(newLocation, {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        this.setState({ lastPosition: position });
-      }
-    }, (error) => {
-      creators.updateError('Not able to find location.');
-    },
-    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
-  }
+	checkIfLocationHasChanged(newLocation) {
+		navigator.geolocation.getCurrentPosition(
+			position => {
+				const { lastPosition } = this.state;
+				if (
+					lastPosition.coords.latitude !== position.coords.latitude &&
+					lastPosition.coords.longitude !== position.coords.longitude
+				) {
+					// Geocode position and fetch forecast
+					this.geocodePositionAndGetForecast(newLocation, {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude,
+					});
+					this.setState({ lastPosition: position });
+				}
+			},
+			error => {
+				creators.updateError('Not able to find location.');
+			},
+			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+		);
+	}
 
-  async geocodePositionAndGetForecast(newLocation, pos) {
-    try {
-      const res = await Geocoder.geocodePosition(pos);
-      const loc = {
-        name: res[0].locality,
-        lat: pos.lat,
-        lng: pos.lng,
-      };
-      this.props.dispatch(
-        newLocation ? locationActions.addNewLocation(loc, 0) :
-        locationActions.updateCurrentLocation(loc)
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }
+	async geocodePositionAndGetForecast(newLocation, pos) {
+		try {
+			const res = await Geocoder.geocodePosition(pos);
+			const loc = {
+				name: res[0].locality,
+				lat: pos.lat,
+				lng: pos.lng,
+			};
+			this.props.dispatch(
+				newLocation
+					? locationActions.addNewLocation(loc, 0)
+					: locationActions.updateCurrentLocation(loc),
+			);
+		} catch (e) {
+			console.log(e);
+		}
+	}
 
-  async componentDidMount() {
-    const { dispatch, settings, locations } = this.props;
-    NetInfo.addEventListener('connectionChange', this.handleNetworkType.bind(this));
-    AppState.addEventListener('change', this._handleAppStateChange);
-    AppState.addEventListener('memoryWarning', this._handleMemoryWarning.bind(this));
+	async componentDidMount() {
+		const { dispatch, settings, locations } = this.props;
+		NetInfo.addEventListener(
+			'connectionChange',
+			this.handleNetworkType.bind(this),
+		);
+		AppState.addEventListener('change', this._handleAppStateChange);
+		AppState.addEventListener(
+			'memoryWarning',
+			this._handleMemoryWarning.bind(this),
+		);
 
-    const { isConnected } = this.state;
-    const connected = isConnected === 'wifi' || isConnected === 'cell';
+		const { isConnected } = this.state;
+		const connected = isConnected === 'wifi' || isConnected === 'cell';
 
-    if (!locations.loading) {
-      await dispatch(locationActions.getLocationsFromStore());
-      this.updateLocationsAndSetTimestamp();
-    }
+		if (!locations.loading) {
+			await dispatch(locationActions.getLocationsFromStore());
+			this.updateLocationsAndSetTimestamp();
+		}
 
-    await dispatch(settingsActions.getSettings());
+		await dispatch(settingsActions.getSettings());
 
-    if (!settings.onboarding) {
-      this.determineLocationStatus();
-      this.setOnboardingTrue();
-    }
+		if (!settings.onboarding) {
+			this.determineLocationStatus();
+			this.setOnboardingTrue();
+		}
 
-    setInterval(() => {
-      this.setState({
-        timestamp: moment(),
-      });
-    }, 20000);
-  }
+		setInterval(() => {
+			this.setState({
+				timestamp: moment(),
+			});
+		}, 20000);
+	}
 
-  toggleState(key) {
-    this.setState({
-      [key]: !this.state[key],
-    });
-  }
+	toggleState(key) {
+		this.setState({
+			[key]: !this.state[key],
+		});
+	}
 
-  setOnboardingTrue() {
-    const { dispatch, locations: { locations } } = this.props;
-    dispatch(settingsActions.setOnboarding(true));
-  }
+	setOnboardingTrue() {
+		const { dispatch, locations: { locations } } = this.props;
+		dispatch(settingsActions.setOnboarding(true));
+	}
 
-  resetOnboarding() {
-    this.toggleState('menu');
-    this.props.dispatch(settingsActions.setOnboarding(false));
-  }
+	resetOnboarding() {
+		this.toggleState('menu');
+		this.props.dispatch(settingsActions.setOnboarding(false));
+	}
 
-  handleOpenSidebar(side) {
-    if (this.state[side] === false) {
-      this.setState({
-        [side]: true,
-      });
-    }
-  }
+	handleOpenSidebar(side) {
+		if (this.state[side] === false) {
+			this.setState({
+				[side]: true,
+			});
+		}
+	}
 
-  handleCloseSidebar(side) {
-    if (this.state[side] === true) {
-      this.setState({
-        [side]: false,
-      });
-    }
-  }
+	handleCloseSidebar(side) {
+		if (this.state[side] === true) {
+			this.setState({
+				[side]: false,
+			});
+		}
+	}
 
-  render() {
-    const {
-      lastPosition,
-      isConnected,
-      timestamp,
-      showDetails,
-      menu,
-      openRight,
-      openLeft,
-      locationSearch,
-      openAlert,
-      authorized,
-      appState,
-      openHours,
-    } = this.state;
+	render() {
+		const {
+			lastPosition,
+			isConnected,
+			timestamp,
+			showDetails,
+			menu,
+			openRight,
+			openLeft,
+			locationSearch,
+			openAlert,
+			authorized,
+			appState,
+			openHours,
+		} = this.state;
 
-  const {
-    settings: {
-      locationIndex,
-      unit,
-      unitIndex,
-      timeType,
-      timeIndex
-    },
-    locations: {
-      locations,
-      locationError,
-      loading,
-    }
-  } = this.props;
+		const {
+			settings: { locationIndex, unit, unitIndex, timeType, timeIndex },
+			locations: { locations, locationError, loading },
+		} = this.props;
 
-  const connected = isConnected === 'wifi' || isConnected === 'cell';
-  const anyLocation = locations.length > 0;
-  const activeLocation = locations.length -1 < locationIndex ?
-    locations[0] : locations[locationIndex];
+		const connected = isConnected === 'wifi' || isConnected === 'cell';
+		const anyLocation = locations.length > 0;
+		const activeLocation =
+			locations.length - 1 < locationIndex
+				? locations[0]
+				: locations[locationIndex];
 
-  const rightOpen = locationError ? false : null;
-  const timezone = activeLocation && activeLocation.timezone ?
-    activeLocation.timezone : moment.tz.guess();
-  const day = timestamp.clone().tz(timezone);
-  const eveningTime = day.hour(18).minute(0).second(0);
-  const morningTime = day.hour(6).minute(0).second(0);
-  const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);
+		const rightOpen = locationError ? false : null;
+		const timezone =
+			activeLocation && activeLocation.timezone
+				? activeLocation.timezone
+				: moment.tz.guess();
+		const day = timestamp.clone().tz(timezone);
+		const eveningTime = day
+			.hour(18)
+			.minute(0)
+			.second(0);
+		const morningTime = day
+			.hour(6)
+			.minute(0)
+			.second(0);
+		const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);
 
-  // Alert title and description
-  const showAlert = activeLocation ?
-    activeLocation.alerts.length > 0 : 0;
-  const activeAlertTitle = activeLocation && activeLocation.alerts.length > 0 ?
-    activeLocation.alerts[0].title : '';
-  const activeAlertDescription = activeLocation && activeLocation.alerts.length > 0 ?
-    activeLocation.alerts[0].description : '';
+		// Alert title and description
+		const showAlert = activeLocation ? activeLocation.alerts.length > 0 : 0;
+		const activeAlertTitle =
+			activeLocation && activeLocation.alerts.length > 0
+				? activeLocation.alerts[0].title
+				: '';
+		const activeAlertDescription =
+			activeLocation && activeLocation.alerts.length > 0
+				? activeLocation.alerts[0].description
+				: '';
 
-  return (
-    <RightSidebar
-      menu={menu}
-      locationSearch={locationSearch}
-      anyLocation={anyLocation}
-      openRight={openRight}
-      onRowSelect={(id, lat, lng) => this.props.dispatch(locationActions.setActiveLocation(id, lat, lng))}
-      onRowDelete={(id) => this.props.dispatch(locationActions.deleteLocationFromStore(id))}
-      onOpenRightSide={this.handleOpenSidebar.bind(this, 'openRight')}
-      onCloseRightSide={this.handleCloseSidebar.bind(this, 'openRight')}
-      unit={unit}
-      dayTime={dayTime}
-      locationIndex={locationIndex}
-      toggleLocationSearch={this.toggleLocationSearch.bind(this)}
-      filteredLocations={locations}
-    >
-      <LeftSidebar
-        menu={menu}
-        locationSearch={locationSearch}
-        anyLocation={anyLocation}
-        openLeft={openLeft}
-        forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
-        unit={unit}
-        timezone={timezone}
-        onOpenLeftSide={this.handleOpenSidebar.bind(this, 'openLeft')}
-        onCloseLeftSide={this.handleCloseSidebar.bind(this, 'openLeft')}
-      >
-        <View
-          style={styles.container}
-        >
-          <Modal
-            visible={openAlert && showAlert}
-            toggleView={this.toggleState.bind(this, 'openAlert')}
-            content={<AlertContent title={activeAlertTitle} description={activeAlertDescription} />}
-          />
-          <LocationSearch
-            visible={locationSearch}
-            authorized={authorized}
-            toggleView={this.toggleLocationSearch.bind(this)}
-          />
-          <Menu
-            menu={menu}
-            resetOnboarding={this.resetOnboarding.bind(this)}
-            unitIndex={unitIndex}
-            timeIndex={timeIndex}
-            handleMenu={this.toggleState.bind(this, 'menu')}
-            updateIndex={this.updateSegmentIndex.bind(this)}
-            updateTimeIndex={this.updateSegmentTimeIndex.bind(this)}
-          />
-          <InfoIcon onPress={this.toggleState.bind(this, 'menu')} />
-          <Toast
-            connected={connected}
-            error={locationError}
-            displayError={locationError !== null}
-          />
-          <StatusBar
-            hidden
-            animated
-          />
-          <Background
-            day={isDaylight(timezone)}
-            condition={activeLocation ? activeLocation.currently.icon : ''}
-          />
-          <DateDisplay
-            time={timeType}
-            timestamp={timestamp}
-            timezone={timezone}
-            day={dayTime}
-            condition={activeLocation ? activeLocation.currently.icon : ''}
-          />
-          { !anyLocation &&
-            <Empty
-              onPress={this.toggleLocationSearch.bind(this)}
-            />
-          }
-          <WeatherCondition
-            unit={unit}
-            condition={activeLocation ? activeLocation.currently.icon : ''}
-            showDetails={showDetails}
-            toggleDetails={this.toggleState.bind(this, 'showDetails')}
-            toggleAlert={this.toggleState.bind(this, 'openAlert')}
-            alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
-            currently={activeLocation && activeLocation.currently ? activeLocation.currently : null}
-          />
-          <HourForecastList
-            timeType={timeType}
-            locationIndex={locationIndex}
-            forecast={Array.from(activeLocation ? activeLocation.hourly.data : [])}
-            openHours={openHours}
-            unit={unit}
-            timezone={timezone}
-            locationName={activeLocation ? activeLocation.name : ''}
-          />
-          <LocationDisplay
-            onPress={this.toggleState.bind(this, 'openHours')}
-            loading={loading}
-            locationName={activeLocation ? activeLocation.name : ''}
-          />
-        </View>
-      </LeftSidebar>
-    </RightSidebar>);
-  }
+		return (
+			<RightSidebar
+				menu={menu}
+				locationSearch={locationSearch}
+				anyLocation={anyLocation}
+				openRight={openRight}
+				onRowSelect={(id, lat, lng) =>
+					this.props.dispatch(locationActions.setActiveLocation(id, lat, lng))
+				}
+				onRowDelete={id =>
+					this.props.dispatch(locationActions.deleteLocationFromStore(id))
+				}
+				onOpenRightSide={this.handleOpenSidebar.bind(this, 'openRight')}
+				onCloseRightSide={this.handleCloseSidebar.bind(this, 'openRight')}
+				unit={unit}
+				dayTime={dayTime}
+				locationIndex={locationIndex}
+				toggleLocationSearch={this.toggleLocationSearch.bind(this)}
+				filteredLocations={locations}>
+				<LeftSidebar
+					menu={menu}
+					locationSearch={locationSearch}
+					anyLocation={anyLocation}
+					openLeft={openLeft}
+					forecast={Array.from(activeLocation ? activeLocation.daily.data : [])}
+					unit={unit}
+					timezone={timezone}
+					onOpenLeftSide={this.handleOpenSidebar.bind(this, 'openLeft')}
+					onCloseLeftSide={this.handleCloseSidebar.bind(this, 'openLeft')}>
+					<View style={styles.container}>
+						<Modal
+							visible={openAlert && showAlert}
+							toggleView={this.toggleState.bind(this, 'openAlert')}
+							content={
+								<AlertContent
+									title={activeAlertTitle}
+									description={activeAlertDescription}
+								/>
+							}
+						/>
+						<LocationSearch
+							visible={locationSearch}
+							authorized={authorized}
+							toggleView={this.toggleLocationSearch.bind(this)}
+						/>
+						<Menu
+							menu={menu}
+							resetOnboarding={this.resetOnboarding.bind(this)}
+							unitIndex={unitIndex}
+							timeIndex={timeIndex}
+							handleMenu={this.toggleState.bind(this, 'menu')}
+							updateIndex={this.updateSegmentIndex.bind(this)}
+							updateTimeIndex={this.updateSegmentTimeIndex.bind(this)}
+						/>
+						<InfoIcon onPress={this.toggleState.bind(this, 'menu')} />
+						<Toast
+							connected={connected}
+							error={locationError}
+							displayError={locationError !== null}
+						/>
+						<StatusBar hidden animated />
+						<Background
+							day={isDaylight(timezone)}
+							condition={activeLocation ? activeLocation.currently.icon : ''}
+						/>
+						<DateDisplay
+							time={timeType}
+							timestamp={timestamp}
+							timezone={timezone}
+							day={dayTime}
+							condition={activeLocation ? activeLocation.currently.icon : ''}
+						/>
+						{!anyLocation && (
+							<Empty onPress={this.toggleLocationSearch.bind(this)} />
+						)}
+						<WeatherCondition
+							unit={unit}
+							condition={activeLocation ? activeLocation.currently.icon : ''}
+							showDetails={showDetails}
+							toggleDetails={this.toggleState.bind(this, 'showDetails')}
+							toggleAlert={this.toggleState.bind(this, 'openAlert')}
+							alerts={Array.from(activeLocation ? activeLocation.alerts : [])}
+							currently={
+								activeLocation && activeLocation.currently
+									? activeLocation.currently
+									: null
+							}
+						/>
+						<HourForecastList
+							timeType={timeType}
+							locationIndex={locationIndex}
+							forecast={Array.from(
+								activeLocation ? activeLocation.hourly.data : [],
+							)}
+							openHours={openHours}
+							unit={unit}
+							timezone={timezone}
+							locationName={activeLocation ? activeLocation.name : ''}
+						/>
+						<LocationDisplay
+							onPress={this.toggleState.bind(this, 'openHours')}
+							loading={loading}
+							locationName={activeLocation ? activeLocation.name : ''}
+						/>
+					</View>
+				</LeftSidebar>
+			</RightSidebar>
+		);
+	}
 }
 
 Dashboard.propTypes = {
-  dispatch: PropTypes.func,
+	dispatch: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: appColors.lightGrey,
-  },
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: appColors.lightGrey,
+	},
 });
-const mapStateToProps = ({
-  locations,
-  settings,
-}) => ({
-  locations,
-  settings,
+const mapStateToProps = ({ locations, settings }) => ({
+	locations,
+	settings,
 });
 
 export default connect(mapStateToProps)(Dashboard);
