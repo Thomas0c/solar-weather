@@ -28,8 +28,8 @@ Array [
         "icon": "sunny",
         "summary": "Test summary",
       },
-      "id": 1515148913531,
-      "last_updated": 2018-01-05T10:41:53.531Z,
+      "id": 0,
+      "last_updated": 2018-01-05T10:54:09.000Z,
       "lat": 35.689487,
       "lng": 139.691706,
       "name": "Tokyo",
@@ -64,7 +64,7 @@ Array [
   },
   Object {
     "err": "Error adding location",
-    "type": "UPDATE_ERROR",
+    "type": "ADD_LOCATION_ERROR",
   },
 ]
 `;
