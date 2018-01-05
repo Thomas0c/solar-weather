@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class HourlyData extends Realm.Object {}
+class HourlyData {}
 HourlyData.schema = {
   name: 'HourlyData',
   properties: {
@@ -15,7 +13,7 @@ HourlyData.schema = {
   },
 };
 
-class Hourly extends Realm.Object {}
+class Hourly {}
 Hourly.schema = {
   name: 'Hourly',
   properties: {

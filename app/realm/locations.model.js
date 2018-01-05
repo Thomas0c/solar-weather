@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class Locations extends Realm.Object {}
+class Locations {}
 Locations.schema = {
   name: 'Location',
   primaryKey: 'id',

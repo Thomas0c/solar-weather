@@ -194,12 +194,14 @@ class Dashboard extends PureComponent {
 
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
+    dispatch(settingsActions.getSettings());
 
     if (!locations.loading) {
       await dispatch(locationActions.getLocationsFromStore());
-      this.updateLocationsAndSetTimestamp();
+      if (settings.onboarding) {
+        this.updateLocationsAndSetTimestamp();
+      }
     }
-    dispatch(settingsActions.getSettings());
 
     if (!settings.onboarding) {
       this.determineLocationStatus();

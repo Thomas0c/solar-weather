@@ -1,7 +1,7 @@
 import * as actions from '../../app/actions/creators.action';
 import * as types from '../../app/actions/types.action';
+import { loc } from '../config';
 
-const loc = { id: 0, name: 'Tokyo' };
 const locs = [loc, loc];
 
 describe('actions', () => {

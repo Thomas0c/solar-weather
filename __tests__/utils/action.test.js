@@ -4,7 +4,7 @@ describe('utils', () => {
   beforeAll(() => {
     jest.genMockFromModule('realm');
   });
-  it('should create an action to trigger loading', () => {
+  it('should get empty array of locations', () => {
     const locs = utils.getStoredLocations();
     expect(locs).toEqual([]);
   });

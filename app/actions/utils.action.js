@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Config from 'react-native-config';
 import moment from 'moment';
+import tz from 'moment-timezone';
 import realm from '../realm';
 
 const R = require('ramda');
@@ -22,7 +23,8 @@ export const getStoredLocations = () => {
 };
 
 export const forecastResponseExtended = (location, res, id) => {
-  const newDate = new Date();
+  const newDate = process.env.NODE_ENV === 'test' ?
+    new Date(1515149649 * 1000) : new Date();
   const {
     data: {
       daily,

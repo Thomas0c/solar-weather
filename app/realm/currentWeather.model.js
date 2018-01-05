@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class Currently extends Realm.Object {}
+class Currently {}
 Currently.schema = {
   name: 'Currently',
   properties: {

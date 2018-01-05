@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`locations store should handle correct location by returning success 1`] = `
+Array [
+  Object {
+    "type": "LOCATION_LOADING",
+  },
+  Object {
+    "location": Object {
+      "alerts": Array [],
+      "currently": Object {
+        "apparentTemperature": 0,
+        "humidity": 0,
+        "icon": "sunny",
+        "precipIntensity": 0,
+        "precipProbability": 0,
+        "precipType": "rain",
+        "summary": "Test summary",
+        "temperature": 0,
+      },
+      "daily": Object {
+        "data": Array [],
+        "icon": "sunny",
+        "summary": "Test summary",
+      },
+      "hourly": Object {
+        "data": Array [],
+        "icon": "sunny",
+        "summary": "Test summary",
+      },
+      "id": 1515148913531,
+      "last_updated": 2018-01-05T10:41:53.531Z,
+      "lat": 35.689487,
+      "lng": 139.691706,
+      "name": "Tokyo",
+      "timezone": "America/New_York",
+    },
+    "type": "ADD_LOCATION",
+  },
+  Object {
+    "index": 0,
+    "type": "SET_ACTIVE_LOCATION",
+  },
+]
+`;
+
+exports[`locations store should handle deleteLocationFromStore 1`] = `
+Array [
+  Object {
+    "id": 0,
+    "type": "DELETE_LOCATION",
+  },
+  Object {
+    "index": 0,
+    "type": "SET_ACTIVE_LOCATION",
+  },
+]
+`;
+
+exports[`locations store should handle faulty location by returning error 1`] = `
+Array [
+  Object {
+    "type": "LOCATION_LOADING",
+  },
+  Object {
+    "err": "Error adding location",
+    "type": "UPDATE_ERROR",
+  },
+]
+`;

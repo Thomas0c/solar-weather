@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class Options extends Realm.Object {}
+class Options {}
 Options.schema = {
   name: 'Options',
   primaryKey: 'key',

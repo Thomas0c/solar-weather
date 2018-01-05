@@ -13,4 +13,14 @@ const realm = new Realm({
   deleteRealmIfMigrationNeeded: true,
 });
 
+export const deleteRealm = async () => {
+  try {
+    await realm.write(async () => {
+      realm.deleteAll();
+    });
+  } catch (err) {
+    if (err) Promise.reject(err);
+  }
+};
+
 export default realm;

@@ -1,32 +1,15 @@
 import * as types from '../../app/actions/types.action';
 import locations, { initialState } from '../../app/reducers/locations';
-
-const loc = {
-  id: 1,
-  lat: 0.0,
-  lng: 0.0,
-  currently: {
-    icon: '',
-    precipProbability: 0.00,
-    precipType: '',
-    temperature: 0.00,
-    apparentTemperature: 0.00,
-    humidity: 0,
-    summary: '',
-  },
-  daily: {
-    data: [],
-  },
-  hourly: {
-    data: [],
-  },
-  alerts: [],
-};
+import { loc } from '../config';
 
 const date = new Date(1515083977 * 1000);
 const state = initialState(date);
 
 describe('locations reducer', () => {
+  beforeAll(() => {
+    jest.genMockFromModule('realm');
+  });
+
   it('should return the initial state', () => {
     expect(locations(state, {})).toMatchSnapshot();
   });

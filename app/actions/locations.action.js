@@ -105,7 +105,7 @@ const createNewLocation = async (locs, index, loc, dispatch) => {
     dispatch(creators.addLocation(extendedLocation));
     dispatch(creators.setLocationSettings(index !== 0 ? locs.length : index));
   } catch (e) {
-    dispatch(creators.updateError('Error updating'));
+    dispatch(creators.locationError('Error adding location'));
   }
 };
 
@@ -153,7 +153,7 @@ const deleteLocation = (id) => {
   }
   return (dispatch) => {
     dispatch(creators.removeLocation(id));
-    dispatch(creators.setLocationSettings(locations.length - 1));
+    dispatch(creators.setLocationSettings(locations.length > 0 ? locations.length - 1 : 0));
   };
 };
 

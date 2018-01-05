@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class Alert extends Realm.Object {}
+class Alert {}
 Alert.schema = {
   name: 'Alert',
   properties: {

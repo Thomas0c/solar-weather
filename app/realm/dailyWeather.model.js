@@ -1,6 +1,4 @@
-import Realm from 'realm';
-
-class DailyData extends Realm.Object {}
+class DailyData {}
 DailyData.schema = {
   name: 'DailyData',
   properties: {
@@ -18,7 +16,7 @@ DailyData.schema = {
   },
 };
 
-class Daily extends Realm.Object {}
+class Daily {}
 Daily.schema = {
   name: 'Daily',
   properties: {

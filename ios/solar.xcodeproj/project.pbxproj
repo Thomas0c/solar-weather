@@ -848,7 +848,7 @@
 						DevelopmentTeam = VWPXLT658Z;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
