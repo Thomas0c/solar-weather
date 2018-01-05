@@ -3,6 +3,7 @@ import moment from 'moment';
 import * as creators from './creators.action';
 import * as utils from './utils.action';
 import realm from '../realm';
+import * as settings from './settings.action';
 
 export function updateLocationWithIndex(index) {
   const locs = utils.getStoredLocations();
@@ -59,6 +60,7 @@ export const updateAllLocations = () => {
         utils.writeLocationToStore(extendedForecast, location.id);
         if (idx === locations.length - 1) {
           // If index is lastIndex, return success
+          dispatch(settings.setLatestCollectiveUpdate());
           dispatch(creators.fetchAllLocationsSuccess(locations));
         }
       } catch (e) {

@@ -10,6 +10,7 @@ Options.schema = {
     timeIndex: { type: 'int', default: 0 },
     locationIndex: { type: 'int', default: 0 },
     onboarding: { type: 'bool', default: false },
+    latestUpdate: { type: 'string' },
   },
 };
 

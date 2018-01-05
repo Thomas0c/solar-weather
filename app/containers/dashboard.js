@@ -60,9 +60,12 @@ class Dashboard extends PureComponent {
   };
 
   updateLocationsAndSetTimestamp() {
-    const { locations } = this.props;
+    const { locations, settings } = this.props;
     const now = moment();
-    const latestUpdate = locations.latestCollectiveUpdate || moment().subtract(1, 'day');
+    const latestUpdate = moment().unix(settings.latestUpdate);
+    console.log(latestUpdate);
+    console.log(now.diff(latestUpdate, 'minutes'));
+    console.log(now.diff(latestUpdate, 'minutes') > 10);
 
     if (
       now.diff(latestUpdate, 'minutes') > 10 &&
@@ -194,14 +197,13 @@ class Dashboard extends PureComponent {
 
     const { isConnected } = this.state;
     const connected = isConnected === 'wifi' || isConnected === 'cell';
-    dispatch(settingsActions.getSettings());
 
     if (!locations.loading) {
       await dispatch(locationActions.getLocationsFromStore());
-      if (settings.onboarding) {
-        this.updateLocationsAndSetTimestamp();
-      }
+      this.updateLocationsAndSetTimestamp();
     }
+
+    await dispatch(settingsActions.getSettings());
 
     if (!settings.onboarding) {
       this.determineLocationStatus();
@@ -224,10 +226,6 @@ class Dashboard extends PureComponent {
   setOnboardingTrue() {
     const { dispatch, locations: { locations } } = this.props;
     dispatch(settingsActions.setOnboarding(true));
-    // Default is at least a single location
-    if (locations.length === 0) {
-      this.toggleLocationSearch();
-    }
   }
 
   resetOnboarding() {

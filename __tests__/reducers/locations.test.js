@@ -2,8 +2,7 @@ import * as types from '../../app/actions/types.action';
 import locations, { initialState } from '../../app/reducers/locations';
 import { loc } from '../config';
 
-const date = new Date(1515083977 * 1000);
-const state = initialState(date);
+const state = initialState;
 
 describe('locations reducer', () => {
   beforeAll(() => {

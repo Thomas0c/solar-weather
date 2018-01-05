@@ -33,6 +33,23 @@ export function setUnit(unit, index) {
   };
 }
 
+export function setLatestCollectiveUpdate() {
+  const date = moment().unix().toString();
+  realm.write(() => {
+    realm.create('Options', {
+      key: 1,
+      latestUpdate: date,
+    }, true);
+  });
+
+  return (dispatch) => {
+    dispatch({
+      type: types.UPDATE_LATEST_TIMESTAMP,
+      timestamp: date,
+    });
+  };
+}
+
 export function setOnboarding(value) {
   realm.write(() => {
     realm.create('Options', {
@@ -70,8 +87,8 @@ export function getSettings() {
       });
     });
   }
-  return (dispatch) => {
-    dispatch({
+  return async (dispatch) => {
+    await dispatch({
       type: types.SET_SETTINGS,
       unit,
       unitIndex,

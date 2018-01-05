@@ -1,3 +1,4 @@
+import moment from 'moment';
 import * as types from '../actions/types.action';
 
 const initialState = {
@@ -5,11 +6,19 @@ const initialState = {
   unitIndex: 0,
   timeType: '24',
   timeIndex: 0,
+  onboarding: false,
   locationIndex: 0,
+  latestUpdate: moment().subtract(1, 'day').unix().toString(),
 };
 
 export default function settings(state = initialState, action = {}) {
+  console.log(action.type);
   switch (action.type) {
+    case types.SET_ONBOARDING:
+      return {
+        ...state,
+        onboarding: action.value,
+      };
     case types.SET_UNIT:
       return {
         ...state,
