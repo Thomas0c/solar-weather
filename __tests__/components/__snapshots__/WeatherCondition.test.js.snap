@@ -1,5 +1,189 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders -0 as positive 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "left": "5.00%",
+        "position": "absolute",
+        "top": "9.50%",
+      },
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityLiveRegion={undefined}
+    accessibilityTraits={undefined}
+    accessibilityViewIsModal={undefined}
+    accessible={undefined}
+    collapsable={undefined}
+    hitSlop={undefined}
+    importantForAccessibility={undefined}
+    needsOffscreenAlphaCompositing={undefined}
+    onAccessibilityTap={undefined}
+    onLayout={undefined}
+    onMagicTap={undefined}
+    pointerEvents={undefined}
+    removeClippedSubviews={undefined}
+    renderToHardwareTextureAndroid={undefined}
+    shouldRasterizeIOS={undefined}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "left": "5.00%",
+        "position": "absolute",
+        "top": "9.50%",
+      }
+    }
+    testID={undefined}
+  >
+    <Text
+      accessible={true}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
+      onLayout={undefined}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
+      style={
+        Array [
+          Object {
+            "color": "#F9F9F9",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 50,
+            "fontWeight": "600",
+          },
+          Object {
+            "color": "#FFF",
+          },
+        ]
+      }
+      suppressHighlighting={undefined}
+      testID={undefined}
+      textBreakStrategy={undefined}
+    >
+      0°
+    </Text>
+    <Text
+      accessible={true}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
+      onLayout={undefined}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
+      style={
+        Array [
+          Object {
+            "color": "#F9F9F9",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 24,
+            "fontWeight": "600",
+            "marginBottom": 20,
+          },
+          Object {
+            "color": "#FFF",
+          },
+        ]
+      }
+      suppressHighlighting={undefined}
+      testID={undefined}
+      textBreakStrategy={undefined}
+    >
+      This is a summary used for testing purposes
+    </Text>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityLiveRegion={undefined}
+      accessibilityTraits={undefined}
+      accessibilityViewIsModal={undefined}
+      accessible={undefined}
+      collapsable={undefined}
+      hitSlop={undefined}
+      importantForAccessibility={undefined}
+      needsOffscreenAlphaCompositing={undefined}
+      onAccessibilityTap={undefined}
+      onLayout={undefined}
+      onMagicTap={undefined}
+      pointerEvents={undefined}
+      removeClippedSubviews={undefined}
+      renderToHardwareTextureAndroid={undefined}
+      shouldRasterizeIOS={undefined}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+    >
+      <Text
+        accessible={true}
+        adjustsFontSizeToFit={undefined}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        minimumFontScale={undefined}
+        numberOfLines={undefined}
+        onLayout={undefined}
+        onLongPress={undefined}
+        onPress={undefined}
+        pressRetentionOffset={undefined}
+        selectable={undefined}
+        selectionColor={undefined}
+        style={
+          Object {
+            "color": "#FFF",
+            "lineHeight": 25,
+          }
+        }
+        suppressHighlighting={undefined}
+        testID={undefined}
+        textBreakStrategy={undefined}
+      >
+         Feels like 0° 
+ Humidity 0% 
+ 
+    
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`renders correctly when details are not toggled 1`] = `
 <View
   accessibilityComponentType={undefined}
@@ -545,6 +729,190 @@ exports[`renders correctly when precip probability is more than 30% 1`] = `
          Feels like 0° 
  Humidity 0% 
  Chance of rain: 50%
+    
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders negative temperature as negative 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "left": "5.00%",
+        "position": "absolute",
+        "top": "9.50%",
+      },
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityLiveRegion={undefined}
+    accessibilityTraits={undefined}
+    accessibilityViewIsModal={undefined}
+    accessible={undefined}
+    collapsable={undefined}
+    hitSlop={undefined}
+    importantForAccessibility={undefined}
+    needsOffscreenAlphaCompositing={undefined}
+    onAccessibilityTap={undefined}
+    onLayout={undefined}
+    onMagicTap={undefined}
+    pointerEvents={undefined}
+    removeClippedSubviews={undefined}
+    renderToHardwareTextureAndroid={undefined}
+    shouldRasterizeIOS={undefined}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "left": "5.00%",
+        "position": "absolute",
+        "top": "9.50%",
+      }
+    }
+    testID={undefined}
+  >
+    <Text
+      accessible={true}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
+      onLayout={undefined}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
+      style={
+        Array [
+          Object {
+            "color": "#F9F9F9",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 50,
+            "fontWeight": "600",
+          },
+          Object {
+            "color": "#FFF",
+          },
+        ]
+      }
+      suppressHighlighting={undefined}
+      testID={undefined}
+      textBreakStrategy={undefined}
+    >
+      -10°
+    </Text>
+    <Text
+      accessible={true}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
+      onLayout={undefined}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
+      style={
+        Array [
+          Object {
+            "color": "#F9F9F9",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 24,
+            "fontWeight": "600",
+            "marginBottom": 20,
+          },
+          Object {
+            "color": "#FFF",
+          },
+        ]
+      }
+      suppressHighlighting={undefined}
+      testID={undefined}
+      textBreakStrategy={undefined}
+    >
+      This is a summary used for testing purposes
+    </Text>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityLiveRegion={undefined}
+      accessibilityTraits={undefined}
+      accessibilityViewIsModal={undefined}
+      accessible={undefined}
+      collapsable={undefined}
+      hitSlop={undefined}
+      importantForAccessibility={undefined}
+      needsOffscreenAlphaCompositing={undefined}
+      onAccessibilityTap={undefined}
+      onLayout={undefined}
+      onMagicTap={undefined}
+      pointerEvents={undefined}
+      removeClippedSubviews={undefined}
+      renderToHardwareTextureAndroid={undefined}
+      shouldRasterizeIOS={undefined}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+    >
+      <Text
+        accessible={true}
+        adjustsFontSizeToFit={undefined}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        minimumFontScale={undefined}
+        numberOfLines={undefined}
+        onLayout={undefined}
+        onLongPress={undefined}
+        onPress={undefined}
+        pressRetentionOffset={undefined}
+        selectable={undefined}
+        selectionColor={undefined}
+        style={
+          Object {
+            "color": "#FFF",
+            "lineHeight": 25,
+          }
+        }
+        suppressHighlighting={undefined}
+        testID={undefined}
+        textBreakStrategy={undefined}
+      >
+         Feels like -10° 
+ Humidity 0% 
+ 
     
       </Text>
     </View>

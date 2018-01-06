@@ -3,8 +3,10 @@ let convertToFahrenheit = (temp: float) : float =>
 
 let convertToCelsius = (temp: float) : float => (temp -. 32.) *. (5. /. 9.);
 
+let checkAndConvertFixedTemp = (temp: string) => temp === "-0" ? "0" : temp;
+
 let fixTemperature = (temp: float) : string =>
-  Js.Float.toFixedWithPrecision(temp, ~digits=0);
+  Js.Float.toFixedWithPrecision(temp, ~digits=0) |> checkAndConvertFixedTemp;
 
 let convertToCelciusAndFix = (temp: float) =>
   convertToCelsius(temp) |> fixTemperature;
