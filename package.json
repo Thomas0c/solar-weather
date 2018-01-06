@@ -11,6 +11,7 @@
 	"dependencies": {
 		"axios": "^0.17.0",
 		"bs-moment": "^0.1.8",
+		"folktale": "^2.0.1",
 		"immutable": "^3.8.2",
 		"moment": "^2.19.1",
 		"moment-timezone": "^0.5.14",

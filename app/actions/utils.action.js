@@ -83,13 +83,11 @@ export const checkIndexExists = (locs, id) => {
 	return filtered.length > 0;
 };
 
-export const convertToLocation = loc => {
-	return {
-		name: loc.name,
-		lng: loc.lng,
-		lat: loc.lat,
-	};
-};
+export const convertToLocation = loc => ({
+	name: loc.name,
+	lng: loc.lng,
+	lat: loc.lat,
+});
 
 export const writeLocationToStore = (location, id) => {
 	const date = new Date();

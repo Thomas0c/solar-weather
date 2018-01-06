@@ -5,6 +5,8 @@ import * as utils from './utils.action';
 import realm from '../realm';
 import * as settings from './settings.action';
 
+const Result = require('folktale/result');
+
 export function updateLocationWithIndex(index) {
 	const locs = utils.getStoredLocations();
 	const location = locs[index];
