@@ -57,8 +57,7 @@ let make =
   retainedProps: {error, displayError, connected},
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({state, retainedProps}) =>
-    if (Js.to_bool(displayError)
-        && Js.to_bool(retainedProps.displayError) !== true) {
+    if (Js.to_bool(displayError) && ! Js.to_bool(retainedProps.displayError)) {
       Animation.animate(state.topAnim, 0.);
       Js.Global.setTimeout(
         () => Animation.animate(state.topAnim, (-100.)),
@@ -75,7 +74,6 @@ let make =
   render: ({state}) => {
     let errorComponent: ReasonReact.reactElement =
       switch (Js.to_bool(connected), Js.to_bool(displayError)) {
-      | (true, false) => ReasonReact.nullElement
       | (false, false) =>
         wrapperComponent(
           state,
@@ -84,6 +82,13 @@ let make =
           </Text>
         )
       | (true, true) =>
+        wrapperComponent(
+          state,
+          <Text style=styles##text>
+            (ReasonReact.stringToElement(error))
+          </Text>
+        )
+      | (false, true) =>
         wrapperComponent(
           state,
           <Text style=styles##text>

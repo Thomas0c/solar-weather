@@ -11,7 +11,7 @@ import * as settingsActions from '../actions/settings.action';
 import * as locationActions from '../actions/locations.action';
 import * as creators from '../actions/creators.action';
 
-import { isDaylight } from '../utils/time.utils';
+import { isDaylight, setToTime } from '../utils/time.utils';
 import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
@@ -255,7 +255,6 @@ class Dashboard extends PureComponent {
 
 	render() {
 		const {
-			lastPosition,
 			isConnected,
 			timestamp,
 			showDetails,
@@ -264,8 +263,6 @@ class Dashboard extends PureComponent {
 			openLeft,
 			locationSearch,
 			openAlert,
-			authorized,
-			appState,
 			openHours,
 		} = this.state;
 
@@ -287,14 +284,8 @@ class Dashboard extends PureComponent {
 				? activeLocation.timezone
 				: moment.tz.guess();
 		const day = timestamp.clone().tz(timezone);
-		const eveningTime = day
-			.hour(18)
-			.minute(0)
-			.second(0);
-		const morningTime = day
-			.hour(6)
-			.minute(0)
-			.second(0);
+		const eveningTime = setToTime(day, 18, 0, 0);
+		const morningTime = setToTime(day, 6, 0, 0);
 		const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);
 
 		// Alert title and description
@@ -350,7 +341,6 @@ class Dashboard extends PureComponent {
 						/>
 						<LocationSearch
 							visible={locationSearch}
-							authorized={authorized}
 							toggleView={this.toggleLocationSearch.bind(this)}
 						/>
 						<Menu

@@ -31,6 +31,7 @@ export function updateLocationWithIndex(index) {
 				utils.writeLocationToStore(extendedLocation, location.id);
 				dispatch(creators.setLocation(index, extendedLocation));
 			} catch (e) {
+				console.log(e);
 				dispatch(creators.updateError('Error updating'));
 			}
 		}

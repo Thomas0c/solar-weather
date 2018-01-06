@@ -13,4 +13,12 @@ module.exports = {
 			.tz(currentTimezone)
 			.isBefore(eveningTime);
 	},
+
+	setToTime(time, h, m, s) {
+		time
+			.clone()
+			.hour(h)
+			.minute(m)
+			.second(s);
+	},
 };
