@@ -410,6 +410,7 @@ class Dashboard extends PureComponent {
 						<LocationDisplay
 							onPress={this.toggleState.bind(this, 'openHours')}
 							loading={loading}
+							anyLocation={anyLocation}
 							locationName={activeLocation ? activeLocation.name : ''}
 						/>
 					</View>
