@@ -8,6 +8,8 @@ default.realm
 default.realm.lock
 default.realm.management/
 realm-object-server/
+realm-object-server/*
+realm-object-server
 
 # Runtime data
 pids
