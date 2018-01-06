@@ -5,8 +5,6 @@ import * as utils from './utils.action';
 import realm from '../realm';
 import * as settings from './settings.action';
 
-const Result = require('folktale/result');
-
 export function updateLocationWithIndex(index) {
 	const locs = utils.getStoredLocations();
 	const location = locs[index];
@@ -52,7 +50,9 @@ export const updateAllLocations = () => {
 
 	return async dispatch => {
 		if (locations.length === 0) {
-			dispatch(creators.fetchAllLocationsFailure('No locations to update'));
+			return dispatch(
+				creators.fetchAllLocationsFailure('No locations to update'),
+			);
 		}
 
 		dispatch(creators.fetchAllLocations());
