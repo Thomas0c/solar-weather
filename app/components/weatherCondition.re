@@ -85,7 +85,13 @@ let make =
       | _ => 0.
       };
     let temp = Temperature.fixTemperature(tempFloat);
-    let tempFix = {j|$temp°|j};
+    let apparentTempFloat =
+      switch (unit, currently) {
+      | ("c", Some(t)) => t##apparentTemperature
+      | ("f", Some(t)) =>
+        Temperature.convertToFahrenheit(t##apparentTemperature)
+      | _ => 0.
+      };
     let summary =
       switch currently {
       | Some(t) => t##summary
@@ -115,12 +121,13 @@ let make =
           )
           (
             noLocations === "N/A" ?
-              ReasonReact.nullElement : ReasonReact.stringToElement(tempFix)
+              ReasonReact.nullElement :
+              ReasonReact.stringToElement({j|$temp°|j})
           )
         </Text>
         <WeatherConditionAlert summary showAlert icon toggleAlert />
         <WeatherConditionText
-          text=(Temperature.formatText(tempFloat, humidity, precip))
+          text=(Temperature.formatText(apparentTempFloat, humidity, precip))
           condition
           showDetails
         />

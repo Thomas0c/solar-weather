@@ -910,7 +910,7 @@ exports[`renders negative temperature as negative 1`] = `
         testID={undefined}
         textBreakStrategy={undefined}
       >
-         Feels like -10° 
+         Feels like 0° 
  Humidity 0% 
  
     
