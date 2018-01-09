@@ -28,19 +28,14 @@ exports[`renders correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-        },
-        Object {
-          "backgroundColor": "rgba(0, 0, 0, 0.7)",
-          "height": "100.00%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100.00%",
-        },
-      ]
+      Object {
+        "backgroundColor": "rgba(0, 0, 0, 0.7)",
+        "height": "100.00%",
+        "left": 0,
+        "position": "absolute",
+        "top": 0,
+        "width": "100.00%",
+      }
     }
     testID={undefined}
     tvParallaxProperties={undefined}
@@ -63,7 +58,7 @@ exports[`renders correctly 1`] = `
       removeClippedSubviews={undefined}
       renderToHardwareTextureAndroid={undefined}
       shouldRasterizeIOS={undefined}
-      style={undefined}
+      style={null}
       testID={undefined}
     />
   </View>
@@ -128,16 +123,11 @@ exports[`renders correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-          },
-          Object {
-            "alignSelf": "center",
-            "bottom": -20,
-            "position": "absolute",
-          },
-        ]
+        Object {
+          "alignSelf": "center",
+          "bottom": -20,
+          "position": "absolute",
+        }
       }
       testID={undefined}
       tvParallaxProperties={undefined}

@@ -88,19 +88,14 @@ exports[`renders correctly when loading 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-          },
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "height": 133.4,
-            "justifyContent": "flex-start",
-            "position": "relative",
-            "width": "100.00%",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "height": 133.4,
+          "justifyContent": "flex-start",
+          "position": "relative",
+          "width": "100.00%",
+        }
       }
       testID={undefined}
       tvParallaxProperties={undefined}
@@ -230,19 +225,14 @@ exports[`renders correctly when not loading 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-          },
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "height": 133.4,
-            "justifyContent": "flex-start",
-            "position": "relative",
-            "width": "100.00%",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "height": 133.4,
+          "justifyContent": "flex-start",
+          "position": "relative",
+          "width": "100.00%",
+        }
       }
       testID={undefined}
       tvParallaxProperties={undefined}

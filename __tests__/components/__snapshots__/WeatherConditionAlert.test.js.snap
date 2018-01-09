@@ -86,16 +86,11 @@ exports[`renders correctly when showAlert is true 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-        },
-        Object {
-          "height": 25,
-          "marginTop": 3,
-          "width": 25,
-        },
-      ]
+      Object {
+        "height": 25,
+        "marginTop": 3,
+        "width": 25,
+      }
     }
     testID={undefined}
     tvParallaxProperties={undefined}

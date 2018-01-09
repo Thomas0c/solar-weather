@@ -18,19 +18,14 @@ exports[`renders correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-      },
-      Object {
-        "height": 20,
-        "position": "absolute",
-        "right": 15,
-        "top": 15,
-        "width": 20,
-        "zIndex": 3,
-      },
-    ]
+    Object {
+      "height": 20,
+      "position": "absolute",
+      "right": 15,
+      "top": 15,
+      "width": 20,
+      "zIndex": 3,
+    }
   }
   testID={undefined}
   tvParallaxProperties={undefined}
