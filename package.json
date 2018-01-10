@@ -2,6 +2,9 @@
 	"name": "solar",
 	"version": "0.0.1",
 	"private": true,
+	"rnpm": {
+		"assets": ["./assets/fonts/"]
+	},
 	"scripts": {
 		"build": "bsb -make-world -clean-world",
 		"watch": "bsb -make-world -clean-world -w",

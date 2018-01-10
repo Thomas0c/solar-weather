@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -49,6 +48,15 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BAB24EA444B7DFE0A52CABC0 /* libPods-solar-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 030DAABB6CF3154D50A2E9F5 /* libPods-solar-tvOSTests.a */; };
 		FCBC7E165DCA446585BBFF96 /* libPods-solar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DAB3CDABDD5AC4EA63E247 /* libPods-solar.a */; };
+		F6741A0C957F4E4E9C8B91C2 /* LibreBaskerville-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B80004062E546CAB2F3CA9E /* LibreBaskerville-Bold.ttf */; };
+		FA8D215D88B64DE1B5E489C5 /* LibreBaskerville-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F091A6DA7BFD409CA1A9E58F /* LibreBaskerville-Italic.ttf */; };
+		F673A69EFCC64711BC401157 /* LibreBaskerville-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 034F2F930E324719863C7F1D /* LibreBaskerville-Regular.ttf */; };
+		2C1843D3F99A4B7D8BF43179 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5159ACD06C4C929B90EDE3 /* Muli-Bold.ttf */; };
+		9A44724AF6B24E9DAD5939DE /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 533CCC16FDBE424D8587E4F8 /* Muli-Regular.ttf */; };
+		FA2948284B8243FB91A0FFE9 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 230A613499674C0DA9D8E142 /* Muli-SemiBold.ttf */; };
+		98D2B149F84A476EA0801D09 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E400D506CA54BB6AC83FF5E /* OpenSans-Bold.ttf */; };
+		43017B932CA84C5CB9EB9B94 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8292A77F17524DF8893BD9E4 /* OpenSans-Regular.ttf */; };
+		4A016F24AE4148B184FA69D7 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 590F181207B94007993D4C63 /* OpenSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +419,15 @@
 		E45CE3AFA5F228F06C841140 /* libPods-solarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-solarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A35ECF0DA54C1BB7B1AD28 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		F7DAB3CDABDD5AC4EA63E247 /* libPods-solar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-solar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B80004062E546CAB2F3CA9E /* LibreBaskerville-Bold.ttf */ = {isa = PBXFileReference; name = "LibreBaskerville-Bold.ttf"; path = "../assets/fonts/LibreBaskerville-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F091A6DA7BFD409CA1A9E58F /* LibreBaskerville-Italic.ttf */ = {isa = PBXFileReference; name = "LibreBaskerville-Italic.ttf"; path = "../assets/fonts/LibreBaskerville-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		034F2F930E324719863C7F1D /* LibreBaskerville-Regular.ttf */ = {isa = PBXFileReference; name = "LibreBaskerville-Regular.ttf"; path = "../assets/fonts/LibreBaskerville-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7E5159ACD06C4C929B90EDE3 /* Muli-Bold.ttf */ = {isa = PBXFileReference; name = "Muli-Bold.ttf"; path = "../assets/fonts/Muli-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		533CCC16FDBE424D8587E4F8 /* Muli-Regular.ttf */ = {isa = PBXFileReference; name = "Muli-Regular.ttf"; path = "../assets/fonts/Muli-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		230A613499674C0DA9D8E142 /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; name = "Muli-SemiBold.ttf"; path = "../assets/fonts/Muli-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1E400D506CA54BB6AC83FF5E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8292A77F17524DF8893BD9E4 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		590F181207B94007993D4C63 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -719,6 +736,7 @@
 				5E6CCDAF224D41E683DEEC47 /* Frameworks */,
 				7AD5D5EB1FB264BA003A11B2 /* Recovered References */,
 				9EEA0F1DFD938A26974EFCB8 /* Pods */,
+				ACF03C8E1B424EF5B06EE5BB /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -759,6 +777,23 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		ACF03C8E1B424EF5B06EE5BB /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				2B80004062E546CAB2F3CA9E /* LibreBaskerville-Bold.ttf */,
+				F091A6DA7BFD409CA1A9E58F /* LibreBaskerville-Italic.ttf */,
+				034F2F930E324719863C7F1D /* LibreBaskerville-Regular.ttf */,
+				7E5159ACD06C4C929B90EDE3 /* Muli-Bold.ttf */,
+				533CCC16FDBE424D8587E4F8 /* Muli-Regular.ttf */,
+				230A613499674C0DA9D8E142 /* Muli-SemiBold.ttf */,
+				1E400D506CA54BB6AC83FF5E /* OpenSans-Bold.ttf */,
+				8292A77F17524DF8893BD9E4 /* OpenSans-Regular.ttf */,
+				590F181207B94007993D4C63 /* OpenSans-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1282,6 +1317,15 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7AD698EA1FB8DB5300188702 /* solar_launch.png in Resources */,
+				F6741A0C957F4E4E9C8B91C2 /* LibreBaskerville-Bold.ttf in Resources */,
+				FA8D215D88B64DE1B5E489C5 /* LibreBaskerville-Italic.ttf in Resources */,
+				F673A69EFCC64711BC401157 /* LibreBaskerville-Regular.ttf in Resources */,
+				2C1843D3F99A4B7D8BF43179 /* Muli-Bold.ttf in Resources */,
+				9A44724AF6B24E9DAD5939DE /* Muli-Regular.ttf in Resources */,
+				FA2948284B8243FB91A0FFE9 /* Muli-SemiBold.ttf in Resources */,
+				98D2B149F84A476EA0801D09 /* OpenSans-Bold.ttf in Resources */,
+				43017B932CA84C5CB9EB9B94 /* OpenSans-Regular.ttf in Resources */,
+				4A016F24AE4148B184FA69D7 /* OpenSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

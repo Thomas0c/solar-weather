@@ -3,9 +3,9 @@ let units = [|"c", "f"|];
 let timeTypes = [|"24", "12"|];
 
 module Fonts = {
-  let baskerville = "libre-baskerville";
-  let helveticaNeue = "HelveticaNeue";
-  let avenir = "Avenir";
+  let baskerville = "LibreBaskerville";
+  let helveticaNeue = "OpenSans";
+  let avenir = "Muli";
 };
 
 module AppColors = {
