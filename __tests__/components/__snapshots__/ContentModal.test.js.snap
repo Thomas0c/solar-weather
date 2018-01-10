@@ -83,29 +83,59 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "#F0F0F0",
-        "height": "55.00%",
-        "marginTop": "15.00%",
+        "backgroundColor": "transparent",
+        "height": "50.00%",
+        "marginTop": "10.00%",
+        "minHeight": 0,
         "position": "relative",
-        "shadowColor": "#000",
-        "shadowOffset": Object {
-          "height": 0,
-          "width": 0,
-        },
-        "shadowOpacity": 0.8,
-        "shadowRadius": 5,
         "width": "85.00%",
       }
     }
     testID={undefined}
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityLiveRegion={undefined}
+      accessibilityTraits={undefined}
+      accessibilityViewIsModal={undefined}
+      accessible={undefined}
+      collapsable={undefined}
+      hitSlop={undefined}
+      importantForAccessibility={undefined}
+      needsOffscreenAlphaCompositing={undefined}
+      onAccessibilityTap={undefined}
+      onLayout={undefined}
+      onMagicTap={undefined}
+      pointerEvents={undefined}
+      removeClippedSubviews={undefined}
+      renderToHardwareTextureAndroid={undefined}
+      shouldRasterizeIOS={undefined}
+      style={
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "#F0F0F0",
+          "height": "95.00%",
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0.8,
+          "shadowRadius": 5,
+          "width": "100.00%",
+        }
+      }
+      testID={undefined}
     >
-      Test component
-    </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Test component
+      </Text>
+    </View>
     <View
       accessibilityComponentType={undefined}
       accessibilityLabel={undefined}
@@ -125,7 +155,7 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "bottom": -20,
+          "bottom": 0,
           "position": "absolute",
         }
       }
