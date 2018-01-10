@@ -117,8 +117,9 @@ exports[`renders correctly when loading 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "center",
-          "fontFamily": "Baskerville",
-          "fontSize": 18,
+          "fontFamily": "Merriweather",
+          "fontSize": 14,
+          "fontWeight": "200",
           "height": "100.00%",
           "justifyContent": "center",
           "paddingTop": 56.7,
@@ -253,8 +254,9 @@ exports[`renders correctly when not loading 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "center",
-          "fontFamily": "Baskerville",
-          "fontSize": 18,
+          "fontFamily": "Merriweather",
+          "fontSize": 14,
+          "fontWeight": "200",
           "height": "100.00%",
           "justifyContent": "center",
           "paddingTop": 56.7,

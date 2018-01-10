@@ -111,8 +111,8 @@ exports[`renders correctly when not selected 1`] = `
       Array [
         Object {
           "color": "#343434",
-          "fontFamily": "Baskerville",
-          "fontSize": 16,
+          "fontFamily": "Merriweather",
+          "fontSize": 12,
           "height": 30,
           "textAlign": "center",
           "width": "100.00%",
@@ -242,8 +242,8 @@ exports[`renders correctly when selected 1`] = `
       Array [
         Object {
           "color": "#343434",
-          "fontFamily": "Baskerville",
-          "fontSize": 16,
+          "fontFamily": "Merriweather",
+          "fontSize": 12,
           "height": 30,
           "textAlign": "center",
           "width": "100.00%",

@@ -210,7 +210,7 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "color": "#FFF",
-              "fontFamily": "Avenir",
+              "fontFamily": "Roboto",
               "fontSize": 25,
               "fontWeight": "bold",
             }

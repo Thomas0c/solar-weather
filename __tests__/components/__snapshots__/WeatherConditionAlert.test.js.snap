@@ -18,7 +18,7 @@ exports[`renders correctly when showAlert is false 1`] = `
     Array [
       Object {
         "color": "#F9F9F9",
-        "fontFamily": "HelveticaNeue",
+        "fontFamily": "Roboto",
         "fontSize": 24,
         "fontWeight": "600",
         "marginBottom": 20,
@@ -54,7 +54,7 @@ exports[`renders correctly when showAlert is true 1`] = `
     Array [
       Object {
         "color": "#F9F9F9",
-        "fontFamily": "HelveticaNeue",
+        "fontFamily": "Roboto",
         "fontSize": 24,
         "fontWeight": "600",
         "marginBottom": 20,

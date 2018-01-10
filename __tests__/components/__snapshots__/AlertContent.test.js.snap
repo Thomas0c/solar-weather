@@ -43,7 +43,7 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "color": "#343434",
-        "fontFamily": "HelveticaNeue",
+        "fontFamily": "Roboto",
         "fontSize": 16,
         "fontWeight": "700",
         "marginBottom": 20,
@@ -131,7 +131,7 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "color": "#343434",
-            "fontFamily": "HelveticaNeue",
+            "fontFamily": "Roboto",
             "fontSize": 15,
             "textAlign": "left",
           }
@@ -158,7 +158,7 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "color": "#343434",
-            "fontFamily": "HelveticaNeue",
+            "fontFamily": "Roboto",
             "fontSize": 15,
             "textAlign": "left",
           }
@@ -185,7 +185,7 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "color": "#343434",
-            "fontFamily": "HelveticaNeue",
+            "fontFamily": "Roboto",
             "fontSize": 15,
             "textAlign": "left",
           }
