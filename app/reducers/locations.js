@@ -1,6 +1,6 @@
 import * as types from '../actions/types.action';
 
-const Maybe = require('folktale/maybe');
+const Maybe = require('data.maybe');
 
 export const initialState = {
 	locations: [
