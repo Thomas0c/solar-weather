@@ -8,13 +8,12 @@ let styles =
       {
         "modalWrapper":
           style([
+            marginTop(Pct(10.)),
             backgroundColor("transparent"),
-            paddingBottom(Pt(20.)),
             alignSelf(Center),
-            height(Pct(55.)),
-            top(Pt(0.)),
+            height(Pct(50.)),
             width(Pct(85.)),
-            minHeight(Pt(300.)),
+            minHeight(Pt(Platform.os === Platform.Android ? 380. : 0.)),
             position(Relative)
           ]),
         "viewWrapper":
@@ -28,9 +27,8 @@ let styles =
           ]),
         "viewBoxStyle":
           style([
-            marginTop(Pct(15.)),
             backgroundColor(Config.AppColors.medGrey),
-            height(Pct(85.)),
+            height(Pct(Platform.os === Platform.Android ? 95. : 95.)),
             width(Pct(100.)),
             alignSelf(Center),
             shadowColor(Config.AppColors.black),
