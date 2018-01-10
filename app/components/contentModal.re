@@ -6,6 +6,17 @@ let styles =
   StyleSheet.create(
     Style.(
       {
+        "modalWrapper":
+          style([
+            backgroundColor("transparent"),
+            paddingBottom(Pt(20.)),
+            alignSelf(Center),
+            height(Pct(55.)),
+            top(Pt(0.)),
+            width(Pct(85.)),
+            minHeight(Pt(300.)),
+            position(Relative)
+          ]),
         "viewWrapper":
           style([
             position(Absolute),
@@ -17,11 +28,10 @@ let styles =
           ]),
         "viewBoxStyle":
           style([
-            position(Relative),
             marginTop(Pct(15.)),
             backgroundColor(Config.AppColors.medGrey),
-            height(Pct(55.)),
-            width(Pct(85.)),
+            height(Pct(85.)),
+            width(Pct(100.)),
             alignSelf(Center),
             shadowColor(Config.AppColors.black),
             shadowOffset(~height=0., ~width=0.),
@@ -44,8 +54,8 @@ let make =
         style=styles##viewWrapper>
         <View />
       </TouchableHighlight>
-      <View style=styles##viewBoxStyle>
-        content
+      <View style=styles##modalWrapper>
+        <View style=styles##viewBoxStyle> content </View>
         <CloseButton absolute=true toggle=toggleView />
       </View>
     </Modal>

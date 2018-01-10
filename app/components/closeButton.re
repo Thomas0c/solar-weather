@@ -6,8 +6,7 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "button":
-          style([position(Absolute), bottom(Pt((-20.))), alignSelf(Center)]),
+        "button": style([position(Absolute), bottom(Pt(0.)), alignSelf(Center)]),
         "buttonRelative":
           style([position(Relative), alignSelf(Center), marginTop(Pt(30.))]),
         "text":
