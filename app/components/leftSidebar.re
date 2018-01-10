@@ -32,7 +32,7 @@ let make =
       type_="static"
       tweenEasing="easeInOutSine"
       tweenHandler=((ratio) => Config.drawerTweenHandler(ratio))
-      elevation=1.1
+      elevation=0.
       styles=Config.drawerStyles
       negotiatePan=Js.true_
       panThreshold=0.1

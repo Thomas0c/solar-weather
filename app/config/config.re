@@ -22,6 +22,6 @@ let drawerTweenHandler = (ratio: float) => {
 };
 
 let drawerStyles = {
-  "drawerOverlay": {backgroundColor: "#000", opacity: 1.},
+  "drawerOverlay": {backgroundColor: "#000", opacity: 0.},
   "mainOverlay": {backgroundColor: "#000", opacity: 0.}
 };

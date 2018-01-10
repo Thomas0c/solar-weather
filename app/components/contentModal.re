@@ -36,7 +36,8 @@ let make =
     (~toggleView, ~visible, ~content: ReasonReact.reactElement, _children) => {
   ...component,
   render: (_self) =>
-    <Modal animationType=`slide visible transparent=true>
+    <Modal
+      onRequestClose=toggleView animationType=`slide visible transparent=true>
       <TouchableHighlight
         onPress=(() => toggleView())
         underlayColor="transparent"
