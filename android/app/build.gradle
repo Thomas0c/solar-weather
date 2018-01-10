@@ -152,7 +152,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
-configurations.all {
-  exclude group: 'com.facebook.react', module: 'react-native'
-}
