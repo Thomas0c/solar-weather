@@ -43,7 +43,7 @@ let styles =
             alignItems(Center),
             justifyContent(Center),
             textAlign(Center),
-            fontFamily("Baskerville"),
+            fontFamily(Config.Fonts.baskerville),
             alignSelf(Center)
           ]),
         "shadow":

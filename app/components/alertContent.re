@@ -10,7 +10,7 @@ let styles =
         "headline":
           style([
             fontSize(Float(16.)),
-            fontFamily("HelveticaNeue"),
+            fontFamily(Config.Fonts.helveticaNeue),
             fontWeight(`_700),
             color(Config.AppColors.darkGrey),
             textAlign(Center),
@@ -19,7 +19,7 @@ let styles =
         "description": style([flexDirection(Column)]),
         "text":
           style([
-            fontFamily("HelveticaNeue"),
+            fontFamily(Config.Fonts.helveticaNeue),
             textAlign(Left),
             fontSize(Float(15.)),
             color(Config.AppColors.darkGrey)

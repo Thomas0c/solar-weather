@@ -25,7 +25,7 @@ let styles =
             color(Config.AppColors.darkGrey),
             flex(1.),
             fontSize(Float(16.)),
-            fontFamily("HelveticaNeue")
+            fontFamily(Config.Fonts.helveticaNeue)
           ])
       }
     )

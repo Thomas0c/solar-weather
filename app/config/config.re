@@ -2,6 +2,12 @@ let units = [|"c", "f"|];
 
 let timeTypes = [|"24", "12"|];
 
+module Fonts = {
+  let baskerville = "libre-baskerville";
+  let helveticaNeue = "HelveticaNeue";
+  let avenir = "Avenir";
+};
+
 module AppColors = {
   let red = "#E77F6D";
   let opaqueBlack = "rgba(0, 0, 0, 0.2)";

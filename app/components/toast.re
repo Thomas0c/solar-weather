@@ -31,7 +31,7 @@ let styles =
             textAlign(Center),
             color(Config.AppColors.white),
             fontWeight(`_700),
-            fontFamily("HelveticaNeue")
+            fontFamily(Config.Fonts.helveticaNeue)
           ])
       }
     )

@@ -11,7 +11,7 @@ let styles =
           style([position(Relative), alignSelf(Center), marginTop(Pt(30.))]),
         "text":
           style([
-            fontFamily("Avenir"),
+            fontFamily(Config.Fonts.avenir),
             fontSize(Float(25.)),
             fontWeight(`Bold),
             color(Config.AppColors.white)

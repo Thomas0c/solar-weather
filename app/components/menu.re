@@ -9,7 +9,7 @@ let styles =
         "title":
           style([
             fontSize(Float(16.)),
-            fontFamily("HelveticaNeue"),
+            fontFamily(Config.Fonts.helveticaNeue),
             marginTop(Pt(20.)),
             marginBottom(Pt(20.)),
             color(Config.AppColors.darkGrey),

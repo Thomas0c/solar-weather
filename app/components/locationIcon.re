@@ -22,7 +22,7 @@ let styles =
             textAlign(Center),
             color(Config.AppColors.darkGrey),
             fontSize(Float(16.)),
-            fontFamily("Baskerville")
+            fontFamily(Config.Fonts.baskerville)
           ]),
         "image":
           style([alignSelf(Center), width(Pct(55.)), resizeMode(Contain)])

@@ -29,14 +29,14 @@ let styles =
         "temp":
           style([
             fontSize(Float(50.)),
-            fontFamily("HelveticaNeue"),
+            fontFamily(Config.Fonts.helveticaNeue),
             fontWeight(`_600),
             color(Config.AppColors.whiteGrey)
           ]),
         "condition":
           style([
             fontSize(Float(24.)),
-            fontFamily("HelveticaNeue"),
+            fontFamily(Config.Fonts.helveticaNeue),
             fontWeight(`_600),
             textAlign(Left),
             color(Config.AppColors.whiteGrey),

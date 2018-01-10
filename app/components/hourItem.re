@@ -17,7 +17,7 @@ let styles =
           style([
             textAlign(Center),
             fontWeight(`_600),
-            color("#EFEFEF"),
+            color(Config.AppColors.lightGrey),
             marginTop(Pt(15.))
           ]),
         "image":
@@ -27,7 +27,8 @@ let styles =
             marginTop(Pt((-5.))),
             resizeMode(Contain)
           ]),
-        "temperature": style([color("#EFEFEF"), fontSize(Float(14.))])
+        "temperature":
+          style([color(Config.AppColors.lightGrey), fontSize(Float(14.))])
       }
     )
   );
@@ -70,7 +71,7 @@ let make =
         <Image style=styles##image source=iconSource />
       </WeatherIconWrapper>
       <Text style=styles##temperature>
-        (ReasonReact.stringToElement(temperature ++ "\176"))
+        (ReasonReact.stringToElement(temperature ++ "�"))
       </Text>
     </View>
   }
