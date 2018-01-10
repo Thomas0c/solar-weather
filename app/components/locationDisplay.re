@@ -34,6 +34,7 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             fontSize(Float(14.)),
+            fontWeight(`_200),
             paddingTop(
               Pt(
                 Platform.os === Platform.IOS ?

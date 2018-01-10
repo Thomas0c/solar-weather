@@ -39,6 +39,7 @@ let styles =
             paddingTop(Pt(10.)),
             color(Config.AppColors.darkGrey),
             fontFamily(Config.Fonts.baskerville),
+            fontWeight(`_200),
             height(Pt(35.)),
             backgroundColor(Config.AppColors.white)
           ]),
