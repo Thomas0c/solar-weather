@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings store should handle setTimeType 1`] = `
+Array [
+  Object {
+    "timeIndex": 1,
+    "timeType": "24",
+    "type": "SET_TIME_TYPE",
+  },
+]
+`;
+
+exports[`settings store should handle setUnit 1`] = `
+Array [
+  Object {
+    "type": "SET_UNIT",
+    "unit": "f",
+    "unitIndex": 1,
+  },
+]
+`;

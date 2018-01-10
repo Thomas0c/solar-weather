@@ -13,6 +13,8 @@ const mockApi = new MockAdapter(axios);
 mockApi.onGet(/\/forecast\//).reply(200, loc);
 
 describe('locations store', () => {
+	const store = mockStore();
+
 	beforeAll(async () => {
 		jest.genMockFromModule('realm');
 		// Teardown Realm prior to running tests
@@ -28,7 +30,6 @@ describe('locations store', () => {
 		store.clearActions();
 	});
 
-	const store = mockStore();
 	it('should handle deleteLocationFromStore', async () => {
 		await store.dispatch(deleteLocationFromStore(0));
 		expect(store.getActions()).toMatchSnapshot();

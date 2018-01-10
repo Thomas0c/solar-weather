@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class Options {}
 Options.schema = {
 	name: 'Options',
@@ -10,7 +12,13 @@ Options.schema = {
 		timeIndex: { type: 'int', default: 0 },
 		locationIndex: { type: 'int', default: 0 },
 		onboarding: { type: 'bool', default: false },
-		latestUpdate: { type: 'string' },
+		latestUpdate: {
+			type: 'string',
+			default: moment()
+				.subtract(1, 'day')
+				.unix()
+				.toString(),
+		},
 	},
 };
 

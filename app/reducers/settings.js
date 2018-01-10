@@ -4,7 +4,7 @@ import * as types from '../actions/types.action';
 const Maybe = require('folktale/maybe');
 const R = require('ramda');
 
-const initialState = {
+export const initialState = {
 	unit: 'c',
 	unitIndex: 0,
 	timeType: '24',

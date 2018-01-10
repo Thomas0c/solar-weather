@@ -91,6 +91,7 @@ export function getSettings() {
 	const latestUpdate = settings
 		? settings.latestUpdate
 		: moment()
+				.subtract(1, 'day')
 				.unix()
 				.toString();
 	if (!settings) {
