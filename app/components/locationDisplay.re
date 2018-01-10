@@ -67,16 +67,19 @@ let styles =
 let make = (~locationName, ~onPress, ~loading: Js.boolean, _children) => {
   ...component,
   render: (_self) => {
+    let noLoc = locationName === "" && ! Js.to_bool(loading);
     let currentLocation =
       locationName !== "" && ! Js.to_bool(loading) ?
         locationName : "Loading...";
     <View style=styles##container>
       <View style=styles##shadow />
       <TouchableHighlight
-        style=styles##touch onPress underlayColor="transparent">
+        style=styles##touch
+        onPress=(locationName === "" ? () => () : onPress)
+        underlayColor="transparent">
         <Text style=styles##text>
           (
-            locationName === "" && ! Js.to_bool(loading) ?
+            noLoc ?
               ReasonReact.stringToElement("No Location") :
               ReasonReact.stringToElement(currentLocation)
           )
