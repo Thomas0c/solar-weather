@@ -43,6 +43,7 @@ let make = (~onChange, _children) => {
         selectionColor=Config.AppColors.darkGrey
         spellCheck=false
         autoFocus=true
+        underlineColorAndroid="transparent"
         maxLength=40
         autoCorrect=false
         onChangeText=onChange
