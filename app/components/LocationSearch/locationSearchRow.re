@@ -20,7 +20,7 @@ let styles =
             color(Config.AppColors.darkGrey),
             fontFamily(Config.Fonts.baskerville),
             marginLeft(Pt(12.)),
-            fontSize(Float(windowWidth /. 22.))
+            fontSize(Float(windowWidth /. 26.))
           ])
       }
     )

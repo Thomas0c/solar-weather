@@ -71,7 +71,7 @@ let make =
         <Image style=styles##image source=iconSource />
       </WeatherIconWrapper>
       <Text style=styles##temperature>
-        (ReasonReact.stringToElement(temperature ++ "�"))
+        (ReasonReact.stringToElement({j|$temperature°|j}))
       </Text>
     </View>
   }

@@ -23,7 +23,7 @@ let styles =
             color(Config.AppColors.lightGrey),
             marginRight(Pt(0.)),
             fontWeight(`Bold),
-            fontFamily(Config.Fonts.avenir),
+            fontFamily(Config.Fonts.helveticaNeue),
             textAlign(Right)
           ]),
         "dayHighTemp": style([fontSize(Float(14.)), marginTop(Pt(5.))]),

@@ -31,14 +31,14 @@ let styles =
           ]),
         "dayTitle":
           style([
-            fontSize(Float(14.)),
+            fontSize(Float(11.)),
             width(Pct(100.)),
             position(Absolute),
             textAlign(Center),
             bottom(Pt(0.)),
             paddingTop(Pt(10.)),
             color(Config.AppColors.darkGrey),
-            fontFamily("Baskerville"),
+            fontFamily(Config.Fonts.baskerville),
             height(Pt(35.)),
             backgroundColor(Config.AppColors.white)
           ]),

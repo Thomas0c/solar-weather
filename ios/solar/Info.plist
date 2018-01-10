@@ -63,15 +63,11 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>LibreBaskerville-Bold.ttf</string>
-		<string>LibreBaskerville-Italic.ttf</string>
-		<string>LibreBaskerville-Regular.ttf</string>
-		<string>Muli-Bold.ttf</string>
-		<string>Muli-Regular.ttf</string>
-		<string>Muli-SemiBold.ttf</string>
-		<string>OpenSans-Bold.ttf</string>
-		<string>OpenSans-Regular.ttf</string>
-		<string>OpenSans-SemiBold.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
+		<string>Merriweather-Light.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -21,7 +21,7 @@ let styles =
             height(Pt(30.)),
             textAlign(Center),
             color(Config.AppColors.darkGrey),
-            fontSize(Float(16.)),
+            fontSize(Float(12.)),
             fontFamily(Config.Fonts.baskerville)
           ]),
         "image":
