@@ -1,6 +1,6 @@
-let units = ["c", "f"];
+let units = [|"c", "f"|];
 
-let timeTypes = ["24", "12"];
+let timeTypes = [|"24", "12"|];
 
 module AppColors = {
   let red = "#E77F6D";

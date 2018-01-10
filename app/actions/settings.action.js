@@ -1,10 +1,10 @@
 import moment from 'moment';
 import * as types from './types.action';
 import realm from '../realm';
-import { triggerAction } from './locations.action';
+import * as creators from './creators.action';
 
 const updateTimeReducer = (timeType, timeIndex) =>
-	triggerAction(types.SET_TIME_TYPE, { timeType, timeIndex });
+	creators.triggerAction(types.SET_TIME_TYPE, { timeType, timeIndex });
 
 export function setTimeType(timeType, index) {
 	realm.write(() => {

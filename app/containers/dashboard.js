@@ -12,7 +12,7 @@ import * as locationActions from '../actions/locations.action';
 import * as creators from '../actions/creators.action';
 
 import { isDaylight, setToTime } from '../../lib/js/app/utils/time';
-import { units, timeTypes, appColors } from '../config/general.config';
+import { AppColors, units, timeTypes } from '../../lib/js/app/config/config';
 
 // Components
 import AlertContent from '../../lib/js/app/components/alertContent';
@@ -414,7 +414,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: appColors.lightGrey,
+		backgroundColor: AppColors.lightGrey,
 	},
 });
 const mapStateToProps = ({ locations, settings }) => ({

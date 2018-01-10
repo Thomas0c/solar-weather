@@ -1,6 +1,6 @@
 import * as types from './types.action';
 
-const triggerAction = (type, obj) => Object.assign({ type }, obj);
+export const triggerAction = (type, obj) => Object.assign({ type }, obj);
 
 // General Location Handling
 export const locationLoading = () => triggerAction(types.LOCATION_LOADING);
