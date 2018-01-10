@@ -137,7 +137,6 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-linear-gradient')
     compile project(':react-native-geocoder')
     compile project(':react-native-google-places')
     compile project(':react-native-config')
@@ -152,4 +151,8 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+configurations.all {
+  exclude group: 'com.facebook.react', module: 'react-native'
 }
