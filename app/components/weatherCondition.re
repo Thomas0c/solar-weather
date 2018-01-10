@@ -19,9 +19,11 @@ let styles =
       {
         "container":
           style([
-            top(Pct(9.5)),
             position(Absolute),
-            left(Pct(5.)),
+            top(Pct(9.5)),
+            left(Pct(2.)),
+            height(Pt(200.)),
+            width(Pct(100.)),
             backgroundColor("transparent")
           ]),
         "temp":
@@ -36,6 +38,7 @@ let styles =
             fontSize(Float(24.)),
             fontFamily("HelveticaNeue"),
             fontWeight(`_600),
+            textAlign(Left),
             color(Config.AppColors.whiteGrey),
             marginBottom(Pt(20.))
           ])
