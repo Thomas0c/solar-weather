@@ -30,7 +30,7 @@ let styles =
     )
   );
 
-let make = (~selected: bool, ~icon, ~day, ~name, _children) => {
+let make = (~selected: bool, ~icon, ~day: bool, ~name, _children) => {
   ...component,
   render: (_self) => {
     let background =

@@ -11,7 +11,7 @@ import * as settingsActions from '../actions/settings.action';
 import * as locationActions from '../actions/locations.action';
 import * as creators from '../actions/creators.action';
 
-import { isDaylight, setToTime } from '../utils/time.utils';
+import { isDaylight, setToTime } from '../../lib/js/app/utils/time';
 import { units, timeTypes, appColors } from '../config/general.config';
 
 // Components
@@ -283,10 +283,6 @@ class Dashboard extends PureComponent {
 			activeLocation && activeLocation.timezone
 				? activeLocation.timezone
 				: moment.tz.guess();
-		const day = timestamp.clone().tz(timezone);
-		const eveningTime = setToTime(day, 18, 0, 0);
-		const morningTime = setToTime(day, 6, 0, 0);
-		const dayTime = day.isBefore(eveningTime) && day.isAfter(morningTime);
 
 		// Alert title and description
 		const showAlert = activeLocation ? activeLocation.alerts.length > 0 : 0;
@@ -314,7 +310,7 @@ class Dashboard extends PureComponent {
 				onOpenRightSide={this.handleOpenSidebar.bind(this, 'openRight')}
 				onCloseRightSide={this.handleCloseSidebar.bind(this, 'openRight')}
 				unit={unit}
-				dayTime={dayTime}
+				dayTime={isDaylight(timezone)}
 				locationIndex={locationIndex}
 				toggleLocationSearch={this.toggleLocationSearch.bind(this)}
 				filteredLocations={locations}>
@@ -367,7 +363,6 @@ class Dashboard extends PureComponent {
 							time={timeType}
 							timestamp={timestamp}
 							timezone={timezone}
-							day={dayTime}
 							condition={activeLocation ? activeLocation.currently.icon : ''}
 						/>
 						{!anyLocation && (

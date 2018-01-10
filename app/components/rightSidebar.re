@@ -27,7 +27,7 @@ let make =
       ~filteredLocations,
       ~onOpenRightSide,
       ~onCloseRightSide,
-      ~dayTime,
+      ~dayTime: bool,
       ~locationIndex,
       ~toggleLocationSearch,
       ~onRowSelect,

@@ -17,6 +17,14 @@ let convertToString = (format: string) => Moment.format(format);
 let isAfterCurrent = (time: int) =>
   Moment.isAfter(momentWithUnix(time), momentNow());
 
+let isDaylight = (timezone) => {
+  let time = tz(momentNow(), timezone) |> Moment.hour;
+  time > 6 && time < 18
+};
+
+let setToTime = (time: MomentRe.Moment.t, h: int) =>
+  time |> Moment.add(~duration=duration(h, `hours)) |> Moment.startOf(`hour);
+
 let setToStartOf =
     (
       start: [

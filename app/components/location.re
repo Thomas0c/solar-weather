@@ -58,7 +58,7 @@ let make =
       ~icon,
       ~onDelete,
       ~onSelect,
-      ~day,
+      ~day: bool,
       ~id: int,
       ~activeLocation,
       _children
