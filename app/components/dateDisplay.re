@@ -10,10 +10,9 @@ let styles =
           style([
             position(Absolute),
             height(Pt(50.)),
-            width(Pt(200.)),
+            width(Pct(100.)),
             top(Pct(2.5)),
-            left(Pct(5.)),
-            alignSelf(Center),
+            left(Pct(4.)),
             backgroundColor("transparent")
           ])
       }

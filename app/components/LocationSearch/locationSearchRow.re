@@ -2,6 +2,8 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("LocationSearchRow");
 
+let windowWidth = float_of_int(Dimensions.get(`window)##width);
+
 let styles =
   StyleSheet.create(
     Style.(
@@ -18,7 +20,7 @@ let styles =
             color(Config.AppColors.darkGrey),
             fontFamily("Baskerville"),
             marginLeft(Pt(12.)),
-            fontSize(Float(20.))
+            fontSize(Float(windowWidth /. 22.))
           ])
       }
     )

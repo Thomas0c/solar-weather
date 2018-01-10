@@ -11,8 +11,7 @@
 	"dependencies": {
 		"axios": "^0.17.0",
 		"bs-moment": "^0.1.8",
-		"folktale": "^2.0.1",
-		"immutable": "^3.8.2",
+		"data.maybe": "^1.2.2",
 		"moment": "^2.19.1",
 		"moment-timezone": "^0.5.14",
 		"prop-types": "^15.6.0",
@@ -48,8 +47,6 @@
 	},
 	"jest": {
 		"preset": "react-native",
-		"testMatch": [
-			"**/__tests__/**/(*.)(spec|test).js"
-		]
+		"testMatch": ["**/__tests__/**/(*.)(spec|test).js"]
 	}
 }

@@ -20,9 +20,11 @@ exports[`renders -0 as positive 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "left": "5.00%",
+      "height": 200,
+      "left": "2.00%",
       "position": "absolute",
       "top": "9.50%",
+      "width": "100.00%",
     }
   }
   testID={undefined}
@@ -49,9 +51,11 @@ exports[`renders -0 as positive 1`] = `
     style={
       Object {
         "backgroundColor": "transparent",
-        "left": "5.00%",
+        "height": 200,
+        "left": "2.00%",
         "position": "absolute",
         "top": "9.50%",
+        "width": "100.00%",
       }
     }
     testID={undefined}
@@ -199,9 +203,11 @@ exports[`renders correctly when details are not toggled 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "left": "5.00%",
+      "height": 200,
+      "left": "2.00%",
       "position": "absolute",
       "top": "9.50%",
+      "width": "100.00%",
     }
   }
   testID={undefined}
@@ -228,9 +234,11 @@ exports[`renders correctly when details are not toggled 1`] = `
     style={
       Object {
         "backgroundColor": "transparent",
-        "left": "5.00%",
+        "height": 200,
+        "left": "2.00%",
         "position": "absolute",
         "top": "9.50%",
+        "width": "100.00%",
       }
     }
     testID={undefined}
@@ -378,9 +386,11 @@ exports[`renders correctly when details are toggled 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "left": "5.00%",
+      "height": 200,
+      "left": "2.00%",
       "position": "absolute",
       "top": "9.50%",
+      "width": "100.00%",
     }
   }
   testID={undefined}
@@ -407,9 +417,11 @@ exports[`renders correctly when details are toggled 1`] = `
     style={
       Object {
         "backgroundColor": "transparent",
-        "left": "5.00%",
+        "height": 200,
+        "left": "2.00%",
         "position": "absolute",
         "top": "9.50%",
+        "width": "100.00%",
       }
     }
     testID={undefined}
@@ -557,9 +569,11 @@ exports[`renders correctly when precip probability is more than 30% 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "left": "5.00%",
+      "height": 200,
+      "left": "2.00%",
       "position": "absolute",
       "top": "9.50%",
+      "width": "100.00%",
     }
   }
   testID={undefined}
@@ -586,9 +600,11 @@ exports[`renders correctly when precip probability is more than 30% 1`] = `
     style={
       Object {
         "backgroundColor": "transparent",
-        "left": "5.00%",
+        "height": 200,
+        "left": "2.00%",
         "position": "absolute",
         "top": "9.50%",
+        "width": "100.00%",
       }
     }
     testID={undefined}
@@ -736,9 +752,11 @@ exports[`renders negative temperature as negative 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "left": "5.00%",
+      "height": 200,
+      "left": "2.00%",
       "position": "absolute",
       "top": "9.50%",
+      "width": "100.00%",
     }
   }
   testID={undefined}
@@ -765,9 +783,11 @@ exports[`renders negative temperature as negative 1`] = `
     style={
       Object {
         "backgroundColor": "transparent",
-        "left": "5.00%",
+        "height": 200,
+        "left": "2.00%",
         "position": "absolute",
         "top": "9.50%",
+        "width": "100.00%",
       }
     }
     testID={undefined}

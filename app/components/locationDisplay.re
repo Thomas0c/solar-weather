@@ -34,7 +34,12 @@ let styles =
             width(Pct(100.)),
             height(Pct(100.)),
             fontSize(Float(18.)),
-            paddingTop(Pt(windowHeight /. 2. -. 10.)),
+            paddingTop(
+              Pt(
+                Platform.os === Platform.IOS ?
+                  windowHeight /. 2. -. 10. : windowHeight /. 2. -. 12.
+              )
+            ),
             alignItems(Center),
             justifyContent(Center),
             textAlign(Center),
@@ -65,18 +70,17 @@ let make = (~locationName, ~onPress, ~loading: Js.boolean, _children) => {
       locationName !== "" && ! Js.to_bool(loading) ?
         locationName : "Loading...";
     <View style=styles##container>
-      <View style=styles##shadow>
-        <TouchableHighlight
-          style=styles##touch onPress underlayColor="transparent">
-          <Text style=styles##text>
-            (
-              locationName === "" && ! Js.to_bool(loading) ?
-                ReasonReact.stringToElement("No Location") :
-                ReasonReact.stringToElement(currentLocation)
-            )
-          </Text>
-        </TouchableHighlight>
-      </View>
+      <View style=styles##shadow />
+      <TouchableHighlight
+        style=styles##touch onPress underlayColor="transparent">
+        <Text style=styles##text>
+          (
+            locationName === "" && ! Js.to_bool(loading) ?
+              ReasonReact.stringToElement("No Location") :
+              ReasonReact.stringToElement(currentLocation)
+          )
+        </Text>
+      </TouchableHighlight>
     </View>
   }
 };

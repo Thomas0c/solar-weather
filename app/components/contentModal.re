@@ -6,6 +6,16 @@ let styles =
   StyleSheet.create(
     Style.(
       {
+        "modalWrapper":
+          style([
+            marginTop(Pct(10.)),
+            backgroundColor("transparent"),
+            alignSelf(Center),
+            height(Pct(50.)),
+            width(Pct(85.)),
+            minHeight(Pt(Platform.os === Platform.Android ? 380. : 0.)),
+            position(Relative)
+          ]),
         "viewWrapper":
           style([
             position(Absolute),
@@ -17,11 +27,9 @@ let styles =
           ]),
         "viewBoxStyle":
           style([
-            position(Relative),
-            marginTop(Pct(15.)),
             backgroundColor(Config.AppColors.medGrey),
-            height(Pct(55.)),
-            width(Pct(85.)),
+            height(Pct(Platform.os === Platform.Android ? 95. : 95.)),
+            width(Pct(100.)),
             alignSelf(Center),
             shadowColor(Config.AppColors.black),
             shadowOffset(~height=0., ~width=0.),
@@ -36,15 +44,16 @@ let make =
     (~toggleView, ~visible, ~content: ReasonReact.reactElement, _children) => {
   ...component,
   render: (_self) =>
-    <Modal animationType=`slide visible transparent=true>
+    <Modal
+      onRequestClose=toggleView animationType=`slide visible transparent=true>
       <TouchableHighlight
         onPress=(() => toggleView())
         underlayColor="transparent"
         style=styles##viewWrapper>
         <View />
       </TouchableHighlight>
-      <View style=styles##viewBoxStyle>
-        content
+      <View style=styles##modalWrapper>
+        <View style=styles##viewBoxStyle> content </View>
         <CloseButton absolute=true toggle=toggleView />
       </View>
     </Modal>

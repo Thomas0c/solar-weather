@@ -2,6 +2,8 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("WeekOverview");
 
+let windowHeight = float_of_int(Dimensions.get(`window)##height);
+
 let styles =
   StyleSheet.create(
     Style.(
@@ -9,7 +11,7 @@ let styles =
         "container":
           style([
             alignItems(Center),
-            height(Pt(121.)),
+            height(Pt(windowHeight /. 5. -. 12.)),
             justifyContent(FlexStart),
             position(Relative),
             width(Pct(90.)),
@@ -29,10 +31,8 @@ let styles =
           ]),
         "dayTitle":
           style([
-            borderRadius(2.),
             fontSize(Float(14.)),
             width(Pct(100.)),
-            borderRadius(5.),
             position(Absolute),
             textAlign(Center),
             bottom(Pt(0.)),

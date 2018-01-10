@@ -1,7 +1,7 @@
 import moment from 'moment';
 import * as types from '../actions/types.action';
 
-const Maybe = require('folktale/maybe');
+const Maybe = require('data.maybe');
 const R = require('ramda');
 
 export const initialState = {

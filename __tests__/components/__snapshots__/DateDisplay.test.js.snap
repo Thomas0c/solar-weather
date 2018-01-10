@@ -21,13 +21,12 @@ exports[`renders correctly 1`] = `
   shouldRasterizeIOS={undefined}
   style={
     Object {
-      "alignSelf": "center",
       "backgroundColor": "transparent",
       "height": 50,
-      "left": "5.00%",
+      "left": "4.00%",
       "position": "absolute",
       "top": "2.50%",
-      "width": 200,
+      "width": "100.00%",
     }
   }
   testID={undefined}

@@ -70,69 +70,68 @@ exports[`renders correctly when loading 1`] = `
       }
     }
     testID={undefined}
+  />
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "height": 133.4,
+        "justifyContent": "flex-start",
+        "position": "relative",
+        "width": "100.00%",
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
   >
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
+    <Text
       accessible={true}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
       onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
       style={
         Object {
           "alignItems": "center",
           "alignSelf": "center",
-          "height": 133.4,
-          "justifyContent": "flex-start",
-          "position": "relative",
+          "fontFamily": "Baskerville",
+          "fontSize": 18,
+          "height": "100.00%",
+          "justifyContent": "center",
+          "paddingTop": 56.7,
+          "textAlign": "center",
           "width": "100.00%",
         }
       }
+      suppressHighlighting={undefined}
       testID={undefined}
-      tvParallaxProperties={undefined}
+      textBreakStrategy={undefined}
     >
-      <Text
-        accessible={true}
-        adjustsFontSizeToFit={undefined}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        minimumFontScale={undefined}
-        numberOfLines={undefined}
-        onLayout={undefined}
-        onLongPress={undefined}
-        onPress={undefined}
-        pressRetentionOffset={undefined}
-        selectable={undefined}
-        selectionColor={undefined}
-        style={
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "fontFamily": "Baskerville",
-            "fontSize": 18,
-            "height": "100.00%",
-            "justifyContent": "center",
-            "paddingTop": 56.7,
-            "textAlign": "center",
-            "width": "100.00%",
-          }
-        }
-        suppressHighlighting={undefined}
-        testID={undefined}
-        textBreakStrategy={undefined}
-      >
-        Loading...
-      </Text>
-    </View>
+      Loading...
+    </Text>
   </View>
 </View>
 `;
@@ -207,69 +206,68 @@ exports[`renders correctly when not loading 1`] = `
       }
     }
     testID={undefined}
+  />
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "height": 133.4,
+        "justifyContent": "flex-start",
+        "position": "relative",
+        "width": "100.00%",
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
   >
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
+    <Text
       accessible={true}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
+      adjustsFontSizeToFit={undefined}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      minimumFontScale={undefined}
+      numberOfLines={undefined}
       onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onLongPress={undefined}
+      onPress={undefined}
+      pressRetentionOffset={undefined}
+      selectable={undefined}
+      selectionColor={undefined}
       style={
         Object {
           "alignItems": "center",
           "alignSelf": "center",
-          "height": 133.4,
-          "justifyContent": "flex-start",
-          "position": "relative",
+          "fontFamily": "Baskerville",
+          "fontSize": 18,
+          "height": "100.00%",
+          "justifyContent": "center",
+          "paddingTop": 56.7,
+          "textAlign": "center",
           "width": "100.00%",
         }
       }
+      suppressHighlighting={undefined}
       testID={undefined}
-      tvParallaxProperties={undefined}
+      textBreakStrategy={undefined}
     >
-      <Text
-        accessible={true}
-        adjustsFontSizeToFit={undefined}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        minimumFontScale={undefined}
-        numberOfLines={undefined}
-        onLayout={undefined}
-        onLongPress={undefined}
-        onPress={undefined}
-        pressRetentionOffset={undefined}
-        selectable={undefined}
-        selectionColor={undefined}
-        style={
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "fontFamily": "Baskerville",
-            "fontSize": 18,
-            "height": "100.00%",
-            "justifyContent": "center",
-            "paddingTop": 56.7,
-            "textAlign": "center",
-            "width": "100.00%",
-          }
-        }
-        suppressHighlighting={undefined}
-        testID={undefined}
-        textBreakStrategy={undefined}
-      >
-        Tokyo
-      </Text>
-    </View>
+      Tokyo
+    </Text>
   </View>
 </View>
 `;

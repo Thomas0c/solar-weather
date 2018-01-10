@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "alignSelf": "center",
-      "bottom": -20,
+      "bottom": 0,
       "position": "absolute",
     }
   }
