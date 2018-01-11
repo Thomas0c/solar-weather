@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import RNGooglePlaces from 'react-native-google-places';
 import { connect } from 'react-redux';
 
-import { FlatList, Image } from 'react-native';
+import { FlatList, Image, Modal } from 'react-native';
 
+import { AppColors } from '../../../lib/js/app/config/config';
 import ContentModal from '../../../lib/js/app/components/contentModal';
 import * as locationActions from '../../actions/locations.action';
 import LocationSearchRow from '../../../lib/js/app/components/LocationSearch/locationSearchRow';
@@ -76,48 +77,52 @@ class LocationSearch extends PureComponent {
 		return index;
 	};
 
-	renderHeader = () => {
-		return <LocationSearchHeader onChange={text => this.getLocations(text)} />;
+	renderHeader = toggle => {
+		return (
+			<LocationSearchHeader
+				toggle={toggle}
+				onChange={text => this.getLocations(text)}
+			/>
+		);
 	};
 
 	render() {
 		const { visible, toggleView } = this.props;
 		return (
-			<ContentModal
+			<Modal
 				visible={visible}
-				toggleView={toggleView}
-				content={
-					<FlatList
-						keyboardShouldPersistTaps="always"
-						scrollEnabled={false}
-						enableEmptySections
-						data={this.state.predictions}
-						keyExtractor={this._keyExtractor}
-						renderItem={({ item }) => (
-							<LocationSearchRow
-								primaryText={item.primaryText}
-								secondaryText={item.secondaryText}
-								handleTap={e => this.LookUpPlace(e)}
-								id={item.placeID}
-							/>
-						)}
-						ListHeaderComponent={this.renderHeader}
-						ListFooterComponent={() => (
-							<Image
-								style={imageStyle}
-								source={require('../../../assets/pwdgoogle.png')}
-							/>
-						)}
-					/>
-				}
-			/>
+				animationType="slide"
+				onRequestClose={toggleView}>
+				<FlatList
+					keyboardShouldPersistTaps="always"
+					scrollEnabled={false}
+					enableEmptySections
+					data={this.state.predictions}
+					keyExtractor={this._keyExtractor}
+					renderItem={({ item }) => (
+						<LocationSearchRow
+							primaryText={item.primaryText}
+							secondaryText={item.secondaryText}
+							handleTap={e => this.LookUpPlace(e)}
+							id={item.placeID}
+						/>
+					)}
+					ListHeaderComponent={this.renderHeader(toggleView)}
+					ListFooterComponent={() => (
+						<Image
+							style={imageStyle}
+							source={require('../../../assets/pwdgoogle.png')}
+						/>
+					)}
+				/>
+			</Modal>
 		);
 	}
 }
 
 const imageStyle = {
 	alignSelf: 'center',
-	marginTop: 15,
+	marginTop: 10,
 	width: 120,
 	resizeMode: 'contain',
 };

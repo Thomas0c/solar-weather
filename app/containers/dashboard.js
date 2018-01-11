@@ -41,7 +41,7 @@ class Dashboard extends PureComponent {
 				longitude: 0,
 			},
 		},
-		isConnected: 'none',
+		isConnected: 'wifi',
 		appState: 'inactive',
 		menu: false,
 		locationSearch: false,
@@ -99,8 +99,8 @@ class Dashboard extends PureComponent {
 		NetInfo.removeEventListener('connectionChange', this.handleNetworkType);
 	}
 
-	handleNetworkType(networkType) {
-		this.setState({ isConnected: networkType });
+	handleNetworkType({ type }) {
+		this.setState({ isConnected: type });
 	}
 
 	_handleMemoryWarning = () => {
@@ -198,9 +198,6 @@ class Dashboard extends PureComponent {
 			'memoryWarning',
 			this._handleMemoryWarning.bind(this),
 		);
-
-		const { isConnected } = this.state;
-		const connected = isConnected === 'wifi' || isConnected === 'cell';
 
 		if (!locations.loading) {
 			await dispatch(locationActions.getLocationsFromStore());

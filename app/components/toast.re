@@ -74,7 +74,7 @@ let make =
   render: ({state}) => {
     let errorComponent: ReasonReact.reactElement =
       switch (Js.to_bool(connected), Js.to_bool(displayError)) {
-      | (false, false) =>
+      | (false, _) =>
         wrapperComponent(
           state,
           <Text style=styles##text>
@@ -82,13 +82,6 @@ let make =
           </Text>
         )
       | (true, true) =>
-        wrapperComponent(
-          state,
-          <Text style=styles##text>
-            (ReasonReact.stringToElement(error))
-          </Text>
-        )
-      | (false, true) =>
         wrapperComponent(
           state,
           <Text style=styles##text>

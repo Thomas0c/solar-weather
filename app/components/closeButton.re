@@ -6,9 +6,7 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "button": style([position(Absolute), bottom(Pt(0.)), alignSelf(Center)]),
-        "buttonRelative":
-          style([position(Relative), alignSelf(Center), marginTop(Pt(30.))]),
+        "buttonRelative": style([position(Relative), alignSelf(Center)]),
         "text":
           style([
             fontFamily(Config.Fonts.helveticaNeue),
@@ -20,13 +18,11 @@ let styles =
     )
   );
 
-let make = (~toggle, ~absolute, _children) => {
+let make = (~toggle, _children) => {
   ...component,
   render: (_self) =>
     <TouchableHighlight
-      style=(absolute ? styles##button : styles##buttonRelative)
-      underlayColor="transparent"
-      onPress=toggle>
+      style=styles##buttonRelative underlayColor="transparent" onPress=toggle>
       <View
         style=Style.(
                 style([
@@ -50,6 +46,5 @@ let make = (~toggle, ~absolute, _children) => {
 let default =
   ReasonReact.wrapReasonForJs(
     ~component,
-    (jsProps) =>
-      make(~toggle=jsProps##toggle, ~absolute=jsProps##absolute, [||])
+    (jsProps) => make(~toggle=jsProps##toggle, [||])
   );

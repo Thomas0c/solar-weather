@@ -11,16 +11,27 @@ let styles =
         "container":
           style([
             flex(1.),
-            padding(Pt(9.)),
-            flexDirection(Row),
-            alignItems(Center)
+            width(Pct(90.)),
+            paddingBottom(Pt(10.)),
+            paddingTop(Pt(10.)),
+            alignSelf(Center),
+            flexDirection(Column),
+            alignItems(FlexStart)
           ]),
         "text":
           style([
-            color(Config.AppColors.darkGrey),
+            flex(1.),
+            color(Config.AppColors.black),
             fontFamily(Config.Fonts.baskerville),
-            marginLeft(Pt(12.)),
-            fontSize(Float(windowWidth /. 26.))
+            fontSize(Float(windowWidth /. 26.)),
+            paddingBottom(Pt(5.))
+          ]),
+        "secondaryText":
+          style([
+            flex(1.),
+            color(Config.AppColors.grey),
+            fontFamily(Config.Fonts.helveticaNeue),
+            fontSize(Float(windowWidth /. 30.))
           ])
       }
     )
@@ -32,7 +43,10 @@ let make = (~id, ~handleTap, ~secondaryText, ~primaryText, _children) => {
     <TouchableOpacity onPress=(() => handleTap(id))>
       <View style=styles##container>
         <Text style=styles##text>
-          (ReasonReact.stringToElement(primaryText ++ ", " ++ secondaryText))
+          (ReasonReact.stringToElement(primaryText))
+        </Text>
+        <Text style=styles##secondaryText>
+          (ReasonReact.stringToElement(secondaryText))
         </Text>
       </View>
     </TouchableOpacity>

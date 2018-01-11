@@ -8,30 +8,30 @@ let styles =
       {
         "container":
           style([
-            flex(1.),
             width(Pct(90.)),
             flexDirection(Row),
             alignItems(Center),
             alignSelf(Center),
-            backgroundColor(Config.AppColors.medGrey),
-            borderBottomWidth(2.),
+            backgroundColor("transparent"),
             height(Pt(45.)),
-            marginBottom(Pt(10.)),
-            borderBottomColor(Config.AppColors.darkGrey)
+            marginTop(Pt(10.)),
+            marginBottom(Pt(10.))
           ]),
         "input":
           style([
+            width(Pct(88.)),
             height(Pt(50.)),
             color(Config.AppColors.darkGrey),
-            flex(1.),
             fontSize(Float(16.)),
-            fontFamily(Config.Fonts.helveticaNeue)
+            borderBottomWidth(2.),
+            fontFamily(Config.Fonts.helveticaNeue),
+            borderBottomColor(Config.AppColors.darkGrey)
           ])
       }
     )
   );
 
-let make = (~onChange, _children) => {
+let make = (~onChange, ~toggle, _children) => {
   ...component,
   render: (_self) =>
     <View style=styles##container>
@@ -48,11 +48,13 @@ let make = (~onChange, _children) => {
         autoCorrect=false
         onChangeText=onChange
       />
+      <CloseButton toggle absolute=false />
     </View>
 };
 
 let default =
   ReasonReact.wrapReasonForJs(
     ~component,
-    (jsProps) => make(~onChange=jsProps##onChange, [||])
+    (jsProps) =>
+      make(~onChange=jsProps##onChange, ~toggle=jsProps##toggle, [||])
   );
