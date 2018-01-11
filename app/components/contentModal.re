@@ -6,16 +6,6 @@ let styles =
   StyleSheet.create(
     Style.(
       {
-        "modalWrapper":
-          style([
-            marginTop(Pct(10.)),
-            backgroundColor("transparent"),
-            alignSelf(Center),
-            height(Pct(50.)),
-            width(Pct(85.)),
-            minHeight(Pt(Platform.os === Platform.Android ? 380. : 0.)),
-            position(Relative)
-          ]),
         "viewWrapper":
           style([
             position(Absolute),
@@ -27,9 +17,10 @@ let styles =
           ]),
         "viewBoxStyle":
           style([
+            marginTop(Pt(20.)),
             backgroundColor(Config.AppColors.medGrey),
-            height(Pct(Platform.os === Platform.Android ? 95. : 95.)),
-            width(Pct(100.)),
+            minHeight(Pct(50.)),
+            width(Pct(85.)),
             alignSelf(Center),
             shadowColor(Config.AppColors.black),
             shadowOffset(~height=0., ~width=0.),
@@ -52,9 +43,9 @@ let make =
         style=styles##viewWrapper>
         <View />
       </TouchableHighlight>
-      <View style=styles##modalWrapper>
-        <View style=styles##viewBoxStyle> content </View>
-        <CloseButton absolute=true toggle=toggleView />
+      <View style=styles##viewBoxStyle>
+        content
+        <FullButton toggle=toggleView text="Close" />
       </View>
     </Modal>
 };

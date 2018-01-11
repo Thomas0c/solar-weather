@@ -22,21 +22,14 @@ let styles =
   );
 
 let modalContent =
-    (
-      handleClick,
-      unitIndex,
-      updateIndex,
-      timeIndex,
-      updateTimeIndex,
-      resetOnboarding
-    ) =>
+    (handleClick, unitIndex, updateIndex, timeIndex, updateTimeIndex) =>
   <View style=Style.(style([position(Relative), alignItems(Center)]))>
     <Text style=styles##title>
       (ReasonReact.stringToElement("Settings"))
     </Text>
     <SegmentedControllOS
       style=Style.(style([backgroundColor("transparent"), width(Pct(80.))]))
-      tintColor="#343434"
+      tintColor=Config.AppColors.tint
       values=["Metric", "Imperial"]
       selectedIndex=unitIndex
       onChange=updateIndex
@@ -49,7 +42,7 @@ let modalContent =
                 marginTop(Pt(20.))
               ])
             )
-      tintColor="#343434"
+      tintColor=Config.AppColors.tint
       values=["24 Hour", "12 Hour"]
       selectedIndex=timeIndex
       onChange=updateTimeIndex
@@ -99,7 +92,6 @@ let make =
       ~timeIndex,
       ~updateIndex,
       ~updateTimeIndex,
-      ~resetOnboarding,
       _children
     ) => {
   let handleClick = (url: string) =>
@@ -124,8 +116,7 @@ let make =
             unitIndex,
             updateIndex,
             timeIndex,
-            updateTimeIndex,
-            resetOnboarding
+            updateTimeIndex
           )
         )
       />
@@ -143,7 +134,6 @@ let default =
         ~timeIndex=jsProps##timeIndex,
         ~updateIndex=jsProps##updateIndex,
         ~updateTimeIndex=jsProps##updateTimeIndex,
-        ~resetOnboarding=jsProps##resetOnboarding,
         [||]
       )
   );

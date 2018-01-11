@@ -19,6 +19,8 @@ module AppColors = {
   let darkGrey = "#343434";
   let grey = "#999";
   let medGreyAlt = "#C0C0C0";
+  let tint = "#6D7B8C";
+  let actionColor = "#6D7B8C";
 };
 
 let drawerTweenHandler = (ratio: float) => {
