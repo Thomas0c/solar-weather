@@ -48,7 +48,7 @@ let make = (~onChange, ~toggle, _children) => {
         autoCorrect=false
         onChangeText=onChange
       />
-      <CloseButton toggle absolute=false />
+      <CloseButton toggle />
     </View>
 };
 

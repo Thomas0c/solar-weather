@@ -16,10 +16,33 @@ let styles =
             fontWeight(`Bold)
           ]),
         "image": style([width(Pt(120.)), height(Pt(80.)), resizeMode(Contain)]),
-        "credits": style([alignItems(Center), width(Pct(100.))])
+        "credits": style([alignItems(Center), width(Pct(100.))]),
+        "tabContainerStyle":
+          style([
+            width(Pct(80.)),
+            height(Pt(30.)),
+            marginBottom(Pt(20.)),
+            borderColor(Config.AppColors.tint)
+          ]),
+        "tabStyle": style([borderColor(Config.AppColors.tint)]),
+        "activeTabStyle": style([backgroundColor(Config.AppColors.tint)]),
+        "tabTextStyle": style([color(Config.AppColors.tint)]),
+        "activeTabTextStyle": style([color(Config.AppColors.white)])
       }
     )
   );
+
+let segmentedControl = (values, selected, onPress) =>
+  <SegmentedControlTab.Component
+    values
+    selectedIndex=selected
+    onTabPress=onPress
+    tabsContainerStyle=styles##tabContainerStyle
+    tabStyle=styles##tabStyle
+    activeTabStyle=styles##activeTabStyle
+    tabTextStyle=styles##tabTextStyle
+    activeTabTextStyle=styles##activeTabTextStyle
+  />;
 
 let modalContent =
     (handleClick, unitIndex, updateIndex, timeIndex, updateTimeIndex) =>
@@ -27,26 +50,8 @@ let modalContent =
     <Text style=styles##title>
       (ReasonReact.stringToElement("Settings"))
     </Text>
-    <SegmentedControllOS
-      style=Style.(style([backgroundColor("transparent"), width(Pct(80.))]))
-      tintColor=Config.AppColors.tint
-      values=["Metric", "Imperial"]
-      selectedIndex=unitIndex
-      onChange=updateIndex
-    />
-    <SegmentedControllOS
-      style=Style.(
-              style([
-                backgroundColor("transparent"),
-                width(Pct(80.)),
-                marginTop(Pt(20.))
-              ])
-            )
-      tintColor=Config.AppColors.tint
-      values=["24 Hour", "12 Hour"]
-      selectedIndex=timeIndex
-      onChange=updateTimeIndex
-    />
+    (segmentedControl([|"Metric", "Imperial"|], unitIndex, updateIndex))
+    (segmentedControl([|"24 Hour", "12 Hour"|], timeIndex, updateTimeIndex))
     <Text
       style=Style.(
               style([

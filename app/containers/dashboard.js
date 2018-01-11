@@ -72,14 +72,12 @@ class Dashboard extends PureComponent {
 		}
 	};
 
-	updateSegmentIndex(event) {
-		const index = event.nativeEvent.selectedSegmentIndex;
-		this.props.dispatch(settingsActions.setUnit(units[index], index));
+	updateSegmentIndex(idx) {
+		this.props.dispatch(settingsActions.setUnit(units[idx], idx));
 	}
 
-	updateSegmentTimeIndex(event) {
-		const index = event.nativeEvent.selectedSegmentIndex;
-		this.props.dispatch(settingsActions.setTimeType(timeTypes[index], index));
+	updateSegmentTimeIndex(idx) {
+		this.props.dispatch(settingsActions.setTimeType(timeTypes[idx], idx));
 	}
 
 	toggleLocationSearch() {
