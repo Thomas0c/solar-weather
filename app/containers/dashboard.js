@@ -366,7 +366,10 @@ class Dashboard extends PureComponent {
 							condition={activeLocation ? activeLocation.currently.icon : ''}
 						/>
 						{!anyLocation && (
-							<Empty onPress={this.toggleLocationSearch.bind(this)} />
+							<Empty
+								connected={connected}
+								onPress={this.toggleLocationSearch.bind(this)}
+							/>
 						)}
 						<WeatherCondition
 							unit={unit}

@@ -46,6 +46,9 @@ exports[`renders correctly 1`] = `
       Object {
         "backgroundColor": "transparent",
         "color": "#FFF",
+        "padding": 15,
+        "textAlign": "center",
+        "width": "100.00%",
       }
     }
     suppressHighlighting={undefined}
@@ -73,7 +76,7 @@ exports[`renders correctly 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "marginTop": 30,
+        "marginTop": 10,
         "opacity": 1,
         "position": "relative",
         "width": 40,
