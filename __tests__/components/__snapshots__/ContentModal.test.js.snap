@@ -83,59 +83,28 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "center",
-        "backgroundColor": "transparent",
-        "height": "50.00%",
-        "marginTop": "10.00%",
-        "minHeight": 0,
-        "position": "relative",
+        "backgroundColor": "#F0F0F0",
+        "marginTop": 20,
+        "minHeight": "50.00%",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 0,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+        "shadowRadius": 5,
         "width": "85.00%",
       }
     }
     testID={undefined}
   >
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityLiveRegion={undefined}
-      accessibilityTraits={undefined}
-      accessibilityViewIsModal={undefined}
-      accessible={undefined}
-      collapsable={undefined}
-      hitSlop={undefined}
-      importantForAccessibility={undefined}
-      needsOffscreenAlphaCompositing={undefined}
-      onAccessibilityTap={undefined}
-      onLayout={undefined}
-      onMagicTap={undefined}
-      pointerEvents={undefined}
-      removeClippedSubviews={undefined}
-      renderToHardwareTextureAndroid={undefined}
-      shouldRasterizeIOS={undefined}
-      style={
-        Object {
-          "alignSelf": "center",
-          "backgroundColor": "#F0F0F0",
-          "height": "95.00%",
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0.8,
-          "shadowRadius": 5,
-          "width": "100.00%",
-        }
-      }
-      testID={undefined}
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
-        Test component
-      </Text>
-    </View>
+      Test component
+    </Text>
     <View
       accessibilityComponentType={undefined}
       accessibilityLabel={undefined}
@@ -155,8 +124,9 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignSelf": "center",
-          "bottom": 0,
-          "position": "absolute",
+          "marginBottom": 20,
+          "position": "relative",
+          "width": "100.00%",
         }
       }
       testID={undefined}
@@ -183,13 +153,12 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#E77F6D",
-            "borderRadius": 20,
+            "alignSelf": "center",
+            "backgroundColor": "#6D7B8C",
             "borderWidth": 0,
             "height": 40,
             "justifyContent": "center",
-            "overflow": "hidden",
-            "width": 40,
+            "width": "90.00%",
           }
         }
         testID={undefined}
@@ -211,7 +180,7 @@ exports[`renders correctly 1`] = `
             Object {
               "color": "#FFF",
               "fontFamily": "Roboto",
-              "fontSize": 25,
+              "fontSize": 14,
               "fontWeight": "bold",
             }
           }
@@ -219,7 +188,7 @@ exports[`renders correctly 1`] = `
           testID={undefined}
           textBreakStrategy={undefined}
         >
-          ×
+          Close
         </Text>
       </View>
     </View>
