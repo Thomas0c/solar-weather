@@ -30,14 +30,9 @@ export const forecastResponseExtended = (location, res, id) => {
 		process.env.NODE_ENV === 'test' ? new Date(1515149649 * 1000) : new Date();
 	const { data: { daily, alerts, currently, hourly, timezone } } = res;
 
-	const fiveDaysFromNow = moment()
-		.tz(timezone)
-		.hour(0)
-		.add(5, 'days');
-	const followingDay = moment()
-		.tz(timezone)
-		.hour(0)
-		.add(0, 'days');
+	const time = moment.tz(timezone);
+	const fiveDaysFromNow = time.hour(0).add(5, 'days');
+	const followingDay = time.hour(0).add(0, 'days');
 
 	return Object.assign(
 		{ id },
