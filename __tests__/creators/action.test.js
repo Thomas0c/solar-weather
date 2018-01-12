@@ -1,4 +1,4 @@
-import * as actions from '../../app/actions/creators.action';
+import * as actions from '../../lib/js/app/actions/creators';
 import * as types from '../../lib/js/app/actions/actions';
 import { loc } from '../config';
 
