@@ -1,10 +1,10 @@
 import moment from 'moment';
-import * as types from './types.action';
+import * as types from '../../lib/js/app/actions/actions';
 import realm from '../realm';
 import * as creators from './creators.action';
 
 const updateTimeReducer = (timeType, timeIndex) =>
-	creators.triggerAction(types.SET_TIME_TYPE, { timeType, timeIndex });
+	creators.triggerAction(types.setTimeType, { timeType, timeIndex });
 
 export function setTimeType(timeType, index) {
 	realm.write(() => {
@@ -30,7 +30,7 @@ export function setUnit(unit, index) {
 
 	return dispatch => {
 		dispatch({
-			type: types.SET_UNIT,
+			type: types.setUnit,
 			unit,
 			unitIndex: index,
 		});
@@ -54,7 +54,7 @@ export function setLatestCollectiveUpdate() {
 
 	return dispatch => {
 		dispatch({
-			type: types.UPDATE_LATEST_TIMESTAMP,
+			type: types.updateLatestTimestamp,
 			timestamp: date,
 		});
 	};
@@ -74,7 +74,7 @@ export function setOnboarding(value) {
 
 	return dispatch => {
 		dispatch({
-			type: types.SET_ONBOARDING,
+			type: types.setOnboarding,
 			value,
 		});
 	};
@@ -108,7 +108,7 @@ export function getSettings() {
 	}
 	return async dispatch => {
 		await dispatch({
-			type: types.SET_SETTINGS,
+			type: types.setSettings,
 			unit,
 			unitIndex,
 			timeType,

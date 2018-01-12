@@ -1,45 +1,44 @@
-import * as types from './types.action';
+import * as types from '../../lib/js/app/actions/actions';
 
 export const triggerAction = (type, obj) => Object.assign({ type }, obj);
 
 // General Location Handling
-export const locationLoading = () => triggerAction(types.LOCATION_LOADING);
+export const locationLoading = () => triggerAction(types.locationLoading);
 
 export const locationLoadingDone = () =>
-	triggerAction(types.LOCATION_LOADING_OFF);
+	triggerAction(types.locationLoadingOff);
 
 export const locationError = err =>
-	triggerAction(types.ADD_LOCATION_ERROR, { err });
+	triggerAction(types.addLocationError, { err });
 
 export const setLocation = (index, location) =>
-	triggerAction(types.SET_LOCATION, { index, location });
+	triggerAction(types.setLocation, { index, location });
 
 export const setLocationSettings = index =>
-	triggerAction(types.SET_ACTIVE_LOCATION, { index });
+	triggerAction(types.setActiveLocation, { index });
 
 // Add Index Location
 export const addIndex = location =>
-	triggerAction(types.ADD_INDEX_LOCATION, { location });
+	triggerAction(types.addIndexLocation, { location });
 
 // Add Location
 export const addLocation = location =>
-	triggerAction(types.ADD_LOCATION, { location });
+	triggerAction(types.addLocation, { location });
 
-export const updateError = err => triggerAction(types.UPDATE_ERROR, { err });
+export const updateError = err => triggerAction(types.updateError, { err });
 
 // Fetch All Locations
-export const fetchAllLocations = () => triggerAction(types.FETCH_LOCATIONS);
+export const fetchAllLocations = () => triggerAction(types.fetchLocations);
 
 export const fetchAllLocationsSuccess = locations =>
-	triggerAction(types.FETCH_LOCATIONS_SUCCESS, { locations });
+	triggerAction(types.fetchLocationsSuccess, { locations });
 
 export const fetchAllLocationsFailure = err =>
-	triggerAction(types.FETCH_LOCATIONS_FAILURE, { err });
+	triggerAction(types.fetchLocationsFailure, { err });
 
 // Get Locations (Stored)
 export const getLocation = locations =>
-	triggerAction(types.GET_LOCATIONS, { locations });
+	triggerAction(types.getLocations, { locations });
 
 // Remove location
-export const removeLocation = id =>
-	triggerAction(types.DELETE_LOCATION, { id });
+export const removeLocation = id => triggerAction(types.deleteLocation, { id });

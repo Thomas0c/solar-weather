@@ -1,4 +1,4 @@
-import * as types from '../actions/types.action';
+import * as types from '../../lib/js/app/actions/actions';
 
 const Maybe = require('data.maybe');
 
@@ -42,17 +42,17 @@ const setError = (state, action) => ({
 });
 
 const actionHandlers = {};
-actionHandlers[types.LOCATION_LOADING_OFF] = setLoading;
-actionHandlers[types.FETCH_LOCATIONS] = state => setLoading(state, true);
-actionHandlers[types.LOCATION_LOADING] = state => setLoading(state, true);
+actionHandlers[types.locationLoadingOff] = setLoading;
+actionHandlers[types.fetchLocations] = state => setLoading(state, true);
+actionHandlers[types.locationLoading] = state => setLoading(state, true);
 
-actionHandlers[types.GET_LOCATIONS] = (state, action) => ({
+actionHandlers[types.getLocations] = (state, action) => ({
 	...setLoading(state, false),
 	locations: action.locations,
 	locationError: null,
 });
 
-actionHandlers[types.SET_LOCATION] = (state, action) => {
+actionHandlers[types.setLocation] = (state, action) => {
 	const currentLocation = Object.assign(
 		state.locations[action.index],
 		action.location,
@@ -66,29 +66,29 @@ actionHandlers[types.SET_LOCATION] = (state, action) => {
 	};
 };
 
-actionHandlers[types.ADD_LOCATION] = (state, action) => ({
+actionHandlers[types.addLocation] = (state, action) => ({
 	...setLoading(state, false),
 	locations: [...state.locations.filter(x => x.id !== 1), action.location],
 	locationError: null,
 });
 
-actionHandlers[types.FETCH_LOCATIONS_SUCCESS] = (state, action) => ({
+actionHandlers[types.fetchLocationsSuccess] = (state, action) => ({
 	...setLoading(state, false),
 	locations: action.locations,
 	locationError: null,
 });
 
-actionHandlers[types.DELETE_LOCATION] = (state, action) => ({
+actionHandlers[types.deleteLocation] = (state, action) => ({
 	...setLoading(state, false),
 	locations: [...state.locations.filter(x => x.id !== action.id)],
 	locationError: null,
 });
 
-actionHandlers[types.FETCH_LOCATIONS_FAILURE] = setError;
-actionHandlers[types.ADD_INDEX_LOCATION_ERROR] = setError;
-actionHandlers[types.ADD_LOCATION_ERROR] = setError;
-actionHandlers[types.SET_ACTIVE_LOCATION_ERROR] = setError;
-actionHandlers[types.UPDATE_ERROR] = setError;
+actionHandlers[types.fetchLocationsFailure] = setError;
+actionHandlers[types.addIndexLocationError] = setError;
+actionHandlers[types.addLocationError] = setError;
+actionHandlers[types.setActiveLocationError] = setError;
+actionHandlers[types.updateError] = setError;
 
 export default function locations(state = initialState, action = {}) {
 	return Maybe.fromNullable(actionHandlers[action.type])

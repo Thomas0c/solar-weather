@@ -1,4 +1,4 @@
-import * as types from '../../app/actions/types.action';
+import * as types from '../../lib/js/app/actions/actions';
 import locations, { initialState } from '../../app/reducers/locations';
 import { loc } from '../config';
 
@@ -16,7 +16,7 @@ describe('locations reducer', () => {
 	it('should handle LOCATION_LOADING', () => {
 		expect(
 			locations(state, {
-				type: types.LOCATION_LOADING,
+				type: types.locationLoading,
 			}),
 		).toMatchSnapshot();
 	});
@@ -24,7 +24,7 @@ describe('locations reducer', () => {
 	it('should handle ADD_LOCATION and add a location to state', () => {
 		expect(
 			locations(state, {
-				type: types.ADD_LOCATION,
+				type: types.addLocation,
 				location: loc,
 			}),
 		).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('locations reducer', () => {
 	it('should handle GET_LOCATIONS and add them to state', () => {
 		expect(
 			locations(state, {
-				type: types.GET_LOCATIONS,
+				type: types.getLocations,
 				locations: [loc],
 			}),
 		).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('locations reducer', () => {
 	it('should handle UPDATE_ERROR', () => {
 		expect(
 			locations(state, {
-				type: types.UPDATE_ERROR,
+				type: types.updateError,
 				err: 'Test Error',
 			}),
 		).toMatchSnapshot();

@@ -273,7 +273,6 @@ class Dashboard extends PureComponent {
 				? locations[0]
 				: locations[locationIndex];
 
-		const rightOpen = locationError ? false : null;
 		const timezone =
 			activeLocation && activeLocation.timezone
 				? activeLocation.timezone

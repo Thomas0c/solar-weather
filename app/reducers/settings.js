@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as types from '../actions/types.action';
+import * as types from '../../lib/js/app/actions/actions';
 
 const Maybe = require('data.maybe');
 const R = require('ramda');
@@ -23,31 +23,31 @@ const updateField = (state, key, value) => ({
 });
 
 const actionHandlers = {};
-actionHandlers[types.SET_ONBOARDING] = (state, action) => ({
+actionHandlers[types.setOnboarding] = (state, action) => ({
 	...updateField(state, 'onboarding', action.value),
 });
 
-actionHandlers[types.SET_UNIT] = (state, action) => ({
+actionHandlers[types.setUnit] = (state, action) => ({
 	...state,
 	unit: action.unit,
 	unitIndex: action.unitIndex,
 });
 
-actionHandlers[types.SET_ACTIVE_LOCATION] = (state, action) => ({
+actionHandlers[types.setActiveLocation] = (state, action) => ({
 	...updateField(state, 'locationIndex', action.index),
 });
 
-actionHandlers[types.UPDATE_LATEST_TIMESTAMP] = (state, action) => ({
+actionHandlers[types.updateLatestTimestamp] = (state, action) => ({
 	...updateField(state, 'latestUpdate', action.timestamp),
 });
 
-actionHandlers[types.SET_TIME_TYPE] = (state, action) => ({
+actionHandlers[types.setTimeType] = (state, action) => ({
 	...state,
 	timeType: action.timeType,
 	timeIndex: action.timeIndex,
 });
 
-actionHandlers[types.SET_SETTINGS] = (state, action) => ({
+actionHandlers[types.setSettings] = (state, action) => ({
 	...state,
 	...R.dissoc('type', action),
 });
