@@ -1,17 +1,14 @@
 import moment from 'moment';
 import * as types from '../../lib/js/app/actions/actions';
 import realm from '../realm';
-import * as creators from './creators.action';
-
-const updateTimeReducer = (timeType, timeIndex) =>
-	creators.triggerAction(types.setTimeType, { timeType, timeIndex });
+import * as creators from '../../lib/js/app/actions/creators';
 
 export function setTimeType(timeType, index) {
 	realm.write(() => {
 		realm.create('Options', { key: 1, timeType, timeIndex: index }, true);
 	});
 	return dispatch => {
-		dispatch(updateTimeReducer(timeType, index));
+		dispatch(creators.updateTime(timeType, index));
 	};
 }
 

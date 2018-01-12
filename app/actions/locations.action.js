@@ -1,6 +1,7 @@
 import moment from 'moment';
 
-import * as creators from './creators.action';
+import * as creators from '../../lib/js/app/actions/creators';
+
 import * as utils from './utils.action';
 import realm from '../realm';
 import * as settings from './settings.action';
