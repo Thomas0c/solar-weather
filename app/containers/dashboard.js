@@ -210,10 +210,13 @@ class Dashboard extends PureComponent {
 		}
 
 		setInterval(() => {
-			this.setState({
-				timestamp: moment(),
-			});
-		}, 20000);
+			const time = moment().startOf('minute');
+			if (time.isAfter(this.state.timestamp)) {
+				this.setState({
+					timestamp: time,
+				});
+			}
+		}, 30000);
 	}
 
 	toggleState(key) {
