@@ -1,42 +1,25 @@
-open MomentRe;
+open BsLuxon;
 
-[%%bs.raw {| require("moment-timezone") |}];
+let convertToTimezone = (time, timezone) =>
+  DateTime.(local(time) |> setZone(timezone));
 
-[@bs.send] external tz : (Moment.t, string) => Moment.t = "tz";
+let convertUnixToTimezone = (epoch: float, timezone) =>
+  DateTime.(fromMillis(epoch) |> setZone(timezone));
 
-let convertToTimeZone = (time, timezone) => tz(moment(time), timezone);
+let convertToString = (format: string) => DateTime.toFormat(format);
 
-let convertUnixToTimezone = (time, timezone) =>
-  tz(momentWithUnix(time), timezone);
+let convertToTimezoneAndString = (time, timezone, format) =>
+  convertUnixToTimezone(time, timezone) |> convertToString(format);
 
-let convertToTimeZoneAndString = (time, timezone, format) : string =>
-  convertUnixToTimezone(time, timezone) |> Moment.format(format);
+let isAfterCurrent = (epoch: float) =>
+  DateTime.fromMillis(epoch) > DateTime.local();
 
-let convertToString = (format: string) => Moment.format(format);
-
-let isAfterCurrent = (time: int) =>
-  Moment.isAfter(momentWithUnix(time), momentNow());
-
-let isDaylight = (timezone) => {
-  let time = tz(momentNow(), timezone) |> Moment.hour;
-  time > 6 && time < 18
+let isDaylight = (timezone: string) => {
+  let time = DateTime.(local() |> setZone(timezone));
+  time##hour > 6 && time##hour < 18;
 };
 
-let setToTime = (time: MomentRe.Moment.t, h: int) =>
-  time |> Moment.add(~duration=duration(h, `hours)) |> Moment.startOf(`hour);
+let setToTime = (time, h: int) =>
+  DateTime.(local(time, ~hour=h) |> startOf(`hour));
 
-let setToStartOf =
-    (
-      start: [
-        | `day
-        | `hour
-        | `millisecond
-        | `minute
-        | `month
-        | `quarter
-        | `second
-        | `week
-        | `year
-      ]
-    ) =>
-  Moment.startOf(start);
+let setToStartOf = start => DateTime.startOf(start);
