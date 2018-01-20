@@ -49,7 +49,7 @@ let make =
       unit === "c" ?
         Temperature.fixTemperature(temperature) :
         Temperature.convertToFahrenheitAndFix(temperature);
-    let formatString = timeType === "24" ? "H:mm" : "h a";
+    let formatString = timeType === "24" ? "HH:mm" : "h a";
     let date =
       Time.convertUnixToTimezone(time *. 1000., timezone)
       |> Time.setToStartOf(`minute)

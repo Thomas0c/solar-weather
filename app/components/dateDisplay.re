@@ -22,7 +22,7 @@ let styles =
 let make = (~condition, ~timestamp, ~time, ~timezone, _children) => {
   ...component,
   render: _self => {
-    let formatString = time === "24" ? "H:mm" : "h:mm a";
+    let formatString = time === "24" ? "HH:mm" : "h:mm a";
     let time = Time.convertToTimezone(timestamp, timezone);
     let adjustedTime = time |> Time.convertToString(formatString);
     let dateStamp = time |> Time.convertToString("LLL dd");

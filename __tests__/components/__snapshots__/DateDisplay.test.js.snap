@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
     testID={undefined}
     textBreakStrategy={undefined}
   >
-    7:38am
+    7:38 AM
   </Text>
   <Text
     accessible={true}

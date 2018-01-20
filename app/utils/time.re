@@ -1,7 +1,7 @@
 open BsLuxon;
 
-let convertToTimezone = (time, timezone) =>
-  DateTime.(local(time) |> setZone(timezone));
+let convertToTimezone = (time: float, timezone) =>
+  DateTime.(fromMillis(time) |> setZone(timezone));
 
 let convertUnixToTimezone = (epoch: float, timezone) =>
   DateTime.(fromMillis(epoch) |> setZone(timezone));
