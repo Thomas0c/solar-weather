@@ -43,7 +43,7 @@ let styles =
 let setRef = (theRef, {ReasonReact.state}) =>
   state.reference := Js.Nullable.to_opt(theRef);
 
-let handleTap = (state) =>
+let handleTap = state =>
   switch state.reference^ {
   | None => ()
   | Some(r) => ReasonReact.refToJsObj(r)##closeRow()
@@ -52,8 +52,6 @@ let handleTap = (state) =>
 let make =
     (
       ~name,
-      ~lat,
-      ~lng,
       ~index,
       ~icon,
       ~onDelete,
@@ -76,8 +74,8 @@ let make =
       style=styles##container
       onRowPress=(
         () => {
-          onSelect(index, lat, lng);
-          handleTap(state)
+          onSelect(index);
+          handleTap(state);
         }
       )
       stopRightSwipe=(-40.)
@@ -92,6 +90,6 @@ let make =
         </View>
       </TouchableOpacity>
       <LocationIcon icon day name selected />
-    </SwipeRow.Row>
+    </SwipeRow.Row>;
   }
 };

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 class Options {}
 Options.schema = {
@@ -13,11 +13,8 @@ Options.schema = {
 		locationIndex: { type: 'int', default: 0 },
 		onboarding: { type: 'bool', default: false },
 		latestUpdate: {
-			type: 'string',
-			default: moment()
-				.subtract(1, 'day')
-				.unix()
-				.toString(),
+			type: 'int',
+			default: DateTime.local().valueOf(),
 		},
 	},
 };

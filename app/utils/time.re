@@ -9,10 +9,10 @@ let convertUnixToTimezone = (epoch: float, timezone) =>
 let convertToString = (format: string) => DateTime.toFormat(format);
 
 let convertToTimezoneAndString = (time, timezone, format) =>
-  convertUnixToTimezone(time, timezone) |> convertToString(format);
+  convertUnixToTimezone(time, timezone) |> DateTime.toFormat(format);
 
 let isAfterCurrent = (epoch: float) =>
-  DateTime.fromMillis(epoch) > DateTime.local();
+  epoch > (DateTime.local() |> DateTime.valueOf());
 
 let isDaylight = (timezone: string) => {
   let time = DateTime.(local() |> setZone(timezone));

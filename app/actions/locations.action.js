@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 import * as creators from '../../lib/js/app/actions/creators';
 
@@ -9,9 +9,10 @@ import * as settings from './settings.action';
 export function updateLocationWithIndex(index) {
 	const locs = utils.getStoredLocations();
 	const location = locs[index];
-	const now = moment();
+	const latestUpdate = DateTime.fromJSDate(location.last_updated);
+	const now = DateTime.local();
 	const locationUpdatedRecently =
-		now.diff(moment(location.last_updated), 'minutes') < 10;
+		now.diff(latestUpdate, 'minutes').get('minutes') > 10;
 
 	return async dispatch => {
 		if (

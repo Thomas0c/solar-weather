@@ -46,14 +46,14 @@ let styles =
         "dayHighTemp":
           style([
             fontWeight(`Bold),
-            marginTop(Pt((-5.))),
+            marginTop(Pt(-5.)),
             color(Config.AppColors.white),
             fontSize(Float(14.))
           ]),
         "dayLowTemp":
           style([
             fontSize(Float(10.)),
-            marginTop(Pt((-5.))),
+            marginTop(Pt(-5.)),
             color(Config.AppColors.white),
             fontWeight(`_400)
           ]),
@@ -81,12 +81,16 @@ let styles =
 
 let make = (~forecast, ~unit, ~timezone, _children) => {
   ...component,
-  render: (_self) => {
+  render: _self => {
     let arrDays =
       Array.map(
-        (item) => {
+        item => {
           let date =
-            Time.convertToTimeZoneAndString(item##time, timezone, "dddd");
+            Time.convertToTimezoneAndString(
+              item##time *. 1000.,
+              timezone,
+              "EEEE"
+            );
           let tempMax =
             unit === "c" ?
               Temperature.fixTemperature(item##temperatureMax) :
@@ -98,7 +102,7 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
           let background =
             Colors.shadeColor(
               Colors.identifyBackground(item##icon, true),
-              (-10)
+              -10
             );
           let icon = Icons.identifyIcon(item##icon ++ "_white");
           let iconSource: Image.imageSource =
@@ -133,7 +137,7 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
             <Text style=styles##dayTitle>
               (ReasonReact.stringToElement(date))
             </Text>
-          </View>
+          </View>;
         },
         forecast
       )
@@ -141,18 +145,16 @@ let make = (~forecast, ~unit, ~timezone, _children) => {
     <View style=styles##generalContainer>
       <View style=styles##shadow />
       arrDays
-    </View>
+    </View>;
   }
 };
 
 let default =
-  ReasonReact.wrapReasonForJs(
-    ~component,
-    (jsProps) =>
-      make(
-        ~forecast=jsProps##forecast,
-        ~unit=jsProps##unit,
-        ~timezone=jsProps##timezone,
-        [||]
-      )
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(
+      ~forecast=jsProps##forecast,
+      ~unit=jsProps##unit,
+      ~timezone=jsProps##timezone,
+      [||]
+    )
   );

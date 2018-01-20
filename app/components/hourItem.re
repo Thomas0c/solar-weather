@@ -24,7 +24,7 @@ let styles =
           style([
             alignSelf(Center),
             width(Pct(170.)),
-            marginTop(Pt((-5.))),
+            marginTop(Pt(-5.)),
             resizeMode(Contain)
           ]),
         "temperature":
@@ -44,14 +44,14 @@ let make =
       _children
     ) => {
   ...component,
-  render: (_self) => {
+  render: _self => {
     let temperature =
       unit === "c" ?
         Temperature.fixTemperature(temperature) :
         Temperature.convertToFahrenheitAndFix(temperature);
-    let formatString = timeType === "24" ? "HH:mm" : "h:mma";
+    let formatString = timeType === "24" ? "H:mm" : "h a";
     let date =
-      Time.convertUnixToTimezone(time, timezone)
+      Time.convertUnixToTimezone(time *. 1000., timezone)
       |> Time.setToStartOf(`minute)
       |> Time.convertToString(formatString);
     let icon = Icons.identifyIcon(icon ++ "_white");
@@ -73,21 +73,19 @@ let make =
       <Text style=styles##temperature>
         (ReasonReact.stringToElement({j|$temperature°|j}))
       </Text>
-    </View>
+    </View>;
   }
 };
 
 let default =
-  ReasonReact.wrapReasonForJs(
-    ~component,
-    (jsProps) =>
-      make(
-        ~unit=jsProps##unit,
-        ~timeType=jsProps##timeType,
-        ~temperature=jsProps##temperature,
-        ~icon=jsProps##icon,
-        ~timezone=jsProps##timezone,
-        ~time=jsProps##time,
-        [||]
-      )
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(
+      ~unit=jsProps##unit,
+      ~timeType=jsProps##timeType,
+      ~temperature=jsProps##temperature,
+      ~icon=jsProps##icon,
+      ~timezone=jsProps##timezone,
+      ~time=jsProps##time,
+      [||]
+    )
   );

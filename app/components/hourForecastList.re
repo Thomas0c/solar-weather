@@ -42,22 +42,21 @@ let styles =
 let setSectionRef = (theRef, {ReasonReact.state}) =>
   state.scrollRef := Js.Nullable.to_opt(theRef);
 
-let keyExtractor = (item, _) => string_of_int(item##time);
+let keyExtractor = (item, _) => string_of_float(item##time *. 1000.);
 
 let renderItem = (unit, timeType, timezone) =>
-  FlatList.renderItem(
-    ({item}) =>
-      <HourItem
-        unit
-        timeType
-        timezone
-        temperature=item##temperature
-        icon=item##icon
-        time=item##time
-      />
+  FlatList.renderItem(({item}) =>
+    <HourItem
+      unit
+      timeType
+      timezone
+      temperature=item##temperature
+      icon=item##icon
+      time=item##time
+    />
   );
 
-let handleClick = (state) =>
+let handleClick = state =>
   switch state.scrollRef^ {
   | None => ()
   | Some(r) => ReasonReact.refToJsObj(r)##scrollToOffset(0)
@@ -78,23 +77,30 @@ let make =
     bottomAnim: Animated.Value.create(-. windowHeight /. 10.),
     scrollRef: ref(None)
   },
-  retainedProps: {openHours, locationName, timeType, unit, timezone},
+  retainedProps: {
+    openHours,
+    locationName,
+    timeType,
+    unit,
+    timezone
+  },
   reducer: ((), _) => ReasonReact.NoUpdate,
   willReceiveProps: ({retainedProps, state}) =>
     if (retainedProps.openHours !== openHours) {
       let value =
         Js.to_bool(openHours) ? windowHeight /. 10. : -. windowHeight /. 10.;
       Animation.animate(state.bottomAnim, value);
-      state
+      state;
     } else if (retainedProps.locationName !== locationName) {
       handleClick(state);
-      state
+      state;
     } else {
-      state
+      state;
     },
   render: ({state, handle}) => {
     let filteredForecast =
-      forecast |> Js.Array.filter((item) => Time.isAfterCurrent(item##time));
+      forecast
+      |> Js.Array.filter(item => Time.isAfterCurrent(item##time *. 1000.));
     <Animated.View
       style=Style.(
               concat([
@@ -113,21 +119,19 @@ let make =
         data=filteredForecast
         renderItem=(renderItem(unit, timeType, timezone))
       />
-    </Animated.View>
+    </Animated.View>;
   }
 };
 
 let default =
-  ReasonReact.wrapReasonForJs(
-    ~component,
-    (jsProps) =>
-      make(
-        ~openHours=jsProps##openHours,
-        ~locationName=jsProps##locationName,
-        ~forecast=jsProps##forecast,
-        ~timeType=jsProps##timeType,
-        ~timezone=jsProps##timezone,
-        ~unit=jsProps##unit,
-        [||]
-      )
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(
+      ~openHours=jsProps##openHours,
+      ~locationName=jsProps##locationName,
+      ~forecast=jsProps##forecast,
+      ~timeType=jsProps##timeType,
+      ~timezone=jsProps##timezone,
+      ~unit=jsProps##unit,
+      [||]
+    )
   );

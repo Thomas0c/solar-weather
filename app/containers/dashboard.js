@@ -1,17 +1,16 @@
 import Geocoder from 'react-native-geocoder';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import tz from 'moment-timezone';
+import { DateTime, Zone } from 'luxon';
 import PropTypes from 'prop-types';
 import Permissions from 'react-native-permissions';
 
 // Redux Actions
 import * as settingsActions from '../actions/settings.action';
 import * as locationActions from '../actions/locations.action';
-import * as creators from '../actions/creators.action';
+import * as creators from '../../lib/js/app/actions/creators';
 
-import { isDaylight, setToTime } from '../../lib/js/app/utils/time';
+import { isDaylight, setToTime, isAfter } from '../../lib/js/app/utils/time';
 import { AppColors, units, timeTypes } from '../../lib/js/app/config/config';
 
 // Components
@@ -47,7 +46,7 @@ class Dashboard extends PureComponent {
 		locationSearch: false,
 		openRight: false,
 		openLeft: false,
-		timestamp: moment(),
+		timestamp: DateTime.local(),
 		showDetails: true,
 		openAlert: false,
 		openHours: false,
@@ -55,10 +54,13 @@ class Dashboard extends PureComponent {
 
 	updateLocationsAndSetTimestamp() {
 		const { locations, settings } = this.props;
-		const now = moment();
-		const latestUpdate = moment.unix(settings.latestUpdate);
+		const latestUpdate = DateTime.fromMillis(settings.latestUpdate);
+		const now = DateTime.local();
 
-		if (now.diff(latestUpdate, 'minutes') > 10 && !locations.loading) {
+		if (
+			now.diff(latestUpdate, 'minutes').get('minutes') > 10 &&
+			!locations.loading
+		) {
 			this.props.dispatch(locationActions.updateAllLocations());
 		}
 	}
@@ -115,7 +117,7 @@ class Dashboard extends PureComponent {
 			this.updateLocationsAndSetTimestamp();
 			this.determineLocationStatus();
 			this.setState({
-				timestamp: moment(),
+				timestamp: DateTime.local(),
 				openRight: false,
 				openLeft: false,
 			});
@@ -210,13 +212,13 @@ class Dashboard extends PureComponent {
 		}
 
 		setInterval(() => {
-			const time = moment().startOf('minute');
-			if (time.isAfter(this.state.timestamp)) {
+			const time = DateTime.local().startOf('minute');
+			if (time > (this.state.timestamp)) {
 				this.setState({
 					timestamp: time,
 				});
 			}
-		}, 30000);
+		}, 20000);
 	}
 
 	toggleState(key) {
@@ -279,7 +281,7 @@ class Dashboard extends PureComponent {
 		const timezone =
 			activeLocation && activeLocation.timezone
 				? activeLocation.timezone
-				: moment.tz.guess();
+				: Zone.name;
 
 		// Alert title and description
 		const showAlert = activeLocation ? activeLocation.alerts.length > 0 : 0;
@@ -298,8 +300,8 @@ class Dashboard extends PureComponent {
 				locationSearch={locationSearch}
 				anyLocation={anyLocation}
 				openRight={openRight}
-				onRowSelect={(id, lat, lng) =>
-					this.props.dispatch(locationActions.setActiveLocation(id, lat, lng))
+				onRowSelect={(idx) =>
+					this.props.dispatch(locationActions.setActiveLocation(idx))
 				}
 				onRowDelete={id =>
 					this.props.dispatch(locationActions.deleteLocationFromStore(id))

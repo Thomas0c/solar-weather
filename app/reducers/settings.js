@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import * as types from '../../lib/js/app/actions/actions';
 
 const Maybe = require('data.maybe');
@@ -11,10 +11,9 @@ export const initialState = {
 	timeIndex: 0,
 	onboarding: false,
 	locationIndex: 0,
-	latestUpdate: moment()
-		.subtract(1, 'day')
-		.unix()
-		.toString(),
+	latestUpdate: DateTime.local()
+		.minus({ days: 1 })
+		.valueOf(),
 };
 
 const updateField = (state, key, value) => ({

@@ -50,25 +50,21 @@ let styles =
 let keyExtractor = (item, _) => string_of_int(item##id);
 
 let renderFlatList = (day: bool, activeLocation: int, onDelete, onSelect) =>
-  FlatList.renderItem(
-    ({item, index}) => {
-      let id: int = item##id;
-      let stringId: string = string_of_int(id);
-      <Location
-        id
-        lat=item##lat
-        lng=item##lng
-        onDelete
-        onSelect
-        index
-        day
-        key=stringId
-        activeLocation
-        name=item##name
-        icon=item##currently##icon
-      />
-    }
-  );
+  FlatList.renderItem(({item, index}) => {
+    let id: int = item##id;
+    let stringId: string = string_of_int(id);
+    <Location
+      id
+      onDelete
+      onSelect
+      index
+      day
+      key=stringId
+      activeLocation
+      name=item##name
+      icon=item##currently##icon
+    />;
+  });
 
 let make =
     (
@@ -81,7 +77,7 @@ let make =
       _children
     ) => {
   ...component,
-  render: (_self) =>
+  render: _self =>
     <View style=styles##main>
       <View style=styles##shadow />
       <View style=styles##listContainer>
