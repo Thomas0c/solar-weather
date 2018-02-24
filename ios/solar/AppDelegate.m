@@ -33,13 +33,13 @@ RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
   // 2. Set the backgroundColor of the react view to be transparent
   rootView.backgroundColor = [UIColor clearColor];
   backgroundView.frame = UIScreen.mainScreen.bounds;
-  
+
   NSString *placesAPI = [ReactNativeConfig envFor:@"PLACES_API"];
   NSString *servicesAPI = [ReactNativeConfig envFor:@"SERVICES_API"];
-  
+
   [GMSPlacesClient provideAPIKey:placesAPI];
-  [GMSServices provideAPIKey:servicesAPI];
-  
+  [GMSServices provideAPIKey:placesAPI];
+
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   // 3. Set the backgroundView as main view for the rootViewController (instead of the rootView)
@@ -48,7 +48,7 @@ RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
 
   // 4. After the window is visible, add the rootView as a subview to your backgroundView
   [backgroundView addSubview:rootView];
-  
+
   // 5. Then make the rootViews frame the same as the backgroundView
   rootView.frame = backgroundView.frame;
 

@@ -20,8 +20,7 @@
 * Run `npm install` alternatively `yarn install`
 * Create a `.env` file in the project root
 * Get a forecast.io API key and set `FORECAST_API=[key]` in `.env`
-* Get a Google Places for iOS API key and set `PLACES_API=[key]` in `.env`
-* Get a Google Services for iOS API key and set `SERVICES_API=[key]` in `.env`
+* Get a Google Places for iOS API key and set `PLACES_API=[key]` in `.env`. Get it here: [Google Places iOS](https://console.developers.google.com/apis/api/placesios.googleapis.com/overview)
 * Navigate to `ios` folder, `cd ios` and run `pod install`
 * Compile ReasonReact components to js. Run `npm run build` or `yarn run build`
 * For iOS Run project using `react-native run-ios`
