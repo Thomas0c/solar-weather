@@ -36,7 +36,7 @@ let styles =
             position(Absolute),
             textAlign(Center),
             bottom(Pt(0.)),
-            paddingTop(Pt(10.)),
+            paddingTop(Pt(12.)),
             color(Config.AppColors.darkGrey),
             fontFamily(Config.Fonts.baskerville),
             fontWeight(`_200),

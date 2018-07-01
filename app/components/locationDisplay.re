@@ -38,7 +38,7 @@ let styles =
             paddingTop(
               Pt(
                 Platform.os === Platform.IOS ?
-                  windowHeight /. 2. -. 10. : windowHeight /. 2. -. 12.
+                  windowHeight /. 2. -. 12. : windowHeight /. 2. -. 12.
               )
             ),
             alignItems(Center),
@@ -54,11 +54,11 @@ let styles =
             shadowColor(Config.AppColors.black),
             shadowOpacity(0.2),
             shadowRadius(2.),
-            shadowOffset(~height=(-2.), ~width=0.),
+            shadowOffset(~height=-2., ~width=0.),
             position(Absolute),
             top(Pt(0.)),
             backgroundColor(Config.AppColors.white),
-            zIndex((-1))
+            zIndex(-1)
           ])
       }
     )
@@ -66,7 +66,7 @@ let styles =
 
 let make = (~locationName, ~onPress, ~loading: Js.boolean, _children) => {
   ...component,
-  render: (_self) => {
+  render: _self => {
     let noLoc = locationName === "" && ! Js.to_bool(loading);
     let currentLocation =
       locationName !== "" && ! Js.to_bool(loading) ?
@@ -85,18 +85,16 @@ let make = (~locationName, ~onPress, ~loading: Js.boolean, _children) => {
           )
         </Text>
       </TouchableHighlight>
-    </View>
+    </View>;
   }
 };
 
 let default =
-  ReasonReact.wrapReasonForJs(
-    ~component,
-    (jsProps) =>
-      make(
-        ~locationName=jsProps##locationName,
-        ~onPress=jsProps##onPress,
-        ~loading=jsProps##loading,
-        [||]
-      )
+  ReasonReact.wrapReasonForJs(~component, jsProps =>
+    make(
+      ~locationName=jsProps##locationName,
+      ~onPress=jsProps##onPress,
+      ~loading=jsProps##loading,
+      [||]
+    )
   );
