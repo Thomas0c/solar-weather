@@ -1,61 +1,65 @@
 {
-	"name": "solar",
-	"version": "0.0.1",
-	"private": true,
-	"rnpm": {
-		"assets": [
-			"./assets/fonts/"
-		]
-	},
-	"scripts": {
-		"build": "bsb -make-world -clean-world",
-		"watch": "bsb -make-world -clean-world -w",
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "NODE_ENV=test jest --forceExit"
-	},
-	"dependencies": {
-		"axios": "^0.17.1",
-		"bs-luxon": "github:davidgomes/bs-luxon",
-		"data.maybe": "^1.2.2",
-		"luxon": "^0.3.1",
-		"moment": "^2.20.1",
-		"moment-timezone": "^0.5.14",
-		"prop-types": "^15.6.0",
-		"ramda": "^0.25.0",
-		"react": "16.2.0",
-		"react-native": "0.52.0",
-		"react-native-config": "^0.11.5",
-		"react-native-drawer": "^2.5.0",
-		"react-native-geocoder": "^0.5.0",
-		"react-native-google-places": "^2.4.2",
-		"react-native-permissions": "^1.0.6",
-		"react-native-segmented-control-tab": "^3.2.1",
-		"react-native-swipe-list-view": "^1.0.4",
-		"react-redux": "^5.0.6",
-		"realm": "2.0.3",
-		"redux": "^3.7.2",
-		"redux-thunk": "^2.2.0"
-	},
-	"devDependencies": {
-		"axios-mock-adapter": "^1.11.0",
-		"babel-jest": "21.2.0",
-		"babel-preset-react-native": "4.0.0",
-		"bs-platform": "^2.1.0",
-		"bs-react-native": "^0.5.0",
-		"eslint": "^4.16.0",
-		"eslint-config-airbnb": "^16.1.0",
-		"eslint-plugin-import": "^2.8.0",
-		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-react": "^7.5.1",
-		"jest": "21.2.1",
-		"react-test-renderer": "16.0.0",
-		"reason-react": "^0.3.1",
-		"redux-mock-store": "^1.4.0"
-	},
-	"jest": {
-		"preset": "react-native",
-		"testMatch": [
-			"**/__tests__/**/(*.)(spec|test).js"
-		]
-	}
+  "name": "solar",
+  "version": "0.0.1",
+  "private": true,
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  },
+  "scripts": {
+    "build": "bsb -make-world -clean-world",
+    "watch": "bsb -make-world -clean-world -w",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "NODE_ENV=test jest --forceExit",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bs-luxon": "github:davidgomes/bs-luxon",
+    "data.maybe": "^1.2.2",
+    "luxon": "^0.3.1",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
+    "prop-types": "^15.6.0",
+    "ramda": "^0.25.0",
+    "react": "16.2.0",
+    "react-native": "0.52.0",
+    "react-native-config": "^0.11.5",
+    "react-native-drawer": "^2.5.0",
+    "react-native-geocoder": "^0.5.0",
+    "react-native-google-places": "^2.4.2",
+    "react-native-permissions": "^1.0.6",
+    "react-native-segmented-control-tab": "^3.2.1",
+    "react-native-swipe-list-view": "^1.0.4",
+    "react-redux": "^5.0.6",
+    "realm": "2.0.3",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "snyk": "^1.117.1"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.11.0",
+    "babel-jest": "21.2.0",
+    "babel-preset-react-native": "4.0.0",
+    "bs-platform": "^2.1.0",
+    "bs-react-native": "^0.5.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "21.2.1",
+    "react-test-renderer": "16.0.0",
+    "reason-react": "^0.3.1",
+    "redux-mock-store": "^1.4.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testMatch": [
+      "**/__tests__/**/(*.)(spec|test).js"
+    ]
+  },
+  "snyk": true
 }
