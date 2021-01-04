@@ -14,7 +14,7 @@
 		"test": "NODE_ENV=test jest --forceExit"
 	},
 	"dependencies": {
-		"axios": "^0.17.1",
+		"axios": "^0.21.1",
 		"bs-luxon": "github:davidgomes/bs-luxon",
 		"data.maybe": "^1.2.2",
 		"luxon": "^0.3.1",
