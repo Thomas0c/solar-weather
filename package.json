@@ -14,16 +14,16 @@
 		"test": "NODE_ENV=test jest --forceExit"
 	},
 	"dependencies": {
-		"axios": "^0.17.1",
+		"axios": "^0.21.3",
 		"bs-luxon": "github:davidgomes/bs-luxon",
 		"data.maybe": "^1.2.2",
 		"luxon": "^0.3.1",
 		"moment": "^2.20.1",
 		"moment-timezone": "^0.5.14",
 		"prop-types": "^15.6.0",
-		"ramda": "^0.25.0",
+		"ramda": "^0.27.2",
 		"react": "16.2.0",
-		"react-native": "0.52.0",
+		"react-native": "0.62.0",
 		"react-native-config": "^0.11.5",
 		"react-native-drawer": "^2.5.0",
 		"react-native-geocoder": "^0.5.0",
@@ -32,7 +32,7 @@
 		"react-native-segmented-control-tab": "^3.2.1",
 		"react-native-swipe-list-view": "^1.0.4",
 		"react-redux": "^5.0.6",
-		"realm": "2.0.3",
+		"realm": "2.15.2",
 		"redux": "^3.7.2",
 		"redux-thunk": "^2.2.0"
 	},
