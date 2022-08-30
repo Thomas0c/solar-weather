@@ -19,7 +19,7 @@
 		"data.maybe": "^1.2.2",
 		"luxon": "^0.3.1",
 		"moment": "^2.20.1",
-		"moment-timezone": "^0.5.14",
+		"moment-timezone": "^0.5.35",
 		"prop-types": "^15.6.0",
 		"ramda": "^0.25.0",
 		"react": "16.2.0",
